@@ -1,2 +1,2 @@
-# arithmetic-visualizer
-An Arithmetic Visualizer.
+# The Arithmetic Visualizer
+A visualization tool for arithmetic expressions.
