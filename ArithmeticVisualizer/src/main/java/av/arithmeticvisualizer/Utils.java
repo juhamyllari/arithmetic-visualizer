@@ -50,4 +50,17 @@ public class Utils {
         
         return result;
     }
+    
+    protected static double dotProduct(double[][] left, double[][] right, int row, int col) {
+        
+        int n = right.length;
+        
+        double sum = 0.0;
+        
+        for (int i = 0; i < n; i++) {
+            sum += left[row][i] * right[i][col];
+        }
+        
+        return sum;
+    }
 }

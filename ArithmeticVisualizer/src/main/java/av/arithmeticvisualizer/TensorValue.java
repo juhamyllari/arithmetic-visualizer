@@ -34,4 +34,8 @@ public class TensorValue {
         return m == 1 && n == 1;
     }
     
+    public String dimsString() {
+        return "(" + m + ", " + n + ")";
+    }
+    
 }

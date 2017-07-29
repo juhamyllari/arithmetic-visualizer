@@ -14,9 +14,11 @@ public class AdditionNode extends BinaryNode {
 
         if (leftValue.getM() != rightValue.getM() || leftValue.getN() != rightValue.getN()) {
             throw new WrongShapeException(
-                    "Cannot add arrays of dimensions ("
-                    + leftValue.getM() + ", " + leftValue.getN() + ") and ("
-                    + rightValue.getM() + ", " + rightValue.getN() + ")."
+                    "Cannot multiply arrays of dimensions "
+                    + leftValue.dimsString()
+                    + " and "
+                    + rightValue.dimsString()
+                    + "."
             );
         }
 

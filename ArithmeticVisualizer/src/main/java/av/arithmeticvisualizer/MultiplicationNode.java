@@ -6,14 +6,14 @@ public class MultiplicationNode extends BinaryNode {
         this.left = left;
         this.right = right;
     }
-    
+
     @Override
     public TensorValue eval() throws WrongShapeException {
         TensorValue leftValue = left.eval();
         TensorValue rightValue = right.eval();
-        
+
         double[][] result;
-        
+
         if (leftValue.isScalar()) {
             result = Utils.scalarMultiply(leftValue.getValue()[0][0], rightValue.getValue());
             return new TensorValue(result);
@@ -21,14 +21,28 @@ public class MultiplicationNode extends BinaryNode {
             result = Utils.scalarMultiply(rightValue.getValue()[0][0], leftValue.getValue());
             return new TensorValue(result);
         }
-        
+
         if (leftValue.getN() != rightValue.getM()) {
-            throw new WrongShapeException("");
+            throw new WrongShapeException(
+                    "Cannot multiply arrays of dimensions "
+                    + leftValue.dimsString()
+                    + " and "
+                    + rightValue.dimsString()
+                    + "."
+            );
         }
-        
+
         result = new double[leftValue.getM()][rightValue.getN()];
-                
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        for (int i = 0; i < leftValue.getM(); i++) {
+            for (int j = 0; j < rightValue.getN(); j++) {
+                result[i][j] = Utils.dotProduct(leftValue.getValue(),
+                        rightValue.getValue(),
+                        i, j);
+            }
+        }
+
+        return new TensorValue(result);
     }
-    
+
 }
