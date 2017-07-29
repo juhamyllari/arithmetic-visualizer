@@ -33,7 +33,21 @@ public class Utils {
         }
 
         return result;
-
     }
 
+    public static double[][] scalarMultiply(double scalar, double[][] array) {
+        
+        int m = array.length;
+        int n = array[0].length;
+        
+        double[][] result = new double[m][n];
+        
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                result[i][j] = scalar * array[i][j];
+            }
+        }
+        
+        return result;
+    }
 }

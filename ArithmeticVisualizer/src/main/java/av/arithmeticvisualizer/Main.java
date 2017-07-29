@@ -13,7 +13,7 @@ public class Main {
 
         Node root;
         try {
-            root = new AdditionNode(new ArrayNode(7), new ArrayNode(B));
+            root = new MultiplicationNode(new ArrayNode(7), new ArrayNode(A));
 
             try {
                 System.out.println(Arrays.deepToString(root.eval().getValue()));

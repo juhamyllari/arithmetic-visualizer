@@ -30,4 +30,8 @@ public class TensorValue {
         return n;
     }
     
+    public boolean isScalar() {
+        return m == 1 && n == 1;
+    }
+    
 }
