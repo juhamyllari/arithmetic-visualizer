@@ -2,18 +2,19 @@ package av.arithmeticvisualizer;
 
 public class ArrayNode extends UnaryNode {
     
-    private final double[][] value;
+    private final TensorValue value;
 
-    public ArrayNode(double[][] value) {
-        this.value = value;
+    public ArrayNode(double[][] value) throws WrongShapeException {
+        this.value = new TensorValue(value);
     }
 
-    public ArrayNode(double d) {
-        this.value = new double[1][1];
-        this.value[0][0] = d;
+    public ArrayNode(double value) throws WrongShapeException {
+        double[][] array = new double[1][1];
+        array[0][0] = value;
+        this.value = new TensorValue(array);
     }
     
-    public double[][] eval() {
+    public TensorValue eval() {
         return value;
     }
     

@@ -36,9 +36,9 @@ public class EvaluationTest {
     }
 
     @Test
-    public void addingTwoScalarsGivesCorrectResult() throws DimensionMismatchException {
+    public void addingTwoScalarsGivesCorrectResult() throws WrongShapeException {
         Node n = new AdditionNode(new ArrayNode(23.0), new ArrayNode(-28.0));
-        double[][] result = n.eval();
+        double[][] result = n.eval().getValue();
         assertEquals(-5.0, result[0][0], .001);
         assertEquals(1, result.length);
         assertEquals(1, result[0].length);

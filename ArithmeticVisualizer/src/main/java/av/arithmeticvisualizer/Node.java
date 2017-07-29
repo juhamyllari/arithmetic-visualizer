@@ -2,6 +2,6 @@ package av.arithmeticvisualizer;
 
 public abstract class Node {
     
-    public abstract double[][] eval() throws DimensionMismatchException;
+    public abstract TensorValue eval() throws WrongShapeException;
     
 }

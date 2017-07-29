@@ -9,8 +9,8 @@ public class NegationNode extends UnaryNode {
     }
     
     @Override
-    public double[][] eval() throws DimensionMismatchException {
-        return Utils.negateArray(singleNode.eval());
+    public TensorValue eval() throws WrongShapeException {
+        return new TensorValue(Utils.negateArray(singleNode.eval().getValue()));
     }
     
 }

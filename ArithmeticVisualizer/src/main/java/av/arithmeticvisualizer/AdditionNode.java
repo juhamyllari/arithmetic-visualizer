@@ -8,8 +8,19 @@ public class AdditionNode extends BinaryNode {
     }
 
     @Override
-    public double[][] eval() throws DimensionMismatchException {
-        return Utils.addArrays(left.eval(), right.eval());
+    public TensorValue eval() throws WrongShapeException {
+        TensorValue leftValue = left.eval();
+        TensorValue rightValue = right.eval();
+
+        if (leftValue.getM() != rightValue.getM() || leftValue.getN() != rightValue.getN()) {
+            throw new WrongShapeException(
+                    "Cannot add arrays of dimensions ("
+                    + leftValue.getM() + ", " + leftValue.getN() + ") and ("
+                    + rightValue.getM() + ", " + rightValue.getN() + ")."
+            );
+        }
+
+        return new TensorValue(Utils.addArrays(left.eval().getValue(), right.eval().getValue()));
     }
 
 }
