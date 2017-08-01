@@ -8,4 +8,4 @@ A single user.
 
 **Functionality:**
 * Creating arithmetic expressions via a graphic interface.
-* Expressions may also be entered as strings. (This will only implemented if time permits.)
+* Expressions may also be entered as strings. (This will only be implemented if time permits.)
