@@ -18,7 +18,7 @@ public class Main {
         Node root;
         
         try {
-            root = new MultiplicationNode(new ArrayNode(A), new ArrayNode(D));
+            root = new MultiplicationNode(new ValueNode(A), new ValueNode(D));
             System.out.println(Arrays.deepToString(root.eval().getValue()));
         } catch (WrongShapeException ex) {
             System.out.println("Node creation or evaluation failed with message:");
