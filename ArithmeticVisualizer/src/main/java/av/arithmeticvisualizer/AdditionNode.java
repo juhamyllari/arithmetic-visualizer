@@ -8,9 +8,9 @@ public class AdditionNode extends BinaryNode {
     }
 
     @Override
-    public TensorValue eval() throws WrongShapeException {
-        TensorValue leftValue = left.eval();
-        TensorValue rightValue = right.eval();
+    public TensorValue evaluate() throws WrongShapeException {
+        TensorValue leftValue = left.evaluate();
+        TensorValue rightValue = right.evaluate();
 
         if (leftValue.getM() != rightValue.getM() || leftValue.getN() != rightValue.getN()) {
             throw new WrongShapeException(
@@ -22,7 +22,7 @@ public class AdditionNode extends BinaryNode {
             );
         }
 
-        return new TensorValue(Utils.addArrays(left.eval().getValue(), right.eval().getValue()));
+        return new TensorValue(Utils.addArrays(left.evaluate().getValue(), right.evaluate().getValue()));
     }
 
 }

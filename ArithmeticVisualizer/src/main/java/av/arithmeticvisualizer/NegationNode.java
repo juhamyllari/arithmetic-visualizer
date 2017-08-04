@@ -2,15 +2,15 @@ package av.arithmeticvisualizer;
 
 public class NegationNode extends UnaryNode {
 
-    private Node singleNode;
+    private final Node singleNode;
 
     public NegationNode(Node singleNode) {
         this.singleNode = singleNode;
     }
     
     @Override
-    public TensorValue eval() throws WrongShapeException {
-        return new TensorValue(Utils.negateArray(singleNode.eval().getValue()));
+    public TensorValue evaluate() throws WrongShapeException {
+        return new TensorValue(Utils.negateArray(singleNode.evaluate().getValue()));
     }
     
 }

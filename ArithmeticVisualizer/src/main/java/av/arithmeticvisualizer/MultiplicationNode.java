@@ -8,9 +8,9 @@ public class MultiplicationNode extends BinaryNode {
     }
 
     @Override
-    public TensorValue eval() throws WrongShapeException {
-        TensorValue leftValue = left.eval();
-        TensorValue rightValue = right.eval();
+    public TensorValue evaluate() throws WrongShapeException {
+        TensorValue leftValue = left.evaluate();
+        TensorValue rightValue = right.evaluate();
 
         double[][] result;
 

@@ -14,7 +14,7 @@ public class ValueNode extends UnaryNode {
         this.value = new TensorValue(array);
     }
     
-    public TensorValue eval() {
+    public TensorValue evaluate() {
         return value;
     }
     
