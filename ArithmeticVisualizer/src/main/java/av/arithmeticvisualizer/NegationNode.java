@@ -9,7 +9,7 @@ public class NegationNode extends UnaryNode {
     }
     
     @Override
-    public TensorValue evaluate() throws WrongShapeException {
+    public TensorValue evaluate() {
         return new TensorValue(Utils.negateArray(singleNode.evaluate().getValue()));
     }
     

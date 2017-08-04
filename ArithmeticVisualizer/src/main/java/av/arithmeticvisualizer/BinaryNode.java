@@ -1,8 +1,22 @@
 package av.arithmeticvisualizer;
 
-public abstract class BinaryNode extends Node {
+import java.util.function.BinaryOperator;
+
+public class BinaryNode extends Node {
     
-    protected Node left;
-    protected Node right;
+    private final Node left;
+    private final Node right;
+    private final BinaryOperator<TensorValue> function;
+
+    public BinaryNode(Node left, Node right, BinaryOperator<TensorValue> function) {
+        this.left = left;
+        this.right = right;
+        this.function = function;
+    }
+    
+    @Override
+    public TensorValue evaluate() {
+        return function.apply(left.evaluate(), right.evaluate());
+    }
     
 }

@@ -8,7 +8,7 @@ public class Expression {
         this.root = root;
     }
     
-    public TensorValue evaluate() throws WrongShapeException {
+    public TensorValue evaluate() {
         return root.evaluate();
     }
     
