@@ -5,4 +5,5 @@ A visualization tool for arithmetic expressions.
 
 ## Documentation
 [Topic Description](documentation/TopicDescription.md)
+
 [Time Sheet](documentation/TimeSheet.md)
