@@ -11,4 +11,5 @@ A single user.
 * Expressions may also be entered as strings. (This will only be implemented if time permits.)
 
 **Class Diagram:**
-* ![Alt Class Diagram](ClassDiagram.png "Class Diagram (Requirements Phase)")
+* A requirements phase class diagram is provided below:
+![Alt Class Diagram](ClassDiagram.png "Class Diagram (Requirements Phase)")
