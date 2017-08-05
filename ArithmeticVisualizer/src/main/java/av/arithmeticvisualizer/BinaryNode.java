@@ -6,16 +6,16 @@ public class BinaryNode extends Node {
     
     private final Node left;
     private final Node right;
-    private final BinaryOperator<TensorValue> function;
+    private final BinaryOperator<Value> function;
 
-    public BinaryNode(Node left, Node right, BinaryOperator<TensorValue> function) {
+    public BinaryNode(Node left, Node right, BinaryOperator<Value> function) {
         this.left = left;
         this.right = right;
         this.function = function;
     }
     
     @Override
-    public TensorValue evaluate() {
+    public Value evaluate() {
         return function.apply(left.evaluate(), right.evaluate());
     }
     

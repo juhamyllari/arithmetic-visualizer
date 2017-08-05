@@ -9,8 +9,8 @@ public class NegationNode extends UnaryNode {
     }
     
     @Override
-    public TensorValue evaluate() {
-        return new TensorValue(Utils.negateArray(singleNode.evaluate().getValue()));
+    public Value evaluate() {
+        return new Value(Utils.negateArray(singleNode.evaluate().getValue()));
     }
     
 }

@@ -8,7 +8,7 @@ public class Expression {
         this.root = root;
     }
     
-    public TensorValue evaluate() {
+    public Value evaluate() {
         return root.evaluate();
     }
     

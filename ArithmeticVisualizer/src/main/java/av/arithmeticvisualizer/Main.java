@@ -18,7 +18,7 @@ public class Main {
         Node root;
         Expression expr;
 
-        root = new BinaryNode(new ValueNode(A), new ValueNode(D), Utils.multiply);
+        root = new BinaryNode(new ValueNode(A), new ValueNode(D), NodeFunctions.multiply);
         expr = new Expression(root);
         System.out.println(Arrays.deepToString(expr.evaluate().getValue()));
 

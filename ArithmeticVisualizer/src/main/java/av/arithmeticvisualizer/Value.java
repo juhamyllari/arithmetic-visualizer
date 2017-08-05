@@ -1,12 +1,12 @@
 package av.arithmeticvisualizer;
 
-public class TensorValue {
+public class Value {
     
     private double[][] value;
     private int m;
     private int n;
 
-    public TensorValue(double[][] value) {
+    public Value(double[][] value) {
         this.value = value;
         this.m = value.length;
         this.n = value[0].length;
