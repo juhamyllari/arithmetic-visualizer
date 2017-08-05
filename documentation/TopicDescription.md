@@ -9,3 +9,6 @@ A single user.
 **Functionality:**
 * Creating arithmetic expressions via a graphical interface.
 * Expressions may also be entered as strings. (This will only be implemented if time permits.)
+
+**Class Diagram**
+![Alt Class Diagram](ClassDiagram.jpg "Class Diagram (Requirements Phase)")

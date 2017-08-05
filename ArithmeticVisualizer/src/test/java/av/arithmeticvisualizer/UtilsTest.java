@@ -12,9 +12,9 @@ public class UtilsTest {
     static double[][] scalarAdditionResult;
     static double[][] matrixAdditionResult;
     static double[][] matrixMultiplicationResult;
-    static double[][] A;
-    static double[][] B;
-    static double[][] C;
+    static double[][] matrixA;
+    static double[][] matrixB;
+    static double[][] matrixC;
     static double[][] arrayThree;
     static double[][] arrayFour;
 
@@ -24,9 +24,9 @@ public class UtilsTest {
     @BeforeClass
     public static void setUpClass() {
 
-        A = new double[][]{{1.1, 2.2, 3.3}, {1.0, 2.0, 3.0}};
-        B = new double[][]{{1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}};
-        C = new double[][]{{2.0, 3.0}, {4.0, 5.0}, {6.0, 7.0}};
+        matrixA = new double[][]{{1.1, 2.2, 3.3}, {1.0, 2.0, 3.0}};
+        matrixB = new double[][]{{1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}};
+        matrixC = new double[][]{{2.0, 3.0}, {4.0, 5.0}, {6.0, 7.0}};
         arrayThree = new double[][]{{3.0}};
         arrayFour = new double[][]{{4.0}};
         
@@ -35,9 +35,9 @@ public class UtilsTest {
         scalarAdditionResult = Utils.addArrays(
                 arrayThree, arrayFour);
 
-        matrixAdditionResult = Utils.addArrays(A, B);
+        matrixAdditionResult = Utils.addArrays(matrixA, matrixB);
 
-        matrixMultiplicationResult = Utils.matrixMultiply(A, C);
+        matrixMultiplicationResult = Utils.matrixMultiply(matrixA, matrixC);
     }
 
     @AfterClass
@@ -81,12 +81,12 @@ public class UtilsTest {
     
     @Test
     public void scalarMultiplicationFromLeftWorks() {
-        assertEquals(21.0, Utils.multiplyArrays(arrayThree, C)[2][1], .001);
+        assertEquals(21.0, Utils.multiplyArrays(arrayThree, matrixC)[2][1], .001);
     }
     
     @Test
     public void scalarMultiplicationFromRightWorks() {
-        assertEquals(21.0, Utils.multiplyArrays(C, arrayThree)[2][1], .001);
+        assertEquals(21.0, Utils.multiplyArrays(matrixC, arrayThree)[2][1], .001);
     }
     
     

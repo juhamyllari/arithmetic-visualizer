@@ -7,10 +7,10 @@ public class NegationNode extends UnaryNode {
     public NegationNode(Node singleNode) {
         this.singleNode = singleNode;
     }
-    
+
     @Override
     public Value evaluate() {
         return new Value(Utils.negateArray(singleNode.evaluate().getValue()));
     }
-    
+
 }

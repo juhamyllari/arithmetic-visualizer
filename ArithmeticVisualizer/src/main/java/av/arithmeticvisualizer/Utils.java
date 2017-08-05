@@ -3,7 +3,7 @@ package av.arithmeticvisualizer;
 import java.util.function.BinaryOperator;
 
 public class Utils {
-    
+
     private static boolean isScalar(double[][] array) {
         return array.length == 1 && array[0].length == 1;
     }

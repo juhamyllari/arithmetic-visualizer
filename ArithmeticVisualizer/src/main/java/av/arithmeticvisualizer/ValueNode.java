@@ -1,7 +1,7 @@
 package av.arithmeticvisualizer;
 
 public class ValueNode extends UnaryNode {
-    
+
     private final Value value;
 
     public ValueNode(double[][] value) {
@@ -13,9 +13,9 @@ public class ValueNode extends UnaryNode {
         array[0][0] = value;
         this.value = new Value(array);
     }
-    
+
     public Value evaluate() {
         return value;
     }
-    
+
 }
