@@ -11,4 +11,4 @@ A single user.
 * Expressions may also be entered as strings. (This will only be implemented if time permits.)
 
 **Class Diagram**
-![Alt Class Diagram](ClassDiagram.jpg "Class Diagram (Requirements Phase)")
+![Alt Class Diagram](ClassDiagram.png "Class Diagram (Requirements Phase)")
