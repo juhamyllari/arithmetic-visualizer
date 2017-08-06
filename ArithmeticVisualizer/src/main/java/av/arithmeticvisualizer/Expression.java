@@ -8,7 +8,7 @@ public class Expression {
         this.root = root;
     }
 
-    public Value evaluate() {
+    public Value evaluate() throws WrongShapeException {
         return root.evaluate();
     }
 

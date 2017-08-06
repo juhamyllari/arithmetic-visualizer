@@ -1,5 +1,7 @@
 package av.arithmeticvisualizer;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -48,12 +50,20 @@ public class BinaryNodeTest {
      @Test
      public void additionWorks() {
          bn1 = new BinaryNode(v1, v2, NodeFunctions.add);
-         assertEquals(4.3, bn1.evaluate().getValue()[0][2], .001);
+        try {
+            assertEquals(4.3, bn1.evaluate().getValue()[0][2], .001);
+        } catch (WrongShapeException ex) {
+            Logger.getLogger(BinaryNodeTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
      }
      
      @Test
      public void multiplicationWorks() {
          bn1 = new BinaryNode(v1, v3, NodeFunctions.multiply);
-         assertEquals(37.4, bn1.evaluate().getValue()[0][1], .001);
+        try {
+            assertEquals(37.4, bn1.evaluate().getValue()[0][1], .001);
+        } catch (WrongShapeException ex) {
+            Logger.getLogger(BinaryNodeTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
      }
 }

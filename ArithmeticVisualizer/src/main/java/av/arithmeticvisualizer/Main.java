@@ -20,7 +20,11 @@ public class Main {
 
         root = new BinaryNode(new ValueNode(matrixA), new ValueNode(matrixD), NodeFunctions.multiply);
         expr = new Expression(root);
-        System.out.println(Arrays.deepToString(expr.evaluate().getValue()));
+        try {
+            System.out.println(Arrays.deepToString(expr.evaluate().getValue()));
+        } catch (WrongShapeException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 

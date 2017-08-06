@@ -1,22 +1,23 @@
 package av.arithmeticvisualizer;
 
+import av.arithmeticvisualizer.NodeFunctions.CheckedBinaryFunction;
 import java.util.function.BinaryOperator;
 
 public class BinaryNode extends Node {
     
     private final Node left;
     private final Node right;
-    private final BinaryOperator<Value> function;
+    private final CheckedBinaryFunction<Value> operation;
 
-    public BinaryNode(Node left, Node right, BinaryOperator<Value> function) {
+    public BinaryNode(Node left, Node right, CheckedBinaryFunction<Value> operation) {
         this.left = left;
         this.right = right;
-        this.function = function;
+        this.operation = operation;
     }
     
     @Override
-    public Value evaluate() {
-        return function.apply(left.evaluate(), right.evaluate());
+    public Value evaluate() throws WrongShapeException {
+        return operation.apply(left.evaluate(), right.evaluate());
     }
     
 }

@@ -1,6 +1,6 @@
 package av.arithmeticvisualizer;
 
-public class ValueNode extends UnaryNode {
+public class ValueNode extends Node {
 
     private final Value value;
 
