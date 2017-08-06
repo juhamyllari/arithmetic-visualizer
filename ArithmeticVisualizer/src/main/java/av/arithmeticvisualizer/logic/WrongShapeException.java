@@ -1,4 +1,4 @@
-package av.arithmeticvisualizer;
+package av.arithmeticvisualizer.logic;
 
 class WrongShapeException extends Exception {
 

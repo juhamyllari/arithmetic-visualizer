@@ -1,5 +1,9 @@
-package av.arithmeticvisualizer;
+package av.arithmeticvisualizer.logic;
 
+import av.arithmeticvisualizer.logic.WrongShapeException;
+import av.arithmeticvisualizer.logic.NodeFunctions;
+import av.arithmeticvisualizer.logic.BinaryNode;
+import av.arithmeticvisualizer.logic.ValueNode;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.After;

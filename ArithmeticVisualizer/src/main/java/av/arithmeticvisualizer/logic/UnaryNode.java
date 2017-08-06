@@ -1,6 +1,6 @@
-package av.arithmeticvisualizer;
+package av.arithmeticvisualizer.logic;
 
-import av.arithmeticvisualizer.NodeFunctions.CheckedUnaryFunction;
+import av.arithmeticvisualizer.logic.NodeFunctions.CheckedUnaryFunction;
 
 public class UnaryNode extends Node {
 

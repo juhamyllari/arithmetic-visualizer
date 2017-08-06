@@ -1,6 +1,6 @@
-package av.arithmeticvisualizer;
+package av.arithmeticvisualizer.logic;
 
-import av.arithmeticvisualizer.NodeFunctions.CheckedBinaryFunction;
+import av.arithmeticvisualizer.logic.NodeFunctions.CheckedBinaryFunction;
 import java.util.function.BinaryOperator;
 
 public class BinaryNode extends Node {

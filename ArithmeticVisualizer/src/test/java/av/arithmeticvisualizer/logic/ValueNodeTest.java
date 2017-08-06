@@ -1,5 +1,8 @@
-package av.arithmeticvisualizer;
+package av.arithmeticvisualizer.logic;
 
+import av.arithmeticvisualizer.logic.WrongShapeException;
+import av.arithmeticvisualizer.logic.Value;
+import av.arithmeticvisualizer.logic.ValueNode;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

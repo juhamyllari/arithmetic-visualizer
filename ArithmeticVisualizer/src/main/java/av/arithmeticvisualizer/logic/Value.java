@@ -1,4 +1,4 @@
-package av.arithmeticvisualizer;
+package av.arithmeticvisualizer.logic;
 
 public class Value {
     
