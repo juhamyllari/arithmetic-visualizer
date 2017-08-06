@@ -2,18 +2,18 @@ package av.arithmeticvisualizer;
 
 public class Value {
     
-    private double[][] value;
+    private double[][] valueArray;
     private int m;
     private int n;
 
     public Value(double[][] value) {
-        this.value = value;
+        this.valueArray = value;
         this.m = value.length;
         this.n = value[0].length;
     }
 
     public double[][] getValue() {
-        return value;
+        return valueArray;
     }
 
     public int getM() {
