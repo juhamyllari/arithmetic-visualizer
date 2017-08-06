@@ -4,13 +4,13 @@ public class ValueNode extends Node {
 
     private final Value value;
 
-    public ValueNode(double[][] value) {
-        this.value = new Value(value);
+    public ValueNode(double[][] array) {
+        this.value = new Value(array);
     }
 
-    public ValueNode(double value) {
+    public ValueNode(double dbl) {
         double[][] array = new double[1][1];
-        array[0][0] = value;
+        array[0][0] = dbl;
         this.value = new Value(array);
     }
 

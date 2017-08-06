@@ -22,7 +22,7 @@ public class UtilsTest {
     }
 
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() throws WrongShapeException{
 
         matrixA = new double[][]{{1.1, 2.2, 3.3}, {1.0, 2.0, 3.0}};
         matrixB = new double[][]{{1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}};
@@ -31,13 +31,13 @@ public class UtilsTest {
         arrayFour = new double[][]{{4.0}};
         
        
+        matrixMultiplicationResult = Utils.matrixMultiply(matrixA, matrixC);
 
         scalarAdditionResult = Utils.addArrays(
                 arrayThree, arrayFour);
 
         matrixAdditionResult = Utils.addArrays(matrixA, matrixB);
 
-        matrixMultiplicationResult = Utils.matrixMultiply(matrixA, matrixC);
     }
 
     @AfterClass
@@ -80,12 +80,12 @@ public class UtilsTest {
     }
     
     @Test
-    public void scalarMultiplicationFromLeftWorks() {
+    public void scalarMultiplicationFromLeftWorks() throws WrongShapeException {
         assertEquals(21.0, Utils.multiplyArrays(arrayThree, matrixC)[2][1], .001);
     }
     
     @Test
-    public void scalarMultiplicationFromRightWorks() {
+    public void scalarMultiplicationFromRightWorks() throws WrongShapeException {
         assertEquals(21.0, Utils.multiplyArrays(matrixC, arrayThree)[2][1], .001);
     }
     
