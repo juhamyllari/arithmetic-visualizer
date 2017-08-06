@@ -2,6 +2,6 @@ package av.arithmeticvisualizer;
 
 public abstract class Node {
     
-    public abstract Value evaluate() throws WrongShapeException ;
+    public abstract Value evaluate() throws WrongShapeException;
     
 }

@@ -74,20 +74,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#av.arithmeticvisualizer.NegationNode.java">av/arithmeticvisualizer/NegationNode.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#av.arithmeticvisualizer.Expression.java">av/arithmeticvisualizer/Expression.java</a>
                 </td>
                 <td>
@@ -173,6 +159,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#av.arithmeticvisualizer.Main.java">av/arithmeticvisualizer/Main.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#av.arithmeticvisualizer.WrongShapeException.java">av/arithmeticvisualizer/WrongShapeException.java</a>
                 </td>
                 <td>
                   0
