@@ -23,7 +23,7 @@ public class Main {
         try {
             System.out.println(Arrays.deepToString(expr.evaluate().getValue()));
         } catch (WrongShapeException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("evaluation failed with message: " + ex.getMessage());
         }
 
     }

@@ -8,10 +8,18 @@ public class Utils {
         return array.length == 1 && array[0].length == 1;
     }
 
-    public static double[][] addArrays(double[][] left, double[][] right) {
+    private static String dims(double[][] array) {
+        return "(" + array.length + ", " + array[0].length + ")";
+    }
+    
+    public static double[][] addArrays(double[][] left, double[][] right) throws WrongShapeException {
 
         int m = left.length;
         int n = left[0].length;
+        
+        if (right.length != m || right[0].length != n) {
+            throw new WrongShapeException("Cannot add arrays of shape " + dims(left) + " and " + dims(right));
+        }
 
         double[][] result = new double[m][n];
 
@@ -40,7 +48,7 @@ public class Utils {
         return result;
     }
 
-    protected static double[][] multiplyArrays(double[][] left, double[][] right) {
+    protected static double[][] multiplyArrays(double[][] left, double[][] right) throws WrongShapeException {
 
         if (isScalar(left)) {
             return Utils.scalarMultiply(left[0][0], right);
@@ -51,8 +59,12 @@ public class Utils {
         return matrixMultiply(left, right);
     }
 
-    protected static double[][] matrixMultiply(double[][] left, double[][] right) {
+    protected static double[][] matrixMultiply(double[][] left, double[][] right) throws WrongShapeException {
 
+        if (left[0].length != right.length) {
+            throw new WrongShapeException("Cannot multiply matrices of shape " + dims(left) + " and " + dims(right));
+        }
+        
         int m = left.length;
         int p = right[0].length;
 

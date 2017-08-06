@@ -10,14 +10,6 @@ public class Value {
         this.value = value;
         this.m = value.length;
         this.n = value[0].length;
-        
-        for (double[] row : value) {
-            if (row.length != n) {
-//                throw new WrongShapeException("Jagged arrays are not allowed");
-                System.out.println("Jagged arrays are not allowed");
-//                Shape checking will be moved out of the evaluation phase!
-            }
-        }
     }
 
     public double[][] getValue() {

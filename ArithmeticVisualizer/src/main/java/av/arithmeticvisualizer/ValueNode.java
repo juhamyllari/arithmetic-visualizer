@@ -14,7 +14,14 @@ public class ValueNode extends Node {
         this.value = new Value(array);
     }
 
-    public Value evaluate() {
+    public Value evaluate() throws WrongShapeException {
+        
+        for (double[] row : value.getValue()) {
+            if (row.length != value.getN()) {
+                throw new WrongShapeException("Jagged arrays are not allowed");
+            }
+        }
+        
         return value;
     }
 
