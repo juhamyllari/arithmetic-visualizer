@@ -12,6 +12,7 @@ public class ValueNodeTest {
 
     private ValueNode vThreeXTwo;
     private ValueNode vJagged;
+    private ValueNode scalar;
     private double[][] threeXTwo;
     private double[][] jagged;
 
@@ -21,6 +22,8 @@ public class ValueNodeTest {
         
         jagged = new double[][]{{1, 2}, {3}, {5, 6}};
         vJagged = new ValueNode(jagged);
+        
+        scalar = new ValueNode(42.0);
     }
 
     @BeforeClass
@@ -49,5 +52,13 @@ public class ValueNodeTest {
     @Test(expected = WrongShapeException.class)
     public void jaggedArrayGivesException() throws WrongShapeException {
         vJagged.evaluate();
+    }
+    
+    @Test
+    public void scalarConstructorWorks() throws WrongShapeException {
+        Value val = scalar.evaluate();
+        assertEquals(42.0, val.getValue()[0][0], 0.001);
+        assertEquals(true, val.isScalar());
+        assertEquals("(1, 1)", val.dimsString());
     }
 }

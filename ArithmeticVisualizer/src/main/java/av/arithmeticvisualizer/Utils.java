@@ -32,22 +32,6 @@ public class Utils {
         return result;
     }
 
-    public static double[][] negateArray(double[][] array) {
-
-        int m = array.length;
-        int n = array[0].length;
-
-        double[][] result = new double[m][n];
-
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                result[i][j] = -array[i][j];
-            }
-        }
-
-        return result;
-    }
-
     protected static double[][] multiplyArrays(double[][] left, double[][] right) throws WrongShapeException {
 
         if (isScalar(left)) {
