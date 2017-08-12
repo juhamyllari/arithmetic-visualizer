@@ -21,7 +21,7 @@ public class ArrayIOUtils {
         for (int row = 0; row < m; row++) {
             double[] rowAsDoubles = stringToRow(rows[row]);
             if (rowAsDoubles.length != n) {
-                throw new BadArrayException("Row " + row + " must have length " + n);
+                throw new BadArrayException("Expected row " + row + " to have length " + n);
             }
             array[row] = rowAsDoubles;
         }

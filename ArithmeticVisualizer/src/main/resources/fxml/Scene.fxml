@@ -6,31 +6,49 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.collections.*?>
 
 <VBox id="VBox" prefHeight="600" prefWidth="550" xmlns:fx="http://javafx.com/fxml" fx:controller="fi.arithmeticvisualizer.FXMLController">
     <children>
         <GridPane hgap="10" vgap="10">
-            <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+            <padding>
+                <Insets top="25" right="25" bottom="10" left="25"/>
+            </padding>
             <children>
-                <Label text="Enter left array" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Button text="Create array" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                <Label text="Enter right array" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <Button text="Create array" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                <Text fx:id="resultText" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                
+                <Label text="Array syntax: Separate rows with semicolons and columns with whitespace. Example: 1 2 3; 4 5 6 parses to [[1, 2, 3], [4, 5, 6]]" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="3" GridPane.rowSpan="2" wrapText="true"  />
+                
+                <Label text="Enter left array" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="leftField" onKeyPressed="#leftFieldKey" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Button text="Create array" GridPane.columnIndex="2" GridPane.rowIndex="2" onAction="#leftArrayButton" />
+                
+                <Label text="Enter right array" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <TextField fx:id="rightField" onKeyPressed="#rightFieldKey" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Button text="Create array" GridPane.columnIndex="2" GridPane.rowIndex="3" onAction="#rightArrayButton" />
+                
+                <Label text="Select operation" GridPane.columnIndex="0" GridPane.rowIndex="4" />  
+                <ChoiceBox value = "+" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="+" />
+                            <String fx:value="-" />
+                        </FXCollections>
+                    </items>
+                    
+                </ChoiceBox>  
+                
+                <Button text="Create node" GridPane.columnIndex="2" GridPane.rowIndex="7" onAction="#createNode" />
+                
+                <Text text="" fx:id="resultTextLeft" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="3"  />
+                <Text text="" fx:id="resultTextRight" GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.columnSpan="3"  />
             </children>
         </GridPane>
         
         
         <HBox>
-            <Button text="Click Me1" fx:id="button1" onAction="#handleButtonAction" />
-            <Label  minHeight="16" minWidth="69" fx:id="label1" />
-            
-            <Button text="Click Me2" fx:id="button2" />
-            <Label  minHeight="16" minWidth="69" fx:id="label2" />
+            <!--The arrays will be displayed here.-->
         </HBox>
     </children>
 </VBox>

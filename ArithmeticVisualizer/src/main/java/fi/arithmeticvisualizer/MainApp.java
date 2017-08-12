@@ -15,17 +15,12 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         
-        //For debugging -- to be removed
-        double[][] array = ArrayIOUtils.stringToArray("1 2 3; 4 5 6");
-        System.out.println(Arrays.deepToString(array));
-        //End debugging
-        
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
         
-        stage.setTitle("JavaFX and Maven");
+        stage.setTitle("Arithmetic Visualizer");
         stage.setScene(scene);
         stage.show();
     }
