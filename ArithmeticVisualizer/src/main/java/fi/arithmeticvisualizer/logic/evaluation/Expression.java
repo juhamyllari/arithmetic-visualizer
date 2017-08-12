@@ -1,4 +1,6 @@
-package fi.arithmeticvisualizer.logic;
+package fi.arithmeticvisualizer.logic.evaluation;
+
+import fi.arithmeticvisualizer.logic.nodes.Node;
 
 public class Expression {
 

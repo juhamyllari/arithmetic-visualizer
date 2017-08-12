@@ -1,5 +1,6 @@
-package fi.arithmeticvisualizer.logic;
+package fi.arithmeticvisualizer.logic.utils;
 
+import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
 import java.util.function.BinaryOperator;
 
 public class Utils {
@@ -32,7 +33,7 @@ public class Utils {
         return result;
     }
 
-    protected static double[][] multiplyArrays(double[][] left, double[][] right) throws WrongShapeException {
+    public static double[][] multiplyArrays(double[][] left, double[][] right) throws WrongShapeException {
 
         if (isScalar(left)) {
             return Utils.scalarMultiply(left[0][0], right);
@@ -43,7 +44,7 @@ public class Utils {
         return matrixMultiply(left, right);
     }
 
-    protected static double[][] matrixMultiply(double[][] left, double[][] right) throws WrongShapeException {
+    public static double[][] matrixMultiply(double[][] left, double[][] right) throws WrongShapeException {
 
         if (left[0].length != right.length) {
             throw new WrongShapeException("Cannot multiply matrices of shape " + dims(left) + " and " + dims(right));

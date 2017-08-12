@@ -1,12 +1,10 @@
-package fi.arithmeticvisualizer.logic;
+package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.logic.WrongShapeException;
-import fi.arithmeticvisualizer.logic.NodeFunctions;
-import fi.arithmeticvisualizer.logic.BinaryNode;
-import fi.arithmeticvisualizer.logic.BinaryNode;
-import fi.arithmeticvisualizer.logic.NodeFunctions;
-import fi.arithmeticvisualizer.logic.ValueNode;
-import fi.arithmeticvisualizer.logic.ValueNode;
+import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
+import fi.arithmeticvisualizer.logic.utils.NodeFunctions;
+import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
+import fi.arithmeticvisualizer.logic.utils.NodeFunctions;
+import fi.arithmeticvisualizer.logic.nodes.ValueNode;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.After;

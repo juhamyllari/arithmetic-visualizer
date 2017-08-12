@@ -1,6 +1,8 @@
-package fi.arithmeticvisualizer.logic;
+package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.logic.NodeFunctions.CheckedUnaryFunction;
+import fi.arithmeticvisualizer.logic.utils.NodeFunctions.CheckedUnaryFunction;
+import fi.arithmeticvisualizer.logic.evaluation.Value;
+import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
 
 public class UnaryNode extends Node {
 

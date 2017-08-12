@@ -1,4 +1,7 @@
-package fi.arithmeticvisualizer.logic;
+package fi.arithmeticvisualizer.logic.nodes;
+
+import fi.arithmeticvisualizer.logic.evaluation.Value;
+import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
 
 public class ValueNode extends Node {
 

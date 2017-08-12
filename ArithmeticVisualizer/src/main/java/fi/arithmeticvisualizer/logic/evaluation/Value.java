@@ -1,4 +1,4 @@
-package fi.arithmeticvisualizer.logic;
+package fi.arithmeticvisualizer.logic.evaluation;
 
 public class Value {
     

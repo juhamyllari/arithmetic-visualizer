@@ -1,5 +1,7 @@
-package fi.arithmeticvisualizer.logic;
+package fi.arithmeticvisualizer.logic.evaluation;
 
+import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
+import fi.arithmeticvisualizer.logic.utils.Utils;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

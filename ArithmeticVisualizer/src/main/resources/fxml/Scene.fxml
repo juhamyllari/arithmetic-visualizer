@@ -2,13 +2,36 @@
 
 <?import java.lang.*?>
 <?import java.util.*?>
+<?import java.net.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml" fx:controller="fi.arithmeticvisualizer.FXMLController">
+<VBox id="VBox" prefHeight="600" prefWidth="550" xmlns:fx="http://javafx.com/fxml" fx:controller="fi.arithmeticvisualizer.FXMLController">
     <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
+        <GridPane hgap="10" vgap="10">
+            <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+            <children>
+                <Label text="Enter left array" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Button text="Create array" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <Label text="Enter right array" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Button text="Create array" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                <Text fx:id="resultText" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            </children>
+        </GridPane>
+        
+        
+        <HBox>
+            <Button text="Click Me1" fx:id="button1" onAction="#handleButtonAction" />
+            <Label  minHeight="16" minWidth="69" fx:id="label1" />
+            
+            <Button text="Click Me2" fx:id="button2" />
+            <Label  minHeight="16" minWidth="69" fx:id="label2" />
+        </HBox>
     </children>
-</AnchorPane>
+</VBox>
+

@@ -1,6 +1,8 @@
-package fi.arithmeticvisualizer.logic;
+package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.logic.NodeFunctions.CheckedBinaryFunction;
+import fi.arithmeticvisualizer.logic.utils.NodeFunctions.CheckedBinaryFunction;
+import fi.arithmeticvisualizer.logic.evaluation.Value;
+import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
 
 public class BinaryNode extends Node {
     

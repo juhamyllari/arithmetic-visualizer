@@ -1,6 +1,9 @@
-package fi.arithmeticvisualizer.logic;
+package fi.arithmeticvisualizer.logic.nodes;
 
-import static fi.arithmeticvisualizer.logic.NodeFunctions.negate;
+import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
+import fi.arithmeticvisualizer.logic.nodes.UnaryNode;
+import fi.arithmeticvisualizer.logic.nodes.ValueNode;
+import static fi.arithmeticvisualizer.logic.utils.NodeFunctions.negate;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
