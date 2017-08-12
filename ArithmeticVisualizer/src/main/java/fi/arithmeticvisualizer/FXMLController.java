@@ -1,23 +1,29 @@
 package fi.arithmeticvisualizer;
 
+import fi.arithmeticvisualizer.logic.evaluation.Value;
+import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
+import fi.arithmeticvisualizer.logic.nodes.Node;
+import fi.arithmeticvisualizer.logic.nodes.ValueNode;
+import fi.arithmeticvisualizer.logic.operations.BinaryOperation;
 import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.stringToArray;
 import fi.arithmeticvisualizer.logic.utils.BadArrayException;
+import static fi.arithmeticvisualizer.logic.utils.NodeFunctions.addition;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
 public class FXMLController implements Initializable {
+    
+    private double[][] leftArray;
+    private double[][] rightArray;
+    private Node node;
 
     @FXML
     private Text resultTextLeft;
@@ -26,10 +32,14 @@ public class FXMLController implements Initializable {
     private Text resultTextRight;
 
     @FXML
+    private Text nodeRepresentation;
+    
+    @FXML
     private TextField leftField;
 
     @FXML
     private TextField rightField;
+    
 
     @FXML
     private void leftFieldKey(KeyEvent event) {
@@ -56,11 +66,11 @@ public class FXMLController implements Initializable {
     }
 
     private void createLeftArray() {
-        createArray(leftField, resultTextLeft);
+        leftArray = createArray(leftField, resultTextLeft);
     }
 
     private void createRightArray() {
-        createArray(rightField, resultTextRight);
+        rightArray = createArray(rightField, resultTextRight);
     }
 
     private double[][] createArray(TextField field, Text resultText) {
@@ -70,14 +80,28 @@ public class FXMLController implements Initializable {
             return array;
         } catch (BadArrayException ex) {
             resultText.setText("Bad array: " + ex.getMessage());
-            return new double[][]{{0}};
+            return null;
         }
     }
 
     @FXML
-    private void createNode() {
-        System.out.println("Not implemented yet.");
+    private void createNodeButton() {
+        
+        createLeftArray();
+        createRightArray();
+        
+        //To implement: allow operation to be selected using a ChoiceBox
+        BinaryOperation operation = addition;
+        
+        if (leftArray != null && rightArray != null) {
+            Node leftValueNode = new ValueNode(leftArray);
+            Node rightValueNode = new ValueNode(rightArray);
+            node = new BinaryNode(leftValueNode, rightValueNode, operation);
+            nodeRepresentation.setText(node.toString());
+        }
     }
+    
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

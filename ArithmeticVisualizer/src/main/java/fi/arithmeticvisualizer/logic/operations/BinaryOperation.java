@@ -12,6 +12,9 @@ public class BinaryOperation {
         this.function = function;
         this.symbol = symbol;
     }
+    
+    public BinaryOperation(){
+    }
 
     public CheckedBinaryFunction<Value> getFunction() {
         return function;
@@ -20,5 +23,5 @@ public class BinaryOperation {
     public char getSymbol() {
         return symbol;
     }
-
+    
 }

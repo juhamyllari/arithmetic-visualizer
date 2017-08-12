@@ -9,6 +9,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.collections.*?>
+<?import fi.arithmeticvisualizer.logic.operations.*?>
 
 <VBox id="VBox" prefHeight="600" prefWidth="550" xmlns:fx="http://javafx.com/fxml" fx:controller="fi.arithmeticvisualizer.FXMLController">
     <children>
@@ -18,7 +19,7 @@
             </padding>
             <children>
                 
-                <Label text="Array syntax: Separate rows with semicolons and columns with whitespace. Example: 1 2 3; 4 5 6 parses to [[1, 2, 3], [4, 5, 6]]" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="3" GridPane.rowSpan="2" wrapText="true"  />
+                <Label text="Array syntax: Separate rows with semicolons and columns with whitespace. Example: 1 2 3; 4 5 6 parses to [[1, 2, 3], [4, 5, 6]]." GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="3" GridPane.rowSpan="2" wrapText="true"  />
                 
                 <Label text="Enter left array" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                 <TextField fx:id="leftField" onKeyPressed="#leftFieldKey" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -39,10 +40,11 @@
                     
                 </ChoiceBox>  
                 
-                <Button text="Create node" GridPane.columnIndex="2" GridPane.rowIndex="7" onAction="#createNode" />
+                <Button text="Create node" GridPane.columnIndex="0" GridPane.rowIndex="7" GridPane.columnSpan="3"  onAction="#createNodeButton" />
                 
                 <Text text="" fx:id="resultTextLeft" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="3"  />
                 <Text text="" fx:id="resultTextRight" GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.columnSpan="3"  />
+                <Text text="foo" fx:id="nodeRepresentation" GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.columnSpan="3"  />
             </children>
         </GridPane>
         

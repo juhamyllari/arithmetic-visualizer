@@ -3,16 +3,19 @@ package fi.arithmeticvisualizer.logic.utils;
 import fi.arithmeticvisualizer.logic.evaluation.Value;
 import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
 import fi.arithmeticvisualizer.logic.operations.BinaryOperation;
+import java.util.HashMap;
 
 public class NodeFunctions {
-    
+
     @FunctionalInterface
     public interface CheckedUnaryFunction<T> {
+
         T apply(T t1) throws WrongShapeException;
     }
-    
+
     @FunctionalInterface
     public interface CheckedBinaryFunction<T> {
+
         T apply(T t1, T t2) throws WrongShapeException;
     }
 
@@ -21,8 +24,9 @@ public class NodeFunctions {
     public static CheckedBinaryFunction<Value> add = (Value left, Value right) -> new Value(Utils.addArrays(left.getValue(), right.getValue()));
 
     public static CheckedUnaryFunction<Value> negate = (Value val) -> new Value(Utils.scalarMultiply(-1, val.getValue()));
-    
+
     public static BinaryOperation multiplication = new BinaryOperation(multiply, '*');
-    
+
     public static BinaryOperation addition = new BinaryOperation(multiply, '+');
+
 }
