@@ -1,16 +1,16 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.logic.utils.NodeFunctions.CheckedBinaryFunction;
 import fi.arithmeticvisualizer.logic.evaluation.Value;
 import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
+import fi.arithmeticvisualizer.logic.operations.BinaryOperation;
 
 public class BinaryNode extends Node {
     
     private final Node left;
     private final Node right;
-    private final CheckedBinaryFunction<Value> operation;
+    private final BinaryOperation operation;
 
-    public BinaryNode(Node left, Node right, CheckedBinaryFunction<Value> operation) {
+    public BinaryNode(Node left, Node right, BinaryOperation operation) {
         this.left = left;
         this.right = right;
         this.operation = operation;
@@ -18,7 +18,7 @@ public class BinaryNode extends Node {
     
     @Override
     public Value evaluate() throws WrongShapeException {
-        return operation.apply(left.evaluate(), right.evaluate());
+        return operation.getFunction().apply(left.evaluate(), right.evaluate());
     }
     
 }

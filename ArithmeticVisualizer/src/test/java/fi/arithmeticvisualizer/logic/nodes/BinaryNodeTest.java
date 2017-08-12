@@ -1,10 +1,8 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
-import fi.arithmeticvisualizer.logic.utils.NodeFunctions;
-import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
-import fi.arithmeticvisualizer.logic.utils.NodeFunctions;
-import fi.arithmeticvisualizer.logic.nodes.ValueNode;
+import static fi.arithmeticvisualizer.logic.utils.NodeFunctions.addition;
+import static fi.arithmeticvisualizer.logic.utils.NodeFunctions.multiplication;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.After;
@@ -54,7 +52,7 @@ public class BinaryNodeTest {
      
      @Test
      public void additionWorks() {
-         bn1 = new BinaryNode(v1, v2, NodeFunctions.add);
+         bn1 = new BinaryNode(v1, v2, addition);
         try {
             assertEquals(4.3, bn1.evaluate().getValue()[0][2], .001);
         } catch (WrongShapeException ex) {
@@ -64,7 +62,7 @@ public class BinaryNodeTest {
      
      @Test
      public void multiplicationWorks() {
-         bn1 = new BinaryNode(v1, v3, NodeFunctions.multiply);
+         bn1 = new BinaryNode(v1, v3, multiplication);
         try {
             assertEquals(37.4, bn1.evaluate().getValue()[0][1], .001);
         } catch (WrongShapeException ex) {

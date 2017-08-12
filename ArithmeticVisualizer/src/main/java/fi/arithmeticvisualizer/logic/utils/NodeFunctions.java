@@ -2,7 +2,7 @@ package fi.arithmeticvisualizer.logic.utils;
 
 import fi.arithmeticvisualizer.logic.evaluation.Value;
 import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
-import java.util.function.BinaryOperator;
+import fi.arithmeticvisualizer.logic.operations.BinaryOperation;
 
 public class NodeFunctions {
     
@@ -21,4 +21,8 @@ public class NodeFunctions {
     public static CheckedBinaryFunction<Value> add = (Value left, Value right) -> new Value(Utils.addArrays(left.getValue(), right.getValue()));
 
     public static CheckedUnaryFunction<Value> negate = (Value val) -> new Value(Utils.scalarMultiply(-1, val.getValue()));
+    
+    public static BinaryOperation multiplication = new BinaryOperation(multiply, '*');
+    
+    public static BinaryOperation addition = new BinaryOperation(multiply, '+');
 }
