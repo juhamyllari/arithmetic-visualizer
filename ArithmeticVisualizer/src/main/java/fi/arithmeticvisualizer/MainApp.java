@@ -1,5 +1,7 @@
 package fi.arithmeticvisualizer;
 
+import fi.arithmeticvisualizer.logic.utils.ArrayIOUtils;
+import java.util.Arrays;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,12 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        
+        //For debugging -- to be removed
+        double[][] array = ArrayIOUtils.stringToArray("1 2 3; 4 5 6");
+        System.out.println(Arrays.deepToString(array));
+        //End debugging
+        
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
         
         Scene scene = new Scene(root);
