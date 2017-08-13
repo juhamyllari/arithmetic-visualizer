@@ -10,4 +10,4 @@ Date | Hours | Description
 5.8.2017  | 4h | Studying software engineering principles; cleaning up program structure; extending documentation
 11.8.2017  | 5h | Reworking program as a Maven JavaFX project
 12.8.2017  | 7h | Creating GUI; working on the first scene
-13.8.2017  | 4h | Debugging and trimming GUI; adding elementary node visualization
+13.8.2017  | 6h | Debugging and trimming GUI; adding elementary node visualization
