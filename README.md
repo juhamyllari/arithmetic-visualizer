@@ -7,3 +7,7 @@ A visualization tool for arithmetic expressions. Enter arithmetic expressions co
 [Topic Description](documentation/TopicDescription.md)
 
 [Time Sheet](documentation/TimeSheet.md)
+
+[PIT Report](https://htmlpreview.github.io/?https://github.com/juhamyllari/arithmetic-visualizer/blob/master/documentation/pit/index.html)
+
+[Checkstyle Report](https://github.com/juhamyllari/arithmetic-visualizer/blob/master/documentation/checkstyle/checkstyle.html)
