@@ -10,4 +10,4 @@ A visualization tool for arithmetic expressions. Enter arithmetic expressions co
 
 [PIT Report](https://htmlpreview.github.io/?https://github.com/juhamyllari/arithmetic-visualizer/blob/master/documentation/pit/index.html)
 
-[Checkstyle Report](https://github.com/juhamyllari/arithmetic-visualizer/blob/master/documentation/checkstyle/checkstyle.html)
+[Checkstyle Report](https://htmlpreview.github.io/?https://github.com/juhamyllari/arithmetic-visualizer/blob/master/documentation/checkstyle/checkstyle.html)
