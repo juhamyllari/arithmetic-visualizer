@@ -1,6 +1,6 @@
-package fi.arithmeticvisualizer;
+package fi.arithmeticvisualizer.gui;
 
-import fi.arithmeticvisualizer.logic.evaluation.Value;
+import static fi.arithmeticvisualizer.gui.ArrayDrawingUtils.drawArray;
 import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import fi.arithmeticvisualizer.logic.nodes.Node;
@@ -10,7 +10,6 @@ import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.stringToArray;
 import fi.arithmeticvisualizer.logic.utils.BadArrayException;
 import static fi.arithmeticvisualizer.logic.utils.NodeFunctions.addition;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 public class FXMLController implements Initializable {
@@ -27,19 +27,22 @@ public class FXMLController implements Initializable {
     private BinaryNode node;
 
     @FXML
-    private Text resultTextLeft;
+    private Text errorText;
 
     @FXML
-    private Text resultTextRight;
-
-    @FXML
-    private Text nodeRepresentation;
-
+    private Text symbol;
+    
     @FXML
     private TextField leftField;
 
     @FXML
     private TextField rightField;
+
+    @FXML
+    private GridPane leftArrayGrid;
+
+    @FXML
+    private GridPane rightArrayGrid;
 
     @FXML
     private void leftFieldKey(KeyEvent event) {
@@ -66,18 +69,16 @@ public class FXMLController implements Initializable {
     }
 
     private void createLeftArray() {
-        leftArray = createArray(leftField, resultTextLeft);
+        leftArray = createArray(leftField, errorText);
     }
 
     private void createRightArray() {
-        rightArray = createArray(rightField, resultTextRight);
+        rightArray = createArray(rightField, errorText);
     }
 
     private double[][] createArray(TextField field, Text resultText) {
         try {
-            double[][] array = stringToArray(field.getText());
-            resultText.setText(Arrays.deepToString(array));
-            return array;
+            return stringToArray(field.getText());
         } catch (BadArrayException ex) {
             resultText.setText("Bad array: " + ex.getMessage());
             return null;
@@ -97,17 +98,23 @@ public class FXMLController implements Initializable {
             Node leftValueNode = new ValueNode(leftArray);
             Node rightValueNode = new ValueNode(rightArray);
             node = new BinaryNode(leftValueNode, rightValueNode, operation);
-            
+
+            try {
             // The node is evaluated to verify the legality of the
             // array dimensions wrt. the operation. This is a kludge
             // and may be replaced by explicit dimension checking.
-            try {
-                node.evaluate();
-                nodeRepresentation.setText(node.toString());
+                drawNodeRepresentation();
             } catch (WrongShapeException exc) {
-                System.out.println("Illegal array dimensions for operation " + node.getSymbol());
+                errorText.setText("Illegal array dimensions for operation " + node.getSymbol());
             }
         }
+    }
+
+    private void drawNodeRepresentation() throws WrongShapeException {
+        node.evaluate();
+        symbol.setText(Character.toString(node.getSymbol()));
+        drawArray(leftArrayGrid, leftArray);
+        drawArray(rightArrayGrid, rightArray);
     }
 
     @Override

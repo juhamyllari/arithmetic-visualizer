@@ -11,9 +11,9 @@
 <?import javafx.collections.*?>
 <?import fi.arithmeticvisualizer.logic.operations.*?>
 
-<VBox id="VBox" prefHeight="600" prefWidth="550" xmlns:fx="http://javafx.com/fxml" fx:controller="fi.arithmeticvisualizer.FXMLController">
+<VBox xmlns:fx="http://javafx.com/fxml/1" id="VBox" styleClass="root" prefHeight="600" prefWidth="800" fx:controller="fi.arithmeticvisualizer.gui.FXMLController" >
     <children>
-        <GridPane hgap="10" vgap="10">
+        <GridPane hgap="10" vgap="10" >
             <padding>
                 <Insets top="25" right="25" bottom="10" left="25"/>
             </padding>
@@ -23,11 +23,9 @@
                 
                 <Label text="Enter left array" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                 <TextField fx:id="leftField" onKeyPressed="#leftFieldKey" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <Button text="Create array" GridPane.columnIndex="2" GridPane.rowIndex="2" onAction="#leftArrayButton" />
                 
                 <Label text="Enter right array" GridPane.columnIndex="0" GridPane.rowIndex="3" />
                 <TextField fx:id="rightField" onKeyPressed="#rightFieldKey" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <Button text="Create array" GridPane.columnIndex="2" GridPane.rowIndex="3" onAction="#rightArrayButton" />
                 
                 <Label text="Select operation" GridPane.columnIndex="0" GridPane.rowIndex="4" />  
                 <ChoiceBox value = "+" GridPane.columnIndex="1" GridPane.rowIndex="4">
@@ -42,16 +40,31 @@
                 
                 <Button text="Create node" GridPane.columnIndex="0" GridPane.rowIndex="7" GridPane.columnSpan="3"  onAction="#createNodeButton" />
                 
-                <Text text="" fx:id="resultTextLeft" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="3"  />
-                <Text text="" fx:id="resultTextRight" GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.columnSpan="3"  />
+                <Text text="" fx:id="errorText" styleClass="errorText"  GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="3"  />
                 <Text text="" fx:id="nodeRepresentation" GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.columnSpan="3"  />
             </children>
         </GridPane>
         
         
-        <HBox>
+        <HBox alignment="CENTER" styleClass="hbox" spacing="30"  >
             <!--The arrays will be displayed here.-->
+            <GridPane fx:id="leftArrayGrid" hgap="10" vgap="10" alignment="CENTER" styleClass="grid" >
+                <padding>
+                    <Insets top="25" right="25" bottom="25" left="25"/>
+                </padding>
+            </GridPane>
+            
+            <Text fx:id="symbol" id="symbol"     />
+
+            <GridPane fx:id="rightArrayGrid" hgap="10" vgap="10" alignment="CENTER" styleClass="grid" >
+                <padding>
+                    <Insets top="25" right="25" bottom="25" left="25"/>
+                </padding>
+            </GridPane>
         </HBox>
     </children>
+    <stylesheets>
+        <URL value="@../styles/Styles.css" />
+    </stylesheets>
 </VBox>
 
