@@ -45,10 +45,6 @@ public class BinaryNodeTest {
     }
 
     @Test
-    public void hello() {
-    }
-
-    @Test
     public void additionWorks() {
         bn1 = new BinaryNode(v1, v2, addition);
         try {
@@ -66,5 +62,24 @@ public class BinaryNodeTest {
         } catch (WrongShapeException ex) {
             Logger.getLogger(BinaryNodeTest.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Test
+    public void multiplicationNodeGivesCorrectSymbol() {
+        bn1 = new BinaryNode(v1, v3, multiplication);
+        assertEquals('*', bn1.getSymbol());
+    }
+
+    @Test
+    public void toStringWorks() {
+        bn1 = new BinaryNode(v1, v3, multiplication);
+        assertEquals("[[1.1, 2.2, 3.3], [1.0, 2.0, 3.0]] * [[2.0, 3.0], [4.0, 5.0], [6.0, 7.0]]", bn1.toString());
+    }
+
+    @Test
+    public void toStringGivesCorrectMessage() {
+        double[][] array = new double[][]{{1}, {2}};
+        bn1 = new BinaryNode(v1, new BinaryNode(new ValueNode(array), new ValueNode(23), addition), addition);
+        assertEquals("Invalid Node", bn1.toString());
     }
 }

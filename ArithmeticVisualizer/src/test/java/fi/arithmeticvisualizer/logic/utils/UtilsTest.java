@@ -1,7 +1,8 @@
-package fi.arithmeticvisualizer.logic.evaluation;
+package fi.arithmeticvisualizer.logic.utils;
 
 import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
-import fi.arithmeticvisualizer.logic.utils.Utils;
+import static fi.arithmeticvisualizer.logic.utils.Utils.dims;
+import static fi.arithmeticvisualizer.logic.utils.Utils.matrixMultiply;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -24,15 +25,14 @@ public class UtilsTest {
     }
 
     @BeforeClass
-    public static void setUpClass() throws WrongShapeException{
+    public static void setUpClass() throws WrongShapeException {
 
         matrixA = new double[][]{{1.1, 2.2, 3.3}, {1.0, 2.0, 3.0}};
         matrixB = new double[][]{{1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}};
         matrixC = new double[][]{{2.0, 3.0}, {4.0, 5.0}, {6.0, 7.0}};
         arrayThree = new double[][]{{3.0}};
         arrayFour = new double[][]{{4.0}};
-        
-       
+
         matrixMultiplicationResult = Utils.matrixMultiply(matrixA, matrixC);
 
         scalarAdditionResult = Utils.addArrays(
@@ -75,23 +75,35 @@ public class UtilsTest {
         assertEquals(2, matrixMultiplicationResult.length);
         assertEquals(2, matrixMultiplicationResult[0].length);
     }
-    
+
     @Test
     public void matrixMultiplicationGivesCorrectResult() {
         assertEquals(37.4, matrixMultiplicationResult[0][1], .001);
     }
-    
+
     @Test
     public void scalarMultiplicationFromLeftWorks() throws WrongShapeException {
         assertEquals(21.0, Utils.multiplyArrays(arrayThree, matrixC)[2][1], .001);
     }
-    
+
     @Test
     public void scalarMultiplicationFromRightWorks() throws WrongShapeException {
         assertEquals(21.0, Utils.multiplyArrays(matrixC, arrayThree)[2][1], .001);
     }
-    
-    
-    
+
+    @Test(expected = WrongShapeException.class)
+    public void matrixMultiplyThrowsWrongShapeException() throws WrongShapeException {
+        matrixMultiply(matrixA, matrixB);
+    }
+
+    @Test
+    public void dimsReturnsCorrectString() {
+        assertEquals("(2, 3)", dims(matrixA));
+    }
+
+    @Test
+    public void defaultConstructorWorks() {
+        assertEquals(Utils.class, (new Utils()).getClass());
+    }
 
 }

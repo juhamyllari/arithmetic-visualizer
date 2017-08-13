@@ -9,7 +9,7 @@ public class Utils {
         return array.length == 1 && array[0].length == 1;
     }
 
-    private static String dims(double[][] array) {
+    protected static String dims(double[][] array) {
         return "(" + array.length + ", " + array[0].length + ")";
     }
     
