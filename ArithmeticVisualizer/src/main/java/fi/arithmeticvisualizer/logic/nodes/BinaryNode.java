@@ -19,6 +19,10 @@ public class BinaryNode extends Node {
         this.operation = operation;
     }
     
+    public char getSymbol() {
+        return operation.getSymbol();
+    }
+    
     @Override
     public Value evaluate() throws WrongShapeException {
         return operation.getFunction().apply(left.evaluate(), right.evaluate());

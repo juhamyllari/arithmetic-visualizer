@@ -27,6 +27,6 @@ public class NodeFunctions {
 
     public static BinaryOperation multiplication = new BinaryOperation(multiply, '*');
 
-    public static BinaryOperation addition = new BinaryOperation(multiply, '+');
+    public static BinaryOperation addition = new BinaryOperation(add, '+');
 
 }

@@ -1,6 +1,7 @@
 package fi.arithmeticvisualizer;
 
 import fi.arithmeticvisualizer.logic.evaluation.Value;
+import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import fi.arithmeticvisualizer.logic.nodes.Node;
 import fi.arithmeticvisualizer.logic.nodes.ValueNode;
@@ -20,10 +21,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
 public class FXMLController implements Initializable {
-    
+
     private double[][] leftArray;
     private double[][] rightArray;
-    private Node node;
+    private BinaryNode node;
 
     @FXML
     private Text resultTextLeft;
@@ -33,13 +34,12 @@ public class FXMLController implements Initializable {
 
     @FXML
     private Text nodeRepresentation;
-    
+
     @FXML
     private TextField leftField;
 
     @FXML
     private TextField rightField;
-    
 
     @FXML
     private void leftFieldKey(KeyEvent event) {
@@ -86,23 +86,30 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void createNodeButton() {
-        
+
         createLeftArray();
         createRightArray();
-        
+
         //To implement: allow operation to be selected using a ChoiceBox
         BinaryOperation operation = addition;
-        
+
         if (leftArray != null && rightArray != null) {
             Node leftValueNode = new ValueNode(leftArray);
             Node rightValueNode = new ValueNode(rightArray);
             node = new BinaryNode(leftValueNode, rightValueNode, operation);
-            nodeRepresentation.setText(node.toString());
+            
+            // The node is evaluated to verify the legality of the
+            // array dimensions wrt. the operation. This is a kludge
+            // and may be replaced by explicit dimension checking.
+            try {
+                node.evaluate();
+                nodeRepresentation.setText(node.toString());
+            } catch (WrongShapeException exc) {
+                System.out.println("Illegal array dimensions for operation " + node.getSymbol());
+            }
         }
     }
-    
-    
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

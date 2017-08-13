@@ -44,7 +44,7 @@
                 
                 <Text text="" fx:id="resultTextLeft" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="3"  />
                 <Text text="" fx:id="resultTextRight" GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.columnSpan="3"  />
-                <Text text="foo" fx:id="nodeRepresentation" GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.columnSpan="3"  />
+                <Text text="" fx:id="nodeRepresentation" GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.columnSpan="3"  />
             </children>
         </GridPane>
         
