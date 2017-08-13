@@ -88,6 +88,7 @@ public class FXMLController implements Initializable {
     @FXML
     private void createNodeButton() {
 
+        errorText.setText("");
         createLeftArray();
         createRightArray();
 
