@@ -23,9 +23,9 @@ under the License.
     <link>${project.url}</link>
     <description>ArithmeticVisualizer - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2017</copyright>
+    <copyright>&#169;2017 Your Organisation</copyright>
     <item>
-      <title>File: 10,
+      <title>File: 15,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#av.arithmeticvisualizer.ValueNode.java">av/arithmeticvisualizer/ValueNode.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.utils.BinaryOperation.java">fi/arithmeticvisualizer/logic/utils/BinaryOperation.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#av.arithmeticvisualizer.BinaryNode.java">av/arithmeticvisualizer/BinaryNode.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.nodes.Node.java">fi/arithmeticvisualizer/logic/nodes/Node.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#av.arithmeticvisualizer.Expression.java">av/arithmeticvisualizer/Expression.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.nodes.UnaryNode.java">fi/arithmeticvisualizer/logic/nodes/UnaryNode.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#av.arithmeticvisualizer.Utils.java">av/arithmeticvisualizer/Utils.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.nodes.BinaryNode.java">fi/arithmeticvisualizer/logic/nodes/BinaryNode.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#av.arithmeticvisualizer.NodeFunctions.java">av/arithmeticvisualizer/NodeFunctions.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.utils.BadArrayException.java">fi/arithmeticvisualizer/logic/utils/BadArrayException.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +116,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#av.arithmeticvisualizer.UnaryNode.java">av/arithmeticvisualizer/UnaryNode.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.utils.NodeFunctions.java">fi/arithmeticvisualizer/logic/utils/NodeFunctions.java</a>
                 </td>
                 <td>
                   0
@@ -130,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#av.arithmeticvisualizer.Node.java">av/arithmeticvisualizer/Node.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.evaluation.Expression.java">fi/arithmeticvisualizer/logic/evaluation/Expression.java</a>
                 </td>
                 <td>
                   0
@@ -144,7 +144,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#av.arithmeticvisualizer.Value.java">av/arithmeticvisualizer/Value.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.gui.FXMLController.java">fi/arithmeticvisualizer/gui/FXMLController.java</a>
                 </td>
                 <td>
                   0
@@ -158,7 +158,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#av.arithmeticvisualizer.Main.java">av/arithmeticvisualizer/Main.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.nodes.ValueNode.java">fi/arithmeticvisualizer/logic/nodes/ValueNode.java</a>
                 </td>
                 <td>
                   0
@@ -172,7 +172,77 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#av.arithmeticvisualizer.WrongShapeException.java">av/arithmeticvisualizer/WrongShapeException.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.utils.Utils.java">fi/arithmeticvisualizer/logic/utils/Utils.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.gui.ArrayDrawingUtils.java">fi/arithmeticvisualizer/gui/ArrayDrawingUtils.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.java">fi/arithmeticvisualizer/logic/utils/ArrayIOUtils.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.evaluation.WrongShapeException.java">fi/arithmeticvisualizer/logic/evaluation/WrongShapeException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.MainApp.java">fi/arithmeticvisualizer/MainApp.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.evaluation.Value.java">fi/arithmeticvisualizer/logic/evaluation/Value.java</a>
                 </td>
                 <td>
                   0
