@@ -11,5 +11,8 @@ A single user.
 * Expressions may also be entered as strings. (This will only be implemented if time permits.)
 
 **Class Diagram:**
-* A requirements phase class diagram is provided below:
-![Alt Class Diagram](ClassDiagram.png "Class Diagram (Requirements Phase)")
+* A class diagram is provided below.
+* A few things to consider about the diagram:
+  * The class UnaryNode may be removed in the final implementation.
+  * Expression objects are not very useful at the moment. They will come in handy if inputting expressions as strings is implemented at some point.
+![Alt Class Diagram](ClassDiagram.png "Class Diagram")
