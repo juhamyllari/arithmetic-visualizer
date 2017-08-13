@@ -13,6 +13,6 @@ A single user.
 **Class Diagram:**
 * A class diagram is provided below.
 * A few things to consider about the diagram:
-  * The class UnaryNode may be removed in the final implementation.
+  * The class UnaryNode is not strictly necessary (and the class UnaryOperation is not yet implemented). It may be removed at some stage.
   * Expression objects are not very useful at the moment. They will come in handy if inputting expressions as strings is implemented at some point.
 ![Alt Class Diagram](ClassDiagram.png "Class Diagram")
