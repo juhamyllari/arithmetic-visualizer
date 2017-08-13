@@ -1,8 +1,8 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
+import fi.arithmeticvisualizer.logic.utils.BinaryOperation;
 import fi.arithmeticvisualizer.logic.evaluation.Value;
 import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
-import fi.arithmeticvisualizer.logic.operations.BinaryOperation;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;

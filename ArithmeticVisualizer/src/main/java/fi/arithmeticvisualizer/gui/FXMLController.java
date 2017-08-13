@@ -5,7 +5,7 @@ import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import fi.arithmeticvisualizer.logic.nodes.Node;
 import fi.arithmeticvisualizer.logic.nodes.ValueNode;
-import fi.arithmeticvisualizer.logic.operations.BinaryOperation;
+import fi.arithmeticvisualizer.logic.utils.BinaryOperation;
 import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.stringToArray;
 import fi.arithmeticvisualizer.logic.utils.BadArrayException;
 import static fi.arithmeticvisualizer.logic.utils.NodeFunctions.addition;

@@ -2,7 +2,6 @@ package fi.arithmeticvisualizer.logic.utils;
 
 import fi.arithmeticvisualizer.logic.evaluation.Value;
 import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
-import fi.arithmeticvisualizer.logic.operations.BinaryOperation;
 import java.util.HashMap;
 
 public class NodeFunctions {

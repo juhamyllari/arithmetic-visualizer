@@ -1,4 +1,4 @@
-package fi.arithmeticvisualizer.logic.operations;
+package fi.arithmeticvisualizer.logic.utils;
 
 import fi.arithmeticvisualizer.logic.evaluation.Value;
 import fi.arithmeticvisualizer.logic.utils.NodeFunctions.CheckedBinaryFunction;
