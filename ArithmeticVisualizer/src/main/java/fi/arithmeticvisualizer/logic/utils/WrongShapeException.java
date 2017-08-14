@@ -1,4 +1,4 @@
-package fi.arithmeticvisualizer.logic.evaluation;
+package fi.arithmeticvisualizer.logic.utils;
 
 public class WrongShapeException extends Exception {
 

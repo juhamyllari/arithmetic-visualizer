@@ -1,7 +1,6 @@
 package fi.arithmeticvisualizer.logic.utils;
 
-import fi.arithmeticvisualizer.logic.evaluation.Value;
-import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
+import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import java.util.HashMap;
 
 public class NodeFunctions {
@@ -18,14 +17,6 @@ public class NodeFunctions {
         T apply(T t1, T t2) throws WrongShapeException;
     }
 
-    public static CheckedBinaryFunction<Value> multiply = (Value left, Value right) -> new Value(Utils.multiplyArrays(left.getValue(), right.getValue()));
 
-    public static CheckedBinaryFunction<Value> add = (Value left, Value right) -> new Value(Utils.addArrays(left.getValue(), right.getValue()));
-
-    public static CheckedUnaryFunction<Value> negate = (Value val) -> new Value(Utils.scalarMultiply(-1, val.getValue()));
-
-    public static BinaryOperation multiplication = new BinaryOperation(multiply, '*');
-
-    public static BinaryOperation addition = new BinaryOperation(add, '+');
 
 }

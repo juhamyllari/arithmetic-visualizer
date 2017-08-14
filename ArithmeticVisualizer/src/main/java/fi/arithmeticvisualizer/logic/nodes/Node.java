@@ -1,10 +1,10 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.logic.evaluation.Value;
-import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
+import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
+import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
 
 public abstract class Node {
     
-    public abstract Value evaluate() throws WrongShapeException;
+    public abstract ArrayValue evaluate() throws WrongShapeException;
     
 }

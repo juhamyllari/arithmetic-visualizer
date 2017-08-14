@@ -1,6 +1,5 @@
 package fi.arithmeticvisualizer.logic.utils;
 
-import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
 import static fi.arithmeticvisualizer.logic.utils.Utils.dims;
 import static fi.arithmeticvisualizer.logic.utils.Utils.matrixMultiply;
 import org.junit.After;

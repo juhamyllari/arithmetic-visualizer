@@ -1,8 +1,8 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.utils.BinaryOperation;
-import fi.arithmeticvisualizer.logic.evaluation.Value;
-import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
+import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
+import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,20 +19,20 @@ public class BinaryNode extends Node {
         this.operation = operation;
     }
     
-    public char getSymbol() {
+    public String getSymbol() {
         return operation.getSymbol();
     }
     
     @Override
-    public Value evaluate() throws WrongShapeException {
+    public ArrayValue evaluate() throws WrongShapeException {
         return operation.getFunction().apply(left.evaluate(), right.evaluate());
     }
 
     @Override
     public String toString() {
         try {
-            Value leftValue = left.evaluate();
-            Value rightValue = right.evaluate();
+            ArrayValue leftValue = left.evaluate();
+            ArrayValue rightValue = right.evaluate();
             String leftArrayString = Arrays.deepToString(leftValue.getValue());
             String rightArrayString = Arrays.deepToString(rightValue.getValue()); 
             return leftArrayString + " " + operation.getSymbol() + " " + rightArrayString;

@@ -1,0 +1,7 @@
+.root {
+    -fx-font: 18px "Serif"
+}
+
+.errorText {
+    -fx-fill: red;
+}

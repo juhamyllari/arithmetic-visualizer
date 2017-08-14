@@ -1,8 +1,9 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
-import static fi.arithmeticvisualizer.logic.utils.NodeFunctions.addition;
-import static fi.arithmeticvisualizer.logic.utils.NodeFunctions.multiplication;
+import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
+import static fi.arithmeticvisualizer.logic.utils.OperationSelector.addition;
+import static fi.arithmeticvisualizer.logic.utils.OperationSelector.multiplication;
+import static fi.arithmeticvisualizer.logic.utils.OperationSelector.subtraction;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.After;
@@ -45,13 +46,15 @@ public class BinaryNodeTest {
     }
 
     @Test
-    public void additionWorks() {
+    public void additionWorks() throws WrongShapeException {
         bn1 = new BinaryNode(v1, v2, addition);
-        try {
-            assertEquals(4.3, bn1.evaluate().getValue()[0][2], .001);
-        } catch (WrongShapeException ex) {
-            Logger.getLogger(BinaryNodeTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        assertEquals(4.3, bn1.evaluate().getValue()[0][2], .001);
+    }
+
+    @Test
+    public void subtractionWorks() throws WrongShapeException {
+        bn1 = new BinaryNode(v1, v2, subtraction);
+        assertEquals(2.3, bn1.evaluate().getValue()[0][2], .001);
     }
 
     @Test
@@ -67,7 +70,7 @@ public class BinaryNodeTest {
     @Test
     public void multiplicationNodeGivesCorrectSymbol() {
         bn1 = new BinaryNode(v1, v3, multiplication);
-        assertEquals('*', bn1.getSymbol());
+        assertEquals("*", bn1.getSymbol());
     }
 
     @Test

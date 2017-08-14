@@ -8,9 +8,9 @@ package fi.arithmeticvisualizer.logic.evaluation;
 //import av.arithmeticvisualizer.logic.Value;
 //import av.arithmeticvisualizer.logic.ValueNode;
 //import av.arithmeticvisualizer.logic.WrongShapeException;
-import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
+import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
 import fi.arithmeticvisualizer.logic.evaluation.Expression;
-import fi.arithmeticvisualizer.logic.evaluation.Value;
+import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.nodes.ValueNode;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -47,7 +47,7 @@ public class ExpressionTest {
 
     @Test
     public void evaluateReturnsCorrectScalar() throws WrongShapeException {
-        Value val = exp.evaluate();
+        ArrayValue val = exp.evaluate();
         assertEquals(23.0, val.getValue()[0][0], 0.0001);
     }
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.collections.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" id="VBox" styleClass="root" prefHeight="600" prefWidth="800" fx:controller="fi.arithmeticvisualizer.gui.EntrySceneController" >
+    <children>
+       <Text text="This is the evaluation scene, but there is nothing here yet." />
+    </children>
+</VBox>
+

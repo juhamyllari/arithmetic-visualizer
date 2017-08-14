@@ -1,7 +1,7 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
-import fi.arithmeticvisualizer.logic.evaluation.Value;
+import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
+import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.nodes.ValueNode;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -47,7 +47,7 @@ public class ValueNodeTest {
 
     @Test
     public void valueNodeGivesArrayOfCorrectDimension() throws WrongShapeException {
-        Value val = vThreeXTwo.evaluate();
+        ArrayValue val = vThreeXTwo.evaluate();
         assertEquals(3, val.getM());
         assertEquals(2, val.getN());
     }
@@ -59,7 +59,7 @@ public class ValueNodeTest {
     
     @Test
     public void scalarConstructorWorks() throws WrongShapeException {
-        Value val = scalar.evaluate();
+        ArrayValue val = scalar.evaluate();
         assertEquals(42.0, val.getValue()[0][0], 0.001);
         assertEquals(true, val.isScalar());
         assertEquals("(1, 1)", val.dimsString());

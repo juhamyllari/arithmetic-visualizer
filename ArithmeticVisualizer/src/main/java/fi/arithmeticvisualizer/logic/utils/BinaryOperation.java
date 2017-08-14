@@ -1,14 +1,14 @@
 package fi.arithmeticvisualizer.logic.utils;
 
-import fi.arithmeticvisualizer.logic.evaluation.Value;
+import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.utils.NodeFunctions.CheckedBinaryFunction;
 
 public class BinaryOperation {
 
-    private CheckedBinaryFunction<Value> function;
-    private char symbol;
+    private CheckedBinaryFunction<ArrayValue> function;
+    private String symbol;
 
-    public BinaryOperation(CheckedBinaryFunction<Value> function, char symbol) {
+    public BinaryOperation(CheckedBinaryFunction<ArrayValue> function, String symbol) {
         this.function = function;
         this.symbol = symbol;
     }
@@ -16,11 +16,11 @@ public class BinaryOperation {
     public BinaryOperation(){
     }
 
-    public CheckedBinaryFunction<Value> getFunction() {
+    public CheckedBinaryFunction<ArrayValue> getFunction() {
         return function;
     }
 
-    public char getSymbol() {
+    public String getSymbol() {
         return symbol;
     }
     

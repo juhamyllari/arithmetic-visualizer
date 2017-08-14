@@ -1,19 +1,19 @@
 package fi.arithmeticvisualizer.logic.evaluation;
 
-public class Value {
+public class ArrayValue {
     
-    private double[][] valueArray;
+    private double[][] array;
     private int m;
     private int n;
 
-    public Value(double[][] value) {
-        this.valueArray = value;
+    public ArrayValue(double[][] value) {
+        this.array = value;
         this.m = value.length;
         this.n = value[0].length;
     }
 
     public double[][] getValue() {
-        return valueArray;
+        return array;
     }
 
     public int getM() {

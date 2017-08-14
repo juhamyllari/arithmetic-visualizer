@@ -1,6 +1,5 @@
 package fi.arithmeticvisualizer.logic.utils;
 
-import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
 import java.util.function.BinaryOperator;
 
 public class Utils {

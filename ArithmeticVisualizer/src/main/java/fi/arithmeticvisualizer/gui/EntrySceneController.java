@@ -1,37 +1,46 @@
 package fi.arithmeticvisualizer.gui;
 
 import static fi.arithmeticvisualizer.gui.ArrayDrawingUtils.drawArray;
-import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
+import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import fi.arithmeticvisualizer.logic.nodes.Node;
 import fi.arithmeticvisualizer.logic.nodes.ValueNode;
 import fi.arithmeticvisualizer.logic.utils.BinaryOperation;
 import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.stringToArray;
 import fi.arithmeticvisualizer.logic.utils.BadArrayException;
-import static fi.arithmeticvisualizer.logic.utils.NodeFunctions.addition;
+import fi.arithmeticvisualizer.logic.utils.OperationSelector;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
-public class FXMLController implements Initializable {
+public class EntrySceneController implements Initializable {
 
     private double[][] leftArray;
     private double[][] rightArray;
     private BinaryNode node;
 
     @FXML
+    private VBox VBox;
+    
+    @FXML
     private Text errorText;
 
     @FXML
     private Text symbol;
-    
+
     @FXML
     private TextField leftField;
 
@@ -43,6 +52,9 @@ public class FXMLController implements Initializable {
 
     @FXML
     private GridPane rightArrayGrid;
+
+    @FXML
+    private ChoiceBox operationBox;
 
     @FXML
     private void leftFieldKey(KeyEvent event) {
@@ -92,8 +104,9 @@ public class FXMLController implements Initializable {
         createLeftArray();
         createRightArray();
 
-        //To implement: allow operation to be selected using a ChoiceBox
-        BinaryOperation operation = addition;
+        OperationSelector selector = new OperationSelector();
+
+        BinaryOperation operation = selector.getOperation((String) operationBox.getValue());
 
         if (leftArray != null && rightArray != null) {
             Node leftValueNode = new ValueNode(leftArray);
@@ -101,9 +114,9 @@ public class FXMLController implements Initializable {
             node = new BinaryNode(leftValueNode, rightValueNode, operation);
 
             try {
-            // The node is evaluated to verify the legality of the
-            // array dimensions wrt. the operation. This is a kludge
-            // and may be replaced by explicit dimension checking.
+                // The node is evaluated to verify the legality of the
+                // array dimensions wrt. the operation. This is a kludge
+                // and may be replaced by explicit dimension checking.
                 drawNodeRepresentation();
             } catch (WrongShapeException exc) {
                 errorText.setText("Illegal array dimensions for operation " + node.getSymbol());
@@ -113,9 +126,31 @@ public class FXMLController implements Initializable {
 
     private void drawNodeRepresentation() throws WrongShapeException {
         node.evaluate();
-        symbol.setText(Character.toString(node.getSymbol()));
+        symbol.setText(node.getSymbol());
         drawArray(leftArrayGrid, leftArray);
         drawArray(rightArrayGrid, rightArray);
+    }
+
+    @FXML
+    private void evaluateButton() {
+
+        createNodeButton();
+        
+        try {
+            drawNodeRepresentation();
+            loadEvaluationScene();
+        } catch (WrongShapeException ex) {
+        }
+
+    }
+
+    private void loadEvaluationScene() {
+        Stage stage = (Stage) VBox.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/fxml/EvaluationScene.fxml"))));
+        } catch (IOException ex) {
+            errorText.setText("Failed to load evaluation scene.");
+        }
     }
 
     @Override

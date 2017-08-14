@@ -1,6 +1,6 @@
 package fi.arithmeticvisualizer.logic.utils;
 
-import static fi.arithmeticvisualizer.logic.utils.NodeFunctions.addition;
+import static fi.arithmeticvisualizer.logic.utils.OperationSelector.addition;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -36,6 +36,6 @@ public class BinaryOperationTest {
     
     @Test
     public void getSymbolOnAdditionReturnsPlus() {
-        assertEquals('+', addition.getSymbol());
+        assertEquals("+", addition.getSymbol());
     }
 }
