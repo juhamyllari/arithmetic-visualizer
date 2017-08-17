@@ -46,6 +46,7 @@ public class EvaluationSceneController {
 
     @FXML
     private void startButtonPush() {
+        startButton.setText("Restart visualization");
         visualizer.visualize();
     }
 

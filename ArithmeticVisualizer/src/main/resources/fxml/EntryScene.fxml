@@ -38,7 +38,7 @@
                     
                 </ChoiceBox>  
                 
-                <Button text="Create node" GridPane.columnIndex="0" GridPane.rowIndex="7" GridPane.columnSpan="1"  onAction="#createNodeButtonPush" />
+                <Button text="Create or update node" GridPane.columnIndex="0" GridPane.rowIndex="7" GridPane.columnSpan="1"  onAction="#createNodeButtonPush" />
                 <Button text="Evaluate" GridPane.columnIndex="2" GridPane.rowIndex="7" GridPane.columnSpan="3"  onAction="#evaluateButtonPush" />
                 
                 <Text text="" fx:id="errorText" styleClass="errorText"  GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="3"  />

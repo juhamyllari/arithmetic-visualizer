@@ -1,7 +1,6 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.gui.ArrayDrawingUtils;
-import fi.arithmeticvisualizer.gui.GraphicalArray;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.utils.Dims;
 import static fi.arithmeticvisualizer.logic.utils.Utils.addArrays;

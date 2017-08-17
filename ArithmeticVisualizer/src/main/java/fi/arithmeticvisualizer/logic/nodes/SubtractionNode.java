@@ -1,13 +1,9 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.gui.GraphicalArray;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.utils.Dims;
+import fi.arithmeticvisualizer.logic.utils.Utils;
 import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
-import java.util.ArrayList;
-import java.util.List;
-import javafx.scene.layout.GridPane;
-import javafx.scene.shape.Shape;
 
 public class SubtractionNode extends BinaryNode {
 
@@ -48,7 +44,7 @@ public class SubtractionNode extends BinaryNode {
 
     @Override
     public ArrayValue evaluate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ArrayValue(Utils.subtractArrays(left.evaluate().getValue(), right.evaluate().getValue()));
     }
 
     @Override

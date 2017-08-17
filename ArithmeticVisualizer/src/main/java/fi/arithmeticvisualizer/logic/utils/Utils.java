@@ -28,6 +28,10 @@ public class Utils {
 
         return result;
     }
+    
+    public static double[][] subtractArrays(double[][] left, double[][] right) {
+        return addArrays(left, scalarMultiply(-1.0, right));
+    }
 
     public static double[][] multiplyArrays(double[][] left, double[][] right) {
 

@@ -18,7 +18,7 @@ public class BooleanMask {
     public BooleanMask(Dims dims, String pattern, int row, int column) {
         this(dims.getM(), dims.getN());
         switch (pattern) {
-            case "row": this.setRow(m);
+            case "row": this.setRow(row);
             break;
             case "column": this.setColumn(column);
             break;
