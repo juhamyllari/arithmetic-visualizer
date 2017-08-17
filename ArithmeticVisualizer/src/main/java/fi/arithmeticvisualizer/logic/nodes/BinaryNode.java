@@ -1,46 +1,39 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.logic.utils.BinaryOperation;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
-import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import fi.arithmeticvisualizer.logic.utils.Dims;
+import java.util.List;
+import javafx.scene.layout.GridPane;
 
-public class BinaryNode extends Node {
+public abstract class BinaryNode {
     
-    private final Node left;
-    private final Node right;
-    private final BinaryOperation operation;
-
-    public BinaryNode(Node left, Node right, BinaryOperation operation) {
-        this.left = left;
-        this.right = right;
-        this.operation = operation;
-    }
+    public abstract Dims outDims();
+    public abstract String getSymbol();
+    public abstract ArrayValue evaluate();
+    public abstract Node getLeft();
+    public abstract Node getRight();
+    public abstract ActivationPattern getActivationPattern();
+    public abstract boolean validImputDims();
     
-    public String getSymbol() {
-        return operation.getSymbol();
-    }
-    
-    @Override
-    public ArrayValue evaluate() throws WrongShapeException {
-        return operation.getFunction().apply(left.evaluate(), right.evaluate());
-    }
-
-    @Override
-    public String toString() {
-        try {
-            ArrayValue leftValue = left.evaluate();
-            ArrayValue rightValue = right.evaluate();
-            String leftArrayString = Arrays.deepToString(leftValue.getValue());
-            String rightArrayString = Arrays.deepToString(rightValue.getValue()); 
-            return leftArrayString + " " + operation.getSymbol() + " " + rightArrayString;
-        } catch (WrongShapeException ex) {
-            return "Invalid Node";
+    public static BinaryNode createBinaryNode(ArrayValue left, ArrayValue right, String operator) {
+        
+        BinaryNode node = null;
+        double[][] leftArray = left.getValue();
+        double[][] rightArray = right.getValue();
+        
+        switch (operator) {
+            case "+": node = new AdditionNode(leftArray, rightArray);
+            break;
+            case "-": node = new SubtractionNode(leftArray, rightArray);
+            break;
+            case "*": node = new MultiplicationNode(leftArray, rightArray);
         }
+        
+        return node;
     }
     
+    public static BinaryNode createBinaryNode(double[][] left, double[][] right, String operator) {
+        return createBinaryNode(new ArrayValue(left), new ArrayValue(right), operator);
+    } 
     
-
 }

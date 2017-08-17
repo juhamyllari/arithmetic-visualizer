@@ -1,14 +1,10 @@
 package fi.arithmeticvisualizer.gui;
 
-import static fi.arithmeticvisualizer.gui.ArrayDrawingUtils.drawArray;
-import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
+import static fi.arithmeticvisualizer.gui.ArrayDrawingUtils.drawNodeRepresentation;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
-import fi.arithmeticvisualizer.logic.nodes.Node;
-import fi.arithmeticvisualizer.logic.nodes.ValueNode;
-import fi.arithmeticvisualizer.logic.utils.BinaryOperation;
 import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.stringToArray;
 import fi.arithmeticvisualizer.logic.utils.BadArrayException;
-import fi.arithmeticvisualizer.logic.utils.OperationSelector;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -28,13 +25,22 @@ import javafx.stage.Stage;
 
 public class EntrySceneController implements Initializable {
 
+    public static double[][] createArray(TextField field, Text resultText) {
+        try {
+            return stringToArray(field.getText());
+        } catch (BadArrayException ex) {
+            resultText.setText("Bad array: " + ex.getMessage());
+            return null;
+        }
+    }
+
     private double[][] leftArray;
     private double[][] rightArray;
     private BinaryNode node;
 
     @FXML
     private VBox VBox;
-    
+
     @FXML
     private Text errorText;
 
@@ -80,76 +86,59 @@ public class EntrySceneController implements Initializable {
         createRightArray();
     }
 
-    private void createLeftArray() {
+    private boolean createLeftArray() {
         leftArray = createArray(leftField, errorText);
+        return leftArray != null;
     }
 
-    private void createRightArray() {
+    private boolean createRightArray() {
         rightArray = createArray(rightField, errorText);
-    }
-
-    private double[][] createArray(TextField field, Text resultText) {
-        try {
-            return stringToArray(field.getText());
-        } catch (BadArrayException ex) {
-            resultText.setText("Bad array: " + ex.getMessage());
-            return null;
-        }
+        return rightArray != null;
     }
 
     @FXML
-    private void createNodeButton() {
+    private void createNodeButtonPush() {
+        createNode();
+    }
 
+    private boolean createNode() {
+        
         errorText.setText("");
-        createLeftArray();
-        createRightArray();
 
-        OperationSelector selector = new OperationSelector();
-
-        BinaryOperation operation = selector.getOperation((String) operationBox.getValue());
-
-        if (leftArray != null && rightArray != null) {
-            Node leftValueNode = new ValueNode(leftArray);
-            Node rightValueNode = new ValueNode(rightArray);
-            node = new BinaryNode(leftValueNode, rightValueNode, operation);
-
-            try {
-                // The node is evaluated to verify the legality of the
-                // array dimensions wrt. the operation. This is a kludge
-                // and may be replaced by explicit dimension checking.
-                drawNodeRepresentation();
-            } catch (WrongShapeException exc) {
-                errorText.setText("Illegal array dimensions for operation " + node.getSymbol());
+        if (createLeftArray() && createRightArray()) {
+            node = createBinaryNode(leftArray, rightArray, (String) operationBox.getValue());
+            if (node.validImputDims()) {
+                drawNode();
+                return true;
+            } else {
+                errorText.setText("Invalid array dimensions for operation " + node.getSymbol());
             }
         }
+        return false;
     }
 
-    private void drawNodeRepresentation() throws WrongShapeException {
-        node.evaluate();
-        symbol.setText(node.getSymbol());
-        drawArray(leftArrayGrid, leftArray);
-        drawArray(rightArrayGrid, rightArray);
+    private void drawNode() {
+        drawNodeRepresentation(node, leftArrayGrid, rightArrayGrid, symbol, leftArray, rightArray);
     }
 
     @FXML
-    private void evaluateButton() {
+    private void evaluateButtonPush() {
 
-        createNodeButton();
-        
-        try {
-            drawNodeRepresentation();
+        if (createNode()) {
             loadEvaluationScene();
-        } catch (WrongShapeException ex) {
         }
-
     }
 
     private void loadEvaluationScene() {
         Stage stage = (Stage) VBox.getScene().getWindow();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/fxml/EvaluationScene.fxml"))));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/EvaluationScene.fxml"));
+            Parent root = loader.load();
+            EvaluationSceneController controller = loader.<EvaluationSceneController>getController();
+            controller.initData(node);
+            stage.setScene(new Scene(root));
         } catch (IOException ex) {
-            errorText.setText("Failed to load evaluation scene.");
+            errorText.setText("Failed to load evaluation scene: " + ex.getMessage());
         }
     }
 

@@ -9,7 +9,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.omg.PortableServer.POAPackage.WrongAdapter;
 
 public class ValueNodeTest {
 
@@ -19,12 +18,11 @@ public class ValueNodeTest {
     private double[][] threeXTwo;
     private double[][] jagged;
 
-    public ValueNodeTest() {
+    public ValueNodeTest() throws WrongShapeException {
         threeXTwo = new double[][]{{1, 2}, {3, 4}, {5, 6}};
         vThreeXTwo = new ValueNode(threeXTwo);
         
         jagged = new double[][]{{1, 2}, {3}, {5, 6}};
-        vJagged = new ValueNode(jagged);
         
         scalar = new ValueNode(42.0);
     }
@@ -48,13 +46,8 @@ public class ValueNodeTest {
     @Test
     public void valueNodeGivesArrayOfCorrectDimension() throws WrongShapeException {
         ArrayValue val = vThreeXTwo.evaluate();
-        assertEquals(3, val.getM());
-        assertEquals(2, val.getN());
-    }
-    
-    @Test(expected = WrongShapeException.class)
-    public void jaggedArrayGivesException() throws WrongShapeException {
-        vJagged.evaluate();
+        assertEquals(3, val.getDims().getM());
+        assertEquals(2, val.getDims().getN());
     }
     
     @Test

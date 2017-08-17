@@ -1,10 +1,16 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
+import fi.arithmeticvisualizer.logic.utils.Dims;
 import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
 
 public abstract class Node {
     
-    public abstract ArrayValue evaluate() throws WrongShapeException;
+    public abstract ArrayValue evaluate();
+    public abstract Dims outDims();
+    
+    public boolean isScalar() {
+        return (outDims().getM() == 1) && (outDims().getM() == 1);
+    }
     
 }

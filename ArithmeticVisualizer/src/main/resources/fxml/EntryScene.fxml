@@ -21,13 +21,13 @@
                 <Label text="Array syntax: Separate rows with semicolons and columns with whitespace. Example: 1 2 3; 4 5 6 parses to [[1, 2, 3], [4, 5, 6]]." GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="3" GridPane.rowSpan="2" wrapText="true"  />
                 
                 <Label text="Enter left array" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                <TextField fx:id="leftField" onKeyPressed="#leftFieldKey" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField fx:id="leftField" text="1 2 3; 4 5 6" onKeyPressed="#leftFieldKey" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 
                 <Label text="Enter right array" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                <TextField fx:id="rightField" onKeyPressed="#rightFieldKey" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="rightField" text="10 10; 10 20; 20 20" onKeyPressed="#rightFieldKey" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 
                 <Label text="Select operation" GridPane.columnIndex="0" GridPane.rowIndex="4" />  
-                <ChoiceBox fx:id="operationBox" value = "+" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                <ChoiceBox fx:id="operationBox" value = "*" GridPane.columnIndex="1" GridPane.rowIndex="4">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="+" />
@@ -38,8 +38,8 @@
                     
                 </ChoiceBox>  
                 
-                <Button text="Create node" GridPane.columnIndex="0" GridPane.rowIndex="7" GridPane.columnSpan="1"  onAction="#createNodeButton" />
-                <Button text="Evaluate" GridPane.columnIndex="2" GridPane.rowIndex="7" GridPane.columnSpan="3"  onAction="#evaluateButton" />
+                <Button text="Create node" GridPane.columnIndex="0" GridPane.rowIndex="7" GridPane.columnSpan="1"  onAction="#createNodeButtonPush" />
+                <Button text="Evaluate" GridPane.columnIndex="2" GridPane.rowIndex="7" GridPane.columnSpan="3"  onAction="#evaluateButtonPush" />
                 
                 <Text text="" fx:id="errorText" styleClass="errorText"  GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="3"  />
                 <Text text="" fx:id="nodeRepresentation" GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.columnSpan="3"  />
@@ -63,5 +63,8 @@
             </GridPane>
         </HBox>
     </children>
+    <stylesheets>
+        <URL value="@../styles/EntrySceneStyles.css" />
+    </stylesheets>
 </VBox>
 

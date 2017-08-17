@@ -10,9 +10,44 @@
 <?import javafx.geometry.*?>
 <?import javafx.collections.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" id="VBox" styleClass="root" prefHeight="600" prefWidth="800" fx:controller="fi.arithmeticvisualizer.gui.EntrySceneController" >
+<VBox xmlns:fx="http://javafx.com/fxml/1" id="VBox" styleClass="root" prefHeight="600" prefWidth="800" alignment="TOP_CENTER"  fx:controller="fi.arithmeticvisualizer.gui.EvaluationSceneController" >
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
     <children>
-       <Text text="This is the evaluation scene, but there is nothing here yet." />
+        <Button fx:id="startButton" text="Click to start" onAction="#startButtonPush"  />
+        <HBox fx:id="upperRow" alignment="CENTER" styleClass="hbox" spacing="30" >
+            <padding>
+                <Insets top="25" right="25" bottom="25" left="25"/>
+            </padding>
+            <GridPane fx:id="leftGrid" hgap="10" vgap="10" alignment="CENTER" styleClass="grid" >
+                <padding>
+                    <Insets top="25" right="25" bottom="25" left="25"/>
+                </padding>
+            </GridPane>
+            
+            <Text fx:id="symbol" id="symbol"     />
+
+            <GridPane fx:id="rightGrid" hgap="10" vgap="10" alignment="CENTER" styleClass="grid" >
+                <padding>
+                    <Insets top="25" right="25" bottom="25" left="25"/>
+                </padding>
+            </GridPane>
+            
+        </HBox>
+        
+        <Text text="=" />
+        
+        <HBox fx:id="lowerRow" alignment="CENTER" >
+            <GridPane fx:id="resultGrid" hgap="10" vgap="10" alignment="CENTER" styleClass="grid" >
+                <padding>
+                    <Insets top="25" right="25" bottom="25" left="25"/>
+                </padding>
+            </GridPane>
+        </HBox>
     </children>
+    <stylesheets>
+        <URL value="@../styles/EvaluationSceneStyles.css" />
+    </stylesheets>
 </VBox>
 

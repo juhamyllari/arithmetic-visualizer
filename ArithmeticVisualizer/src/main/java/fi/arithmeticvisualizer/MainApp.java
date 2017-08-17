@@ -18,7 +18,6 @@ public class MainApp extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/EntryScene.fxml"));
         
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/EntrySceneStyles.css");
         
         stage.setTitle("Arithmetic Visualizer");
         stage.setScene(scene);

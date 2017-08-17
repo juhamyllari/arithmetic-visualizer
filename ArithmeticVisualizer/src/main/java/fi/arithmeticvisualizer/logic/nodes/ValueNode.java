@@ -1,6 +1,8 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
+import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.checkRectangularity;
+import fi.arithmeticvisualizer.logic.utils.Dims;
 import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
 
 public class ValueNode extends Node {
@@ -12,20 +14,16 @@ public class ValueNode extends Node {
     }
 
     public ValueNode(double dbl) {
-        double[][] array = new double[1][1];
-        array[0][0] = dbl;
-        this.value = new ArrayValue(array);
+        this.value = new ArrayValue(dbl);
     }
 
-    public ArrayValue evaluate() throws WrongShapeException {
-        
-        for (double[] row : value.getValue()) {
-            if (row.length != value.getN()) {
-                throw new WrongShapeException("Jagged arrays are not allowed");
-            }
-        }
-        
+    public ArrayValue evaluate() {
         return value;
+    }
+
+    @Override
+    public Dims outDims() {
+        return value.getDims();
     }
 
 }

@@ -1,5 +1,6 @@
 package fi.arithmeticvisualizer.logic.utils;
 
+import java.util.function.BiPredicate;
 import java.util.function.BinaryOperator;
 
 public class Utils {
@@ -12,15 +13,11 @@ public class Utils {
         return "(" + array.length + ", " + array[0].length + ")";
     }
     
-    public static double[][] addArrays(double[][] left, double[][] right) throws WrongShapeException {
+    public static double[][] addArrays(double[][] left, double[][] right) {
 
         int m = left.length;
         int n = left[0].length;
         
-        if (right.length != m || right[0].length != n) {
-            throw new WrongShapeException("Cannot add arrays of shape " + dims(left) + " and " + dims(right));
-        }
-
         double[][] result = new double[m][n];
 
         for (int i = 0; i < m; i++) {
@@ -32,7 +29,7 @@ public class Utils {
         return result;
     }
 
-    public static double[][] multiplyArrays(double[][] left, double[][] right) throws WrongShapeException {
+    public static double[][] multiplyArrays(double[][] left, double[][] right) {
 
         if (isScalar(left)) {
             return Utils.scalarMultiply(left[0][0], right);
@@ -43,12 +40,8 @@ public class Utils {
         return matrixMultiply(left, right);
     }
 
-    public static double[][] matrixMultiply(double[][] left, double[][] right) throws WrongShapeException {
+    public static double[][] matrixMultiply(double[][] left, double[][] right) {
 
-        if (left[0].length != right.length) {
-            throw new WrongShapeException("Cannot multiply matrices of shape " + dims(left) + " and " + dims(right));
-        }
-        
         int m = left.length;
         int p = right[0].length;
 
@@ -91,4 +84,17 @@ public class Utils {
 
         return sum;
     }
+    
+    public static double dotVectors(double[] left, double[] right) {
+        
+        int vectorLength = left.length;
+        double sum = 0;
+        
+        for (int i = 0; i < vectorLength; i++) {
+            sum += left[i] * right[i];
+        }
+        
+        return sum;
+    }
+    
 }

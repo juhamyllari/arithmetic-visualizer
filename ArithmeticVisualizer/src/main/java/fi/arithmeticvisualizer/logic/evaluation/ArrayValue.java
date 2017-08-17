@@ -1,5 +1,9 @@
 package fi.arithmeticvisualizer.logic.evaluation;
 
+import fi.arithmeticvisualizer.logic.utils.ArrayIOUtils;
+import fi.arithmeticvisualizer.logic.utils.Dims;
+import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
+
 public class ArrayValue {
     
     private double[][] array;
@@ -12,16 +16,19 @@ public class ArrayValue {
         this.n = value[0].length;
     }
 
+    public ArrayValue(double dbl) {
+        this.array = new double[1][1];
+        this.array[0][0] = dbl;
+        this.m = 1;
+        this.n = 1;
+    }
+
     public double[][] getValue() {
         return array;
     }
 
-    public int getM() {
-        return m;
-    }
-
-    public int getN() {
-        return n;
+    public Dims getDims() {
+        return new Dims(m, n);
     }
     
     public boolean isScalar() {

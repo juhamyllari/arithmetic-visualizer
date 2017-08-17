@@ -90,11 +90,6 @@ public class UtilsTest {
         assertEquals(21.0, Utils.multiplyArrays(matrixC, arrayThree)[2][1], .001);
     }
 
-    @Test(expected = WrongShapeException.class)
-    public void matrixMultiplyThrowsWrongShapeException() throws WrongShapeException {
-        matrixMultiply(matrixA, matrixB);
-    }
-
     @Test
     public void dimsReturnsCorrectString() {
         assertEquals("(2, 3)", dims(matrixA));
