@@ -1,21 +1,13 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.gui.ArrayDrawingUtils;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.utils.Dims;
 import static fi.arithmeticvisualizer.logic.utils.Utils.multiplyArrays;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BiPredicate;
-import javafx.animation.Animation;
-import javafx.animation.Transition;
-import javafx.scene.layout.GridPane;
-import javafx.util.Duration;
 
 public class MultiplicationNode extends BinaryNode {
 
-    private Node left;
-    private Node right;
+    final private Node left;
+    final private Node right;
 
     public MultiplicationNode(Node left, Node right) {
         this.left = left;

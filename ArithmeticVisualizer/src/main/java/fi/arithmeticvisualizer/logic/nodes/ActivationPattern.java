@@ -1,7 +1,5 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import java.util.function.BiPredicate;
-
 public class ActivationPattern {
     
     public static final ActivationPattern ADDITION = new ActivationPattern("element", "element", "element");

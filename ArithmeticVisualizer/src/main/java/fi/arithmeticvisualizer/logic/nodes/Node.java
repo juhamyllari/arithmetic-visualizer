@@ -2,7 +2,6 @@ package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.utils.Dims;
-import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
 
 public abstract class Node {
     

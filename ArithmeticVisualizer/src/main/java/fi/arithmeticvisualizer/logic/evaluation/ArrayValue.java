@@ -1,14 +1,12 @@
 package fi.arithmeticvisualizer.logic.evaluation;
 
-import fi.arithmeticvisualizer.logic.utils.ArrayIOUtils;
 import fi.arithmeticvisualizer.logic.utils.Dims;
-import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
 
 public class ArrayValue {
     
-    private double[][] array;
-    private int m;
-    private int n;
+    private final double[][] array;
+    private final int m;
+    private final int n;
 
     public ArrayValue(double[][] value) {
         this.array = value;

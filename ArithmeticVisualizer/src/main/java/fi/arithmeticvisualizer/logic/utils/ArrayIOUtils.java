@@ -47,13 +47,4 @@ public class ArrayIOUtils {
         }
     }
 
-    public static void checkRectangularity(double[][] array) throws WrongShapeException {
-        int rowLength = array[0].length;
-        for (double[] row : array) {
-            if (row.length != rowLength) {
-                throw new WrongShapeException("Jagged arrays are not allowed");
-            }
-        }
-    }
-
 }

@@ -5,7 +5,7 @@ import fi.arithmeticvisualizer.logic.nodes.Node;
 
 public class Expression {
 
-    private Node root;
+    private final Node root;
 
     public Expression(Node root) {
         this.root = root;

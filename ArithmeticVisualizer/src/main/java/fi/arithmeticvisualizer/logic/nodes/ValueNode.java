@@ -1,9 +1,7 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
-import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.checkRectangularity;
 import fi.arithmeticvisualizer.logic.utils.Dims;
-import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
 
 public class ValueNode extends Node {
 

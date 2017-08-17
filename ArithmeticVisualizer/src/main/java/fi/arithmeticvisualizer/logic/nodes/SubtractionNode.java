@@ -7,14 +7,12 @@ import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
 
 public class SubtractionNode extends BinaryNode {
 
-    private Node left;
-    private Node right;
-    private Dims dims;
+    private final Node left;
+    private final Node right;
 
     public SubtractionNode(Node left, Node right) throws WrongShapeException {
         this.left = left;
         this.right = right;
-        this.dims = left.outDims();
     }
 
     public SubtractionNode(double[][] left, double[][] right) {

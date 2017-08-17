@@ -5,26 +5,30 @@ import java.util.function.BiPredicate;
 
 public class BooleanMask {
 
-    private boolean[][] mask;
-    private int m;
-    private int n;
+    private final boolean[][] mask;
+    private final int m;
+    private final int n;
 
     public BooleanMask(int rows, int columns) {
         this.mask = new boolean[rows][columns];
         this.m = rows;
         this.n = columns;
     }
-    
+
     public BooleanMask(Dims dims, String pattern, int row, int column) {
         this(dims.getM(), dims.getN());
         switch (pattern) {
-            case "row": this.setRow(row);
-            break;
-            case "column": this.setColumn(column);
-            break;
-            case "element": this.setElement(row, column);
-            break;
-            case "all": this.setAll();
+            case "row":
+                this.setRow(row);
+                break;
+            case "column":
+                this.setColumn(column);
+                break;
+            case "element":
+                this.setElement(row, column);
+                break;
+            case "all":
+                this.setAll();
         }
     }
 
@@ -49,7 +53,7 @@ public class BooleanMask {
     public void setElement(int row, int column) {
         mask[row][column] = true;
     }
-    
+
     public void setAll() {
         BiPredicate<Integer, Integer> predicate = (Integer i, Integer j) -> true;
         setActivation(predicate);
@@ -64,20 +68,18 @@ public class BooleanMask {
         return mask;
     }
 
-    public void setMask(boolean[][] newMask) {
-        this.mask = new boolean[m][n];
-        
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                this.mask[i][j] = newMask[i][j];
-            }
-        }
-    }
-    
     public BooleanMask clone() {
         BooleanMask clone = new BooleanMask(m, n);
-        clone.setMask(mask);
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (this.getMask()[i][j]) {
+                    clone.setElement(i, j);
+                }
+            }
+        }
+
         return clone;
     }
-    
+
 }

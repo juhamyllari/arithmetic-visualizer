@@ -2,8 +2,6 @@ package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.utils.Dims;
-import java.util.List;
-import javafx.scene.layout.GridPane;
 
 public abstract class BinaryNode {
     

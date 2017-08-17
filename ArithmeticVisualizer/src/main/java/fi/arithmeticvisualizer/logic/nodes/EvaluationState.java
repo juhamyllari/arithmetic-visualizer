@@ -2,10 +2,10 @@ package fi.arithmeticvisualizer.logic.nodes;
 
 public class EvaluationState {
     
-    private BooleanMask leftActivation;
-    private BooleanMask rightActivation;
-    private BooleanMask resultActivation;
-    private BooleanMask showResult;
+    private final BooleanMask leftActivation;
+    private final BooleanMask rightActivation;
+    private final BooleanMask resultActivation;
+    private final BooleanMask showResult;
 
     public EvaluationState(BooleanMask leftActivation, BooleanMask rightActivation, BooleanMask resultActivation, BooleanMask showResult) {
         int m = leftActivation.getMask().length;
