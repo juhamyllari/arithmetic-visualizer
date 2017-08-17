@@ -1,6 +1,5 @@
 package fi.arithmeticvisualizer.logic.evaluation;
 
-import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
 import fi.arithmeticvisualizer.logic.nodes.Node;
 
 public class Expression {
@@ -11,7 +10,7 @@ public class Expression {
         this.root = root;
     }
 
-    public ArrayValue evaluate() throws WrongShapeException {
+    public ArrayValue evaluate() {
         return root.evaluate();
     }
 
