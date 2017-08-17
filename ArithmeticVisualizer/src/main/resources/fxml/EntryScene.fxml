@@ -21,10 +21,10 @@
                 <Label text="Array syntax: Separate rows with semicolons and columns with whitespace. Example: 1 2 3; 4 5 6 parses to [[1, 2, 3], [4, 5, 6]]." GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="3" GridPane.rowSpan="2" wrapText="true"  />
                 
                 <Label text="Enter left array" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                <TextField fx:id="leftField" text="1 2 3; 4 5 6" onKeyPressed="#leftFieldKey" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField fx:id="leftField" text="1 2 3; 4 5 6; 7 8 9; 10 11 12" onKeyPressed="#leftFieldKey" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 
                 <Label text="Enter right array" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                <TextField fx:id="rightField" text="10 10; 10 20; 20 20" onKeyPressed="#rightFieldKey" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="rightField" text="10 10 10e-2; 23 5 -17.3; 10 20 30" onKeyPressed="#rightFieldKey" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 
                 <Label text="Select operation" GridPane.columnIndex="0" GridPane.rowIndex="4" />  
                 <ChoiceBox fx:id="operationBox" value = "*" GridPane.columnIndex="1" GridPane.rowIndex="4">
