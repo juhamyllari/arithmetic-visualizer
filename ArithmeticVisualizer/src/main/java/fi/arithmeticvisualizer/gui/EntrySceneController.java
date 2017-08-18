@@ -22,6 +22,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
 
 public class EntrySceneController implements Initializable {
 
