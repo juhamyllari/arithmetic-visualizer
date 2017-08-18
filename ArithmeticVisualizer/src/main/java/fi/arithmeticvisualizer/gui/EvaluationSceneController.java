@@ -1,13 +1,10 @@
 package fi.arithmeticvisualizer.gui;
 
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
-import fi.arithmeticvisualizer.logic.utils.Dims;
-import java.util.Arrays;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 public class EvaluationSceneController {

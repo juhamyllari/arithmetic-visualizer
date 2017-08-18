@@ -2,6 +2,7 @@ package fi.arithmeticvisualizer.logic.utils;
 
 import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.stringToArray;
 import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.stringToRow;
+import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.transposeArray;
 import java.util.Arrays;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -100,6 +101,29 @@ public class ArrayIOUtilsTest {
     @Test
     public void defaultConstructorWorks() {
         assertEquals(ArrayIOUtils.class, (new ArrayIOUtils()).getClass());
+    }
+
+    @Test
+    public void arrayToInputStringWorks() {
+        double[][] array1 = new double[][]{{1}};
+        double[][] array2 = new double[][]{{1}, {-2}};
+        double[][] array3 = new double[][]{{1, 2}};
+        assertEquals("1.0", ArrayIOUtils.arrayToInputString(array1));
+        assertEquals("1.0; -2.0", ArrayIOUtils.arrayToInputString(array2));
+        assertEquals("1.0 2.0", ArrayIOUtils.arrayToInputString(array3));
+    }
+
+    @Test
+    public void transposeArrayWorks() {
+        double[][] array1 = new double[][]{{1}};
+        double[][] array2 = new double[][]{{1}, {-2}};
+        double[][] array3 = new double[][]{{1, -2}};
+        double[][] array4 = new double[][]{{1, 2.4, 17}, {10e-12, -7.0, 0}};
+        
+        Assert.assertArrayEquals(array1, transposeArray(array1));
+        Assert.assertArrayEquals(array2, transposeArray(array3));
+        Assert.assertArrayEquals(array3, transposeArray(array2));
+        Assert.assertArrayEquals(array4, transposeArray(transposeArray(array4)));
     }
 
 }

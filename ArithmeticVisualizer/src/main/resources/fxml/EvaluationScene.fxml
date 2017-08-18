@@ -27,18 +27,22 @@
             </GridPane>
             
             <Text fx:id="symbol" id="symbol"     />
-
+            
             <GridPane fx:id="rightGrid" hgap="10" vgap="10" alignment="CENTER" styleClass="grid" >
                 <padding>
                     <Insets top="25" right="25" bottom="25" left="25"/>
                 </padding>
             </GridPane>
             
+            <Text text="=" />
+            
         </HBox>
         
-        <Text text="=" />
-        
         <HBox fx:id="lowerRow" alignment="CENTER" >
+            <padding>
+                <Insets top="25" right="25" bottom="25" left="25"/>
+            </padding>
+            
             <GridPane fx:id="resultGrid" hgap="10" vgap="10" alignment="CENTER" styleClass="grid" >
                 <padding>
                     <Insets top="25" right="25" bottom="25" left="25"/>

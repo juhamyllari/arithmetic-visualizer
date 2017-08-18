@@ -2,6 +2,8 @@ package fi.arithmeticvisualizer.logic.utils;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 
 public class ArrayIOUtils {
 
@@ -45,6 +47,39 @@ public class ArrayIOUtils {
         } catch (NumberFormatException e) {
             throw new BadArrayException(e.getMessage());
         }
+    }
+    
+    public static String arrayToInputString(double[][] array) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        for (double[] row : array) {
+            sb.append(DoubleStream.of(row).boxed()
+                    .map(d -> ((Double) d).toString())
+                    .collect(Collectors.joining(" ")));
+            sb.append("; ");
+        }
+        
+        sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
+        
+        return sb.toString();
+    }
+    
+    public static double[][] transposeArray(double[][] array) {
+        
+        int m = array.length;
+        int n = array[0].length;
+        
+        double[][] newArray = new double[n][m];
+        
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                newArray[i][j] = array[j][i];
+            }
+        }
+        
+        return newArray;
     }
 
 }

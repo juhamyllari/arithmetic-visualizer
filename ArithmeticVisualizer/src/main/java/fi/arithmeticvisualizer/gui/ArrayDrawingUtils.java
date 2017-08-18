@@ -17,12 +17,12 @@ import javafx.scene.text.Text;
 public class ArrayDrawingUtils {
 
     public static final String ARRAYBACKGROUNDSTYLE = "-fx-background-color: beige";
-    public static final String ELEMENTSTRINGFORMAT = "%.2f";
-    public static final int ARRAYCOLUMNWIDTH = 60;
+    public static final String ELEMENTSTRINGFORMAT = "%5.1f";
+    public static final int ARRAYCOLUMNWIDTH = 65;
     public static final int ARRAYROWHEIGHT = 30;
     
     public static final Color ACTIVATIONRECTANGLECOLOUR = Color.CRIMSON;
-    public static final int ACTIVATIONRECTANGLEWIDTH = 60;
+    public static final int ACTIVATIONRECTANGLEWIDTH = 66;
     public static final int ACTIVATIONRECTANGLEHEIGHT = 30;
     public static final double ACTIVATIONRECTANGLEOPACITY = .3;
 
