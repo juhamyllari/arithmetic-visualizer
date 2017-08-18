@@ -84,14 +84,6 @@ public class ArrayDrawingUtils {
         }
     }
 
-    public static void drawNodeRepresentation(BinaryNode node, GridPane leftArrayGrid, GridPane rightArrayGrid, Text symbol, double[][] leftArray, double[][] rightArray) {
-
-        node.evaluate();
-        symbol.setText(node.getSymbol());
-        drawArray(leftArrayGrid, leftArray);
-        drawArray(rightArrayGrid, rightArray);
-    }
-
     private static int getColumnWidth(double[][] array) {
         
         int maxLength = getMaxStringLength(array);

@@ -1,14 +1,11 @@
 package fi.arithmeticvisualizer.gui;
 
-import static fi.arithmeticvisualizer.gui.ArrayDrawingUtils.drawNodeRepresentation;
-import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.stringToArray;
 import fi.arithmeticvisualizer.logic.utils.BadArrayException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,8 +20,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
-import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
-import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
+import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.arrayToInputString;
+import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.transposeArray;
+import javafx.scene.control.Button;
 
 public class EntrySceneController implements Initializable {
 
@@ -37,9 +35,9 @@ public class EntrySceneController implements Initializable {
         }
     }
 
-    private double[][] leftArray;
-    private double[][] rightArray;
     private BinaryNode node;
+    private Operand leftOperand;
+    private Operand rightOperand;
 
     @FXML
     private VBox VBox;
@@ -66,37 +64,23 @@ public class EntrySceneController implements Initializable {
     private ChoiceBox operationBox;
 
     @FXML
-    private void leftFieldKey(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            createLeftArray();
-        }
-    }
+    private Button transposeLeft;
 
     @FXML
-    private void leftArrayButton(ActionEvent event) {
-        createLeftArray();
+    private Button transposeRight;
+
+    @FXML
+    private void leftFieldKey(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            leftOperand.createArray();
+        }
     }
 
     @FXML
     private void rightFieldKey(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
-            createRightArray();
+            leftOperand.createArray();
         }
-    }
-
-    @FXML
-    private void rightArrayButton(ActionEvent event) {
-        createRightArray();
-    }
-
-    private boolean createLeftArray() {
-        leftArray = createArray(leftField, errorText);
-        return leftArray != null;
-    }
-
-    private boolean createRightArray() {
-        rightArray = createArray(rightField, errorText);
-        return rightArray != null;
     }
 
     @FXML
@@ -104,29 +88,46 @@ public class EntrySceneController implements Initializable {
         createNode();
     }
 
-    private boolean createNode() {
-        
-        errorText.setText("");
+    @FXML
+    private void transposeLeft() {
+        transpose(leftField);
+    }
 
-        if (createLeftArray() && createRightArray()) {
-            node = createBinaryNode(leftArray, rightArray, (String) operationBox.getValue());
+    @FXML
+    private void transposeRight() {
+        transpose(rightField);
+    }
+    
+    @FXML
+    private void selectOperation() {
+        createNode();
+    }
+
+    public boolean createNode() {
+        
+        setErrorMessage("");
+
+        if (leftOperand.createArray() && rightOperand.createArray()) {
+            node = createBinaryNode(leftOperand.getArray(), rightOperand.getArray(), (String) operationBox.getValue());
+            drawNode();
+            
             if (node.validImputDims()) {
-                drawNode();
                 return true;
             } else {
-                errorText.setText("Invalid array dimensions for operation " + node.getSymbol());
+                setErrorMessage("Invalid array dimensions for operation " + node.getSymbol());
             }
         }
         return false;
     }
 
-    private void drawNode() {
-        drawNodeRepresentation(node, leftArrayGrid, rightArrayGrid, symbol, leftArray, rightArray);
+    protected void drawNode() {
+        leftOperand.drawOperandArray();
+        rightOperand.drawOperandArray();
+        symbol.setText(node.getSymbol());
     }
 
     @FXML
     private void evaluateButtonPush() {
-
         if (createNode()) {
             loadEvaluationScene();
         }
@@ -147,6 +148,20 @@ public class EntrySceneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
+        leftOperand = new Operand(this, null, leftArrayGrid, leftField, transposeLeft);
+        rightOperand = new Operand(this, null, rightArrayGrid, rightField, transposeRight);
+    }
+
+    private void transpose(TextField entryField) {
+        double[][] array = createArray(entryField, errorText);
+        if (array != null) {
+            entryField.setText(arrayToInputString(transposeArray(array)));
+            createNode();
+        }
+    }
+
+    protected void setErrorMessage(String message) {
+        errorText.setText(message);
     }
 }
