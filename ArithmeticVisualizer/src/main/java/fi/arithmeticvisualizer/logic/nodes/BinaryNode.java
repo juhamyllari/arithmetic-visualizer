@@ -3,8 +3,12 @@ package fi.arithmeticvisualizer.logic.nodes;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.utils.Dims;
 import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * A BinaryNode is a Node that performs an operation of two operands.
+ * The abstract class is extended by AdditionNode, SubtractionNode
+ * and MultiplicationNode.
+ */
 public abstract class BinaryNode {
 
     @FunctionalInterface

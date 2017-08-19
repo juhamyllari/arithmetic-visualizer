@@ -2,6 +2,12 @@ package fi.arithmeticvisualizer.logic.evaluation;
 
 import fi.arithmeticvisualizer.logic.utils.Dims;
 
+/**
+ * Expressions in the Arithmetic Visualizer evaluate to ArrayValue objects.
+ * An ArrayValue object is essentially an array of type double[][].
+ * In the future the class may accommodate arrays of more general scalars
+ * such as complex numbers.
+ */
 public class ArrayValue {
     
     private final double[][] array;

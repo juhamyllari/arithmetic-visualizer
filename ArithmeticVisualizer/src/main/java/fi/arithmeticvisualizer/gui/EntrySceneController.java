@@ -19,12 +19,15 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
 import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.arrayToInputString;
 import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.transposeArray;
 import javafx.scene.control.Button;
 import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
 
+/**
+ * This is the controller class for the first (entry)scene of the application.
+ * The entry scene is where expressions are entered.
+ */
 public class EntrySceneController implements Initializable {
 
     public static double[][] createArray(TextField field, Text resultText) {

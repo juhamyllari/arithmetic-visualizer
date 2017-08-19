@@ -4,8 +4,10 @@ import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.utils.Dims;
 import static fi.arithmeticvisualizer.logic.utils.Utils.addArrays;
 import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * An AdditionNode is a BinaryNode that performs array addition.
+ */
 public class AdditionNode extends BinaryNode {
 
     private final Node left;

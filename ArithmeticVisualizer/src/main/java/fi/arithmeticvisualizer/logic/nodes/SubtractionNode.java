@@ -4,7 +4,9 @@ import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.utils.Dims;
 import fi.arithmeticvisualizer.logic.utils.Utils;
 import java.util.ArrayList;
-
+/**
+ * A SubtractionNode is a BinaryNode that performs array addition.
+ */
 public class SubtractionNode extends BinaryNode {
 
     private final Node left;

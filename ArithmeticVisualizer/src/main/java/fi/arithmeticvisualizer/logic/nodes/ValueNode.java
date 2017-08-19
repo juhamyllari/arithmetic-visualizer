@@ -3,6 +3,11 @@ package fi.arithmeticvisualizer.logic.nodes;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.utils.Dims;
 
+/**
+ * ValueNodes are the leaves in expression trees.
+ * A ValueNode contains an ArrayValue object.
+ * It performs no arithmetic operations.
+ */
 public class ValueNode extends Node {
 
     private final ArrayValue value;

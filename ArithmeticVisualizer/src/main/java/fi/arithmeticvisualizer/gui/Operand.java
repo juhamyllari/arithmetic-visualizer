@@ -9,6 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
+/**
+ * Objects of the Operand class represent the operands of expressions entered in the entry scene.
+ */
 public class Operand {
 
     private EntrySceneController controller;

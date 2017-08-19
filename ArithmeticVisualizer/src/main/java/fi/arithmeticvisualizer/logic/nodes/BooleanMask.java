@@ -3,6 +3,14 @@ package fi.arithmeticvisualizer.logic.nodes;
 import fi.arithmeticvisualizer.logic.utils.Dims;
 import java.util.function.BiPredicate;
 
+/**
+ * A BooleanMask represents a 2D boolean array.
+ * Methods are provided for setting elements to true
+ * individually, by row, by column or all at once.
+ * It is also possible to set all elements to false
+ * at once.
+ */
+
 public class BooleanMask {
 
     private final boolean[][] mask;
@@ -32,7 +40,7 @@ public class BooleanMask {
         }
     }
 
-    public void setActivation(BiPredicate<Integer, Integer> predicate) {
+    private void setActivation(BiPredicate<Integer, Integer> predicate) {
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 mask[i][j] = predicate.test(i, j);
@@ -59,7 +67,7 @@ public class BooleanMask {
         setActivation(predicate);
     }
 
-    public void clearActivation() {
+    public void clearAll() {
         BiPredicate<Integer, Integer> predicate = (Integer i, Integer j) -> false;
         setActivation(predicate);
     }

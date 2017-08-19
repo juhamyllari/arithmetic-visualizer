@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * A MultiplicationNode is a BinaryNode that performs multiplication.
+ * If one more operand is a scalar, scalar multiplication is performed.
+ * Otherwise matrix multiplication is performed. 
+ */
 public class MultiplicationNode extends BinaryNode {
 
     final private Node left;

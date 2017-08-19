@@ -14,6 +14,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+/**
+ * The Visualizer class is responsible for visualizing the evaluation of expressions.
+ */
 public class Visualizer {
 
     private final BinaryNode node;

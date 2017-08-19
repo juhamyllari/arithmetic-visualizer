@@ -1,5 +1,12 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
+/**
+ * An EvaluationState represents a single frame in a visualization
+ * animation. It contains BooleanMasks to indicate active elements
+ * in each array, a BooleanMask to indicate which elements of the
+ * result array are to be displayed, and a String representation
+ * of the suboperation (i.e. the calculation displayed in a single frame).
+ */
 public class EvaluationState {
     
     private final BooleanMask leftActivation;

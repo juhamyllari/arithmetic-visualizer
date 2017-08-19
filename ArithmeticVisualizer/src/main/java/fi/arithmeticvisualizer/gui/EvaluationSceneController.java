@@ -8,6 +8,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
+/**
+ * This is the controller class for the second (evaluation) scene of the application.
+ * The evaluation scene is where expressions are visualized.
+ */
 public class EvaluationSceneController {
 
     private BinaryNode node;
