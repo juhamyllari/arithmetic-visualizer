@@ -11,24 +11,29 @@ import java.util.List;
 import javafx.animation.Animation;
 import javafx.animation.Transition;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class Visualizer {
 
-    private BinaryNode node;
-    private GridPane leftGrid;
-    private GridPane rightGrid;
-    private GridPane resultGrid;
+    private final BinaryNode node;
+    private final GridPane leftGrid;
+    private final GridPane rightGrid;
+    private final GridPane resultGrid;
+    private final Text subOpText;
+    private final EvaluationSceneController controller;
 
-    public Visualizer(BinaryNode node, GridPane leftGrid, GridPane rightGrid, GridPane resultGrid) {
+    public Visualizer(BinaryNode node, GridPane leftGrid, GridPane rightGrid, GridPane resultGrid, Text subOpText, EvaluationSceneController controller) {
         this.node = node;
         this.leftGrid = leftGrid;
         this.rightGrid = rightGrid;
         this.resultGrid = resultGrid;
+        this.subOpText = subOpText;
+        this.controller = controller;
     }
 
     public void visualize() {
-
+        
         double[][] leftArray = node.getLeft().evaluate().getValue();
         double[][] rightArray = node.getRight().evaluate().getValue();
         double[][] resultArray = node.evaluate().getValue();
@@ -52,11 +57,14 @@ public class Visualizer {
                 ArrayDrawingUtils.drawArrayWithMasks(leftGrid, leftArray, state.getLeftActivation());
                 ArrayDrawingUtils.drawArrayWithMasks(rightGrid, rightArray, state.getRightActivation());
                 ArrayDrawingUtils.drawArrayWithMasks(resultGrid, resultArray, state.getResultActivation(), state.getShow());
+                subOpText.setText(state.getSubOpString());
             }
 
         };
 
         animation.play();
+        
+        controller.setOptionsGridVisibility(true);
     }
 
     public void drawOperands() {
@@ -74,18 +82,22 @@ public class Visualizer {
         
         List<EvaluationState> states = new ArrayList<>();
         BooleanMask show = new BooleanMask(resultDims.getM(), resultDims.getN());
+        ArrayList<String> subOpStrings = node.getSubOpStrings();
+        int subOpIndex = 0;
         
         for (int i = 0; i < resultDims.getM(); i++) {
             for (int j = 0; j < resultDims.getN(); j++) {
                 BooleanMask leftActivation = new BooleanMask(leftDims, pattern.getLeftPattern(), i, j);
                 BooleanMask rightActivation = new BooleanMask(rightDims, pattern.getRightPattern(), i, j);
                 BooleanMask resultActivation = new BooleanMask(resultDims, pattern.getResultPattern(), i, j);
+                String subOpString = subOpStrings.get(subOpIndex);
                 
                 show.setElement(i, j);
                 BooleanMask currentlyShown = show.clone();
                 
-                EvaluationState state = new EvaluationState(leftActivation, rightActivation, resultActivation, currentlyShown);
+                EvaluationState state = new EvaluationState(leftActivation, rightActivation, resultActivation, currentlyShown, subOpString);
                 states.add(state);
+                subOpIndex++;
             }
         }
         

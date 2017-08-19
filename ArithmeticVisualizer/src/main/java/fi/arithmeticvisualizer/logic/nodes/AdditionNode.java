@@ -3,6 +3,8 @@ package fi.arithmeticvisualizer.logic.nodes;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.utils.Dims;
 import static fi.arithmeticvisualizer.logic.utils.Utils.addArrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdditionNode extends BinaryNode {
 
@@ -51,6 +53,35 @@ public class AdditionNode extends BinaryNode {
     @Override
     public boolean validImputDims() {
         return left.outDims().equals(right.outDims());
+    }
+
+    @Override
+    public ArrayList<String> getSubOpStrings() {
+        
+        double[][] leftArray = left.evaluate().getValue();
+        double[][] rightArray = right.evaluate().getValue();
+        
+        int m = outDims().getM();
+        int n = outDims().getN();
+        
+        ArrayList<String> strings = new ArrayList<>();
+        
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                double leftOperand = leftArray[i][j];
+                double rightOperand = rightArray[i][j];
+                double result = leftOperand + rightOperand;
+                String string;
+                if (rightOperand >= 0.0) {
+                    string = leftOperand + " + " + rightOperand + " = " + result;
+                } else {
+                    string = leftOperand + " + (" + rightOperand + ") = " + result;
+                }
+                strings.add(string);
+            }
+        }
+        
+        return strings;
     }
 
 }

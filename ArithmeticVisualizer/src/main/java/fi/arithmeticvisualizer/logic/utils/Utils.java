@@ -101,4 +101,21 @@ public class Utils {
         return sum;
     }
     
+    public static double[] getArrayRow(double[][] array, int row) {
+        return array[row];
+    }
+    
+    public static double[] getArrayColumn(double[][] array, int column) {
+        
+        int columnLength = array[0].length;
+        
+        double[] result = new double[columnLength];
+        
+        for (int i = 0; i < columnLength; i++) {
+            result[i] = array[i][column];
+        }
+        
+        return result;
+    }
+    
 }

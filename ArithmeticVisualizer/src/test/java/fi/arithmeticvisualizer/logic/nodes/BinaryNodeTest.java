@@ -1,17 +1,10 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
-import static fi.arithmeticvisualizer.logic.utils.OperationSelector.addition;
-import static fi.arithmeticvisualizer.logic.utils.OperationSelector.multiplication;
-import static fi.arithmeticvisualizer.logic.utils.OperationSelector.subtraction;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class BinaryNodeTest {
 

@@ -6,14 +6,16 @@ public class EvaluationState {
     private final BooleanMask rightActivation;
     private final BooleanMask resultActivation;
     private final BooleanMask showResult;
+    private final String subOpString;
 
-    public EvaluationState(BooleanMask leftActivation, BooleanMask rightActivation, BooleanMask resultActivation, BooleanMask showResult) {
+    public EvaluationState(BooleanMask leftActivation, BooleanMask rightActivation, BooleanMask resultActivation, BooleanMask showResult, String subOpString) {
         int m = leftActivation.getMask().length;
         int n = leftActivation.getMask()[0].length;
         this.leftActivation = leftActivation;
         this.rightActivation = rightActivation;
         this.resultActivation = resultActivation;
         this.showResult = showResult;
+        this.subOpString = subOpString;
     }
 
     public BooleanMask getLeftActivation() {
@@ -31,5 +33,9 @@ public class EvaluationState {
     public BooleanMask getShow() {
         return showResult;
     }
-    
+
+    public String getSubOpString() {
+        return subOpString;
+    }
+ 
 }

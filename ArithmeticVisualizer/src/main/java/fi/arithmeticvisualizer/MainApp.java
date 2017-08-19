@@ -9,7 +9,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
+/**
+ * The main class of the Arithmetic Visualizer application.
+ */
 public class MainApp extends Application {
 
     @Override

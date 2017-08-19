@@ -1,6 +1,5 @@
 package fi.arithmeticvisualizer.gui;
 
-import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import fi.arithmeticvisualizer.logic.nodes.BooleanMask;
 import java.util.Arrays;
 import java.util.Collections;
@@ -13,6 +12,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+/**
+ * This class contains functions for drawing arrays of type double[][].
+ */
 public class ArrayDrawingUtils {
 
     public static final String ARRAYBACKGROUNDSTYLE = "-fx-background-color: beige";

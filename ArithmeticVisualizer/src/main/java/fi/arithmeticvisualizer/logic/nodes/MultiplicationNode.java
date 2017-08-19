@@ -2,7 +2,11 @@ package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.utils.Dims;
+import fi.arithmeticvisualizer.logic.utils.Utils;
 import static fi.arithmeticvisualizer.logic.utils.Utils.multiplyArrays;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class MultiplicationNode extends BinaryNode {
 
@@ -56,6 +60,43 @@ public class MultiplicationNode extends BinaryNode {
         } else {
             return ActivationPattern.MATRIXMULTIPLICATION;
         }
+    }
+    
+    @Override
+    public ArrayList<String> getSubOpStrings() {
+        
+        double[][] leftArray = left.evaluate().getValue();
+        double[][] rightArray = right.evaluate().getValue();
+        
+        int m = outDims().getM();
+        int n = outDims().getN();
+        
+        ArrayList<String> strings = new ArrayList<>();
+        
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                double[] leftVector = Utils.getArrayRow(leftArray, i);
+                double[] rightVector = Utils.getArrayColumn(rightArray, j);
+                
+                String string = subOpString(leftVector, rightVector);
+                strings.add(string);
+            }
+        }
+        
+        return strings;
+    }
+    
+    private String subOpString(double[] leftVector, double[] rightVector) {
+        
+        int vectorLength = leftVector.length;
+        String string = IntStream
+                        .range(0, vectorLength)
+                        .mapToObj(i -> "(" + leftVector[i] + " * " + rightVector[i] + ")")
+                        .collect(Collectors.joining(" + "));
+        
+        double subOpResult = Utils.dotVectors(leftVector, rightVector);
+        
+        return string + " = " + Double.toString(subOpResult);
     }
 
     @Override

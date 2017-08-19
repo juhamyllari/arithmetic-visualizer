@@ -23,6 +23,7 @@ import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
 import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.arrayToInputString;
 import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.transposeArray;
 import javafx.scene.control.Button;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
 
 public class EntrySceneController implements Initializable {
 
