@@ -11,3 +11,9 @@ Date | Hours | Description
 11.8.2017  | 5h | Reworking program as a Maven JavaFX project
 12.8.2017  | 7h | Creating GUI; working on the first scene
 13.8.2017  | 6h | Debugging and trimming GUI; adding elementary node visualization
+14.8.2017  | 5h | Creating the evaluation scene
+15.8.2017  | 7h | Expanding on the evaluation scene
+16.8.2017  | 5h | Reworking array drawing
+17.8.2017  | 5h | Enhancing visualization
+18.8.2017  | 6h | Cleaning up EntrySceneController methods
+19.8.2017  | 3h | Cleaning up class structure; adding subOperation strings
