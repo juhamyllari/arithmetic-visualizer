@@ -47,7 +47,6 @@ public class ArrayValue {
         }
 
         int n = stringToRow(rows[0]).length;
-
         double[][] array = new double[m][n];
 
         for (int row = 0; row < m; row++) {
@@ -57,7 +56,6 @@ public class ArrayValue {
             }
             array[row] = rowAsDoubles;
         }
-
         return array;
     }
 
@@ -96,7 +94,6 @@ public class ArrayValue {
     }
 
     public ArrayValue multiply(ArrayValue that) {
-
         if (this.isScalar()) {
             return that.scalarMultiply(this.getValue()[0][0]);
         } else if (that.isScalar()) {
@@ -107,7 +104,6 @@ public class ArrayValue {
     }
 
     public ArrayValue scalarMultiply(double d) {
-
         double[][] newArray = new double[m][n];
 
         for (int i = 0; i < m; i++) {
@@ -115,7 +111,6 @@ public class ArrayValue {
                 newArray[i][j] = d * array[i][j];
             }
         }
-
         return new ArrayValue(newArray);
     }
 
@@ -124,7 +119,6 @@ public class ArrayValue {
     }
 
     private ArrayValue matrixMultiply(ArrayValue that) {
-
         double[][] newMatrix = new double[this.m][that.n];
 
         for (int row = 0; row < this.m; row++) {
@@ -134,7 +128,6 @@ public class ArrayValue {
                 newMatrix[row][column] = dotVectors(leftRow, rightColumn);
             }
         }
-
         return new ArrayValue(newMatrix);
     }
 
@@ -158,7 +151,6 @@ public class ArrayValue {
     }
 
     public ArrayValue addArray(ArrayValue that) {
-
         double[][] result = new double[m][n];
 
         for (int i = 0; i < m; i++) {
@@ -166,7 +158,6 @@ public class ArrayValue {
                 result[i][j] = this.array[i][j] + that.array[i][j];
             }
         }
-
         return new ArrayValue(result);
     }
 
@@ -205,5 +196,4 @@ public class ArrayValue {
 
         return sb.toString();
     }
-    
 }

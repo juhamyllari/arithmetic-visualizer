@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017 Your Organisation</copyright>
     <item>
-      <title>File: 15,
+      <title>File: 19,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -46,35 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.utils.BinaryOperation.java">fi/arithmeticvisualizer/logic/utils/BinaryOperation.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.nodes.Node.java">fi/arithmeticvisualizer/logic/nodes/Node.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.nodes.UnaryNode.java">fi/arithmeticvisualizer/logic/nodes/UnaryNode.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.utils.BadArrayException.java">fi/arithmeticvisualizer/logic/utils/BadArrayException.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.visualization.Visualizer.java">fi/arithmeticvisualizer/logic/visualization/Visualizer.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.utils.NodeFunctions.java">fi/arithmeticvisualizer/logic/utils/NodeFunctions.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.visualization.BooleanMask.java">fi/arithmeticvisualizer/logic/visualization/BooleanMask.java</a>
                 </td>
                 <td>
                   0
@@ -130,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.evaluation.Expression.java">fi/arithmeticvisualizer/logic/evaluation/Expression.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.gui.EntrySceneController.java">fi/arithmeticvisualizer/gui/EntrySceneController.java</a>
                 </td>
                 <td>
                   0
@@ -144,7 +116,21 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.gui.FXMLController.java">fi/arithmeticvisualizer/gui/FXMLController.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.evaluation.BadArrayException.java">fi/arithmeticvisualizer/logic/evaluation/BadArrayException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.visualization.Operand.java">fi/arithmeticvisualizer/logic/visualization/Operand.java</a>
                 </td>
                 <td>
                   0
@@ -172,7 +158,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.utils.Utils.java">fi/arithmeticvisualizer/logic/utils/Utils.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.nodes.SubtractionNode.java">fi/arithmeticvisualizer/logic/nodes/SubtractionNode.java</a>
                 </td>
                 <td>
                   0
@@ -186,7 +172,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.gui.ArrayDrawingUtils.java">fi/arithmeticvisualizer/gui/ArrayDrawingUtils.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.nodes.MultiplicationNode.java">fi/arithmeticvisualizer/logic/nodes/MultiplicationNode.java</a>
                 </td>
                 <td>
                   0
@@ -200,7 +186,77 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.java">fi/arithmeticvisualizer/logic/utils/ArrayIOUtils.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.visualization.GraphicArray.java">fi/arithmeticvisualizer/logic/visualization/GraphicArray.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.visualization.ActivationPattern.java">fi/arithmeticvisualizer/logic/visualization/ActivationPattern.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.visualization.SubOperation.java">fi/arithmeticvisualizer/logic/visualization/SubOperation.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.evaluation.ArrayValue.java">fi/arithmeticvisualizer/logic/evaluation/ArrayValue.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.gui.EvaluationSceneController.java">fi/arithmeticvisualizer/gui/EvaluationSceneController.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.nodes.AdditionNode.java">fi/arithmeticvisualizer/logic/nodes/AdditionNode.java</a>
                 </td>
                 <td>
                   0
@@ -242,7 +298,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.evaluation.Value.java">fi/arithmeticvisualizer/logic/evaluation/Value.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.arithmeticvisualizer.logic.evaluation.Dimensions.java">fi/arithmeticvisualizer/logic/evaluation/Dimensions.java</a>
                 </td>
                 <td>
                   0
