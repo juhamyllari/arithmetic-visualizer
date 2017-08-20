@@ -16,6 +16,9 @@ public class EvaluationSceneController {
 
     private BinaryNode node;
     private Visualizer visualizer;
+    private GraphicArray left;
+    private GraphicArray right;
+    private GraphicArray result;
 
     @FXML
     private Button startButton;
@@ -46,9 +49,13 @@ public class EvaluationSceneController {
 
     public void initData(BinaryNode node) {
         this.node = node;
+        this.left = new GraphicArray(leftGrid, node.getLeft().evaluate());
+        this.right = new GraphicArray(rightGrid, node.getRight().evaluate());
+        this.result = new GraphicArray(resultGrid, node.evaluate());
+        
         setOptionsGridVisibility(false);
         this.symbol.setText(node.getSymbol());
-        this.visualizer = new Visualizer(node, leftGrid, rightGrid, resultGrid, subOpText, this);
+        this.visualizer = new Visualizer(this, node, left, right, result, subOpText);
         visualizer.drawOperands();
     }
 

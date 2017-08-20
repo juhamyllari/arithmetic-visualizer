@@ -13,6 +13,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+/**
+ * A GraphicArray object is responsible for drawing a single array.
+ */
 public class GraphicArray {
 
     public static final String ARRAYBACKGROUNDSTYLE = "-fx-background-color: beige";
@@ -29,33 +32,20 @@ public class GraphicArray {
     private ArrayValue array;
     private int m;
     private int n;
+    private BooleanMask activation;
+    private BooleanMask shown;
 
     public GraphicArray(GridPane grid, ArrayValue array) {
         this.grid = grid;
         this.array = array;
         this.m = array.getDims().getM();
         this.n = array.getDims().getN();
+        this.activation = new BooleanMask(array.getDims());
+        this.shown = new BooleanMask(array.getDims());
+        this.shown.setAll();;
     }
 
     public void draw() {
-
-        BooleanMask activation = new BooleanMask(array.getDims());
-        drawWithActivation(activation);
-
-    }
-
-    public void drawWithActivation(BooleanMask activationMask) {
-
-        BooleanMask showMask = new BooleanMask(array.getDims());
-        showMask.setAll();
-        drawWithMasks(activationMask, showMask);
-
-    }
-
-    public void drawWithMasks(BooleanMask activationMask, BooleanMask showMask) {
-
-        boolean[][] activation = activationMask.getMask();
-        boolean[][] show = showMask.getMask();
 
         setUpGrid();
         int activationRectangleWidth = getColumnWidth();
@@ -65,9 +55,9 @@ public class GraphicArray {
                 double value = array.getElement(i, j);
                 Text element = new Text(String.format(ELEMENTSTRINGFORMAT, value));
                 element.fontProperty().set(new Font(ELEMENTFONTSIZE));
-                element.setVisible(show[i][j]);
+                element.setVisible(shown.getMask()[i][j]);
                 StackPane stack = new StackPane(element);
-                if (activation[i][j]) {
+                if (activation.getMask()[i][j]) {
                     Rectangle rect = new Rectangle(activationRectangleWidth, ACTIVATIONRECTANGLEHEIGHT);
                     rect.fillProperty().set(ACTIVATIONRECTANGLECOLOUR);
                     rect.opacityProperty().set(ACTIVATIONRECTANGLEOPACITY);
@@ -119,4 +109,21 @@ public class GraphicArray {
 
         return maxLength;
     }
+
+    public BooleanMask getActivation() {
+        return activation;
+    }
+
+    public BooleanMask getShown() {
+        return shown;
+    }
+
+    public void setActivation(BooleanMask activation) {
+        this.activation = activation;
+    }
+
+    public void setShown(BooleanMask shown) {
+        this.shown = shown;
+    }
+
 }

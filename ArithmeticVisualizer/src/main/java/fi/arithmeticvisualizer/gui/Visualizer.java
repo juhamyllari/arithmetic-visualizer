@@ -1,6 +1,6 @@
 package fi.arithmeticvisualizer.gui;
 
-import static fi.arithmeticvisualizer.gui.ArrayDrawingUtils.drawArray;
+import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.nodes.ActivationPattern;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import fi.arithmeticvisualizer.logic.nodes.BooleanMask;
@@ -19,28 +19,24 @@ import javafx.util.Duration;
  */
 public class Visualizer {
 
-    private final BinaryNode node;
-    private final GridPane leftGrid;
-    private final GridPane rightGrid;
-    private final GridPane resultGrid;
-    private final Text subOpText;
     private final EvaluationSceneController controller;
+    private final BinaryNode node;
+    private final GraphicArray leftGraphicArray;
+    private final GraphicArray rightGraphicArray;
+    private final GraphicArray resultGraphicArray;
+    private final Text subOpText;
 
-    public Visualizer(BinaryNode node, GridPane leftGrid, GridPane rightGrid, GridPane resultGrid, Text subOpText, EvaluationSceneController controller) {
-        this.node = node;
-        this.leftGrid = leftGrid;
-        this.rightGrid = rightGrid;
-        this.resultGrid = resultGrid;
-        this.subOpText = subOpText;
+    public Visualizer(EvaluationSceneController controller, BinaryNode node, GraphicArray left, GraphicArray right, GraphicArray result, Text subOpText) {
         this.controller = controller;
+        this.node = node;
+        this.leftGraphicArray = left;
+        this.rightGraphicArray = right;
+        this.resultGraphicArray = result;
+        this.subOpText = subOpText;
     }
 
     public void visualize() {
         
-        double[][] leftArray = node.getLeft().evaluate().getValue();
-        double[][] rightArray = node.getRight().evaluate().getValue();
-        double[][] resultArray = node.evaluate().getValue();
-
         List<SubOperation> evaluationList = this.getSubOperations();
 
         final Animation animation = new Transition() {
@@ -56,10 +52,14 @@ public class Visualizer {
                 }
 
                 SubOperation state = evaluationList.get(n);
+                
+                leftGraphicArray.setActivation(state.getLeftActivation());
+                rightGraphicArray.setActivation(state.getRightActivation());
+                resultGraphicArray.setActivation(state.getResultActivation());
+                resultGraphicArray.setShown(state.getShow());
+                
+                drawAll();
 
-                ArrayDrawingUtils.drawArrayWithMasks(leftGrid, leftArray, state.getLeftActivation());
-                ArrayDrawingUtils.drawArrayWithMasks(rightGrid, rightArray, state.getRightActivation());
-                ArrayDrawingUtils.drawArrayWithMasks(resultGrid, resultArray, state.getResultActivation(), state.getShow());
                 subOpText.setText(state.getSubOpString());
             }
 
@@ -71,8 +71,14 @@ public class Visualizer {
     }
 
     public void drawOperands() {
-        drawArray(leftGrid, node.getLeft().evaluate().getValue());
-        drawArray(rightGrid, node.getRight().evaluate().getValue());
+        leftGraphicArray.draw();
+        rightGraphicArray.draw();
+    }
+    
+    private void drawAll() {
+        leftGraphicArray.draw();
+        rightGraphicArray.draw();
+        resultGraphicArray.draw();
     }
     
     public List<SubOperation> getSubOperations() {

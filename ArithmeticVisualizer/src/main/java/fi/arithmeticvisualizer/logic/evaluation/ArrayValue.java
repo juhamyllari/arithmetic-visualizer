@@ -102,7 +102,7 @@ public class ArrayValue {
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                newArray[m][n] = d * array[m][n];
+                newArray[i][j] = d * array[i][j];
             }
         }
 
