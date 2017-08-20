@@ -17,3 +17,4 @@ Date | Hours | Description
 17.8.2017  | 5h | Enhancing visualization
 18.8.2017  | 6h | Cleaning up EntrySceneController methods
 19.8.2017  | 3h | Cleaning up class structure; adding subOperation strings
+20.8.2017  | 6h | Creating unit tests; reworking structure
