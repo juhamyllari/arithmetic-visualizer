@@ -1,4 +1,4 @@
-package fi.arithmeticvisualizer.logic.utils;
+package fi.arithmeticvisualizer.logic.evaluation;
 
 /**
  * A Dimensions object indicates the input or output dimensions of a node.

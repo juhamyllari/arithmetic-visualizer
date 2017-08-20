@@ -1,7 +1,8 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
+import fi.arithmeticvisualizer.logic.visualization.ActivationPattern;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
-import fi.arithmeticvisualizer.logic.utils.Dimensions;
+import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import java.util.ArrayList;
 
 /**

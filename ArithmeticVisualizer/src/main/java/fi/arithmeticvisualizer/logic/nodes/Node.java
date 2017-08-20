@@ -1,7 +1,7 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
-import fi.arithmeticvisualizer.logic.utils.Dimensions;
+import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 
 /**
  * A Node object represents a node in an arithmetic expression.

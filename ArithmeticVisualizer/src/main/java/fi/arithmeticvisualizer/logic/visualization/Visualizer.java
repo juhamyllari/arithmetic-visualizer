@@ -1,11 +1,9 @@
-package fi.arithmeticvisualizer.gui;
+package fi.arithmeticvisualizer.logic.visualization;
 
+import fi.arithmeticvisualizer.gui.EvaluationSceneController;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
-import fi.arithmeticvisualizer.logic.nodes.ActivationPattern;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
-import fi.arithmeticvisualizer.logic.nodes.BooleanMask;
-import fi.arithmeticvisualizer.logic.nodes.SubOperation;
-import fi.arithmeticvisualizer.logic.utils.Dimensions;
+import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.Animation;

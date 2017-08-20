@@ -1,4 +1,4 @@
-package fi.arithmeticvisualizer.logic.nodes;
+package fi.arithmeticvisualizer.logic.visualization;
 
 /**
  * A SubOperation object represents a single frame in a visualization

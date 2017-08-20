@@ -1,5 +1,6 @@
 package fi.arithmeticvisualizer.logic.utils;
 
+import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

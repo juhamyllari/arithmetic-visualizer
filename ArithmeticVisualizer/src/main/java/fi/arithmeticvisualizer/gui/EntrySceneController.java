@@ -1,8 +1,9 @@
 package fi.arithmeticvisualizer.gui;
 
+import fi.arithmeticvisualizer.logic.visualization.Operand;
+import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
-import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.stringToArray;
-import fi.arithmeticvisualizer.logic.utils.BadArrayException;
+import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,10 +20,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.arrayToInputString;
-import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.transposeArray;
 import javafx.scene.control.Button;
-import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
 import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
 
 /**
@@ -31,9 +29,9 @@ import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
  */
 public class EntrySceneController implements Initializable {
 
-    public static double[][] createArray(TextField field, Text resultText) {
+    public static ArrayValue createArray(TextField field, Text resultText) {
         try {
-            return stringToArray(field.getText());
+            return new ArrayValue(field.getText());
         } catch (BadArrayException ex) {
             resultText.setText("Bad array: " + ex.getMessage());
             return null;
@@ -158,14 +156,14 @@ public class EntrySceneController implements Initializable {
     }
 
     private void transpose(TextField entryField) {
-        double[][] array = createArray(entryField, errorText);
+        ArrayValue array = createArray(entryField, errorText);
         if (array != null) {
-            entryField.setText(arrayToInputString(transposeArray(array)));
+            entryField.setText(array.transpose().toInputString());
             createNode();
         }
     }
 
-    protected void setErrorMessage(String message) {
+    public void setErrorMessage(String message) {
         errorText.setText(message);
     }
 }

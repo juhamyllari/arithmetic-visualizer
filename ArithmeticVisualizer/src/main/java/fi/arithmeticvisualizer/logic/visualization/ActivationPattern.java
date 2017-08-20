@@ -1,4 +1,4 @@
-package fi.arithmeticvisualizer.logic.nodes;
+package fi.arithmeticvisualizer.logic.visualization;
 
 /**
  * An ActivationPattern indicates which elements of each array are active.

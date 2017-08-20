@@ -1,7 +1,6 @@
-package fi.arithmeticvisualizer.gui;
+package fi.arithmeticvisualizer.logic.visualization;
 
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
-import fi.arithmeticvisualizer.logic.nodes.BooleanMask;
 import java.util.Arrays;
 import java.util.Collections;
 import javafx.scene.layout.ColumnConstraints;

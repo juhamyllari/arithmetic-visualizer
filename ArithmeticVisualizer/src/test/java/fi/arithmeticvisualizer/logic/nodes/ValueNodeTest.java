@@ -1,6 +1,6 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.logic.utils.WrongShapeException;
+import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.nodes.ValueNode;
 import org.junit.After;

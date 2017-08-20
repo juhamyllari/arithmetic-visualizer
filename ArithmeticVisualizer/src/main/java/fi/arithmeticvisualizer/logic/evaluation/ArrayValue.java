@@ -1,9 +1,7 @@
 package fi.arithmeticvisualizer.logic.evaluation;
 
-import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.stringToRow;
-import fi.arithmeticvisualizer.logic.utils.BadArrayException;
-import fi.arithmeticvisualizer.logic.utils.Dimensions;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -67,6 +65,24 @@ public class ArrayValue {
         }
 
         return array;
+    }
+
+    private static double[] stringToRow(String str) throws BadArrayException {
+
+        List<String> strings = Arrays.asList(str.split("\\s+"));
+
+        if (strings.isEmpty()) {
+            throw new BadArrayException("Empty row");
+        }
+
+        try {
+            return strings
+                    .stream()
+                    .mapToDouble((s) -> Double.parseDouble(s))
+                    .toArray();
+        } catch (NumberFormatException e) {
+            throw new BadArrayException(e.getMessage());
+        }
     }
 
     public double[][] getValue() {

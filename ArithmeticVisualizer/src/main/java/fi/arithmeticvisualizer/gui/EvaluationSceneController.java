@@ -1,5 +1,7 @@
 package fi.arithmeticvisualizer.gui;
 
+import fi.arithmeticvisualizer.logic.visualization.Visualizer;
+import fi.arithmeticvisualizer.logic.visualization.GraphicArray;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

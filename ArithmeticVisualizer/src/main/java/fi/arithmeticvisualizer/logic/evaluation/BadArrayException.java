@@ -1,4 +1,4 @@
-package fi.arithmeticvisualizer.logic.utils;
+package fi.arithmeticvisualizer.logic.evaluation;
 
 /** 
  * An exception that indicates failure to create a valid array.

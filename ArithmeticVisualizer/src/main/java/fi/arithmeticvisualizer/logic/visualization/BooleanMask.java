@@ -1,6 +1,7 @@
-package fi.arithmeticvisualizer.logic.nodes;
+package fi.arithmeticvisualizer.logic.visualization;
 
-import fi.arithmeticvisualizer.logic.utils.Dimensions;
+import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
+import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import java.util.function.BiPredicate;
 
 /**

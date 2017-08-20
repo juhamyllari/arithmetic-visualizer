@@ -1,7 +1,8 @@
-package fi.arithmeticvisualizer.gui;
+package fi.arithmeticvisualizer.logic.visualization;
 
+import fi.arithmeticvisualizer.gui.EntrySceneController;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
-import fi.arithmeticvisualizer.logic.utils.BadArrayException;
+import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
