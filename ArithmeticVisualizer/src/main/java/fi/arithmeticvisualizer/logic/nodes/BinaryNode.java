@@ -5,7 +5,7 @@ import fi.arithmeticvisualizer.logic.utils.Dims;
 import java.util.ArrayList;
 
 /**
- * A BinaryNode is a Node that performs an operation of two operands.
+ * A BinaryNode is a Node that performs an operation on two operands.
  * The abstract class is extended by AdditionNode, SubtractionNode
  * and MultiplicationNode.
  */

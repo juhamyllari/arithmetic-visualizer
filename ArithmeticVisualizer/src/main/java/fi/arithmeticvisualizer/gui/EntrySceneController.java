@@ -25,7 +25,7 @@ import javafx.scene.control.Button;
 import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
 
 /**
- * This is the controller class for the first (entry)scene of the application.
+ * This is the controller class for the first (entry) scene of the application.
  * The entry scene is where expressions are entered.
  */
 public class EntrySceneController implements Initializable {
@@ -44,7 +44,7 @@ public class EntrySceneController implements Initializable {
     private Operand rightOperand;
 
     @FXML
-    private VBox VBox;
+    private VBox vBox;
 
     @FXML
     private Text errorText;
@@ -138,7 +138,7 @@ public class EntrySceneController implements Initializable {
     }
 
     private void loadEvaluationScene() {
-        Stage stage = (Stage) VBox.getScene().getWindow();
+        Stage stage = (Stage) vBox.getScene().getWindow();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/EvaluationScene.fxml"));
             Parent root = loader.load();

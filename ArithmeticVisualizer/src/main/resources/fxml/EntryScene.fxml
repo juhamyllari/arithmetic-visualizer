@@ -10,7 +10,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.collections.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="VBox" styleClass="root" prefHeight="600" prefWidth="800" fx:controller="fi.arithmeticvisualizer.gui.EntrySceneController" >
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="vBox" styleClass="root" prefHeight="600" prefWidth="800" fx:controller="fi.arithmeticvisualizer.gui.EntrySceneController" >
     <children>
         <GridPane hgap="10" vgap="10" >
             <padding>

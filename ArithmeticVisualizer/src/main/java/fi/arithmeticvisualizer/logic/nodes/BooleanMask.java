@@ -10,7 +10,6 @@ import java.util.function.BiPredicate;
  * It is also possible to set all elements to false
  * at once.
  */
-
 public class BooleanMask {
 
     private final boolean[][] mask;

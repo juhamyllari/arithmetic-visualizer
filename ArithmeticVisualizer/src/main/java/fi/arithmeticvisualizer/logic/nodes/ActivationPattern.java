@@ -1,8 +1,7 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-
 /**
- * An ActivationPattern indicated which elements of each array are active.
+ * An ActivationPattern indicates which elements of each array are active.
  * Activated elements are highlighted in the visualization animation frame.
  * They correspond to the array elements which contribute to that suboperation.
  */
