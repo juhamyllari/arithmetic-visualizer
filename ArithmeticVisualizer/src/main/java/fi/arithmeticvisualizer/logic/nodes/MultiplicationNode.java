@@ -1,7 +1,7 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
-import fi.arithmeticvisualizer.logic.utils.Dims;
+import fi.arithmeticvisualizer.logic.utils.Dimensions;
 import fi.arithmeticvisualizer.logic.utils.Utils;
 import static fi.arithmeticvisualizer.logic.utils.Utils.multiplyArrays;
 import java.util.ArrayList;
@@ -37,13 +37,13 @@ public class MultiplicationNode extends BinaryNode {
     }
 
     @Override
-    public Dims outDims() {
+    public Dimensions outDims() {
         if (left.isScalar()) {
             return right.outDims();
         } else if (right.isScalar()) {
             return left.outDims();
         } else {
-            return new Dims(left.outDims().getM(), right.outDims().getN());
+            return new Dimensions(left.outDims().getM(), right.outDims().getN());
         }
     }
 

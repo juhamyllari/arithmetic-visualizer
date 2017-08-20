@@ -1,7 +1,7 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
-import fi.arithmeticvisualizer.logic.utils.Dims;
+import fi.arithmeticvisualizer.logic.utils.Dimensions;
 import java.util.ArrayList;
 
 /**
@@ -16,7 +16,7 @@ public abstract class BinaryNode {
         String apply(double[][] left, double[][] right, int m, int n);
     }
 
-    public abstract Dims outDims();
+    public abstract Dimensions outDims();
 
     public abstract String getSymbol();
 

@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 
+/**
+ * A utility class for entering and displaying arrays.
+ */
 public class ArrayIOUtils {
 
     public static double[][] stringToArray(String str) throws BadArrayException {

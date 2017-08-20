@@ -1,6 +1,6 @@
 package fi.arithmeticvisualizer.logic.evaluation;
 
-import fi.arithmeticvisualizer.logic.utils.Dims;
+import fi.arithmeticvisualizer.logic.utils.Dimensions;
 
 /**
  * Expressions in the Arithmetic Visualizer evaluate to ArrayValue objects.
@@ -31,8 +31,8 @@ public class ArrayValue {
         return array;
     }
 
-    public Dims getDims() {
-        return new Dims(m, n);
+    public Dimensions getDims() {
+        return new Dimensions(m, n);
     }
     
     public boolean isScalar() {

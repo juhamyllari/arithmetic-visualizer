@@ -5,7 +5,7 @@ import fi.arithmeticvisualizer.logic.nodes.ActivationPattern;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import fi.arithmeticvisualizer.logic.nodes.BooleanMask;
 import fi.arithmeticvisualizer.logic.nodes.EvaluationState;
-import fi.arithmeticvisualizer.logic.utils.Dims;
+import fi.arithmeticvisualizer.logic.utils.Dimensions;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.Animation;
@@ -79,9 +79,9 @@ public class Visualizer {
         
         ActivationPattern pattern = node.getActivationPattern();
         
-        Dims leftDims = node.getLeft().outDims();
-        Dims rightDims = node.getRight().outDims();
-        Dims resultDims = node.outDims();
+        Dimensions leftDims = node.getLeft().outDims();
+        Dimensions rightDims = node.getRight().outDims();
+        Dimensions resultDims = node.outDims();
         
         List<EvaluationState> states = new ArrayList<>();
         BooleanMask show = new BooleanMask(resultDims.getM(), resultDims.getN());

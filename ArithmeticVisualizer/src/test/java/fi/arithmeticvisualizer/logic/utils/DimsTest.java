@@ -30,7 +30,7 @@ public class DimsTest {
 
     @Test
     public void dimsReturnsCorrectDimensions() {
-        Dims dims = new Dims(23, 42);
+        Dimensions dims = new Dimensions(23, 42);
         assertEquals(23, dims.getM());
         assertEquals(42, dims.getN());
     }
@@ -38,7 +38,7 @@ public class DimsTest {
     @Test
     public void arrayConstructedDimsWork() {
         double[][] array = new double[][]{{1, 2}, {3, 4}, {5, 6}};
-        Dims dims = new Dims(array);
+        Dimensions dims = new Dimensions(array);
         assertEquals(3, dims.getM());
         assertEquals(2, dims.getN());
     }
@@ -46,7 +46,7 @@ public class DimsTest {
     @Test
     public void toStringWorks() {
         double[][] array = new double[][]{{1, 2}, {3, 4}, {5, 6}};
-        Dims dims = new Dims(array);
+        Dimensions dims = new Dimensions(array);
         assertEquals("(3, 2)", dims.toString());
     }
 }

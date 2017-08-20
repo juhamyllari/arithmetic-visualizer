@@ -1,7 +1,7 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
-import fi.arithmeticvisualizer.logic.utils.Dims;
+import fi.arithmeticvisualizer.logic.utils.Dimensions;
 import static fi.arithmeticvisualizer.logic.utils.Utils.addArrays;
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ public class AdditionNode extends BinaryNode {
     }
 
     @Override
-    public Dims outDims() {
+    public Dimensions outDims() {
         return left.outDims();
     }
 

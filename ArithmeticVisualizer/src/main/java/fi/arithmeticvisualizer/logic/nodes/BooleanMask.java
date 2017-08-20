@@ -1,6 +1,6 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.logic.utils.Dims;
+import fi.arithmeticvisualizer.logic.utils.Dimensions;
 import java.util.function.BiPredicate;
 
 /**
@@ -22,7 +22,7 @@ public class BooleanMask {
         this.n = columns;
     }
 
-    public BooleanMask(Dims dims, String pattern, int row, int column) {
+    public BooleanMask(Dimensions dims, String pattern, int row, int column) {
         this(dims.getM(), dims.getN());
         switch (pattern) {
             case "row":

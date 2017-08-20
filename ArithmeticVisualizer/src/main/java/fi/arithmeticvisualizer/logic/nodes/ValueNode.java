@@ -1,7 +1,7 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
-import fi.arithmeticvisualizer.logic.utils.Dims;
+import fi.arithmeticvisualizer.logic.utils.Dimensions;
 
 /**
  * ValueNodes are the leaves in expression trees.
@@ -25,7 +25,7 @@ public class ValueNode extends Node {
     }
 
     @Override
-    public Dims outDims() {
+    public Dimensions outDims() {
         return value.getDims();
     }
 

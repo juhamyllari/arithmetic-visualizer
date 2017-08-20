@@ -1,16 +1,16 @@
 package fi.arithmeticvisualizer.logic.utils;
 
-public class Dims {
+public class Dimensions {
     
     private int m;
     private int n;
 
-    public Dims(int m, int n) {
+    public Dimensions(int m, int n) {
         this.m = m;
         this.n = n;
     }
 
-    public Dims(double[][] array) {
+    public Dimensions(double[][] array) {
         this.m = array.length;
         this.n = array[0].length;
     }
@@ -47,7 +47,7 @@ public class Dims {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Dims other = (Dims) obj;
+        final Dimensions other = (Dimensions) obj;
         if (this.m != other.m) {
             return false;
         }
