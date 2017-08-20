@@ -1,7 +1,11 @@
 package fi.arithmeticvisualizer.logic.evaluation;
 
+import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.stringToRow;
+import fi.arithmeticvisualizer.logic.utils.BadArrayException;
 import fi.arithmeticvisualizer.logic.utils.Dimensions;
 import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
 /**
@@ -29,10 +33,40 @@ public class ArrayValue {
         this.n = 1;
     }
 
+    public ArrayValue(String inputString) throws BadArrayException {
+        this.array = arrayFromString(inputString);
+        this.m = array.length;
+        this.n = array[0].length;
+    }
+
     private ArrayValue(Dimensions dims) {
         this.m = dims.getM();
         this.n = dims.getN();
         this.array = new double[m][n];
+    }
+
+    private double[][] arrayFromString(String str) throws BadArrayException {
+
+        String[] rows = str.split("\\s*;\\s*");
+        int m = rows.length;
+
+        if (m == 0) {
+            throw new BadArrayException("Array must have at least one element");
+        }
+
+        int n = stringToRow(rows[0]).length;
+
+        double[][] array = new double[m][n];
+
+        for (int row = 0; row < m; row++) {
+            double[] rowAsDoubles = stringToRow(rows[row]);
+            if (rowAsDoubles.length != n) {
+                throw new BadArrayException("Expected row " + row + " to have length " + n);
+            }
+            array[row] = rowAsDoubles;
+        }
+
+        return array;
     }
 
     public double[][] getValue() {
@@ -102,6 +136,10 @@ public class ArrayValue {
         return Arrays.stream(array).mapToDouble(row -> row[column]).toArray();
     }
 
+    public double getElement(int row, int column) {
+        return array[row][column];
+    }
+
     public static double dotVectors(double[] leftVector, double[] rightVector) {
         return IntStream
                 .range(0, leftVector.length)
@@ -121,9 +159,41 @@ public class ArrayValue {
 
         return new ArrayValue(result);
     }
-    
+
     public ArrayValue subtractArray(ArrayValue that) {
         return this.addArray(that.scalarMultiply(-1));
+    }
+
+    public ArrayValue transpose() {
+
+        double[][] newArray = new double[n][m];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                newArray[i][j] = array[j][i];
+            }
+        }
+
+        return new ArrayValue(newArray);
+    }
+
+    public String toInputString() {
+
+        StringBuilder sb = new StringBuilder();
+
+        for (double[] row : array) {
+            String rowAsString = Arrays.stream(row)
+                    .boxed()
+                    .map(d -> d.toString())
+                    .collect(Collectors.joining(" "));
+            sb.append(rowAsString);
+            sb.append("; ");
+        }
+
+        sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
+
+        return sb.toString();
     }
 
 }

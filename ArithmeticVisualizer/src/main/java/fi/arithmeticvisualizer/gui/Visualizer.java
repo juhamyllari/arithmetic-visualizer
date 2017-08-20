@@ -4,7 +4,7 @@ import static fi.arithmeticvisualizer.gui.ArrayDrawingUtils.drawArray;
 import fi.arithmeticvisualizer.logic.nodes.ActivationPattern;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import fi.arithmeticvisualizer.logic.nodes.BooleanMask;
-import fi.arithmeticvisualizer.logic.nodes.EvaluationState;
+import fi.arithmeticvisualizer.logic.nodes.SubOperation;
 import fi.arithmeticvisualizer.logic.utils.Dimensions;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class Visualizer {
         double[][] rightArray = node.getRight().evaluate().getValue();
         double[][] resultArray = node.evaluate().getValue();
 
-        List<EvaluationState> evaluationList = this.getEvaluationStates();
+        List<SubOperation> evaluationList = this.getSubOperations();
 
         final Animation animation = new Transition() {
             {
@@ -55,7 +55,7 @@ public class Visualizer {
                     n = length - 1;
                 }
 
-                EvaluationState state = evaluationList.get(n);
+                SubOperation state = evaluationList.get(n);
 
                 ArrayDrawingUtils.drawArrayWithMasks(leftGrid, leftArray, state.getLeftActivation());
                 ArrayDrawingUtils.drawArrayWithMasks(rightGrid, rightArray, state.getRightActivation());
@@ -75,7 +75,7 @@ public class Visualizer {
         drawArray(rightGrid, node.getRight().evaluate().getValue());
     }
     
-    public List<EvaluationState> getEvaluationStates() {
+    public List<SubOperation> getSubOperations() {
         
         ActivationPattern pattern = node.getActivationPattern();
         
@@ -83,9 +83,9 @@ public class Visualizer {
         Dimensions rightDims = node.getRight().outDims();
         Dimensions resultDims = node.outDims();
         
-        List<EvaluationState> states = new ArrayList<>();
+        List<SubOperation> states = new ArrayList<>();
         BooleanMask show = new BooleanMask(resultDims.getM(), resultDims.getN());
-        ArrayList<String> subOpStrings = node.getSubOpStrings();
+        ArrayList<String> subOpStrings = node.getSubOperationStrings();
         int subOpIndex = 0;
         
         for (int i = 0; i < resultDims.getM(); i++) {
@@ -98,7 +98,7 @@ public class Visualizer {
                 show.setElement(i, j);
                 BooleanMask currentlyShown = show.clone();
                 
-                EvaluationState state = new EvaluationState(leftActivation, rightActivation, resultActivation, currentlyShown, subOpString);
+                SubOperation state = new SubOperation(leftActivation, rightActivation, resultActivation, currentlyShown, subOpString);
                 states.add(state);
                 subOpIndex++;
             }

@@ -66,7 +66,7 @@ public class MultiplicationNode extends BinaryNode {
     }
     
     @Override
-    public ArrayList<String> getSubOpStrings() {
+    public ArrayList<String> getSubOperationStrings() {
         
         ArrayValue leftValue = left.evaluate();
         ArrayValue rightValue = right.evaluate();

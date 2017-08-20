@@ -1,13 +1,10 @@
 package fi.arithmeticvisualizer.gui;
 
-import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.arrayToInputString;
-import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.stringToArray;
-import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.transposeArray;
+import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.utils.BadArrayException;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 
 /**
  * Objects of the Operand class represent the operands of expressions entered in the entry scene.
@@ -15,14 +12,14 @@ import javafx.scene.text.Text;
 public class Operand {
 
     private EntrySceneController controller;
-    private double[][] array;
+    private ArrayValue array;
     private GridPane grid;
     private TextField entryField;
     private Button transposeButton;
 
     public Operand(EntrySceneController controller, double[][] array, GridPane grid, TextField entryField, Button transposeButton) {
         this.controller = controller;
-        this.array = array;
+        this.array = array == null ? null : new ArrayValue(array);
         this.grid = grid;
         this.entryField = entryField;
         this.transposeButton = transposeButton;
@@ -30,7 +27,7 @@ public class Operand {
 
     private void transpose() {
         if (createArray()) {
-            entryField.setText(arrayToInputString(transposeArray(array)));
+            entryField.setText(array.transpose().toInputString());
             createArray();
             drawOperandArray();
         }
@@ -38,7 +35,7 @@ public class Operand {
 
     public boolean createArray() {
         try {
-            array = stringToArray(entryField.getText());
+            array = new ArrayValue(entryField.getText());
             drawOperandArray();
             return true;
         } catch (BadArrayException ex) {
@@ -47,12 +44,13 @@ public class Operand {
         }
     }
 
-    public double[][] getArray() {
+    public ArrayValue getArrayValue() {
         return array;
     }
     
     public void drawOperandArray() {
-        ArrayDrawingUtils.drawArray(grid, array);
+        GraphicArray graphicArray = new GraphicArray(grid, array);
+        graphicArray.draw();
     }
     
 }

@@ -58,7 +58,7 @@ public class SubtractionNode extends BinaryNode {
     }
 
     @Override
-    public ArrayList<String> getSubOpStrings() {
+    public ArrayList<String> getSubOperationStrings() {
 
         double[][] leftArray = left.evaluate().getValue();
         double[][] rightArray = right.evaluate().getValue();

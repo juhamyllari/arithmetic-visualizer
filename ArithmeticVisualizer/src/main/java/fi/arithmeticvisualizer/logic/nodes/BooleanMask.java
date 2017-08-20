@@ -21,6 +21,10 @@ public class BooleanMask {
         this.m = rows;
         this.n = columns;
     }
+    
+    public BooleanMask(Dimensions dims) {
+        this(dims.getM(), dims.getN());
+    }
 
     public BooleanMask(Dimensions dims, String pattern, int row, int column) {
         this(dims.getM(), dims.getN());

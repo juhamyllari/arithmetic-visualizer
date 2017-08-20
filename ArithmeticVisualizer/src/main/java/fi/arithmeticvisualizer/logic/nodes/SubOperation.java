@@ -1,13 +1,14 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 /**
- * An EvaluationState represents a single frame in a visualization
+ * A SubOperation object represents a single frame in a visualization
  * animation. It contains BooleanMasks to indicate active elements
  * in each array, a BooleanMask to indicate which elements of the
- * result array are to be displayed, and a String representation
- * of the suboperation (i.e. the calculation displayed in a single frame).
+ * result array are to be displayed, and a String representation of
+ * the suboperation (e.g. a single dot product in the case of matrix
+ * multiplication).
  */
-public class EvaluationState {
+public class SubOperation {
     
     private final BooleanMask leftActivation;
     private final BooleanMask rightActivation;
@@ -15,7 +16,7 @@ public class EvaluationState {
     private final BooleanMask showResult;
     private final String subOpString;
 
-    public EvaluationState(BooleanMask leftActivation, BooleanMask rightActivation, BooleanMask resultActivation, BooleanMask showResult, String subOpString) {
+    public SubOperation(BooleanMask leftActivation, BooleanMask rightActivation, BooleanMask resultActivation, BooleanMask showResult, String subOpString) {
         int m = leftActivation.getMask().length;
         int n = leftActivation.getMask()[0].length;
         this.leftActivation = leftActivation;

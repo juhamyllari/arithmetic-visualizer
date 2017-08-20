@@ -23,6 +23,7 @@ import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.arrayToInputStrin
 import static fi.arithmeticvisualizer.logic.utils.ArrayIOUtils.transposeArray;
 import javafx.scene.control.Button;
 import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
 
 /**
  * This is the controller class for the first (entry) scene of the application.
@@ -112,7 +113,7 @@ public class EntrySceneController implements Initializable {
         setErrorMessage("");
 
         if (leftOperand.createArray() && rightOperand.createArray()) {
-            node = createBinaryNode(leftOperand.getArray(), rightOperand.getArray(), (String) operationBox.getValue());
+            node = createBinaryNode(leftOperand.getArrayValue(), rightOperand.getArrayValue(), (String) operationBox.getValue());
             drawNode();
             
             if (node.validImputDims()) {
@@ -124,7 +125,7 @@ public class EntrySceneController implements Initializable {
         return false;
     }
 
-    protected void drawNode() {
+    private void drawNode() {
         leftOperand.drawOperandArray();
         rightOperand.drawOperandArray();
         symbol.setText(node.getSymbol());

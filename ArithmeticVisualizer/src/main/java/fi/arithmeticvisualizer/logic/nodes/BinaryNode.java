@@ -30,7 +30,7 @@ public abstract class BinaryNode {
 
     public abstract boolean validImputDims();
     
-    public abstract ArrayList<String> getSubOpStrings();
+    public abstract ArrayList<String> getSubOperationStrings();
 
     public static BinaryNode createBinaryNode(ArrayValue left, ArrayValue right, String operator) {
 
@@ -50,10 +50,6 @@ public abstract class BinaryNode {
         }
 
         return node;
-    }
-
-    public static BinaryNode createBinaryNode(double[][] left, double[][] right, String operator) {
-        return createBinaryNode(new ArrayValue(left), new ArrayValue(right), operator);
     }
 
 }
