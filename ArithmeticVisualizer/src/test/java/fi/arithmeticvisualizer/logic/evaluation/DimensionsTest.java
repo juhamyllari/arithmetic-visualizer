@@ -1,4 +1,4 @@
-package fi.arithmeticvisualizer.logic.utils;
+package fi.arithmeticvisualizer.logic.evaluation;
 
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import org.junit.After;
@@ -8,9 +8,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class DimsTest {
+public class DimensionsTest {
 
-    public DimsTest() {
+    public DimensionsTest() {
     }
 
     @BeforeClass
@@ -49,5 +49,10 @@ public class DimsTest {
         double[][] array = new double[][]{{1, 2}, {3, 4}, {5, 6}};
         Dimensions dims = new Dimensions(array);
         assertEquals("(3, 2)", dims.toString());
+    }
+    
+    @Test
+    public void equalsWorks() {
+        assertEquals(new Dimensions(23, 24), new Dimensions(23, 24));
     }
 }

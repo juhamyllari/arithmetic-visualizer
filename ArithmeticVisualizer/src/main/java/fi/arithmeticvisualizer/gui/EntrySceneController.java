@@ -3,7 +3,6 @@ package fi.arithmeticvisualizer.gui;
 import fi.arithmeticvisualizer.logic.visualization.Operand;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
-import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,15 +27,6 @@ import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
  * The entry scene is where expressions are entered.
  */
 public class EntrySceneController implements Initializable {
-
-    public static ArrayValue createArray(TextField field, Text resultText) {
-        try {
-            return new ArrayValue(field.getText());
-        } catch (BadArrayException ex) {
-            resultText.setText("Bad array: " + ex.getMessage());
-            return null;
-        }
-    }
 
     private BinaryNode node;
     private Operand leftOperand;
@@ -93,12 +83,12 @@ public class EntrySceneController implements Initializable {
 
     @FXML
     private void transposeLeft() {
-        transpose(leftField);
+        transpose(leftOperand);
     }
 
     @FXML
     private void transposeRight() {
-        transpose(rightField);
+        transpose(rightOperand);
     }
     
     @FXML
@@ -155,10 +145,9 @@ public class EntrySceneController implements Initializable {
         rightOperand = new Operand(this, null, rightArrayGrid, rightField, transposeRight);
     }
 
-    private void transpose(TextField entryField) {
-        ArrayValue array = createArray(entryField, errorText);
-        if (array != null) {
-            entryField.setText(array.transpose().toInputString());
+    private void transpose(Operand operand) {
+        if (operand.createArray()) {
+            operand.setEntryFieldText(operand.getArrayValue().transpose().toInputString());
             createNode();
         }
     }

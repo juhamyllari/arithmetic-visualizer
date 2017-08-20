@@ -53,6 +53,9 @@ public class Operand {
         GraphicArray graphicArray = new GraphicArray(grid, array);
         graphicArray.draw();
     }
-    
+ 
+    public void setEntryFieldText(String string) {
+        entryField.setText(string);
+    }
 }
 

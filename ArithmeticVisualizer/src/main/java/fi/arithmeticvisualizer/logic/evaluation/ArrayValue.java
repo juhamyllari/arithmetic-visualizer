@@ -37,12 +37,6 @@ public class ArrayValue {
         this.n = array[0].length;
     }
 
-    private ArrayValue(Dimensions dims) {
-        this.m = dims.getM();
-        this.n = dims.getN();
-        this.array = new double[m][n];
-    }
-
     private double[][] arrayFromString(String str) throws BadArrayException {
 
         String[] rows = str.split("\\s*;\\s*");
@@ -112,7 +106,7 @@ public class ArrayValue {
         }
     }
 
-    private ArrayValue scalarMultiply(double d) {
+    public ArrayValue scalarMultiply(double d) {
 
         double[][] newArray = new double[m][n];
 
@@ -211,5 +205,5 @@ public class ArrayValue {
 
         return sb.toString();
     }
-
+    
 }
