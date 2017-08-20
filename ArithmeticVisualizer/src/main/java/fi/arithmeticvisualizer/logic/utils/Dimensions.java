@@ -1,5 +1,8 @@
 package fi.arithmeticvisualizer.logic.utils;
 
+/**
+ * A Dimensions object indicates the input or output dimensions of a node.
+ */
 public class Dimensions {
     
     private int m;

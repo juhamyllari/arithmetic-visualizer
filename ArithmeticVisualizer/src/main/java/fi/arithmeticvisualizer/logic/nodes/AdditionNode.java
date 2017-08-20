@@ -2,7 +2,6 @@ package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.utils.Dimensions;
-import static fi.arithmeticvisualizer.logic.utils.Utils.addArrays;
 import java.util.ArrayList;
 
 /**
@@ -42,9 +41,7 @@ public class AdditionNode extends BinaryNode {
     }
 
     public ArrayValue evaluate() {
-        double[][] leftArray = left.evaluate().getValue();
-        double[][] rightArray = right.evaluate().getValue();
-        return new ArrayValue(addArrays(leftArray, rightArray));
+        return left.evaluate().addArray(right.evaluate());
     }
 
     @Override

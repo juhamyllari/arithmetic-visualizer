@@ -2,8 +2,6 @@ package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.utils.Dimensions;
-import fi.arithmeticvisualizer.logic.utils.Utils;
-import static fi.arithmeticvisualizer.logic.utils.Utils.multiplyArrays;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -54,7 +52,7 @@ public class MultiplicationNode extends BinaryNode {
 
     @Override
     public ArrayValue evaluate() {
-        return new ArrayValue(multiplyArrays(left.evaluate().getValue(), right.evaluate().getValue()));
+        return left.evaluate().multiply(right.evaluate());
     }
 
     public ActivationPattern getActivationPattern() {
@@ -70,8 +68,8 @@ public class MultiplicationNode extends BinaryNode {
     @Override
     public ArrayList<String> getSubOpStrings() {
         
-        double[][] leftArray = left.evaluate().getValue();
-        double[][] rightArray = right.evaluate().getValue();
+        ArrayValue leftValue = left.evaluate();
+        ArrayValue rightValue = right.evaluate();
         
         int m = outDims().getM();
         int n = outDims().getN();
@@ -80,8 +78,8 @@ public class MultiplicationNode extends BinaryNode {
         
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                double[] leftVector = Utils.getArrayRow(leftArray, i);
-                double[] rightVector = Utils.getArrayColumn(rightArray, j);
+                double[] leftVector = leftValue.getRow(i);
+                double[] rightVector = rightValue.getColumn(j);
                 
                 String string = subOpString(leftVector, rightVector);
                 strings.add(string);
@@ -99,8 +97,7 @@ public class MultiplicationNode extends BinaryNode {
                         .mapToObj(i -> "(" + leftVector[i] + " * " + rightVector[i] + ")")
                         .collect(Collectors.joining(" + "));
         
-        double subOpResult = Utils.dotVectors(leftVector, rightVector);
-        
+        double subOpResult = ArrayValue.dotVectors(leftVector, rightVector);
         return string + " = " + Double.toString(subOpResult);
     }
 
