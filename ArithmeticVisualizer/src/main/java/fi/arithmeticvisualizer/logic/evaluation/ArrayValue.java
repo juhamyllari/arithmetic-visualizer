@@ -80,16 +80,12 @@ public class ArrayValue {
         return array;
     }
 
-    public Dimensions getDims() {
+    public Dimensions getDimensions() {
         return new Dimensions(m, n);
     }
 
     public boolean isScalar() {
         return m == 1 && n == 1;
-    }
-
-    public String dimsString() {
-        return "(" + m + ", " + n + ")";
     }
 
     public ArrayValue multiply(ArrayValue that) {
@@ -111,10 +107,6 @@ public class ArrayValue {
             }
         }
         return new ArrayValue(newArray);
-    }
-
-    private double[][] cloneArray() {
-        return Arrays.stream(array).map(double[]::clone).toArray(double[][]::new);
     }
 
     private ArrayValue matrixMultiply(ArrayValue that) {

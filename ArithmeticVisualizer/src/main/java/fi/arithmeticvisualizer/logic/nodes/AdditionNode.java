@@ -24,7 +24,7 @@ public class AdditionNode extends BinaryNode {
     }
 
     @Override
-    public Dimensions outDims() {
+    public Dimensions outDimensions() {
         return left.outDimensions();
     }
 
@@ -61,8 +61,8 @@ public class AdditionNode extends BinaryNode {
         double[][] leftArray = left.evaluate().getValue();
         double[][] rightArray = right.evaluate().getValue();
         
-        int m = outDims().getM();
-        int n = outDims().getN();
+        int m = outDimensions().getM();
+        int n = outDimensions().getN();
         
         ArrayList<String> strings = new ArrayList<>();
         

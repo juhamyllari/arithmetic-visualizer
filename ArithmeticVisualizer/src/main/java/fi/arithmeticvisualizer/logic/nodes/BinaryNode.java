@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public abstract class BinaryNode {
 
-    public abstract Dimensions outDims();
+    public abstract Dimensions outDimensions();
 
     public abstract String getSymbol();
 

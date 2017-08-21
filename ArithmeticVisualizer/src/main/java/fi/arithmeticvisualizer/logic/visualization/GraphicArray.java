@@ -37,10 +37,10 @@ public class GraphicArray {
     public GraphicArray(GridPane grid, ArrayValue array) {
         this.grid = grid;
         this.array = array;
-        this.m = array.getDims().getM();
-        this.n = array.getDims().getN();
-        this.activation = new BooleanMask(array.getDims());
-        this.shown = new BooleanMask(array.getDims());
+        this.m = array.getDimensions().getM();
+        this.n = array.getDimensions().getN();
+        this.activation = new BooleanMask(array.getDimensions());
+        this.shown = new BooleanMask(array.getDimensions());
         this.shown.setAll();;
     }
 

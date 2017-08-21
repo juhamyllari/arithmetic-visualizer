@@ -53,6 +53,15 @@ public class DimensionsTest {
     
     @Test
     public void equalsWorks() {
+        Dimensions dims1 = new Dimensions(2, 4);
+        Dimensions dims2 = dims1;
+        Dimensions dims3 = new Dimensions(3, 4);
+        Dimensions dims4 = new Dimensions(2, 5);
+        assertEquals(dims1, dims2);
+        assertNotEquals(dims1, null);
+        assertNotEquals(dims1, dims3);
+        assertNotEquals(dims1, dims4);
+        assertNotEquals(dims1, "(2, 4)");
         assertEquals(new Dimensions(23, 24), new Dimensions(23, 24));
     }
 }

@@ -85,7 +85,7 @@ public class Visualizer {
         
         Dimensions leftDims = node.getLeft().outDimensions();
         Dimensions rightDims = node.getRight().outDimensions();
-        Dimensions resultDims = node.outDims();
+        Dimensions resultDims = node.outDimensions();
         
         List<SubOperation> states = new ArrayList<>();
         BooleanMask show = new BooleanMask(resultDims.getM(), resultDims.getN());

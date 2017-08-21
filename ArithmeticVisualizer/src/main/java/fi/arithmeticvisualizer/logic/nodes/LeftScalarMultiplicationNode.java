@@ -21,7 +21,7 @@ public class LeftScalarMultiplicationNode extends BinaryNode {
     }
 
     @Override
-    public Dimensions outDims() {
+    public Dimensions outDimensions() {
         return right.outDimensions();
     }
 
@@ -32,7 +32,8 @@ public class LeftScalarMultiplicationNode extends BinaryNode {
 
     @Override
     public ArrayValue evaluate() {
-        return right.evaluate().scalarMultiply(left.evaluate().getElement(0, 0));
+//        return right.evaluate().scalarMultiply(left.evaluate().getElement(0, 0));
+        return right.evaluate().multiply(left.evaluate());
     }
 
     @Override
@@ -61,8 +62,8 @@ public class LeftScalarMultiplicationNode extends BinaryNode {
         double leftScalar = left.evaluate().getElement(0, 0);
         double[][] rightArray = right.evaluate().getValue();
 
-        int m = outDims().getM();
-        int n = outDims().getN();
+        int m = outDimensions().getM();
+        int n = outDimensions().getN();
 
         ArrayList<String> strings = new ArrayList<>();
 

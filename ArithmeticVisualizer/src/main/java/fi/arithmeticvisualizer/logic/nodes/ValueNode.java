@@ -30,7 +30,7 @@ public class ValueNode extends Node {
 
     @Override
     public Dimensions outDimensions() {
-        return value.getDims();
+        return value.getDimensions();
     }
 
 }

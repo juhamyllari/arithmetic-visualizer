@@ -32,14 +32,6 @@ public class Dimensions {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 37 * hash + this.m;
-        hash = 37 * hash + this.n;
-        return hash;
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;

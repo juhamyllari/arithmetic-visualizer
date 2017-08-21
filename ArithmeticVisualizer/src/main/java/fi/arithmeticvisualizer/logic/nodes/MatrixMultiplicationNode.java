@@ -36,7 +36,7 @@ public class MatrixMultiplicationNode extends BinaryNode {
     }
 
     @Override
-    public Dimensions outDims() {
+    public Dimensions outDimensions() {
         if (left.isScalar()) {
             return right.outDimensions();
         } else if (right.isScalar()) {
@@ -72,8 +72,8 @@ public class MatrixMultiplicationNode extends BinaryNode {
         ArrayValue leftValue = left.evaluate();
         ArrayValue rightValue = right.evaluate();
 
-        int m = outDims().getM();
-        int n = outDims().getN();
+        int m = outDimensions().getM();
+        int n = outDimensions().getN();
 
         ArrayList<String> strings = new ArrayList<>();
 
