@@ -51,13 +51,7 @@ public class MatrixMultiplicationNode extends BinaryNode {
     }
 
     public ActivationPattern getActivationPattern() {
-        if (left.isScalar()) {
-            return ActivationPattern.LEFTSCALARMULTIPLICATION;
-        } else if (right.isScalar()) {
-            return ActivationPattern.RIGHTSCALARMULTIPLICATION;
-        } else {
-            return ActivationPattern.MATRIXMULTIPLICATION;
-        }
+        return ActivationPattern.MATRIXMULTIPLICATION;
     }
 
     @Override
@@ -92,20 +86,16 @@ public class MatrixMultiplicationNode extends BinaryNode {
         int vectorLength = leftVector.length;
         String string = IntStream
                 .range(0, vectorLength)
-                .mapToObj(i -> "(" + leftVector[i] + " * " + rightVector[i] + ")")
+                .mapToObj(i -> "(" + formatDouble(leftVector[i]) + " * " + formatDouble(rightVector[i]) + ")")
                 .collect(Collectors.joining(" + "));
 
         double subOpResult = ArrayValue.dotVectors(leftVector, rightVector);
-        return string + " = " + Double.toString(subOpResult);
+        return string + " = " + formatDouble(subOpResult);
     }
 
     @Override
     public boolean validImputDimensions() {
-        if (left.isScalar() || right.isScalar()) {
-            return true;
-        } else {
-            return left.outDimensions().getN() == right.outDimensions().getM();
-        }
+        return left.outDimensions().getN() == right.outDimensions().getM();
     }
 
 }

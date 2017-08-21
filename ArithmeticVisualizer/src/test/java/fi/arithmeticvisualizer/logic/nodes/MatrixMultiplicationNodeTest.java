@@ -1,8 +1,8 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import static fi.arithmeticvisualizer.logic.nodes.AdditionNodeTest.bn1;
-import static fi.arithmeticvisualizer.logic.nodes.BinaryNodeTest.v1;
+import fi.arithmeticvisualizer.logic.visualization.ActivationPattern;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,6 +17,7 @@ public class MatrixMultiplicationNodeTest {
     static ValueNode v1;
     static ValueNode v2;
     static ValueNode v3;
+    static ValueNode v4;
 
     public MatrixMultiplicationNodeTest() {
     }
@@ -26,9 +27,11 @@ public class MatrixMultiplicationNodeTest {
 
         v1 = new ValueNode(new double[][]{{1.1, 2.2, 3.3}, {1.0, 2.0, 3.0}});
         v2 = new ValueNode(new double[][]{{1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}});
-        v3 = new ValueNode(new double[][]{{2.0, 3.0}, {4.0, 5.0}, {6.0, 7.0}});
+        v3 = new ValueNode(new double[][]{{2.0, 3.0}, {4.0, 5.0}, {-6.0, 7.0}});
+        v4 = new ValueNode(new double[][]{{1.0, 2.0, 3.0}, {2.0, 3.0, 4.0}});
         
         bn1 = new MatrixMultiplicationNode(v1, v3);
+        bn2 = new MatrixMultiplicationNode(v4, v3);
     }
 
     @AfterClass
@@ -58,5 +61,17 @@ public class MatrixMultiplicationNodeTest {
     @Test
     public void multiplicationNodeGivesCorrectSymbol() {
         assertEquals("*", bn1.getSymbol());
+    }
+    
+    @Test
+    public void getActivationPatternWorks() {
+        assertEquals(ActivationPattern.MATRIXMULTIPLICATION, bn1.getActivationPattern());
+    }
+    
+    @Test
+    public void getSubOperationStringsWorks() {
+        ArrayList<String> strings = bn2.getSubOperationStrings();
+        assertEquals(4, strings.size());
+        assertEquals("(1.0 * 2.0) + (2.0 * 4.0) + (3.0 * -6.0) = -8.0", strings.get(0));
     }
 }

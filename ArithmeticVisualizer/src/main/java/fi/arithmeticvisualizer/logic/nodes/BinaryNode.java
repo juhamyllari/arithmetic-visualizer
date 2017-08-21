@@ -3,6 +3,7 @@ package fi.arithmeticvisualizer.logic.nodes;
 import fi.arithmeticvisualizer.logic.visualization.ActivationPattern;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
+import fi.arithmeticvisualizer.logic.visualization.GraphicArray;
 import java.util.ArrayList;
 
 /**
@@ -11,6 +12,8 @@ import java.util.ArrayList;
  * MultiplicationNode.
  */
 public abstract class BinaryNode extends Node {
+    
+    public static final String SUBOPFORMAT = "%.1f";
 
     public abstract Dimensions outDimensions();
 
@@ -27,7 +30,7 @@ public abstract class BinaryNode extends Node {
     public abstract boolean validImputDimensions();
 
     public abstract ArrayList<String> getSubOperationStrings();
-
+    
     public static BinaryNode createBinaryNode(ArrayValue left, ArrayValue right, String operator) {
 
         BinaryNode node = null;
@@ -51,5 +54,5 @@ public abstract class BinaryNode extends Node {
 
         return node;
     }
-
+    
 }

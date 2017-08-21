@@ -73,9 +73,9 @@ public class AdditionNode extends BinaryNode {
                 double result = leftOperand + rightOperand;
                 String string;
                 if (rightOperand >= 0.0) {
-                    string = leftOperand + " + " + rightOperand + " = " + result;
+                    string = formatDouble(leftOperand) + " + " + formatDouble(rightOperand) + " = " + formatDouble(result);
                 } else {
-                    string = leftOperand + " + (" + rightOperand + ") = " + result;
+                    string = formatDouble(leftOperand) + " + (" + formatDouble(rightOperand) + ") = " + formatDouble(result);
                 }
                 strings.add(string);
             }
