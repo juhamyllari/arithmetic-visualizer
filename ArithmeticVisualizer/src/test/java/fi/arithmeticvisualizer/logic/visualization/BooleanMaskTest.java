@@ -37,12 +37,47 @@ public class BooleanMaskTest {
     }
 
     @Test
+    public void constructionByPatternWorks() {
+        BooleanMask bm = new BooleanMask(new Dimensions(2, 2), "row", 0, 0);
+        assertEquals(2, bm.getMask().length);
+        assertEquals(2, bm.getMask()[0].length);
+        assertEquals(true, bm.getMask()[0][0]);
+        assertEquals(true, bm.getMask()[0][1]);
+        assertEquals(false, bm.getMask()[1][0]);
+        assertEquals(false, bm.getMask()[1][1]);
+
+        bm = new BooleanMask(new Dimensions(2, 2), "column", 0, 0);
+        assertEquals(2, bm.getMask().length);
+        assertEquals(2, bm.getMask()[0].length);
+        assertEquals(true, bm.getMask()[0][0]);
+        assertEquals(false, bm.getMask()[0][1]);
+        assertEquals(true, bm.getMask()[1][0]);
+        assertEquals(false, bm.getMask()[1][1]);
+
+        bm = new BooleanMask(new Dimensions(2, 2), "element", 0, 0);
+        assertEquals(2, bm.getMask().length);
+        assertEquals(2, bm.getMask()[0].length);
+        assertEquals(true, bm.getMask()[0][0]);
+        assertEquals(false, bm.getMask()[0][1]);
+        assertEquals(false, bm.getMask()[1][0]);
+        assertEquals(false, bm.getMask()[1][1]);
+
+        bm = new BooleanMask(new Dimensions(2, 2), "all", 0, 0);
+        assertEquals(2, bm.getMask().length);
+        assertEquals(2, bm.getMask()[0].length);
+        assertEquals(true, bm.getMask()[0][0]);
+        assertEquals(true, bm.getMask()[0][1]);
+        assertEquals(true, bm.getMask()[1][0]);
+        assertEquals(true, bm.getMask()[1][1]);
+    }
+
+    @Test
     public void constructionByDimensionsObjectWorks() {
         BooleanMask bm = new BooleanMask(new Dimensions(5, 6));
         assertEquals(5, bm.getMask().length);
         assertEquals(6, bm.getMask()[0].length);
     }
-    
+
     @Test
     public void setElementWorks() {
         BooleanMask bm = new BooleanMask(new Dimensions(2, 2));
@@ -50,7 +85,7 @@ public class BooleanMaskTest {
         bm.setElement(0, 0);
         assertEquals(true, bm.getMask()[0][0]);
     }
-    
+
     @Test
     public void setAllWorks() {
         BooleanMask bm = new BooleanMask(new Dimensions(2, 2));
@@ -61,7 +96,7 @@ public class BooleanMaskTest {
         assertEquals(true, bm.getMask()[1][0]);
         assertEquals(true, bm.getMask()[1][1]);
     }
-    
+
     @Test
     public void setRowWorks() {
         BooleanMask bm = new BooleanMask(new Dimensions(2, 2));
@@ -72,7 +107,7 @@ public class BooleanMaskTest {
         assertEquals(true, bm.getMask()[1][0]);
         assertEquals(true, bm.getMask()[1][1]);
     }
-    
+
     @Test
     public void setColumnWorks() {
         BooleanMask bm = new BooleanMask(new Dimensions(2, 2));
@@ -83,7 +118,7 @@ public class BooleanMaskTest {
         assertEquals(false, bm.getMask()[1][0]);
         assertEquals(true, bm.getMask()[1][1]);
     }
-    
+
     @Test
     public void clearAllWorks() {
         BooleanMask bm = new BooleanMask(new Dimensions(2, 2));
@@ -96,14 +131,15 @@ public class BooleanMaskTest {
         assertEquals(false, bm.getMask()[1][0]);
         assertEquals(false, bm.getMask()[1][1]);
     }
-    
+
     @Test
     public void cloneWorks() {
         BooleanMask bm = new BooleanMask(new Dimensions(2, 2));
+        bm.setElement(1, 1);
         BooleanMask clone = bm.clone();
         assertArrayEquals(bm.getMask()[0], clone.getMask()[0]);
         assertArrayEquals(bm.getMask()[1], clone.getMask()[1]);
         assertNotEquals(bm, clone);
     }
-    
+
 }
