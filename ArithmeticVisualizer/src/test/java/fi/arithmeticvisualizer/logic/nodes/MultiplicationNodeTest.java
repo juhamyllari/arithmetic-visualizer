@@ -41,8 +41,8 @@ public class MultiplicationNodeTest {
     }
 
     @Test
-    public void additionNodeGivesCorrectSymbol() {
-        bn1 = new MultiplicationNode(v1, v3);
+    public void multiplicationNodeGivesCorrectSymbol() {
+        bn1 = new MatrixMultiplicationNode(v1, v3);
         assertEquals("*", bn1.getSymbol());
     }
 }

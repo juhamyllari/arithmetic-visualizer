@@ -83,8 +83,8 @@ public class Visualizer {
         
         ActivationPattern pattern = node.getActivationPattern();
         
-        Dimensions leftDims = node.getLeft().outDims();
-        Dimensions rightDims = node.getRight().outDims();
+        Dimensions leftDims = node.getLeft().outDimensions();
+        Dimensions rightDims = node.getRight().outDimensions();
         Dimensions resultDims = node.outDims();
         
         List<SubOperation> states = new ArrayList<>();

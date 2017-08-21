@@ -3,7 +3,6 @@ package fi.arithmeticvisualizer.logic.evaluation;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
 /**
@@ -123,8 +122,8 @@ public class ArrayValue {
 
         for (int row = 0; row < this.m; row++) {
             for (int column = 0; column < that.n; column++) {
-                double[] leftRow = this.getRow(row);
-                double[] rightColumn = this.getColumn(column);
+                double[] leftRow = getRow(row);
+                double[] rightColumn = getColumn(that, column);
                 newMatrix[row][column] = dotVectors(leftRow, rightColumn);
             }
         }
@@ -137,6 +136,10 @@ public class ArrayValue {
 
     public double[] getColumn(int column) {
         return Arrays.stream(array).mapToDouble(row -> row[column]).toArray();
+    }
+
+    private double[] getColumn(ArrayValue array, int column) {
+        return Arrays.stream(array.getValue()).mapToDouble(row -> row[column]).toArray();
     }
 
     public double getElement(int row, int column) {

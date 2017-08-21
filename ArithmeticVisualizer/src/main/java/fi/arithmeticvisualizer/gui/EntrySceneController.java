@@ -1,7 +1,6 @@
 package fi.arithmeticvisualizer.gui;
 
 import fi.arithmeticvisualizer.logic.visualization.Operand;
-import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import java.io.IOException;
 import java.net.URL;
@@ -90,21 +89,21 @@ public class EntrySceneController implements Initializable {
     private void transposeRight() {
         transpose(rightOperand);
     }
-    
+
     @FXML
     private void selectOperation() {
         createNode();
     }
 
     public boolean createNode() {
-        
+
         setErrorMessage("");
 
         if (leftOperand.createArray() && rightOperand.createArray()) {
             node = createBinaryNode(leftOperand.getArrayValue(), rightOperand.getArrayValue(), (String) operationBox.getValue());
             drawNode();
-            
-            if (node.validImputDims()) {
+
+            if (node.validImputDimensions()) {
                 return true;
             } else {
                 setErrorMessage("Invalid array dimensions for operation " + node.getSymbol());
@@ -135,15 +134,10 @@ public class EntrySceneController implements Initializable {
             controller.initData(node);
             stage.setScene(new Scene(root));
         } catch (IOException ex) {
-            errorText.setText("Failed to load evaluation scene: " + ex.getMessage());
+            setErrorMessage("Failed to load evaluation scene: " + ex.getMessage());
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        leftOperand = new Operand(this, null, leftArrayGrid, leftField, transposeLeft);
-        rightOperand = new Operand(this, null, rightArrayGrid, rightField, transposeRight);
-    }
 
     private void transpose(Operand operand) {
         if (operand.createArray()) {
@@ -154,5 +148,16 @@ public class EntrySceneController implements Initializable {
 
     public void setErrorMessage(String message) {
         errorText.setText(message);
+    }
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        leftOperand = new Operand(this, null, leftArrayGrid, leftField, transposeLeft);
+        rightOperand = new Operand(this, null, rightArrayGrid, rightField, transposeRight);
+    }
+    
+    public void initializeTextFieldData(String left, String right) {
+        leftField.setText(left);
+        rightField.setText(right);
     }
 }

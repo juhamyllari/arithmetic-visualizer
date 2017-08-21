@@ -18,7 +18,7 @@ public class SubtractionNode extends BinaryNode {
         this.right = right;
     }
 
-    public SubtractionNode(double[][] left, double[][] right) {
+    public SubtractionNode(ArrayValue left, ArrayValue right) {
         this.left = new ValueNode(left);
         this.right = new ValueNode(right);
     }
@@ -35,7 +35,7 @@ public class SubtractionNode extends BinaryNode {
 
     @Override
     public Dimensions outDims() {
-        return left.outDims();
+        return left.outDimensions();
     }
 
     @Override
@@ -54,8 +54,8 @@ public class SubtractionNode extends BinaryNode {
     }
 
     @Override
-    public boolean validImputDims() {
-        return left.outDims().equals(right.outDims());
+    public boolean validImputDimensions() {
+        return left.outDimensions().equals(right.outDimensions());
     }
 
     @Override

@@ -124,5 +124,9 @@ public class GraphicArray {
     public void setShown(BooleanMask shown) {
         this.shown = shown;
     }
+    
+    public String toInputString() {
+        return array.toInputString();
+    }
 
 }

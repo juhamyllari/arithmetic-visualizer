@@ -15,6 +15,10 @@ public class ValueNode extends Node {
     public ValueNode(double[][] array) {
         this.value = new ArrayValue(array);
     }
+    
+    public ValueNode(ArrayValue value) {
+        this.value = value;
+    }
 
     public ValueNode(double dbl) {
         this.value = new ArrayValue(dbl);
@@ -25,7 +29,7 @@ public class ValueNode extends Node {
     }
 
     @Override
-    public Dimensions outDims() {
+    public Dimensions outDimensions() {
         return value.getDims();
     }
 

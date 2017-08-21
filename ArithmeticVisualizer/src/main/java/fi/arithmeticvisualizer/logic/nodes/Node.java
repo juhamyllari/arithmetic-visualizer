@@ -13,10 +13,10 @@ public abstract class Node {
 
     public abstract ArrayValue evaluate();
 
-    public abstract Dimensions outDims();
+    public abstract Dimensions outDimensions();
 
     public boolean isScalar() {
-        return (outDims().getM() == 1) && (outDims().getM() == 1);
+        return (outDimensions().getM() == 1) && (outDimensions().getN() == 1);
     }
 
 }

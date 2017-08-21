@@ -6,16 +6,11 @@ import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import java.util.ArrayList;
 
 /**
- * A BinaryNode is a Node that performs an operation on two operands.
- * The abstract class is extended by AdditionNode, SubtractionNode
- * and MultiplicationNode.
+ * A BinaryNode is a Node that performs an operation on two operands. The
+ * abstract class is extended by AdditionNode, SubtractionNode and
+ * MultiplicationNode.
  */
 public abstract class BinaryNode {
-
-    @FunctionalInterface
-    public interface PartialOpStringMaker {
-        String apply(double[][] left, double[][] right, int m, int n);
-    }
 
     public abstract Dimensions outDims();
 
@@ -29,25 +24,29 @@ public abstract class BinaryNode {
 
     public abstract ActivationPattern getActivationPattern();
 
-    public abstract boolean validImputDims();
-    
+    public abstract boolean validImputDimensions();
+
     public abstract ArrayList<String> getSubOperationStrings();
 
     public static BinaryNode createBinaryNode(ArrayValue left, ArrayValue right, String operator) {
 
         BinaryNode node = null;
-        double[][] leftArray = left.getValue();
-        double[][] rightArray = right.getValue();
 
         switch (operator) {
             case "+":
-                node = new AdditionNode(leftArray, rightArray);
+                node = new AdditionNode(left, right);
                 break;
             case "-":
-                node = new SubtractionNode(leftArray, rightArray);
+                node = new SubtractionNode(left, right);
                 break;
             case "*":
-                node = new MultiplicationNode(leftArray, rightArray);
+                if (left.isScalar()) {
+                    node = new LeftScalarMultiplicationNode(left, right);
+                } else if (right.isScalar()) {
+                    node = new RightScalarMultiplicationNode(left, right);
+                } else {
+                    node = new MatrixMultiplicationNode(left, right);
+                }
         }
 
         return node;

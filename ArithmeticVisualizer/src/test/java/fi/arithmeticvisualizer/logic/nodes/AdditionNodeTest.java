@@ -41,13 +41,6 @@ public class AdditionNodeTest {
     }
     
     @Test
-    public void constructionFromArraysWorks() {
-        double[][] arr = new double[][]{{1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}};
-        bn1 = new AdditionNode(arr, arr);
-        assertEquals(new Dimensions(2, 3), bn1.evaluate().getDims());
-    }
-
-    @Test
     public void additionWorks() {
         bn1 = new AdditionNode(v1, v2);
         assertEquals(4.3, bn1.evaluate().getValue()[0][2], .001);

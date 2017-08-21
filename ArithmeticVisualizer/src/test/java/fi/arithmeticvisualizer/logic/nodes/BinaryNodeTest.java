@@ -40,23 +40,21 @@ public class BinaryNodeTest {
     public void tearDown() {
     }
 
-
     @Test
     public void subtractionWorks() throws WrongShapeException {
         bn1 = new SubtractionNode(v1, v2);
-        assertEquals(2.3, bn1.evaluate().getValue()[0][2], .001);
+        assertEquals(1.2, bn1.evaluate().getValue()[0][1], .001);
     }
 
-// Test fails! To be debugged.   
-//    @Test
-//    public void multiplicationWorks() {
-//        bn1 = new MultiplicationNode(v1, v3);
-//        assertEquals(37.4, bn1.evaluate().getValue()[0][1], .001);
-//    }
-//
+    @Test
+    public void multiplicationWorks() {
+        bn1 = new MatrixMultiplicationNode(v1, v3);
+        assertEquals(37.4, bn1.evaluate().getValue()[0][1], .001);
+    }
+
     @Test
     public void multiplicationNodeGivesCorrectSymbol() {
-        bn1 = new MultiplicationNode(v1, v3);
+        bn1 = new MatrixMultiplicationNode(v1, v3);
         assertEquals("*", bn1.getSymbol());
     }
 

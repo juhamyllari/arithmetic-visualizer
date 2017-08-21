@@ -8,21 +8,21 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
- * A MultiplicationNode is a BinaryNode that performs multiplication.
- * If one more operand is a scalar, scalar multiplication is performed.
- * Otherwise matrix multiplication is performed. 
+ * A MultiplicationNode is a BinaryNode that performs multiplication. If one
+ * more operand is a scalar, scalar multiplication is performed. Otherwise
+ * matrix multiplication is performed.
  */
-public class MultiplicationNode extends BinaryNode {
+public class MatrixMultiplicationNode extends BinaryNode {
 
     final private Node left;
     final private Node right;
 
-    public MultiplicationNode(Node left, Node right) {
+    public MatrixMultiplicationNode(Node left, Node right) {
         this.left = left;
         this.right = right;
     }
 
-    public MultiplicationNode(double[][] left, double[][] right) {
+    public MatrixMultiplicationNode(ArrayValue left, ArrayValue right) {
         this.left = new ValueNode(left);
         this.right = new ValueNode(right);
     }
@@ -38,11 +38,11 @@ public class MultiplicationNode extends BinaryNode {
     @Override
     public Dimensions outDims() {
         if (left.isScalar()) {
-            return right.outDims();
+            return right.outDimensions();
         } else if (right.isScalar()) {
-            return left.outDims();
+            return left.outDimensions();
         } else {
-            return new Dimensions(left.outDims().getM(), right.outDims().getN());
+            return new Dimensions(left.outDimensions().getM(), right.outDimensions().getN());
         }
     }
 
@@ -65,49 +65,52 @@ public class MultiplicationNode extends BinaryNode {
             return ActivationPattern.MATRIXMULTIPLICATION;
         }
     }
-    
+
     @Override
     public ArrayList<String> getSubOperationStrings() {
-        
+
         ArrayValue leftValue = left.evaluate();
         ArrayValue rightValue = right.evaluate();
-        
+
         int m = outDims().getM();
         int n = outDims().getN();
-        
+
         ArrayList<String> strings = new ArrayList<>();
-        
+
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 double[] leftVector = leftValue.getRow(i);
                 double[] rightVector = rightValue.getColumn(j);
-                
-                String string = subOpString(leftVector, rightVector);
+
+                String string;
+
+                string = subOpString(leftVector, rightVector);
+
                 strings.add(string);
             }
         }
-        
+
         return strings;
     }
-    
+
     private String subOpString(double[] leftVector, double[] rightVector) {
-        
+
         int vectorLength = leftVector.length;
         String string = IntStream
-                        .range(0, vectorLength)
-                        .mapToObj(i -> "(" + leftVector[i] + " * " + rightVector[i] + ")")
-                        .collect(Collectors.joining(" + "));
-        
+                .range(0, vectorLength)
+                .mapToObj(i -> "(" + leftVector[i] + " * " + rightVector[i] + ")")
+                .collect(Collectors.joining(" + "));
+
         double subOpResult = ArrayValue.dotVectors(leftVector, rightVector);
         return string + " = " + Double.toString(subOpResult);
     }
 
     @Override
-    public boolean validImputDims() {
+    public boolean validImputDimensions() {
         if (left.isScalar() || right.isScalar()) {
             return true;
         } else {
-            return left.outDims().getN() == right.outDims().getM();
+            return left.outDimensions().getN() == right.outDimensions().getM();
         }
     }
 
