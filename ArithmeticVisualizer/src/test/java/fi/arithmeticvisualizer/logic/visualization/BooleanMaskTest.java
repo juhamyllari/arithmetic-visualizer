@@ -43,4 +43,67 @@ public class BooleanMaskTest {
         assertEquals(6, bm.getMask()[0].length);
     }
     
+    @Test
+    public void setElementWorks() {
+        BooleanMask bm = new BooleanMask(new Dimensions(2, 2));
+        assertEquals(false, bm.getMask()[0][0]);
+        bm.setElement(0, 0);
+        assertEquals(true, bm.getMask()[0][0]);
+    }
+    
+    @Test
+    public void setAllWorks() {
+        BooleanMask bm = new BooleanMask(new Dimensions(2, 2));
+        assertEquals(false, bm.getMask()[0][0]);
+        bm.setAll();
+        assertEquals(true, bm.getMask()[0][0]);
+        assertEquals(true, bm.getMask()[0][1]);
+        assertEquals(true, bm.getMask()[1][0]);
+        assertEquals(true, bm.getMask()[1][1]);
+    }
+    
+    @Test
+    public void setRowWorks() {
+        BooleanMask bm = new BooleanMask(new Dimensions(2, 2));
+        assertEquals(false, bm.getMask()[0][0]);
+        bm.setRow(1);
+        assertEquals(false, bm.getMask()[0][0]);
+        assertEquals(false, bm.getMask()[0][1]);
+        assertEquals(true, bm.getMask()[1][0]);
+        assertEquals(true, bm.getMask()[1][1]);
+    }
+    
+    @Test
+    public void setColumnWorks() {
+        BooleanMask bm = new BooleanMask(new Dimensions(2, 2));
+        assertEquals(false, bm.getMask()[0][0]);
+        bm.setColumn(1);
+        assertEquals(false, bm.getMask()[0][0]);
+        assertEquals(true, bm.getMask()[0][1]);
+        assertEquals(false, bm.getMask()[1][0]);
+        assertEquals(true, bm.getMask()[1][1]);
+    }
+    
+    @Test
+    public void clearAllWorks() {
+        BooleanMask bm = new BooleanMask(new Dimensions(2, 2));
+        assertEquals(false, bm.getMask()[0][1]);
+        bm.setAll();
+        assertEquals(true, bm.getMask()[0][1]);
+        bm.clearAll();
+        assertEquals(false, bm.getMask()[0][0]);
+        assertEquals(false, bm.getMask()[0][1]);
+        assertEquals(false, bm.getMask()[1][0]);
+        assertEquals(false, bm.getMask()[1][1]);
+    }
+    
+    @Test
+    public void cloneWorks() {
+        BooleanMask bm = new BooleanMask(new Dimensions(2, 2));
+        BooleanMask clone = bm.clone();
+        assertArrayEquals(bm.getMask()[0], clone.getMask()[0]);
+        assertArrayEquals(bm.getMask()[1], clone.getMask()[1]);
+        assertNotEquals(bm, clone);
+    }
+    
 }
