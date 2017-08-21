@@ -1,5 +1,6 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
+import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import static fi.arithmeticvisualizer.logic.nodes.AdditionNodeTest.bn1;
 import static fi.arithmeticvisualizer.logic.nodes.BinaryNodeTest.v1;
 import org.junit.After;
@@ -9,7 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class MultiplicationNodeTest {
+public class MatrixMultiplicationNodeTest {
 
     static BinaryNode bn1;
     static BinaryNode bn2;
@@ -17,7 +18,7 @@ public class MultiplicationNodeTest {
     static ValueNode v2;
     static ValueNode v3;
 
-    public MultiplicationNodeTest() {
+    public MatrixMultiplicationNodeTest() {
     }
 
     @BeforeClass
@@ -26,6 +27,8 @@ public class MultiplicationNodeTest {
         v1 = new ValueNode(new double[][]{{1.1, 2.2, 3.3}, {1.0, 2.0, 3.0}});
         v2 = new ValueNode(new double[][]{{1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}});
         v3 = new ValueNode(new double[][]{{2.0, 3.0}, {4.0, 5.0}, {6.0, 7.0}});
+        
+        bn1 = new MatrixMultiplicationNode(v1, v3);
     }
 
     @AfterClass
@@ -39,10 +42,21 @@ public class MultiplicationNodeTest {
     @After
     public void tearDown() {
     }
+    
+    @Test
+    public void getLeftWorks() {
+        assertEquals(new Dimensions(2, 3), bn1.getLeft().outDimensions());
+        assertEquals(3.3, bn1.getLeft().evaluate().getElement(0, 2), .001);
+    }
+    
+    @Test
+    public void getRightWorks() {
+        assertEquals(new Dimensions(3, 2), bn1.getRight().outDimensions());
+        assertEquals(5.0, bn1.getRight().evaluate().getElement(1, 1), .001);
+    }
 
     @Test
     public void multiplicationNodeGivesCorrectSymbol() {
-        bn1 = new MatrixMultiplicationNode(v1, v3);
         assertEquals("*", bn1.getSymbol());
     }
 }

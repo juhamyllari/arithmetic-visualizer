@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * abstract class is extended by AdditionNode, SubtractionNode and
  * MultiplicationNode.
  */
-public abstract class BinaryNode {
+public abstract class BinaryNode extends Node {
 
     public abstract Dimensions outDimensions();
 

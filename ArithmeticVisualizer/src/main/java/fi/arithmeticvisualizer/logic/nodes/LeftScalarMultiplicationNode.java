@@ -32,7 +32,6 @@ public class LeftScalarMultiplicationNode extends BinaryNode {
 
     @Override
     public ArrayValue evaluate() {
-//        return right.evaluate().scalarMultiply(left.evaluate().getElement(0, 0));
         return right.evaluate().multiply(left.evaluate());
     }
 

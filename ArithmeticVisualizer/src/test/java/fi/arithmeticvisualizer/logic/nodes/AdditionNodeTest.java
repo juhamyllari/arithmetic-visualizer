@@ -27,7 +27,7 @@ public class AdditionNodeTest {
     public static void setUpClass() {
 
         v1 = new ValueNode(new double[][]{{1.1, 2.2, 3.3}, {1.0, 2.0, 3.0}});
-        v2 = new ValueNode(new double[][]{{1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}});
+        v2 = new ValueNode(new double[][]{{1.0, 1.0, -1.0}, {1.0, 1.0, 1.0}});
         v3 = new ValueNode(new double[][]{{2.0, 3.0}, {4.0, 5.0}, {6.0, 7.0}});
     }
 
@@ -71,7 +71,7 @@ public class AdditionNodeTest {
     @Test
     public void additionWorks() {
         bn1 = new AdditionNode(v1, v2);
-        assertEquals(4.3, bn1.evaluate().getValue()[0][2], .001);
+        assertEquals(2.3, bn1.evaluate().getValue()[0][2], .001);
     }
     
     @Test
@@ -92,7 +92,15 @@ public class AdditionNodeTest {
         ArrayList<String> strings = bn1.getSubOperationStrings();
         assertEquals(6, strings.size());
         assertEquals("1.1 + 1.0 = 2.1", strings.get(0));
-        assertEquals("3.3 + 1.0 = 4.3", strings.get(2));
+        assertEquals("3.3 + (-1.0) = 2.3", strings.get(2));
         
+    }
+    
+    @Test
+    public void validInputDimensionsWorks() {
+        bn1 = new AdditionNode(v1, v2);
+        bn2 = new AdditionNode(v1, v3);
+        assertEquals(true, bn1.validImputDimensions());
+        assertEquals(false, bn2.validImputDimensions());
     }
 }

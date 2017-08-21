@@ -37,13 +37,7 @@ public class MatrixMultiplicationNode extends BinaryNode {
 
     @Override
     public Dimensions outDimensions() {
-        if (left.isScalar()) {
-            return right.outDimensions();
-        } else if (right.isScalar()) {
-            return left.outDimensions();
-        } else {
-            return new Dimensions(left.outDimensions().getM(), right.outDimensions().getN());
-        }
+        return new Dimensions(left.outDimensions().getM(), right.outDimensions().getN());
     }
 
     @Override
