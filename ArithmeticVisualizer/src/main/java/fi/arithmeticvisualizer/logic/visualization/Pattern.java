@@ -1,5 +1,8 @@
 package fi.arithmeticvisualizer.logic.visualization;
 
+/**
+ * A pattern object 
+ */
 public class Pattern {
     
     String pattern;

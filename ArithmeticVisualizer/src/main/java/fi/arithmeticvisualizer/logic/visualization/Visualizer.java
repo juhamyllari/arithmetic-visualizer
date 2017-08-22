@@ -37,7 +37,9 @@ public class Visualizer {
 
     public void visualize() {
         
-        List<SubOperation> evaluationList = this.getSubOperations();
+        resultGraphicArray.getShown().clearAll();
+        
+        List<String> subOpStrings = node.getSubOperationStrings();
 
         final Animation animation = new Transition() {
             {
@@ -45,7 +47,8 @@ public class Visualizer {
             }
 
             protected void interpolate(double frac) {
-                final int length = evaluationList.size();
+                
+                final int length = subOpStrings.size();
                 int frame = Math.round(length * (float) frac);
                 if (frame >= length) {
                     frame = length - 1;
@@ -54,14 +57,12 @@ public class Visualizer {
                 int row = frame / node.outDimensions().getN();
                 int column = frame % node.outDimensions().getN();
 
-                SubOperation state = evaluationList.get(frame);
-                
                 setActivations(row, column);
-                resultGraphicArray.setShown(state.getShow());
+                resultGraphicArray.getShown().setAdditionalElement(row, column);
                 
                 drawAll();
 
-                subOpText.setText(state.getSubOpString());
+                subOpText.setText(subOpStrings.get(frame));
             }
 
         };
@@ -87,31 +88,6 @@ public class Visualizer {
         leftGraphicArray.setActivation(new Pattern(activationPattern.getLeftPattern(), row, column));
         rightGraphicArray.setActivation(new Pattern(activationPattern.getRightPattern(), row, column));
         resultGraphicArray.setActivation(new Pattern(activationPattern.getResultPattern(), row, column));
-    }
-    
-    public List<SubOperation> getSubOperations() {
-        
-        Dimensions resultDims = node.outDimensions();
-        
-        List<SubOperation> states = new ArrayList<>();
-        
-        BooleanMask show = new BooleanMask(resultDims.getM(), resultDims.getN());
-        
-        ArrayList<String> subOpStrings = node.getSubOperationStrings();
-        
-        for (int i = 0; i < resultDims.getM(); i++) {
-            for (int j = 0; j < resultDims.getN(); j++) {
-                String subOpString = subOpStrings.get(i * resultDims.getN() + j);
-                
-                show.setAdditionalElement(i, j);
-                BooleanMask currentlyShown = show.clone();
-                
-                SubOperation subOp = new SubOperation(currentlyShown, subOpString);
-                states.add(subOp);
-            }
-        }
-        
-        return states;
     }
 
 }

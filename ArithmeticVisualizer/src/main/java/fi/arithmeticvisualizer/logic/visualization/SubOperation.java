@@ -2,10 +2,9 @@ package fi.arithmeticvisualizer.logic.visualization;
 
 /**
  * A SubOperation object represents a single frame in a visualization animation.
- * It contains BooleanMasks to indicate active elements in each array, a
- * BooleanMask to indicate which elements of the result array are to be
- * displayed, and a String representation of the suboperation (e.g. a single dot
- * product in the case of matrix multiplication).
+ * It contains a BooleanMask to indicate which elements of the result array
+ * are to be displayed, and a String representation of the suboperation (e.g.
+ * a single dot product in the case of matrix multiplication).
  */
 public class SubOperation {
 
