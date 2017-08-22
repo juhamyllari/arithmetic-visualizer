@@ -69,11 +69,7 @@ public class MatrixMultiplicationNode extends BinaryNode {
             for (int j = 0; j < n; j++) {
                 double[] leftVector = leftValue.getRow(i);
                 double[] rightVector = rightValue.getColumn(j);
-
-                String string;
-
-                string = subOpString(leftVector, rightVector);
-
+                String string= subOpString(leftVector, rightVector);
                 strings.add(string);
             }
         }
