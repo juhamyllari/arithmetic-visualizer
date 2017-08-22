@@ -16,6 +16,8 @@ import javafx.util.Duration;
  * The Visualizer class is responsible for visualizing the evaluation of expressions.
  */
 public class Visualizer {
+    
+    public static final int ANIMATIONDURATION = 5000;
 
     private final EvaluationSceneController controller;
     private final BinaryNode node;
@@ -39,7 +41,7 @@ public class Visualizer {
 
         final Animation animation = new Transition() {
             {
-                setCycleDuration(Duration.millis(5000));
+                setCycleDuration(Duration.millis(ANIMATIONDURATION));
             }
 
             protected void interpolate(double frac) {
