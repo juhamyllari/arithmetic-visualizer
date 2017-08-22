@@ -53,9 +53,9 @@ public class Visualizer {
 
                 SubOperation state = evaluationList.get(n);
                 
-                leftGraphicArray.setActivation(state.getLeftActivation());
-                rightGraphicArray.setActivation(state.getRightActivation());
-                resultGraphicArray.setActivation(state.getResultActivation());
+                leftGraphicArray.setActivation(state.getLeftPattern());
+                rightGraphicArray.setActivation(state.getRightPattern());
+                resultGraphicArray.setActivation(state.getResultPattern());
                 resultGraphicArray.setShown(state.getShow());
                 
                 drawAll();
