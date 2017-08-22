@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 
 /**
  * Expressions in the Arithmetic Visualizer evaluate to ArrayValue objects. An
- * ArrayValue object is essentially an array of type double[][]. In the future
+ * ArrayValue object mainly consists an array of type double[][]. In the future
  * the class may accommodate arrays of more general scalars such as complex
  * numbers.
  */
