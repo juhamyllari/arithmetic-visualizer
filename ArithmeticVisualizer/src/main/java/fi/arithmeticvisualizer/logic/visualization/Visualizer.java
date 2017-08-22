@@ -90,7 +90,9 @@ public class Visualizer {
         Dimensions resultDims = node.outDimensions();
         
         List<SubOperation> states = new ArrayList<>();
+        
         BooleanMask show = new BooleanMask(resultDims.getM(), resultDims.getN());
+        
         ArrayList<String> subOpStrings = node.getSubOperationStrings();
         int subOpIndex = 0;
         
@@ -104,8 +106,8 @@ public class Visualizer {
                 show.setElement(i, j);
                 BooleanMask currentlyShown = show.clone();
                 
-                SubOperation state = new SubOperation(leftActivation, rightActivation, resultActivation, currentlyShown, subOpString);
-                states.add(state);
+                SubOperation subOp = new SubOperation(leftActivation, rightActivation, resultActivation, currentlyShown, subOpString);
+                states.add(subOp);
                 subOpIndex++;
             }
         }
