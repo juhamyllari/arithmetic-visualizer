@@ -8,9 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
- * A MultiplicationNode is a BinaryNode that performs multiplication. If one
- * more operand is a scalar, scalar multiplication is performed. Otherwise
- * matrix multiplication is performed.
+ * A MatrixMultiplicationNode is a BinaryNode that performs matrix multiplication.
  */
 public class MatrixMultiplicationNode extends BinaryNode {
 

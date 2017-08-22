@@ -5,6 +5,10 @@ import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import fi.arithmeticvisualizer.logic.visualization.ActivationPattern;
 import java.util.ArrayList;
 
+/**
+ * A RightScalarMultiplicationNode is a BinaryNode that performs scalar
+ * multiplication from the right.
+ */
 public class RightScalarMultiplicationNode extends BinaryNode {
 
     private Node left;
