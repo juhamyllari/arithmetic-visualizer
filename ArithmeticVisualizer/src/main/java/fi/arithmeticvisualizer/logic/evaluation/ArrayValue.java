@@ -114,9 +114,7 @@ public class ArrayValue {
 
         for (int row = 0; row < this.m; row++) {
             for (int column = 0; column < that.n; column++) {
-                double[] leftRow = getRow(row);
-                double[] rightColumn = getColumn(that, column);
-                newMatrix[row][column] = dotVectors(leftRow, rightColumn);
+                newMatrix[row][column] = dotVectors(this.getRow(row), that.getColumn(column));
             }
         }
         return new ArrayValue(newMatrix);
@@ -128,10 +126,6 @@ public class ArrayValue {
 
     public double[] getColumn(int column) {
         return Arrays.stream(array).mapToDouble(row -> row[column]).toArray();
-    }
-
-    private double[] getColumn(ArrayValue array, int column) {
-        return Arrays.stream(array.getValue()).mapToDouble(row -> row[column]).toArray();
     }
 
     public double getElement(int row, int column) {
