@@ -82,7 +82,7 @@ public class BooleanMaskTest {
     public void setElementWorks() {
         BooleanMask bm = new BooleanMask(new Dimensions(2, 2));
         assertEquals(false, bm.getMask()[0][0]);
-        bm.setElement(0, 0);
+        bm.setAdditionalElement(0, 0);
         assertEquals(true, bm.getMask()[0][0]);
     }
 
@@ -135,7 +135,7 @@ public class BooleanMaskTest {
     @Test
     public void cloneWorks() {
         BooleanMask bm = new BooleanMask(new Dimensions(2, 2));
-        bm.setElement(1, 1);
+        bm.setAdditionalElement(1, 1);
         BooleanMask clone = bm.clone();
         assertArrayEquals(bm.getMask()[0], clone.getMask()[0]);
         assertArrayEquals(bm.getMask()[1], clone.getMask()[1]);

@@ -64,8 +64,13 @@ public class BooleanMask {
         BiPredicate<Integer, Integer> predicate = (Integer i, Integer j) -> (j == column);
         setActivation(predicate);
     }
-
+    
     public void setElement(int row, int column) {
+        BiPredicate<Integer, Integer> predicate = (Integer i, Integer j) -> (i == row && j == column);
+        setActivation(predicate);
+    }
+
+    public void setAdditionalElement(int row, int column) {
         mask[row][column] = true;
     }
 
@@ -89,7 +94,7 @@ public class BooleanMask {
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (this.getMask()[i][j]) {
-                    clone.setElement(i, j);
+                    clone.setAdditionalElement(i, j);
                 }
             }
         }

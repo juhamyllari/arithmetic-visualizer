@@ -46,16 +46,17 @@ public class Visualizer {
 
             protected void interpolate(double frac) {
                 final int length = evaluationList.size();
-                int n = Math.round(length * (float) frac);
-                if (n >= length) {
-                    n = length - 1;
+                int frame = Math.round(length * (float) frac);
+                if (frame >= length) {
+                    frame = length - 1;
                 }
-
-                SubOperation state = evaluationList.get(n);
                 
-                leftGraphicArray.setActivation(state.getLeftPattern());
-                rightGraphicArray.setActivation(state.getRightPattern());
-                resultGraphicArray.setActivation(state.getResultPattern());
+                int row = frame / node.outDimensions().getN();
+                int column = frame % node.outDimensions().getN();
+
+                SubOperation state = evaluationList.get(frame);
+                
+                setActivations(row, column);
                 resultGraphicArray.setShown(state.getShow());
                 
                 drawAll();
@@ -81,12 +82,15 @@ public class Visualizer {
         resultGraphicArray.draw();
     }
     
+    private void setActivations(int row, int column) {
+        ActivationPattern activationPattern = node.getActivationPattern();
+        leftGraphicArray.setActivation(new Pattern(activationPattern.getLeftPattern(), row, column));
+        rightGraphicArray.setActivation(new Pattern(activationPattern.getRightPattern(), row, column));
+        resultGraphicArray.setActivation(new Pattern(activationPattern.getResultPattern(), row, column));
+    }
+    
     public List<SubOperation> getSubOperations() {
         
-        ActivationPattern pattern = node.getActivationPattern();
-        
-        Dimensions leftDims = node.getLeft().outDimensions();
-        Dimensions rightDims = node.getRight().outDimensions();
         Dimensions resultDims = node.outDimensions();
         
         List<SubOperation> states = new ArrayList<>();
@@ -94,21 +98,16 @@ public class Visualizer {
         BooleanMask show = new BooleanMask(resultDims.getM(), resultDims.getN());
         
         ArrayList<String> subOpStrings = node.getSubOperationStrings();
-        int subOpIndex = 0;
         
         for (int i = 0; i < resultDims.getM(); i++) {
             for (int j = 0; j < resultDims.getN(); j++) {
-                BooleanMask leftActivation = new BooleanMask(leftDims, pattern.getLeftPattern(), i, j);
-                BooleanMask rightActivation = new BooleanMask(rightDims, pattern.getRightPattern(), i, j);
-                BooleanMask resultActivation = new BooleanMask(resultDims, pattern.getResultPattern(), i, j);
-                String subOpString = subOpStrings.get(subOpIndex);
+                String subOpString = subOpStrings.get(i * resultDims.getN() + j);
                 
-                show.setElement(i, j);
+                show.setAdditionalElement(i, j);
                 BooleanMask currentlyShown = show.clone();
                 
-                SubOperation subOp = new SubOperation(leftActivation, rightActivation, resultActivation, currentlyShown, subOpString);
+                SubOperation subOp = new SubOperation(currentlyShown, subOpString);
                 states.add(subOp);
-                subOpIndex++;
             }
         }
         

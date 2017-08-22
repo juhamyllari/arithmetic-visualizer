@@ -11,16 +11,10 @@ public class SubOperation {
 
     private final BooleanMask showResult;
     private final String subOpString;
-    private final Pattern leftPattern;
-    private final Pattern rightPattern;
-    private final Pattern resultPattern;
 
-    public SubOperation(BooleanMask showResult, String subOpString, Pattern leftPattern, Pattern rightPattern, Pattern resultPattern) {
+    public SubOperation(BooleanMask showResult, String subOpString) {
         this.showResult = showResult;
         this.subOpString = subOpString;
-        this.leftPattern = leftPattern;
-        this.rightPattern = rightPattern;
-        this.resultPattern = resultPattern;
     }
 
     public BooleanMask getShow() {
@@ -31,16 +25,4 @@ public class SubOperation {
         return subOpString;
     }
 
-    public Pattern getLeftPattern() {
-        return leftPattern;
-    }
-
-    public Pattern getRightPattern() {
-        return rightPattern;
-    }
-
-    public Pattern getResultPattern() {
-        return resultPattern;
-    }
-    
 }
