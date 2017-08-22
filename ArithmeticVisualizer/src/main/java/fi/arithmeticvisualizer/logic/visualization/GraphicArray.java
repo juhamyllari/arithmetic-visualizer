@@ -120,6 +120,10 @@ public class GraphicArray {
     public void setActivation(BooleanMask activation) {
         this.activation = activation;
     }
+    
+    public void setActivation(Pattern pattern) {
+        this.activation.setByPattern(pattern);
+    }
 
     public void setShown(BooleanMask shown) {
         this.shown = shown;

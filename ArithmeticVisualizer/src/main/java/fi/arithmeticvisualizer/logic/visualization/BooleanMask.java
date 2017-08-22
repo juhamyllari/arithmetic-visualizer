@@ -5,11 +5,9 @@ import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import java.util.function.BiPredicate;
 
 /**
- * A BooleanMask represents a 2D boolean array.
- * Methods are provided for setting elements to true
- * individually, by row, by column or all at once.
- * It is also possible to set all elements to false
- * at once.
+ * A BooleanMask represents a 2D boolean array. Methods are provided for setting
+ * elements to true individually, by row, by column or all at once. It is also
+ * possible to set all elements to false at once.
  */
 public class BooleanMask {
 
@@ -22,22 +20,27 @@ public class BooleanMask {
         this.m = rows;
         this.n = columns;
     }
-    
+
     public BooleanMask(Dimensions dims) {
         this(dims.getM(), dims.getN());
     }
 
-    public BooleanMask(Dimensions dims, String pattern, int row, int column) {
+    public BooleanMask(Dimensions dims, String patternString, int row, int column) {
         this(dims.getM(), dims.getN());
-        switch (pattern) {
+        this.setByPattern(new Pattern(patternString, row, column));
+    }
+
+    public void setByPattern(Pattern pattern) {
+        
+        switch (pattern.getPattern()) {
             case "row":
-                this.setRow(row);
+                this.setRow(pattern.getRow());
                 break;
             case "column":
-                this.setColumn(column);
+                this.setColumn(pattern.getColumn());
                 break;
             case "element":
-                this.setElement(row, column);
+                this.setElement(pattern.getRow(), pattern.getColumn());
                 break;
             case "all":
                 this.setAll();
