@@ -19,7 +19,7 @@ public class GraphicArray {
 
     public static final String ARRAYBACKGROUNDSTYLE = "-fx-background-color: beige";
     public static final String ELEMENTSTRINGFORMAT = "%5.1f";
-    public static final int ELEMENTFONTSIZE = 16;
+    public static final int ELEMENTFONTSIZE = 28;
     public static final int DEFAULTCOLUMNWIDTH = 65;
     public static final int ROWHEIGHT = 30;
 

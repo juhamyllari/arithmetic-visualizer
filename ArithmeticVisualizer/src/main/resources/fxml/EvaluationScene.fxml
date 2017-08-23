@@ -10,7 +10,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.collections.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="vBox" styleClass="root" prefHeight="600" prefWidth="800" alignment="TOP_CENTER"  fx:controller="fi.arithmeticvisualizer.gui.EvaluationSceneController" >
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="vBox" styleClass="root" prefHeight="800" prefWidth="1000" alignment="TOP_CENTER"  fx:controller="fi.arithmeticvisualizer.gui.EvaluationSceneController" >
     <padding>
         <Insets top="25" right="25" bottom="25" left="25"/>
     </padding>
