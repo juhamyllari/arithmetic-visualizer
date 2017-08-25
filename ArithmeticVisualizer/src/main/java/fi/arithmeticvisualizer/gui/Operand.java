@@ -1,4 +1,4 @@
-package fi.arithmeticvisualizer.logic.visualization;
+package fi.arithmeticvisualizer.gui;
 
 import fi.arithmeticvisualizer.gui.EntrySceneController;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;

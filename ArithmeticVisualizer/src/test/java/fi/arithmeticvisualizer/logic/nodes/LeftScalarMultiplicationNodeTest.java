@@ -3,7 +3,8 @@ package fi.arithmeticvisualizer.logic.nodes;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import fi.arithmeticvisualizer.logic.visualization.ActivationPattern;
+import fi.arithmeticvisualizer.gui.OperationPattern;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle.ELEMENTWISE;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -75,24 +76,14 @@ public class LeftScalarMultiplicationNodeTest {
         assertEquals(6, bn1.getRight().evaluate().getElement(1, 2), .001);
     }
 
-    @Test
-    public void getActivationPatternWorks() {
-        assertEquals(ActivationPattern.LEFTSCALARMULTIPLICATION, bn1.getActivationPattern());
-    }
+//    @Test
+//    public void getActivationPatternWorks() {
+//        assertEquals(OperationPattern.LEFTSCALARMULTIPLICATION, bn1.getOperationPattern(ELEMENTWISE));
+//    }
 
     @Test
     public void validInputDimensionsWorks() {
         assertEquals(true, bn1.validImputDimensions());
         assertEquals(false, new LeftScalarMultiplicationNode(av1, av1).validImputDimensions());
-    }
-
-    @Test
-    public void getSubOperationStringsWorks() {
-        ArrayList<String> strings = bn1.getSubOperationStrings();
-        assertEquals(6, strings.size());
-        assertEquals("2.0 * 6.0 = 12.0", strings.get(5));
-
-        strings = bn3.getSubOperationStrings();
-        assertEquals("2.0 * (-1.0) = -2.0", strings.get(3));
     }
 }

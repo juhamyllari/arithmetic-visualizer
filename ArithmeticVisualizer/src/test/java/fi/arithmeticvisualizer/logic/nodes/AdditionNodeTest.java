@@ -3,7 +3,7 @@ package fi.arithmeticvisualizer.logic.nodes;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import fi.arithmeticvisualizer.logic.visualization.ActivationPattern;
+import fi.arithmeticvisualizer.gui.OperationPattern;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -80,21 +80,11 @@ public class AdditionNodeTest {
         assertEquals("+", bn1.getSymbol());
     }
     
-    @Test
-    public void getActivationPatternWorks() {
-        bn1 = new AdditionNode(v1, v2);
-        assertEquals(ActivationPattern.ADDITION, bn1.getActivationPattern());
-    }
-    
-    @Test
-    public void getSubOperationStringsWorks() {
-        bn1 = new AdditionNode(v1, v2);
-        ArrayList<String> strings = bn1.getSubOperationStrings();
-        assertEquals(6, strings.size());
-        assertEquals("1.1 + 1.0 = 2.1", strings.get(0));
-        assertEquals("3.3 + (-1.0) = 2.3", strings.get(2));
-        
-    }
+//    @Test
+//    public void getActivationPatternWorks() {
+//        bn1 = new AdditionNode(v1, v2);
+//        assertEquals(OperationPattern.ADDITION, bn1.getOperationPattern(BinaryNode.EvaluationStyle.ELEMENTWISE));
+//    }
     
     @Test
     public void validInputDimensionsWorks() {

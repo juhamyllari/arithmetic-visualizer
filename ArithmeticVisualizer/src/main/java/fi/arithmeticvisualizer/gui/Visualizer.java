@@ -1,8 +1,8 @@
-package fi.arithmeticvisualizer.logic.visualization;
+package fi.arithmeticvisualizer.gui;
 
-import fi.arithmeticvisualizer.gui.EvaluationSceneController;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
-import java.util.List;
+import fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle.ELEMENTWISE;
 import javafx.animation.Animation;
 import javafx.animation.Transition;
 import javafx.scene.text.Text;
@@ -25,6 +25,7 @@ public class Visualizer {
     public Visualizer(EvaluationSceneController controller, BinaryNode node, GraphicArray left, GraphicArray right, GraphicArray result, Text subOpText) {
         this.controller = controller;
         this.node = node;
+        this.node.evaluate();
         this.leftGraphicArray = left;
         this.rightGraphicArray = right;
         this.resultGraphicArray = result;
@@ -33,10 +34,13 @@ public class Visualizer {
 
     public void visualize() {
         
+        // EvaluationStyle selection to be implemented later.
+        EvaluationStyle style = ELEMENTWISE;
+        
         resultGraphicArray.getShown().clearAll();
         
-        List<String> subOpStrings = node.getSubOperationStrings();
-
+        FrameSequence sequence = node.getFrameSequence(style);
+        
         final Animation animation = new Transition() {
             {
                 setCycleDuration(Duration.millis(ANIMATIONDURATION));
@@ -44,21 +48,23 @@ public class Visualizer {
 
             protected void interpolate(double frac) {
                 
-                final int length = subOpStrings.size();
-                int frame = Math.round(length * (float) frac);
-                if (frame >= length) {
-                    frame = length - 1;
+                final int length = sequence.getLength();
+                int frameIndex = Math.round(length * (float) frac);
+                
+                if (frameIndex >= length) {
+                    frameIndex = length - 1;
                 }
                 
-                int row = frame / node.outDimensions().getN();
-                int column = frame % node.outDimensions().getN();
+                Frame frame = sequence.getFrame(frameIndex);
+                
+                int row = frame.getRow();
+                int column = frame.getColumn();
 
-                setActivations(row, column);
-                resultGraphicArray.getShown().setAdditionalElement(row, column);
+                setMasks(frame, sequence.getPattern());
                 
                 drawAll();
 
-                subOpText.setText(subOpStrings.get(frame));
+                subOpText.setText(frame.getFrameString());
             }
 
         };
@@ -79,11 +85,13 @@ public class Visualizer {
         resultGraphicArray.draw();
     }
     
-    private void setActivations(int row, int column) {
-        ActivationPattern activationPattern = node.getActivationPattern();
-        leftGraphicArray.setActivation(new Pattern(activationPattern.getLeftPattern(), row, column));
-        rightGraphicArray.setActivation(new Pattern(activationPattern.getRightPattern(), row, column));
-        resultGraphicArray.setActivation(new Pattern(activationPattern.getResultPattern(), row, column));
+    private void setMasks(Frame frame, OperationPattern pattern) {
+        int row = frame.getRow();
+        int column = frame.getColumn();
+        leftGraphicArray.getActivation().setByPattern(pattern.leftPattern, row, column);
+        rightGraphicArray.getActivation().setByPattern(pattern.rightPattern, row, column);
+        resultGraphicArray.getActivation().setByPattern(pattern.resultPattern, row, column);
+        resultGraphicArray.getShown().setByPattern(pattern.shownPattern, row, column);
     }
 
 }

@@ -1,19 +1,17 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.logic.visualization.ActivationPattern;
+import fi.arithmeticvisualizer.gui.FrameSequence;
+import fi.arithmeticvisualizer.gui.OperationPattern;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.FrameStringPattern.ROWBYCOLUMN;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.dotTypeString;
 
 /**
- * A MatrixMultiplicationNode is a BinaryNode that performs matrix multiplication.
+ * A MatrixMultiplicationNode is a BinaryNode that performs matrix
+ * multiplication.
  */
 public class MatrixMultiplicationNode extends BinaryNode {
-
-    final private Node left;
-    final private Node right;
 
     public MatrixMultiplicationNode(Node left, Node right) {
         this.left = left;
@@ -21,8 +19,7 @@ public class MatrixMultiplicationNode extends BinaryNode {
     }
 
     public MatrixMultiplicationNode(ArrayValue left, ArrayValue right) {
-        this.left = new ValueNode(left);
-        this.right = new ValueNode(right);
+        this(new ValueNode(left), new ValueNode(right));
     }
 
     public Node getLeft() {
@@ -45,51 +42,43 @@ public class MatrixMultiplicationNode extends BinaryNode {
 
     @Override
     public ArrayValue evaluate() {
-        return left.evaluate().multiply(right.evaluate());
+        if (resultValue == null) {
+            leftValue = left.evaluate();
+            rightValue = right.evaluate();
+            resultValue = leftValue.multiply(rightValue);
+        }
+        return resultValue;
     }
 
-    public ActivationPattern getActivationPattern() {
-        return ActivationPattern.MATRIXMULTIPLICATION;
+    protected OperationPattern getOperationPattern(EvaluationStyle style) {
+        //  Only implemented for elementwise evaluation at this time.
+        return OperationPattern.MATRIXMULTIPLICATIONELEMENTWISE;
     }
 
     @Override
-    public ArrayList<String> getSubOperationStrings() {
-
-        ArrayValue leftValue = left.evaluate();
-        ArrayValue rightValue = right.evaluate();
-
-        int m = outDimensions().getM();
-        int n = outDimensions().getN();
-
-        ArrayList<String> strings = new ArrayList<>();
-
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                double[] leftVector = leftValue.getRow(i);
-                double[] rightVector = rightValue.getColumn(j);
-                String string= subOpString(leftVector, rightVector);
-                strings.add(string);
-            }
+    public FrameSequence getFrameSequence(EvaluationStyle style) {
+        evaluate();
+        switch (style) {
+            case ELEMENTWISE:
+                return getFramesElementwise(outDimensions(), getOperationPattern(style), ROWBYCOLUMN);
+            default:
+                return getFramesElementwise(outDimensions(), getOperationPattern(style), ROWBYCOLUMN);
         }
-
-        return strings;
-    }
-
-    private String subOpString(double[] leftVector, double[] rightVector) {
-
-        int vectorLength = leftVector.length;
-        String string = IntStream
-                .range(0, vectorLength)
-                .mapToObj(i -> "(" + formatDouble(leftVector[i]) + " * " + formatDouble(rightVector[i]) + ")")
-                .collect(Collectors.joining(" + "));
-
-        double subOpResult = ArrayValue.dotVectors(leftVector, rightVector);
-        return string + " = " + formatDouble(subOpResult);
     }
 
     @Override
     public boolean validImputDimensions() {
         return left.outDimensions().getN() == right.outDimensions().getM();
+    }
+
+    @Override
+    protected String frameString(FrameStringPattern pattern, int row, int column) {
+        switch (pattern) {
+            case ROWBYCOLUMN:
+            default:
+                double result = ArrayValue.dotVectors(leftValue.getRow(row), rightValue.getColumn(column));
+                return dotTypeString(leftValue.getRow(row), rightValue.getColumn(column), result, "*", "+");
+        }
     }
 
 }

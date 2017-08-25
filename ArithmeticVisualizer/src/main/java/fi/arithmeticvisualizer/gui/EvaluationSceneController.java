@@ -1,7 +1,5 @@
 package fi.arithmeticvisualizer.gui;
 
-import fi.arithmeticvisualizer.logic.visualization.Visualizer;
-import fi.arithmeticvisualizer.logic.visualization.GraphicArray;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import java.io.IOException;
 import javafx.fxml.FXML;

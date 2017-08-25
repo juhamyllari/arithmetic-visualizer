@@ -139,7 +139,7 @@ public class ArrayValue {
                 .sum();
     }
 
-    public ArrayValue addArray(ArrayValue that) {
+    public ArrayValue add(ArrayValue that) {
         double[][] result = new double[m][n];
 
         for (int i = 0; i < m; i++) {
@@ -150,8 +150,8 @@ public class ArrayValue {
         return new ArrayValue(result);
     }
 
-    public ArrayValue subtractArray(ArrayValue that) {
-        return this.addArray(that.scalarMultiply(-1));
+    public ArrayValue subtract(ArrayValue that) {
+        return this.add(that.scalarMultiply(-1));
     }
 
     public ArrayValue transpose() {

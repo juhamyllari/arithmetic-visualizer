@@ -1,8 +1,10 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.logic.visualization.ActivationPattern;
+import fi.arithmeticvisualizer.gui.FrameSequence;
+import fi.arithmeticvisualizer.gui.OperationPattern;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.FrameStringPattern.ELEMENTBYELEMENT;
 import java.util.ArrayList;
 
 /**
@@ -45,12 +47,12 @@ public class SubtractionNode extends BinaryNode {
 
     @Override
     public ArrayValue evaluate() {
-        return left.evaluate().subtractArray(right.evaluate());
-    }
-
-    @Override
-    public ActivationPattern getActivationPattern() {
-        return ActivationPattern.SUBTRACTION;
+        if (resultValue == null) {
+            leftValue = left.evaluate();
+            rightValue = right.evaluate();
+            resultValue = leftValue.subtract(rightValue);
+        }
+        return resultValue;
     }
 
     @Override
@@ -59,32 +61,34 @@ public class SubtractionNode extends BinaryNode {
     }
 
     @Override
-    public ArrayList<String> getSubOperationStrings() {
-
-        double[][] leftArray = left.evaluate().getValue();
-        double[][] rightArray = right.evaluate().getValue();
-
-        int m = outDimensions().getM();
-        int n = outDimensions().getN();
-
-        ArrayList<String> strings = new ArrayList<>();
-
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                double leftOperand = leftArray[i][j];
-                double rightOperand = rightArray[i][j];
-                double result = leftOperand - rightOperand;
-                String string;
-                if (rightOperand >= 0) {
-                    string = formatDouble(leftOperand) + " - " + formatDouble(rightOperand) + " = " + formatDouble(result);
-                } else {
-                    string = formatDouble(leftOperand) + " - (" + formatDouble(rightOperand) + ") = " + formatDouble(result);
-                }
-                strings.add(string);
-            }
+    protected OperationPattern getOperationPattern(EvaluationStyle style) {
+        switch (style) {
+            case ELEMENTWISE:
+            default:
+                return OperationPattern.SUBTRACTIONELEMENTWISE;
         }
+    }
 
-        return strings;
+    @Override
+    public FrameSequence getFrameSequence(EvaluationStyle style) {
+        evaluate();
+        switch (style) {
+            case ELEMENTWISE:
+            default:
+                return getFramesElementwise(outDimensions(), getOperationPattern(style), ELEMENTBYELEMENT);
+        }
+    }
+
+    @Override
+    protected String frameString(FrameStringPattern pattern, int row, int column) {
+        switch (pattern) {
+            case ELEMENTBYELEMENT:
+            default:
+                double leftElement = leftValue.getElement(row, column);
+                double rightElement = rightValue.getElement(row, column);
+                double result = leftElement + rightElement;
+                return oneToOneString(leftElement, rightElement, result, "-");
+        }
     }
 
 }

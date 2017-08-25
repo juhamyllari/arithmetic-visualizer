@@ -1,4 +1,4 @@
-package fi.arithmeticvisualizer.logic.visualization;
+package fi.arithmeticvisualizer.gui;
 
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import java.util.Arrays;
@@ -121,10 +121,6 @@ public class GraphicArray {
         this.activation = activation;
     }
     
-    public void setActivation(Pattern pattern) {
-        this.activation.setByPattern(pattern);
-    }
-
     public void setShown(BooleanMask shown) {
         this.shown = shown;
     }

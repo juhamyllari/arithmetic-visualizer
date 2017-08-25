@@ -8,9 +8,8 @@ package fi.arithmeticvisualizer.logic.nodes;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import static fi.arithmeticvisualizer.logic.nodes.AdditionNodeTest.v1;
-import fi.arithmeticvisualizer.logic.visualization.ActivationPattern;
-import java.util.ArrayList;
+import fi.arithmeticvisualizer.gui.OperationPattern;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle.ELEMENTWISE;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -86,21 +85,11 @@ public class SubtractionNodeTest {
         assertEquals("-", bn1.getSymbol());
     }
     
-    @Test
-    public void getActivationPatternWorks() {
-        bn1 = new SubtractionNode(v1, v2);
-        assertEquals(ActivationPattern.SUBTRACTION, bn1.getActivationPattern());
-    }
-    
-    @Test
-    public void getSubOperationStringsWorks() {
-        bn1 = new SubtractionNode(v1, v2);
-        ArrayList<String> strings = bn1.getSubOperationStrings();
-        assertEquals(6, strings.size());
-        assertEquals("1.1 - 1.0 = 0.1", strings.get(0));
-        assertEquals("3.3 - (-1.0) = 4.3", strings.get(2));
-        
-    }
+//    @Test
+//    public void getActivationPatternWorks() {
+//        bn1 = new SubtractionNode(v1, v2);
+//        assertEquals(OperationPattern.SUBTRACTION, bn1.getOperationPattern(ELEMENTWISE));
+//    }
     
     @Test
     public void validInputDimensionsWorks() {

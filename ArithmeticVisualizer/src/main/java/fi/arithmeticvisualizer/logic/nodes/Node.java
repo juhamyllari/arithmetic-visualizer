@@ -19,7 +19,7 @@ public abstract class Node {
         return (outDimensions().getM() == 1) && (outDimensions().getN() == 1);
     }
     
-    public String formatDouble(double d) {
+    public static String formatDouble(double d) {
         return String.format(BinaryNode.SUBOPFORMAT, d);
     }
 

@@ -1,6 +1,10 @@
-package fi.arithmeticvisualizer.logic.visualization;
+package fi.arithmeticvisualizer.gui;
 
-import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
+import fi.arithmeticvisualizer.gui.MaskState.Pattern;
+import static fi.arithmeticvisualizer.gui.MaskState.Pattern.ALL;
+import static fi.arithmeticvisualizer.gui.MaskState.Pattern.COLUMN;
+import static fi.arithmeticvisualizer.gui.MaskState.Pattern.ELEMENT;
+import static fi.arithmeticvisualizer.gui.MaskState.Pattern.ROW;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import java.util.function.BiPredicate;
 
@@ -25,25 +29,32 @@ public class BooleanMask {
         this(dims.getM(), dims.getN());
     }
 
-    public BooleanMask(Dimensions dims, String patternString, int row, int column) {
-        this(dims.getM(), dims.getN());
-        this.setByPattern(new Pattern(patternString, row, column));
-    }
-
-    public void setByPattern(Pattern pattern) {
+    public void setByPattern(Pattern pattern, int row, int column) {
         
-        switch (pattern.getPattern()) {
-            case "row":
-                this.setRow(pattern.getRow());
+        switch (pattern) {
+            case ROW:
+                this.setRow(row);
                 break;
-            case "column":
-                this.setColumn(pattern.getColumn());
+            case COLUMN:
+                this.setColumn(column);
                 break;
-            case "element":
-                this.setElement(pattern.getRow(), pattern.getColumn());
+            case ELEMENT:
+                this.setElement(row, column);
                 break;
-            case "all":
+            case ALL:
                 this.setAll();
+                break;
+            case UPTOBYROW:
+                outerLoop:
+                for (int i = 0; i < m; i++) {
+                    for (int j = 0; j < n; j++) {
+                        mask[i][j] = true;
+                        if (i == row && j == column) {
+                            break outerLoop;
+                        }
+                    }
+                }
+                break;
         }
     }
 

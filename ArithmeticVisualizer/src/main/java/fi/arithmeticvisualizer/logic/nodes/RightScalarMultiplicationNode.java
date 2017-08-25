@@ -1,8 +1,10 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
+import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import fi.arithmeticvisualizer.logic.visualization.ActivationPattern;
+import fi.arithmeticvisualizer.gui.OperationPattern;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.FrameStringPattern.ELEMENTBYELEMENT;
 import java.util.ArrayList;
 
 /**
@@ -36,7 +38,12 @@ public class RightScalarMultiplicationNode extends BinaryNode {
 
     @Override
     public ArrayValue evaluate() {
-        return left.evaluate().multiply(right.evaluate());
+        if (resultValue == null) {
+            leftValue = left.evaluate();
+            rightValue = right.evaluate();
+            resultValue = leftValue.multiply(rightValue);
+        }
+        return resultValue;
     }
 
     @Override
@@ -50,43 +57,39 @@ public class RightScalarMultiplicationNode extends BinaryNode {
     }
 
     @Override
-    public ActivationPattern getActivationPattern() {
-        return ActivationPattern.RIGHTSCALARMULTIPLICATION;
-    }
-
-    @Override
     public boolean validImputDimensions() {
         return right.isScalar();
     }
 
     @Override
-    public ArrayList<String> getSubOperationStrings() {
-
-        double[][] leftArray = left.evaluate().getValue();
-        double rightScalar = right.evaluate().getElement(0, 0);
-
-        int m = outDimensions().getM();
-        int n = outDimensions().getN();
-
-        ArrayList<String> strings = new ArrayList<>();
-
-        double rightOperand = rightScalar;
-
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                double leftOperand = leftArray[i][j];
-                double result = leftOperand * rightOperand;
-                String string;
-                if (rightOperand >= 0.0) {
-                    string = leftOperand + " * " + rightOperand + " = " + result;
-                } else {
-                    string = leftOperand + " * (" + rightOperand + ") = " + result;
-                }
-                strings.add(string);
-            }
+    protected OperationPattern getOperationPattern(EvaluationStyle style) {
+        switch (style) {
+            case ELEMENTWISE:
+            default:
+                return OperationPattern.RIGHTSCALARMULTIPLICATIONELEMENTWISE;
         }
+    }
 
-        return strings;
+    @Override
+    public FrameSequence getFrameSequence(EvaluationStyle style) {
+        evaluate();
+        switch (style) {
+            case ELEMENTWISE:
+            default:
+                return getFramesElementwise(outDimensions(), getOperationPattern(style), ELEMENTBYELEMENT);
+        }
+    }
+
+    @Override
+    protected String frameString(FrameStringPattern pattern, int row, int column) {
+        switch (pattern) {
+            case ELEMENTBYELEMENT:
+            default:
+                double leftElement = leftValue.getElement(row, column);
+                double rightElement = rightValue.getElement(0, 0);
+                double result = leftElement * rightElement;
+                return oneToOneString(leftElement, rightElement, result, "*");
+        }
     }
 
 }

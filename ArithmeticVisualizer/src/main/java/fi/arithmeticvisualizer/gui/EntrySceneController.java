@@ -1,6 +1,5 @@
 package fi.arithmeticvisualizer.gui;
 
-import fi.arithmeticvisualizer.logic.visualization.Operand;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import java.io.IOException;
 import java.net.URL;

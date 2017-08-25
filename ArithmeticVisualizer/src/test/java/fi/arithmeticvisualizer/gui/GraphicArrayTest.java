@@ -1,5 +1,7 @@
-package fi.arithmeticvisualizer.logic.visualization;
+package fi.arithmeticvisualizer.gui;
 
+import fi.arithmeticvisualizer.gui.BooleanMask;
+import fi.arithmeticvisualizer.gui.GraphicArray;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import javafx.scene.layout.GridPane;

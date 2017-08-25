@@ -1,9 +1,10 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
+import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import fi.arithmeticvisualizer.logic.visualization.ActivationPattern;
-import java.util.ArrayList;
+import fi.arithmeticvisualizer.gui.OperationPattern;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.FrameStringPattern.ELEMENTBYELEMENT;
 
 /**
  * A LeftScalarMultiplicationNode is a BinaryNode that performs scalar
@@ -11,17 +12,13 @@ import java.util.ArrayList;
  */
 public class LeftScalarMultiplicationNode extends BinaryNode {
 
-    private Node left;
-    private Node right;
-
     public LeftScalarMultiplicationNode(Node left, Node right) {
         this.left = left;
         this.right = right;
     }
-    
+
     public LeftScalarMultiplicationNode(ArrayValue left, ArrayValue right) {
-        this.left = new ValueNode(left);
-        this.right = new ValueNode(right);
+        this(new ValueNode(left), new ValueNode(right));
     }
 
     @Override
@@ -36,7 +33,12 @@ public class LeftScalarMultiplicationNode extends BinaryNode {
 
     @Override
     public ArrayValue evaluate() {
-        return right.evaluate().multiply(left.evaluate());
+        if (resultValue == null) {
+            leftValue = left.evaluate();
+            rightValue = right.evaluate();
+            resultValue = leftValue.multiply(rightValue);
+        }
+        return resultValue;
     }
 
     @Override
@@ -50,43 +52,39 @@ public class LeftScalarMultiplicationNode extends BinaryNode {
     }
 
     @Override
-    public ActivationPattern getActivationPattern() {
-        return ActivationPattern.LEFTSCALARMULTIPLICATION;
-    }
-
-    @Override
     public boolean validImputDimensions() {
         return left.isScalar();
     }
 
     @Override
-    public ArrayList<String> getSubOperationStrings() {
-
-        double leftScalar = left.evaluate().getElement(0, 0);
-        double[][] rightArray = right.evaluate().getValue();
-
-        int m = outDimensions().getM();
-        int n = outDimensions().getN();
-
-        ArrayList<String> strings = new ArrayList<>();
-
-        double leftOperand = leftScalar;
-
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                double rightOperand = rightArray[i][j];
-                double result = leftOperand * rightOperand;
-                String string;
-                if (rightOperand >= 0.0) {
-                    string = formatDouble(leftOperand) + " * " + formatDouble(rightOperand) + " = " + formatDouble(result);
-                } else {
-                    string = formatDouble(leftOperand) + " * (" + formatDouble(rightOperand) + ") = " + formatDouble(result);
-                }
-                strings.add(string);
-            }
+    protected OperationPattern getOperationPattern(EvaluationStyle style) {
+        switch (style) {
+            case ELEMENTWISE:
+            default:
+                return OperationPattern.LEFTSCALARMULTIPLICATIONELEMENTWISE;
         }
+    }
 
-        return strings;
+    @Override
+    public FrameSequence getFrameSequence(EvaluationStyle style) {
+        evaluate();
+        switch (style) {
+            case ELEMENTWISE:
+            default:
+                return getFramesElementwise(outDimensions(), getOperationPattern(style), ELEMENTBYELEMENT);
+        }
+    }
+
+    @Override
+    protected String frameString(FrameStringPattern pattern, int row, int column) {
+        switch (pattern) {
+            case ELEMENTBYELEMENT:
+            default:
+                double leftElement = leftValue.getElement(0, 0);
+                double rightElement = rightValue.getElement(row, column);
+                double result = leftElement * rightElement;
+                return oneToOneString(leftElement, rightElement, result, "*");
+        }
     }
 
 }

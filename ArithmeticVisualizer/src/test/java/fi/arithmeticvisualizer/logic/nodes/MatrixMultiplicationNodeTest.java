@@ -1,8 +1,7 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import fi.arithmeticvisualizer.logic.visualization.ActivationPattern;
-import java.util.ArrayList;
+import fi.arithmeticvisualizer.gui.OperationPattern;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -65,13 +64,7 @@ public class MatrixMultiplicationNodeTest {
     
     @Test
     public void getActivationPatternWorks() {
-        assertEquals(ActivationPattern.MATRIXMULTIPLICATION, bn1.getActivationPattern());
+        assertEquals(OperationPattern.MATRIXMULTIPLICATIONELEMENTWISE, bn1.getOperationPattern(BinaryNode.EvaluationStyle.ELEMENTWISE));
     }
     
-    @Test
-    public void getSubOperationStringsWorks() {
-        ArrayList<String> strings = bn2.getSubOperationStrings();
-        assertEquals(4, strings.size());
-        assertEquals("(1.0 * 2.0) + (2.0 * 4.0) + (3.0 * -6.0) = -8.0", strings.get(0));
-    }
 }
