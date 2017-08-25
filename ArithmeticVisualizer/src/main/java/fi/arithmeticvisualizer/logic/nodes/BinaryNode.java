@@ -17,7 +17,7 @@ import java.util.stream.IntStream;
  */
 public abstract class BinaryNode extends Node {
 
-    public static final String SUBOPFORMAT = "%.1f";
+    public static final String SUBOPERATION_FORMAT = "%.1f";
 
     public enum EvaluationStyle {
         ELEMENTWISE,
@@ -26,8 +26,8 @@ public abstract class BinaryNode extends Node {
     }
 
     public enum FrameStringPattern {
-        ROWBYCOLUMN,
-        ELEMENTBYELEMENT
+        ROW_BY_COLUMN,
+        ELEMENT_BY_ELEMENT
     }
     
     protected Node left;

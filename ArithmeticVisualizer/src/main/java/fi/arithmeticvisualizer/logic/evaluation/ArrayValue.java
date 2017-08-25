@@ -41,10 +41,6 @@ public class ArrayValue {
         String[] rows = str.split("\\s*;\\s*");
         int m = rows.length;
 
-        if (m == 0) {
-            throw new BadArrayException("Array must have at least one element");
-        }
-
         int n = stringToRow(rows[0]).length;
         double[][] array = new double[m][n];
 
@@ -61,10 +57,6 @@ public class ArrayValue {
     private static double[] stringToRow(String str) throws BadArrayException {
 
         List<String> strings = Arrays.asList(str.split("\\s+"));
-
-        if (strings.isEmpty()) {
-            throw new BadArrayException("Empty row");
-        }
 
         try {
             return strings

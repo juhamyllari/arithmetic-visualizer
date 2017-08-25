@@ -4,8 +4,8 @@ import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.gui.OperationPattern;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.FrameStringPattern.ELEMENTBYELEMENT;
 import java.util.ArrayList;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.FrameStringPattern.ELEMENT_BY_ELEMENT;
 
 /**
  * An AdditionNode is a BinaryNode that performs array addition.
@@ -68,14 +68,14 @@ public class AdditionNode extends BinaryNode {
         switch (style) {
             case ELEMENTWISE:
             default:
-                return getFramesElementwise(outDimensions(), getOperationPattern(style), ELEMENTBYELEMENT);
+                return getFramesElementwise(outDimensions(), getOperationPattern(style), ELEMENT_BY_ELEMENT);
         }
     }
 
     @Override
     protected String frameString(FrameStringPattern pattern, int row, int column) {
         switch (pattern) {
-            case ELEMENTBYELEMENT:
+            case ELEMENT_BY_ELEMENT:
             default:
                 double leftElement = leftValue.getElement(row, column);
                 double rightElement = rightValue.getElement(row, column);

@@ -20,7 +20,7 @@ public abstract class Node {
     }
     
     public static String formatDouble(double d) {
-        return String.format(BinaryNode.SUBOPFORMAT, d);
+        return String.format(BinaryNode.SUBOPERATION_FORMAT, d);
     }
 
 }

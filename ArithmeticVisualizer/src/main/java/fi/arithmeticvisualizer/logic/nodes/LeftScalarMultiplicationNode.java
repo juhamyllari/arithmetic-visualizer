@@ -4,7 +4,7 @@ import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import fi.arithmeticvisualizer.gui.OperationPattern;
-import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.FrameStringPattern.ELEMENTBYELEMENT;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.FrameStringPattern.ELEMENT_BY_ELEMENT;
 
 /**
  * A LeftScalarMultiplicationNode is a BinaryNode that performs scalar
@@ -71,14 +71,14 @@ public class LeftScalarMultiplicationNode extends BinaryNode {
         switch (style) {
             case ELEMENTWISE:
             default:
-                return getFramesElementwise(outDimensions(), getOperationPattern(style), ELEMENTBYELEMENT);
+                return getFramesElementwise(outDimensions(), getOperationPattern(style), ELEMENT_BY_ELEMENT);
         }
     }
 
     @Override
     protected String frameString(FrameStringPattern pattern, int row, int column) {
         switch (pattern) {
-            case ELEMENTBYELEMENT:
+            case ELEMENT_BY_ELEMENT:
             default:
                 double leftElement = leftValue.getElement(0, 0);
                 double rightElement = rightValue.getElement(row, column);

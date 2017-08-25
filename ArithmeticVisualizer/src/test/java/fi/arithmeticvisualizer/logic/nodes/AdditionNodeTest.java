@@ -1,10 +1,12 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
+import fi.arithmeticvisualizer.gui.FrameSequence;
+import fi.arithmeticvisualizer.gui.OperationPattern;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import fi.arithmeticvisualizer.gui.OperationPattern;
-import java.util.ArrayList;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle.ELEMENTWISE;
+import static fi.arithmeticvisualizer.logic.nodes.Node.formatDouble;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -29,6 +31,7 @@ public class AdditionNodeTest {
         v1 = new ValueNode(new double[][]{{1.1, 2.2, 3.3}, {1.0, 2.0, 3.0}});
         v2 = new ValueNode(new double[][]{{1.0, 1.0, -1.0}, {1.0, 1.0, 1.0}});
         v3 = new ValueNode(new double[][]{{2.0, 3.0}, {4.0, 5.0}, {6.0, 7.0}});
+        bn1 = new AdditionNode(v1, v2);
     }
 
     @AfterClass
@@ -76,21 +79,35 @@ public class AdditionNodeTest {
     
     @Test
     public void additionNodeGivesCorrectSymbol() {
-        bn1 = new AdditionNode(v1, v2);
         assertEquals("+", bn1.getSymbol());
     }
     
-//    @Test
-//    public void getActivationPatternWorks() {
-//        bn1 = new AdditionNode(v1, v2);
-//        assertEquals(OperationPattern.ADDITION, bn1.getOperationPattern(BinaryNode.EvaluationStyle.ELEMENTWISE));
-//    }
-    
     @Test
     public void validInputDimensionsWorks() {
-        bn1 = new AdditionNode(v1, v2);
         bn2 = new AdditionNode(v1, v3);
         assertEquals(true, bn1.validImputDimensions());
         assertEquals(false, bn2.validImputDimensions());
+    }
+    
+    @Test
+    public void getOperationPatternWorks() {
+        assertEquals(OperationPattern.ADDITIONELEMENTWISE, bn1.getOperationPattern(ELEMENTWISE));
+    }
+    
+    @Test
+    public void getFrameSequenceWorks() {
+        bn1 = new AdditionNode(v1, v2);
+        FrameSequence sequence = bn1.getFrameSequence(ELEMENTWISE);
+        assertEquals(6, sequence.getLength());
+    }
+    
+    @Test
+    public void frameStringWorks() {
+        AdditionNode an1 = new AdditionNode(v1, v2);
+        an1.evaluate();
+        String expected1 = formatDouble(1.1) + " + " + formatDouble(1.0) + " = " + formatDouble(2.1);
+        String expected2 = formatDouble(3.3) + " + (" + formatDouble(-1.0) + ") = " + formatDouble(2.3);
+        assertEquals(expected1, an1.frameString(BinaryNode.FrameStringPattern.ELEMENT_BY_ELEMENT, 0, 0));
+        assertEquals(expected2, an1.frameString(BinaryNode.FrameStringPattern.ELEMENT_BY_ELEMENT, 0, 2));
     }
 }

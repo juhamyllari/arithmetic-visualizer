@@ -4,8 +4,8 @@ import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.gui.OperationPattern;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.FrameStringPattern.ROWBYCOLUMN;
 import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.dotTypeString;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.FrameStringPattern.ROW_BY_COLUMN;
 
 /**
  * A MatrixMultiplicationNode is a BinaryNode that performs matrix
@@ -60,9 +60,8 @@ public class MatrixMultiplicationNode extends BinaryNode {
         evaluate();
         switch (style) {
             case ELEMENTWISE:
-                return getFramesElementwise(outDimensions(), getOperationPattern(style), ROWBYCOLUMN);
             default:
-                return getFramesElementwise(outDimensions(), getOperationPattern(style), ROWBYCOLUMN);
+                return getFramesElementwise(outDimensions(), getOperationPattern(style), ROW_BY_COLUMN);
         }
     }
 
@@ -74,7 +73,7 @@ public class MatrixMultiplicationNode extends BinaryNode {
     @Override
     protected String frameString(FrameStringPattern pattern, int row, int column) {
         switch (pattern) {
-            case ROWBYCOLUMN:
+            case ROW_BY_COLUMN:
             default:
                 double result = ArrayValue.dotVectors(leftValue.getRow(row), rightValue.getColumn(column));
                 return dotTypeString(leftValue.getRow(row), rightValue.getColumn(column), result, "*", "+");

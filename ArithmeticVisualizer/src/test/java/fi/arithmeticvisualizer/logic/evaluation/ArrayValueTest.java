@@ -46,6 +46,21 @@ public class ArrayValueTest {
     public void constructorFromStringThrowsCorrectException() throws BadArrayException {
         new ArrayValue("1 2; 3 4 5");
     }
+    
+    @Test(expected = BadArrayException.class)
+    public void noRowsCausesException() throws BadArrayException {
+        new ArrayValue("");
+    }
+    
+    @Test(expected = BadArrayException.class)
+    public void emptyRowCausesException() throws BadArrayException {
+        new ArrayValue("1;; 2");
+    }
+    
+    @Test(expected = BadArrayException.class)
+    public void badStringCausesException() throws BadArrayException {
+        new ArrayValue("lolcats");
+    }
 
     @Test
     public void constructionFromArrayWorks() {
