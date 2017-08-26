@@ -29,7 +29,7 @@ public class ArrayValue {
     }
 
     /**
-     * Constructs a scalar valued ArrayValue with the specified value.
+     * Constructs an ArrayValue with the specified scalar value.
      *
      * @param scalar
      */
@@ -54,13 +54,10 @@ public class ArrayValue {
     }
 
     private double[][] arrayFromString(String str) throws BadArrayException {
-
         String[] rows = str.split("\\s*;\\s*");
         int m = rows.length;
-
         int n = stringToRow(rows[0]).length;
         double[][] array = new double[m][n];
-
         for (int row = 0; row < m; row++) {
             double[] rowAsDoubles = stringToRow(rows[row]);
             if (rowAsDoubles.length != n) {
@@ -72,9 +69,7 @@ public class ArrayValue {
     }
 
     private static double[] stringToRow(String str) throws BadArrayException {
-
         List<String> strings = Arrays.asList(str.split("\\s+"));
-
         try {
             return strings
                     .stream()
@@ -123,7 +118,7 @@ public class ArrayValue {
      * Returns the product of this ArrayValue with the specified scalar valued
      * ArrayValue as a new ArrayValue.
      *
-     * @param that the ArrayValue to be multiplied
+     * @param d the ArrayValue to be multiplied
      * @return the product of the two ArrayValues
      */
     public ArrayValue scalarMultiply(double d) {
@@ -208,7 +203,6 @@ public class ArrayValue {
      */
     public ArrayValue add(ArrayValue that) {
         double[][] result = new double[m][n];
-
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 result[i][j] = this.array[i][j] + that.array[i][j];
@@ -233,15 +227,12 @@ public class ArrayValue {
      * @return the transpose of this ArrayValue
      */
     public ArrayValue transpose() {
-
         double[][] newArray = new double[n][m];
-
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 newArray[i][j] = array[j][i];
             }
         }
-
         return new ArrayValue(newArray);
     }
 
@@ -253,9 +244,7 @@ public class ArrayValue {
      * accepted by the constructor.
      */
     public String toInputString() {
-
         StringBuilder sb = new StringBuilder();
-
         for (double[] row : array) {
             String rowAsString = Arrays.stream(row)
                     .boxed()
@@ -264,11 +253,8 @@ public class ArrayValue {
             sb.append(rowAsString);
             sb.append("; ");
         }
-
         sb.deleteCharAt(sb.length() - 1);
         sb.deleteCharAt(sb.length() - 1);
-
         return sb.toString();
     }
-    
 }
