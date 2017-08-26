@@ -8,14 +8,16 @@ public class Dimensions {
     private int m;
     private int n;
 
+    /**
+     * Constructs a Dimensions instance representing the dimensions
+     * of a array with m rows and n columns.
+     * 
+     * @param m the number of rows
+     * @param n the number of columns
+     */
     public Dimensions(int m, int n) {
         this.m = m;
         this.n = n;
-    }
-
-    public Dimensions(double[][] array) {
-        this.m = array.length;
-        this.n = array[0].length;
     }
 
     public int getM() {
@@ -51,7 +53,5 @@ public class Dimensions {
         }
         return true;
     }
-    
-    
     
 }

@@ -1,7 +1,7 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.gui.FrameSequence;
-import fi.arithmeticvisualizer.gui.OperationPattern;
+import fi.arithmeticvisualizer.gui.FramePattern;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
@@ -91,7 +91,7 @@ public class AdditionNodeTest {
     
     @Test
     public void getOperationPatternWorks() {
-        assertEquals(OperationPattern.ADDITIONELEMENTWISE, bn1.getOperationPattern(ELEMENTWISE));
+        assertEquals(FramePattern.ADDITIONELEMENTWISE, bn1.getOperationPattern(ELEMENTWISE));
     }
     
     @Test

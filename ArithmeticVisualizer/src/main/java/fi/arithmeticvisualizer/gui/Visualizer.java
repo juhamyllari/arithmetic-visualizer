@@ -85,7 +85,7 @@ public class Visualizer {
         resultGraphicArray.draw();
     }
     
-    private void setMasks(Frame frame, OperationPattern pattern) {
+    private void setMasks(Frame frame, FramePattern pattern) {
         int row = frame.getRow();
         int column = frame.getColumn();
         leftGraphicArray.getActivation().setByPattern(pattern.leftPattern, row, column);

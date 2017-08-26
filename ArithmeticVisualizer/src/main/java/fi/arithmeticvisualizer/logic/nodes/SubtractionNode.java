@@ -1,7 +1,7 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.gui.FrameSequence;
-import fi.arithmeticvisualizer.gui.OperationPattern;
+import fi.arithmeticvisualizer.gui.FramePattern;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import java.util.ArrayList;
@@ -61,11 +61,11 @@ public class SubtractionNode extends BinaryNode {
     }
 
     @Override
-    protected OperationPattern getOperationPattern(EvaluationStyle style) {
+    protected FramePattern getOperationPattern(EvaluationStyle style) {
         switch (style) {
             case ELEMENTWISE:
             default:
-                return OperationPattern.SUBTRACTIONELEMENTWISE;
+                return FramePattern.SUBTRACTIONELEMENTWISE;
         }
     }
 

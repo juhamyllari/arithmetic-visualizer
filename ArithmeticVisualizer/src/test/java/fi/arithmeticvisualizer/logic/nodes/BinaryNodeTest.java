@@ -3,7 +3,6 @@ package fi.arithmeticvisualizer.logic.nodes;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import fi.arithmeticvisualizer.logic.evaluation.WrongShapeException;
 import static fi.arithmeticvisualizer.logic.nodes.Node.formatDouble;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -25,7 +24,7 @@ public class BinaryNodeTest {
     }
 
     @BeforeClass
-    public static void setUpClass() throws WrongShapeException, BadArrayException {
+    public static void setUpClass() throws BadArrayException {
 
         v1 = new ValueNode(new double[][]{{1.1, 2.2, 3.3}, {1.0, 2.0, 3.0}});
         v2 = new ValueNode(new double[][]{{1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}});
@@ -82,7 +81,7 @@ public class BinaryNodeTest {
     }
 
     @Test
-    public void subtractionWorks() throws WrongShapeException {
+    public void subtractionWorks() {
         bn1 = new SubtractionNode(v1, v2);
         assertEquals(1.2, bn1.evaluate().getValue()[0][1], .001);
     }

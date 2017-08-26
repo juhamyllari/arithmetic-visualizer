@@ -37,17 +37,8 @@ public class DimensionsTest {
     }
 
     @Test
-    public void arrayConstructedDimsWork() {
-        double[][] array = new double[][]{{1, 2}, {3, 4}, {5, 6}};
-        Dimensions dims = new Dimensions(array);
-        assertEquals(3, dims.getM());
-        assertEquals(2, dims.getN());
-    }
-
-    @Test
     public void toStringWorks() {
-        double[][] array = new double[][]{{1, 2}, {3, 4}, {5, 6}};
-        Dimensions dims = new Dimensions(array);
+        Dimensions dims = new Dimensions(3, 2);
         assertEquals("(3, 2)", dims.toString());
     }
     

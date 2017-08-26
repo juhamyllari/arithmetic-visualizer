@@ -1,10 +1,11 @@
 package fi.arithmeticvisualizer.gui;
 
-import fi.arithmeticvisualizer.gui.MaskState.Pattern;
-import static fi.arithmeticvisualizer.gui.MaskState.Pattern.ALL;
-import static fi.arithmeticvisualizer.gui.MaskState.Pattern.COLUMN;
-import static fi.arithmeticvisualizer.gui.MaskState.Pattern.ELEMENT;
-import static fi.arithmeticvisualizer.gui.MaskState.Pattern.ROW;
+import fi.arithmeticvisualizer.gui.FramePattern.ArrayPattern;
+import static fi.arithmeticvisualizer.gui.FramePattern.ArrayPattern.ALL;
+import static fi.arithmeticvisualizer.gui.FramePattern.ArrayPattern.COLUMN;
+import static fi.arithmeticvisualizer.gui.FramePattern.ArrayPattern.ELEMENT;
+import static fi.arithmeticvisualizer.gui.FramePattern.ArrayPattern.ROW;
+import static fi.arithmeticvisualizer.gui.FramePattern.ArrayPattern.UPTOBYROW;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import java.util.function.BiPredicate;
 
@@ -29,8 +30,16 @@ public class BooleanMask {
         this(dims.getM(), dims.getN());
     }
 
-    public void setByPattern(Pattern pattern, int row, int column) {
-        
+    /**
+     * Sets the BooleanMask according to the specified ArrayPattern and the
+     * specified row and column indices.
+     *
+     * @param pattern
+     * @param row
+     * @param column
+     */
+    public void setByPattern(ArrayPattern pattern, int row, int column) {
+
         switch (pattern) {
             case ROW:
                 this.setRow(row);
@@ -66,39 +75,80 @@ public class BooleanMask {
         }
     }
 
+    /**
+     * Sets the specified row to {@code true}. All other elements are set to
+     * {@code false}.
+     *
+     * @param row the index of the row to be set to {@code true}
+     */
     public void setRow(int row) {
         BiPredicate<Integer, Integer> predicate = (Integer i, Integer j) -> (i == row);
         setActivation(predicate);
     }
 
+    /**
+     * Sets the specified column to {@code true}. All other elements are set to
+     * {@code false}.
+     *
+     * @param column the index of the column to be set to {@code true}
+     */
     public void setColumn(int column) {
         BiPredicate<Integer, Integer> predicate = (Integer i, Integer j) -> (j == column);
         setActivation(predicate);
     }
-    
+
+    /**
+     * Sets the specified column to {@code true}. All other elements are set to
+     * {@code false}.
+     *
+     * @param column the index of the column to be set to {@code true}
+     */
     public void setElement(int row, int column) {
         BiPredicate<Integer, Integer> predicate = (Integer i, Integer j) -> (i == row && j == column);
         setActivation(predicate);
     }
 
+    /**
+     * Sets the specified element to {@code true}. All other elements retain
+     * their truth value.
+     *
+     * @param row the row index of the element to be set to {@code true}
+     * @param column the column index of the element to be set to {@code true}
+     */
     public void setAdditionalElement(int row, int column) {
         mask[row][column] = true;
     }
 
+    /**
+     * Sets all elements to {@code true}.
+     */
     public void setAll() {
         BiPredicate<Integer, Integer> predicate = (Integer i, Integer j) -> true;
         setActivation(predicate);
     }
-
+    
+    /**
+     * Sets all elements to {@code false}.
+     */
     public void clearAll() {
         BiPredicate<Integer, Integer> predicate = (Integer i, Integer j) -> false;
         setActivation(predicate);
     }
 
+    /**
+     * Returns the boolean 2D array representing the BooleanMask.
+     * 
+     * @return the mask
+     */
     public boolean[][] getMask() {
         return mask;
     }
 
+    /**
+     * Returns a copy of the BooleanMask.
+     * 
+     * @return a copy of the BooleanMask
+     */
     public BooleanMask clone() {
         BooleanMask clone = new BooleanMask(m, n);
 

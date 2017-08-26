@@ -31,7 +31,7 @@ public class NodeTest {
 
     @Test
     public void formatDoubleWorks() {
-        String format = BinaryNode.SUBOPERATION_FORMAT;
+        String format = BinaryNode.FRAME_STRING_DOUBLE_FORMAT;
         assertEquals(String.format(format, 0.0), formatDouble(0));
         assertEquals(String.format(format, -0.4), formatDouble(-0.4));
         assertEquals(String.format(format, 7.8e-12), formatDouble(7.8e-12));

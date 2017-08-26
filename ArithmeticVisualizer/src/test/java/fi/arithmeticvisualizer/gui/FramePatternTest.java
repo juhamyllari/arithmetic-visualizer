@@ -1,9 +1,6 @@
 package fi.arithmeticvisualizer.gui;
 
-import static fi.arithmeticvisualizer.gui.MaskState.Pattern.COLUMN;
-import static fi.arithmeticvisualizer.gui.MaskState.Pattern.ELEMENT;
-import static fi.arithmeticvisualizer.gui.MaskState.Pattern.ROW;
-import fi.arithmeticvisualizer.gui.OperationPattern;
+import static fi.arithmeticvisualizer.gui.FramePattern.ArrayPattern.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -11,16 +8,16 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class ActivationPatternTest {
+public class FramePatternTest {
     
-    static OperationPattern matrixMultiplicationPattern;
+    static FramePattern matrixMultiplicationPattern;
     
-    public ActivationPatternTest() {
+    public FramePatternTest() {
     }
     
     @BeforeClass
     public static void setUpClass() {
-        matrixMultiplicationPattern = OperationPattern.MATRIXMULTIPLICATIONELEMENTWISE;
+        matrixMultiplicationPattern = FramePattern.MATRIXMULTIPLICATIONELEMENTWISE;
     }
     
     @AfterClass

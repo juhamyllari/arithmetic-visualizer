@@ -5,6 +5,11 @@ package fi.arithmeticvisualizer.logic.evaluation;
  */
 public class BadArrayException extends Exception {
 
+    /**
+     * Constructs a BadArrayException with the specified message.
+     * 
+     * @param message
+     */
     public BadArrayException(String message) {
         super(message);
     }

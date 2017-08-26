@@ -7,9 +7,9 @@ import java.util.stream.IntStream;
 
 /**
  * Expressions in the Arithmetic Visualizer evaluate to ArrayValue objects. An
- * ArrayValue object mainly consists an array of type double[][]. In the future
- * the class may accommodate arrays of more general scalars such as complex
- * numbers.
+ * ArrayValue object consists mainly of an array of type double[][]. In the
+ * future the class may accommodate arrays of more general scalars such as
+ * complex numbers.
  */
 public class ArrayValue {
 
@@ -17,19 +17,36 @@ public class ArrayValue {
     private final int m;
     private final int n;
 
+    /**
+     * Constructs an ArrayValue with the specified value.
+     *
+     * @param value
+     */
     public ArrayValue(double[][] value) {
         this.array = value;
         this.m = value.length;
         this.n = value[0].length;
     }
 
-    public ArrayValue(double dbl) {
+    /**
+     * Constructs a scalar valued ArrayValue with the specified value.
+     *
+     * @param scalar
+     */
+    public ArrayValue(double scalar) {
         this.array = new double[1][1];
-        this.array[0][0] = dbl;
+        this.array[0][0] = scalar;
         this.m = 1;
         this.n = 1;
     }
 
+    /**
+     * Constructs an ArrayValue from a String. Separate columns with whitespace
+     * and rows with a semicolon.
+     *
+     * @param inputString
+     * @throws BadArrayException
+     */
     public ArrayValue(String inputString) throws BadArrayException {
         this.array = arrayFromString(inputString);
         this.m = array.length;
@@ -76,10 +93,22 @@ public class ArrayValue {
         return new Dimensions(m, n);
     }
 
+    /**
+     * Returns {@code true} if the ArrayValue has dimensions (1, 1) and
+     * {@code true} otherwise.
+     *
+     * @return {@code true} if and only if the instance is a scalar
+     */
     public boolean isScalar() {
         return m == 1 && n == 1;
     }
 
+    /**
+     * Returns the product of this ArrayValue with the specified ArrayValue.
+     *
+     * @param that the ArrayValue to be multiplied
+     * @return the product of the two ArrayValues
+     */
     public ArrayValue multiply(ArrayValue that) {
         if (this.isScalar()) {
             return that.scalarMultiply(this.getValue()[0][0]);
@@ -90,6 +119,13 @@ public class ArrayValue {
         }
     }
 
+    /**
+     * Returns the product of this ArrayValue with the specified scalar valued
+     * ArrayValue as a new ArrayValue.
+     *
+     * @param that the ArrayValue to be multiplied
+     * @return the product of the two ArrayValues
+     */
     public ArrayValue scalarMultiply(double d) {
         double[][] newArray = new double[m][n];
 
@@ -101,6 +137,13 @@ public class ArrayValue {
         return new ArrayValue(newArray);
     }
 
+    /**
+     * Returns as a new ArrayValue the product of this ArrayValue with the
+     * specified ArrayValue where both operands are matrix valued.
+     *
+     * @param that the ArrayValue to be multiplied
+     * @return the product of the two ArrayValues
+     */
     private ArrayValue matrixMultiply(ArrayValue that) {
         double[][] newMatrix = new double[this.m][that.n];
 
@@ -112,18 +155,44 @@ public class ArrayValue {
         return new ArrayValue(newMatrix);
     }
 
+    /**
+     * Returns the specified row.
+     *
+     * @param row the index of the row
+     * @return the specified row
+     */
     public double[] getRow(int row) {
         return array[row];
     }
 
+    /**
+     * Returns the specified column.
+     *
+     * @param column the index of the column
+     * @return the specified column
+     */
     public double[] getColumn(int column) {
         return Arrays.stream(array).mapToDouble(row -> row[column]).toArray();
     }
 
+    /**
+     * Returns the specified element.
+     *
+     * @param row the index of the row
+     * @param column the index of the column
+     * @return the specified element
+     */
     public double getElement(int row, int column) {
         return array[row][column];
     }
 
+    /**
+     * Returns the dot product of two vectors.
+     *
+     * @param leftVector
+     * @param rightVector
+     * @return the dot product of the vectors
+     */
     public static double dotVectors(double[] leftVector, double[] rightVector) {
         return IntStream
                 .range(0, leftVector.length)
@@ -131,6 +200,12 @@ public class ArrayValue {
                 .sum();
     }
 
+    /**
+     * Returns the sum of the two ArrayValues.
+     *
+     * @param that ArrayValue to add
+     * @return the sum of the two values
+     */
     public ArrayValue add(ArrayValue that) {
         double[][] result = new double[m][n];
 
@@ -142,10 +217,21 @@ public class ArrayValue {
         return new ArrayValue(result);
     }
 
+    /**
+     * Returns the difference of this and the specified ArrayValue.
+     *
+     * @param that ArrayValue to subtract
+     * @return the difference of the two values
+     */
     public ArrayValue subtract(ArrayValue that) {
         return this.add(that.scalarMultiply(-1));
     }
 
+    /**
+     * Returns the transpose of this ArrayValue.
+     * 
+     * @return the transpose of this ArrayValue
+     */
     public ArrayValue transpose() {
 
         double[][] newArray = new double[n][m];
@@ -159,6 +245,13 @@ public class ArrayValue {
         return new ArrayValue(newArray);
     }
 
+    /**
+     * Returns a String that can be used to produce an equivalent
+     * ArrayValue using the constructor that takes a String argument.
+     * 
+     * @return a String representation of the ArrayValue that is
+     * accepted by the constructor.
+     */
     public String toInputString() {
 
         StringBuilder sb = new StringBuilder();
@@ -177,4 +270,5 @@ public class ArrayValue {
 
         return sb.toString();
     }
+    
 }

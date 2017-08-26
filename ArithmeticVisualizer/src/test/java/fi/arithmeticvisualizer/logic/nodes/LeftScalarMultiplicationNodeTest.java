@@ -4,7 +4,7 @@ import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import fi.arithmeticvisualizer.gui.OperationPattern;
+import fi.arithmeticvisualizer.gui.FramePattern;
 import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle.ELEMENTWISE;
 import static fi.arithmeticvisualizer.logic.nodes.Node.formatDouble;
 import java.util.ArrayList;
@@ -86,7 +86,7 @@ public class LeftScalarMultiplicationNodeTest {
 
     @Test
     public void getOperationPatternWorks() {
-        assertEquals(OperationPattern.LEFTSCALARMULTIPLICATIONELEMENTWISE, bn1.getOperationPattern(ELEMENTWISE));
+        assertEquals(FramePattern.LEFTSCALARMULTIPLICATIONELEMENTWISE, bn1.getOperationPattern(ELEMENTWISE));
     }
 
     @Test

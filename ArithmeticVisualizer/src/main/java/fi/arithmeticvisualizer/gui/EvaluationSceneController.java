@@ -56,7 +56,7 @@ public class EvaluationSceneController {
     @FXML
     private ChoiceBox operandChoiceBox;
 
-    public void initData(BinaryNode node) {
+    protected void initData(BinaryNode node) {
         this.node = node;
         this.left = new GraphicArray(leftGrid, node.getLeft().evaluate());
         this.right = new GraphicArray(rightGrid, node.getRight().evaluate());
@@ -79,7 +79,7 @@ public class EvaluationSceneController {
         visualizer.visualize();
     }
 
-    public void setOptionsGridVisibility(boolean visible) {
+    protected void setOptionsGridVisibility(boolean visible) {
         this.entryOptionsGrid.setVisible(visible);
     }
 

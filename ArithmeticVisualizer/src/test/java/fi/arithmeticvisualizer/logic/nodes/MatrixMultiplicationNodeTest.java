@@ -2,7 +2,7 @@ package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import fi.arithmeticvisualizer.gui.OperationPattern;
+import fi.arithmeticvisualizer.gui.FramePattern;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle.ELEMENTWISE;
@@ -80,7 +80,7 @@ public class MatrixMultiplicationNodeTest {
     
     @Test
     public void getOperationPatternWorks() {
-        assertEquals(OperationPattern.MATRIXMULTIPLICATIONELEMENTWISE, bn1.getOperationPattern(BinaryNode.EvaluationStyle.ELEMENTWISE));
+        assertEquals(FramePattern.MATRIXMULTIPLICATIONELEMENTWISE, bn1.getOperationPattern(BinaryNode.EvaluationStyle.ELEMENTWISE));
     }
     
     @Test

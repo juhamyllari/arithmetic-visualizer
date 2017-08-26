@@ -94,7 +94,7 @@ public class EntrySceneController implements Initializable {
         createNode();
     }
 
-    public boolean createNode() {
+    protected boolean createNode() {
 
         setErrorMessage("");
 
@@ -145,7 +145,7 @@ public class EntrySceneController implements Initializable {
         }
     }
 
-    public void setErrorMessage(String message) {
+    protected void setErrorMessage(String message) {
         errorText.setText(message);
     }
     
@@ -155,7 +155,7 @@ public class EntrySceneController implements Initializable {
         rightOperand = new Operand(this, null, rightArrayGrid, rightField, transposeRight);
     }
     
-    public void initializeTextFieldData(String left, String right) {
+    protected void initializeTextFieldData(String left, String right) {
         leftField.setText(left);
         rightField.setText(right);
     }

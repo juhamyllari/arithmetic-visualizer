@@ -1,27 +1,24 @@
 package fi.arithmeticvisualizer.gui;
 
+import fi.arithmeticvisualizer.gui.FramePattern.ArrayPattern;
+
 /**
  * A MaskState object contains the information necessary to
  * generate a Boolean mask whose dimensions are known.
  */
 public class MaskState {
     
-    public enum Pattern {
-        ROW, COLUMN, ELEMENT, ALL,
-        UPTOBYROW, UPTOBYCOLUMN
-    }
-    
-    Pattern pattern;
+    ArrayPattern pattern;
     int row;
     int column;
 
-    public MaskState(Pattern pattern, int m, int n) {
+    public MaskState(ArrayPattern pattern, int m, int n) {
         this.pattern = pattern;
         this.row = m;
         this.column = n;
     }
 
-    public Pattern getPattern() {
+    public ArrayPattern getPattern() {
         return pattern;
     }
 
