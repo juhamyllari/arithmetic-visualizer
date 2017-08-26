@@ -53,5 +53,13 @@ public class Dimensions {
         }
         return true;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + this.m;
+        hash = 29 * hash + this.n;
+        return hash;
+    }
     
 }

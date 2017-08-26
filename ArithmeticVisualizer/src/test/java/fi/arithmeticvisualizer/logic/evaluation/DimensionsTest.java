@@ -55,4 +55,11 @@ public class DimensionsTest {
         assertNotEquals(dims1, "(2, 4)");
         assertEquals(new Dimensions(23, 24), new Dimensions(23, 24));
     }
+    
+    @Test
+    public void hashCodeWorks() {
+        Dimensions dims1 = new Dimensions(2, 4);
+        Dimensions dims2 = new Dimensions(2, 4);
+        assertEquals(dims1.hashCode(), dims2.hashCode());
+    }
 }
