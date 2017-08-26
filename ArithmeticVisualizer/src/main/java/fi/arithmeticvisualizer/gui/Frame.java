@@ -3,7 +3,7 @@ package fi.arithmeticvisualizer.gui;
 abstract public class Frame {
     
     @FunctionalInterface
-    protected interface MaskSetter {
+    public interface MaskSetter {
         void apply(BooleanMask mask);
     }
     

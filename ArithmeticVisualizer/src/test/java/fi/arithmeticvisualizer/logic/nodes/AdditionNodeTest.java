@@ -1,5 +1,7 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
+import fi.arithmeticvisualizer.gui.Frame;
+import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
@@ -85,6 +87,19 @@ public class AdditionNodeTest {
         bn2 = new AdditionNode(v1, v3);
         assertEquals(true, bn1.validImputDimensions());
         assertEquals(false, bn2.validImputDimensions());
+    }
+    
+    @Test
+    public void getFrameSequenceWorks() {
+        bn1 = new AdditionNode(v1, v2);
+        FrameSequence sequence = bn1.getFrameSequence(ELEMENTWISE);
+        Frame frame0 = sequence.getFrame(0);
+        Frame frame2 = sequence.getFrame(2);
+        String expected0 = formatDouble(1.1) + " + " + formatDouble(1.0)+ " = " + formatDouble(2.1);
+        String expected2 = formatDouble(3.3) + " + (" + formatDouble(-1.0) + ") = " + formatDouble(2.3);
+        assertEquals(6, sequence.getLength());
+        assertEquals(expected0, frame0.getSubOperationString());
+        assertEquals(expected2, frame2.getSubOperationString());
     }
     
 }

@@ -1,8 +1,13 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
+import fi.arithmeticvisualizer.gui.BooleanMask;
+import fi.arithmeticvisualizer.gui.Frame;
+import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
+import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle.ELEMENTWISE;
+import static fi.arithmeticvisualizer.logic.nodes.Node.formatDouble;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -48,6 +53,7 @@ public class MatrixMultiplicationNodeTest {
     
     @Test
     public void getLeftWorks() {
+        bn1 = new MatrixMultiplicationNode(v1, v3);
         assertEquals(new Dimensions(2, 3), bn1.getLeft().outDimensions());
         assertEquals(3.3, bn1.getLeft().evaluate().getElement(0, 2), .001);
     }
@@ -74,4 +80,19 @@ public class MatrixMultiplicationNodeTest {
         assertEquals(false, (new MatrixMultiplicationNode(av3, av1)).validImputDimensions());
     }
     
+    @Test
+    public void getFrameSequenceWorks() throws BadArrayException {
+        bn1 = new MatrixMultiplicationNode(new ArrayValue("1 2; 3 4"), new ArrayValue("10 20; -30 40"));
+        FrameSequence sequence = bn1.getFrameSequence(ELEMENTWISE);
+        Frame frame2 = sequence.getFrame(2);
+        BooleanMask resultActivation = new BooleanMask(2, 2);
+        boolean[][] mask = resultActivation.getMask();
+        frame2.getResultActivation().apply(resultActivation);
+        assertEquals(4, sequence.getLength());
+        assertEquals(false, mask[0][0]);
+        assertEquals(false, mask[0][1]);
+        assertEquals(true, mask[1][0]);
+        assertEquals(false, mask[1][1]);
+    }
+
 }
