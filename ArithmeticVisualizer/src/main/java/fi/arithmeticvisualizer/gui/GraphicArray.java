@@ -34,6 +34,12 @@ public class GraphicArray {
     private BooleanMask activation;
     private BooleanMask shown;
 
+    /**
+     * Constructs a GraphicArray.
+     * 
+     * @param grid the GridPane on which the array is to be displayed
+     * @param array the array to be displayed
+     */
     public GraphicArray(GridPane grid, ArrayValue array) {
         this.grid = grid;
         this.array = array;
@@ -44,6 +50,9 @@ public class GraphicArray {
         this.shown.setAll();;
     }
 
+    /**
+     * Draws the array.
+     */
     public void draw() {
 
         setUpGrid();
@@ -109,22 +118,38 @@ public class GraphicArray {
         return maxLength;
     }
 
+    /**
+     * Returns the activation of the GraphicArray. Activation indicates which
+     * elements of an array are involved in the operation taking place in that
+     * Frame. To change the activation, use this method and modify the returned
+     * {@code BooleanMask}.
+     * 
+     * @return the activation of the array
+     */
     public BooleanMask getActivation() {
         return activation;
     }
 
+    /**
+     * Returns a {@code BooleanMask} indicating which elements of the array are
+     * to be displayed. Operand arrays are typically fully displayed in each
+     * Frame of an animation, while result arrays are typically revealed
+     * gradually. To change which elements are shown, use this method and modify
+     * the returned {@code BooleanMask}.
+     * 
+     * @return a {@code BooleanMask} indicating which elements are shown
+     */
     public BooleanMask getShown() {
         return shown;
     }
 
-    public void setActivation(BooleanMask activation) {
-        this.activation = activation;
-    }
-    
-    public void setShown(BooleanMask shown) {
-        this.shown = shown;
-    }
-    
+    /**
+     * Returns a String representation of the contained array. The String
+     * representation can be used as an input when constructing a new
+     * ArrayValue.
+     * 
+     * @return a String representation of the array
+     */
     public String toInputString() {
         return array.toInputString();
     }

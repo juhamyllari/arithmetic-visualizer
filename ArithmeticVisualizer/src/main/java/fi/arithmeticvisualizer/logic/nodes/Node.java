@@ -11,6 +11,11 @@ import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
  */
 public abstract class Node {
 
+    /**
+     * Computes and returns the value of the Node.
+     *
+     * @return the value of the Node
+     */
     public abstract ArrayValue evaluate();
 
     /**

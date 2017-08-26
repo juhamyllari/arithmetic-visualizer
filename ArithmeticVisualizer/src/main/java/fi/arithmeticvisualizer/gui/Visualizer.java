@@ -23,6 +23,16 @@ public class Visualizer {
     private final GraphicArray resultGraphicArray;
     private final Text subOpText;
 
+    /**
+     * Constructs a Visualizer.
+     * 
+     * @param controller the Scene Controller
+     * @param node the Node to be visualized
+     * @param left the GraphicArray representing the left operand
+     * @param right the GraphicArray representing the right operand
+     * @param result the GraphicArray representing the resulting value
+     * @param subOpText a Text object to display suboperations
+     */
     public Visualizer(EvaluationSceneController controller, BinaryNode node, GraphicArray left, GraphicArray right, GraphicArray result, Text subOpText) {
         this.controller = controller;
         this.node = node;
@@ -33,6 +43,9 @@ public class Visualizer {
         this.subOpText = subOpText;
     }
 
+    /**
+     * Creates and plays an animation of the operation.
+     */
     public void visualize() {
 
         // EvaluationStyle selection to be implemented later.
@@ -70,6 +83,9 @@ public class Visualizer {
         controller.setOptionsGridVisibility(true);
     }
 
+    /**
+     * Draws the two operands of the Node.
+     */
     public void drawOperands() {
         leftGraphicArray.draw();
         rightGraphicArray.draw();

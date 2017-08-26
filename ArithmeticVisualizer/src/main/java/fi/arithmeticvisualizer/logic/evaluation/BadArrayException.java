@@ -8,7 +8,7 @@ public class BadArrayException extends Exception {
     /**
      * Constructs a BadArrayException with the specified message.
      * 
-     * @param message
+     * @param message the error message
      */
     public BadArrayException(String message) {
         super(message);

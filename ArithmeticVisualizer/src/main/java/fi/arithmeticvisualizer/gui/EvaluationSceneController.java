@@ -69,11 +69,6 @@ public class EvaluationSceneController {
     }
 
     @FXML
-    public void initialize() {
-
-    }
-
-    @FXML
     private void startButtonPush() {
         startButton.setText("Restart visualization");
         visualizer.visualize();
@@ -100,7 +95,6 @@ public class EvaluationSceneController {
         } catch (IOException ex) {
             System.out.println("Failed to load evaluation scene: " + ex.getMessage());
         }
-
     }
 
     private void initializeEntrySceneArrayInputs(EntrySceneController controller) {

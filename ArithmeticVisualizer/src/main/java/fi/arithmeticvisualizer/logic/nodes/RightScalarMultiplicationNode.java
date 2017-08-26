@@ -18,11 +18,24 @@ public class RightScalarMultiplicationNode extends BinaryNode {
     private Node left;
     private Node right;
 
+    /**
+     * Constructs a RightScalarMultiplicationNode.
+     *
+     * @param left the left child Node
+     * @param right the right child Node
+     */
     public RightScalarMultiplicationNode(Node left, Node right) {
         this.left = left;
         this.right = right;
     }
 
+    /**
+     * A convenience method for constructing a RightScalarMultiplicationNode
+     * whose children are ValueNodes containing the provided ArrayValues.
+     *
+     * @param left the value of the left child Node
+     * @param right the value of the right child Node
+     */
     public RightScalarMultiplicationNode(ArrayValue left, ArrayValue right) {
         this.left = new ValueNode(left);
         this.right = new ValueNode(right);
@@ -74,7 +87,7 @@ public class RightScalarMultiplicationNode extends BinaryNode {
     }
 
     private FrameSequence getFramesElementwise() {
-        
+
         ArrayList<Frame> frames = new ArrayList<>();
 
         for (int i = 0; i < outDimensions().getM(); i++) {

@@ -20,6 +20,13 @@ public abstract class BinaryNode extends Node {
      */
     public static final String FRAME_STRING_DOUBLE_FORMAT = "%.1f";
 
+    /**
+     * Returns a FrameSequence corresponding to the operation evaluated in the
+     * designated style.
+     * 
+     * @param style the desired EvaluationStyle
+     * @return a FrameSequence representing the operations
+     */
     public abstract FrameSequence getFrameSequence(EvaluationStyle style);
 
     /**
@@ -108,6 +115,18 @@ public abstract class BinaryNode extends Node {
         return node;
     }
 
+    /**
+     * Returns a String representing a single dot product type calculation.
+     * A symbol must be provided for the pairwise operations (e.g. "*") and
+     * the reduction operation (e.g. "+").
+     * 
+     * @param left the left vector operand
+     * @param right the right vector operand
+     * @param result the scalar result of the calculation
+     * @param mapSymbol the pairwise operation symbol
+     * @param reduceSymbol the reduction symbol
+     * @return a String representing the calculation
+     */
     public static String dotTypeString(double[] left, double[] right, double result,
             String mapSymbol, String reduceSymbol) {
 
@@ -128,6 +147,17 @@ public abstract class BinaryNode extends Node {
         return leftSide + " = " + rightSide;
     }
 
+    /**
+     * Returns a String representing a single calculation of two scalar
+     * operands. A String symbol (e.g. "*" or "+") for the operation 
+     * must be provided.
+     * 
+     * @param left the left scalar operand
+     * @param right the right scalar operand
+     * @param result the scalar result
+     * @param symbol the operation symbol
+     * @return a String representing the calculation
+     */
     public static String oneToOneString(double left, double right, double result, String symbol) {
 
         String leftSide;

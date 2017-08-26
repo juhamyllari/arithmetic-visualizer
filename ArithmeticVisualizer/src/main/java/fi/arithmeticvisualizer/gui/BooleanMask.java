@@ -14,24 +14,27 @@ public class BooleanMask {
     private final int m;
     private final int n;
 
+    /**
+     * Constructs a BooleanMask with the specified dimensions.
+     *
+     * @param rows the number of rows
+     * @param columns the number of columns
+     */
     public BooleanMask(int rows, int columns) {
         this.mask = new boolean[rows][columns];
         this.m = rows;
         this.n = columns;
     }
 
+    /**
+     * Constructs a BooleanMask with the dimensions specified in the
+     * {@code Dimensions} instance.
+     *
+     * @param dims the dimensions of the mask to be created
+     */
     public BooleanMask(Dimensions dims) {
         this(dims.getM(), dims.getN());
     }
-
-    /**
-     * Sets the BooleanMask according to the specified ArrayPattern and the
-     * specified row and column indices.
-     *
-     * @param pattern
-     * @param row
-     * @param column
-     */
 
     private void setActivation(BiPredicate<Integer, Integer> predicate) {
         for (int i = 0; i < m; i++) {
@@ -64,9 +67,10 @@ public class BooleanMask {
     }
 
     /**
-     * Sets the specified column to {@code true}. All other elements are set to
+     * Sets the specified element to {@code true}. All other elements are set to
      * {@code false}.
      *
+     * @param row the index of the row to be set to {@code true}
      * @param column the index of the column to be set to {@code true}
      */
     public void setElement(int row, int column) {
@@ -74,6 +78,13 @@ public class BooleanMask {
         setActivation(predicate);
     }
 
+    /**
+     * Traverses the mask in row-major order and sets all values to true up to
+     * and including the specified element.
+     *
+     * @param row the row index of the element
+     * @param column the column index of the element
+     */
     public void setUpToByRow(int row, int column) {
         outerLoop:
         for (int i = 0; i < m; i++) {
@@ -86,6 +97,13 @@ public class BooleanMask {
         }
     }
 
+    /**
+     * Traverses the mask in column-major order and sets all values to true
+     * up to and including the specified element.
+     *
+     * @param row the row index of the element
+     * @param column the column index of the element
+     */
     public void setUpToByColumn(int row, int column) {
         outerLoop:
         for (int j = 0; j < m; j++) {

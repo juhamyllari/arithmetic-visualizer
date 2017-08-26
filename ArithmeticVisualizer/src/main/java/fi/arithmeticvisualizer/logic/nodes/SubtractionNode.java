@@ -14,11 +14,24 @@ import java.util.function.DoubleBinaryOperator;
  */
 public class SubtractionNode extends BinaryNode {
 
+    /**
+     * Constructs a SubtractionNode.
+     *
+     * @param left the value of the left child Node
+     * @param right the value of the right child Node
+     */
     public SubtractionNode(Node left, Node right) {
         this.left = left;
         this.right = right;
     }
 
+    /**
+     * A convenience method for constructing a SubtractionNode whose children
+     * are ValueNodes containing the provided ArrayValues.
+     *
+     * @param left the value of the left child Node
+     * @param right the value of the right child Node
+     */
     public SubtractionNode(ArrayValue left, ArrayValue right) {
         this.left = new ValueNode(left);
         this.right = new ValueNode(right);

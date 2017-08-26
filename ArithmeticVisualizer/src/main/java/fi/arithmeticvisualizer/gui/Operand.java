@@ -8,7 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
 /**
- * Objects of the Operand class represent the operands of expressions entered in the entry scene.
+ * Objects of the Operand class represent the operands of expressions entered
+ * in the entry scene.
  */
 public class Operand {
 
@@ -18,6 +19,15 @@ public class Operand {
     private TextField entryField;
     private Button transposeButton;
 
+    /**
+     * Constructs a new Operand.
+     * 
+     * @param controller the EntrySceneController
+     * @param array the value of the operand
+     * @param grid a GridPane to display the operand
+     * @param entryField a TextField to enter values as Strings
+     * @param transposeButton a Button for transposing the operand
+     */
     public Operand(EntrySceneController controller, double[][] array, GridPane grid, TextField entryField, Button transposeButton) {
         this.controller = controller;
         this.array = array == null ? null : new ArrayValue(array);
@@ -34,7 +44,7 @@ public class Operand {
         }
     }
 
-    public boolean createArray() {
+    protected boolean createArray() {
         try {
             array = new ArrayValue(entryField.getText());
             drawOperandArray();
@@ -45,16 +55,16 @@ public class Operand {
         }
     }
 
-    public ArrayValue getArrayValue() {
+    protected ArrayValue getArrayValue() {
         return array;
     }
     
-    public void drawOperandArray() {
+    protected void drawOperandArray() {
         GraphicArray graphicArray = new GraphicArray(grid, array);
         graphicArray.draw();
     }
  
-    public void setEntryFieldText(String string) {
+    protected void setEntryFieldText(String string) {
         entryField.setText(string);
     }
 }

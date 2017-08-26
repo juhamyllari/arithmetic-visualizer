@@ -3,6 +3,10 @@ package fi.arithmeticvisualizer.gui;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import java.util.function.DoubleBinaryOperator;
 
+/**
+ * An ElementWithElement is a Frame representing an operation on two scalar
+ * valued operands.
+ */
 public class ElementWithElement extends Frame {
 
     private DoubleBinaryOperator operator;
@@ -13,6 +17,16 @@ public class ElementWithElement extends Frame {
     private int resultColumn;
     private boolean showRowwise;
 
+    /**
+     * Constructs an ElementWithElement instance.
+     * 
+     * @param operator the scalar valued binary operator
+     * @param symbol the operator symbol
+     * @param left the left element
+     * @param right the right element
+     * @param resultRow the row index of the resulting scalar
+     * @param resultColumn the column index of the resulting scalar
+     */
     public ElementWithElement(DoubleBinaryOperator operator, String symbol, Element left, Element right, int resultRow, int resultColumn) {
         this.operator = operator;
         this.symbol = symbol;
@@ -23,12 +37,27 @@ public class ElementWithElement extends Frame {
         this.showRowwise = true;
     }
 
+    /**
+     * A convenience constructor applicable when the resulting scalar's row and
+     * column indices are the same as those of the left operand.
+     * 
+     * @param operator the scalar valued binary operator
+     * @param symbol the operator symbol
+     * @param left the left element
+     * @param right the right element
+     */
     public ElementWithElement(DoubleBinaryOperator operator, String symbol, Element left, Element right) {
         this(operator, symbol, left, right, left.getM(), left.getN());
     }
 
-    public void setShowRowwise(boolean rowwise) {
-        showRowwise = rowwise;
+    /**
+     * Set whether the result array is revealed in row-major or column-major
+     * order. The default order is row-major.
+     *
+     * @param rowMajor set order to row-major
+     */
+    public void setShowRowwise(boolean rowMajor) {
+        showRowwise = rowMajor;
     }
 
     @Override

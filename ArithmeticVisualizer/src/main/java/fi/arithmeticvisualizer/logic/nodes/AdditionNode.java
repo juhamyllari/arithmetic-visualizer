@@ -14,11 +14,24 @@ import java.util.function.DoubleBinaryOperator;
  */
 public class AdditionNode extends BinaryNode {
 
+    /**
+     * Constructs an AdditionNode with the provided Nodes as children.
+     *
+     * @param left the left child Node
+     * @param right the right child Node
+     */
     public AdditionNode(Node left, Node right) {
         this.left = left;
         this.right = right;
     }
 
+    /**
+     * A convenience method for constructing an AdditionNode whose children are
+     * ValueNodes containing the provided ArrayValues.
+     * 
+     * @param left the value of the left child Node
+     * @param right the value of the right child Node
+     */
     public AdditionNode(ArrayValue left, ArrayValue right) {
         this(new ValueNode(left), new ValueNode(right));
     }
@@ -41,6 +54,7 @@ public class AdditionNode extends BinaryNode {
         return right;
     }
 
+    @Override
     public ArrayValue evaluate() {
         if (resultValue == null) {
             leftValue = left.evaluate();

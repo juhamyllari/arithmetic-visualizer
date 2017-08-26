@@ -12,8 +12,6 @@ import static org.junit.Assert.*;
 public class ValueNodeTest {
 
     private ValueNode vThreeXTwo;
-    private ValueNode vJagged;
-    private ValueNode scalar;
     private double[][] threeXTwo;
     private double[][] jagged;
 
@@ -22,8 +20,6 @@ public class ValueNodeTest {
         vThreeXTwo = new ValueNode(threeXTwo);
         
         jagged = new double[][]{{1, 2}, {3}, {5, 6}};
-        
-        scalar = new ValueNode(42.0);
     }
 
     @BeforeClass
@@ -47,13 +43,5 @@ public class ValueNodeTest {
         ArrayValue val = vThreeXTwo.evaluate();
         assertEquals(3, val.getDimensions().getM());
         assertEquals(2, val.getDimensions().getN());
-    }
-    
-    @Test
-    public void scalarConstructorWorks() {
-        ArrayValue val = scalar.evaluate();
-        assertEquals(42.0, val.getValue()[0][0], 0.001);
-        assertEquals(true, val.isScalar());
-        assertEquals(new Dimensions(1, 1), val.getDimensions());
     }
 }

@@ -18,11 +18,24 @@ import java.util.function.DoubleBinaryOperator;
  */
 public class MatrixMultiplicationNode extends BinaryNode {
 
+    /**
+     * Constructs a MatrixMultiplicationNode.
+     *
+     * @param left the left child Node
+     * @param right the right child Node
+     */
     public MatrixMultiplicationNode(Node left, Node right) {
         this.left = left;
         this.right = right;
     }
 
+    /**
+     * A convenience method for constructing a MatrixMultiplicationNode
+     * whose children are ValueNodes containing the provided ArrayValues.
+     *
+     * @param left the value of the left child Node
+     * @param right the value of the right child Node
+     */
     public MatrixMultiplicationNode(ArrayValue left, ArrayValue right) {
         this(new ValueNode(left), new ValueNode(right));
     }

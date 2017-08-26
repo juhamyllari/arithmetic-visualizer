@@ -3,22 +3,30 @@ package fi.arithmeticvisualizer.gui;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 
+/**
+ * A RowDotColumn is a Frame representing a dot product of a row vector and a
+ * column vector.
+ */
 public class RowDotColumn extends Frame {
 
-    private Row left;
-    private Column right;
-    private int rowIndex;
-    private int columnIndex;
+    private final Row left;
+    private final Column right;
+    private final int rowIndex;
+    private final int columnIndex;
 
+    /**
+     * Constructs a RowDotColumn Frame.
+     * 
+     * @param left the left Row operand
+     * @param right the right Column operand
+     * @param rowIndex the index of the row argument
+     * @param columnIndex the index of the column argument
+     */
     public RowDotColumn(Row left, Column right, int rowIndex, int columnIndex) {
         this.left = left;
         this.right = right;
         this.rowIndex = rowIndex;
         this.columnIndex = columnIndex;
-    }
-
-    public double evaluate() {
-        return ArrayValue.dotVectors(left.getRowVector(), right.getColumnVector());
     }
 
     @Override
@@ -47,4 +55,7 @@ public class RowDotColumn extends Frame {
                 right.getColumnVector(), evaluate(), "*", "+");
     }
 
+    private double evaluate() {
+        return ArrayValue.dotVectors(left.getRowVector(), right.getColumnVector());
+    }
 }

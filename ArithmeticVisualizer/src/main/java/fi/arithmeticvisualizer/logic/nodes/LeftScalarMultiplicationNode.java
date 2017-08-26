@@ -15,11 +15,24 @@ import java.util.function.DoubleBinaryOperator;
  */
 public class LeftScalarMultiplicationNode extends BinaryNode {
 
+    /**
+     * Constructs a LeftScalarMultiplicationNode.
+     *
+     * @param left the left child Node
+     * @param right the right child Node
+     */
     public LeftScalarMultiplicationNode(Node left, Node right) {
         this.left = left;
         this.right = right;
     }
 
+    /**
+     * A convenience method for constructing a LeftScalarMultiplicationNode
+     * whose children are ValueNodes containing the provided ArrayValues.
+     *
+     * @param left the value of the left child Node
+     * @param right the value of the right child Node
+     */
     public LeftScalarMultiplicationNode(ArrayValue left, ArrayValue right) {
         this(new ValueNode(left), new ValueNode(right));
     }
@@ -71,7 +84,7 @@ public class LeftScalarMultiplicationNode extends BinaryNode {
 
     private FrameSequence getFramesElementwise() {
         ArrayList<Frame> list = new ArrayList<>();
-        
+
         for (int i = 0; i < outDimensions().getM(); i++) {
             for (int j = 0; j < outDimensions().getN(); j++) {
                 Element leftOperand = new Element(0, 0, leftValue.getElement(0, 0));
@@ -81,7 +94,7 @@ public class LeftScalarMultiplicationNode extends BinaryNode {
                 list.add(frame);
             }
         }
-        
+
         return new FrameSequence(list);
     }
 
