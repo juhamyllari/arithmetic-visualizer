@@ -18,3 +18,8 @@ Date | Hours | Description
 18.8.2017  | 6h | Cleaning up EntrySceneController methods
 19.8.2017  | 3h | Cleaning up class structure; adding subOperation strings
 20.8.2017  | 6h | Creating unit tests; reworking structure
+21.8.2017  | 4h | Adding new unit tests
+22.8.2017  | 5h | Refactoring suboperations (frames)
+23.8.2017  | 1h | Adjustments for presentation
+24.8.2017  | 6h | Cleaning up program structure
+25.8.2017  | 4h | Enabling evaluation styles; adding new test

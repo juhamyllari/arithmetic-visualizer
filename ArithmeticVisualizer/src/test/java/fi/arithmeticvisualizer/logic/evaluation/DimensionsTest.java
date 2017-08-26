@@ -61,5 +61,8 @@ public class DimensionsTest {
         Dimensions dims1 = new Dimensions(2, 4);
         Dimensions dims2 = new Dimensions(2, 4);
         assertEquals(dims1.hashCode(), dims2.hashCode());
+        
+        int expected = (29 * 7 + 2) * 29 + 4;
+        assertEquals(expected, dims1.hashCode());
     }
 }
