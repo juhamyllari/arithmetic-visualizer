@@ -28,6 +28,12 @@ public class Frame {
         this.frameString = frameString;
     }
 
+    /**
+     * Returns a String representation of the operation pertaining to that
+     * Frame.
+     * 
+     * @return a String representing the operation in the Frame
+     */
     public String getFrameString() {
         return frameString;
     }
