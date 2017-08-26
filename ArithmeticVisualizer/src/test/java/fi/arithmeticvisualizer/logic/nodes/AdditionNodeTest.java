@@ -1,7 +1,5 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.gui.FrameSequence;
-import fi.arithmeticvisualizer.gui.FramePattern;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
@@ -89,25 +87,4 @@ public class AdditionNodeTest {
         assertEquals(false, bn2.validImputDimensions());
     }
     
-    @Test
-    public void getOperationPatternWorks() {
-        assertEquals(FramePattern.ADDITIONELEMENTWISE, bn1.getOperationPattern(ELEMENTWISE));
-    }
-    
-    @Test
-    public void getFrameSequenceWorks() {
-        bn1 = new AdditionNode(v1, v2);
-        FrameSequence sequence = bn1.getFrameSequence(ELEMENTWISE);
-        assertEquals(6, sequence.getLength());
-    }
-    
-    @Test
-    public void frameStringWorks() {
-        AdditionNode an1 = new AdditionNode(v1, v2);
-        an1.evaluate();
-        String expected1 = formatDouble(1.1) + " + " + formatDouble(1.0) + " = " + formatDouble(2.1);
-        String expected2 = formatDouble(3.3) + " + (" + formatDouble(-1.0) + ") = " + formatDouble(2.3);
-        assertEquals(expected1, an1.frameString(BinaryNode.FrameStringPattern.ELEMENT_BY_ELEMENT, 0, 0));
-        assertEquals(expected2, an1.frameString(BinaryNode.FrameStringPattern.ELEMENT_BY_ELEMENT, 0, 2));
-    }
 }

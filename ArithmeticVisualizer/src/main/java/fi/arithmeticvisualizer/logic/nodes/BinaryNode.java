@@ -1,8 +1,6 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.gui.Frame;
 import fi.arithmeticvisualizer.gui.FrameSequence;
-import fi.arithmeticvisualizer.gui.FramePattern;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import java.util.ArrayList;
@@ -22,6 +20,8 @@ public abstract class BinaryNode extends Node {
      */
     public static final String FRAME_STRING_DOUBLE_FORMAT = "%.1f";
 
+    public abstract FrameSequence getFrameSequence(EvaluationStyle style);
+
     /**
      * Evaluation styles represent different ways of evaluating the same
      * expression.
@@ -30,14 +30,6 @@ public abstract class BinaryNode extends Node {
         ELEMENTWISE,
         ROWWISE,
         COLUMNWISE
-    }
-
-    /**
-     * A FrameStringPattern specifies how the Frame Strings are generated.
-     */
-    public enum FrameStringPattern {
-        ROW_BY_COLUMN,
-        ELEMENT_BY_ELEMENT
     }
 
     protected Node left;
@@ -76,34 +68,19 @@ public abstract class BinaryNode extends Node {
     public abstract Node getRight();
 
     /**
-     * Returns {@code true} if and only if the left and right
-     * Node have compatible output dimensions with respect to
-     * the Node's operation.
-     * 
-     * @return {@code true} if and only if input Node dimensions
-     * are valid
+     * Returns {@code true} if and only if the left and right Node have
+     * compatible output dimensions with respect to the Node's operation.
+     *
+     * @return {@code true} if and only if input Node dimensions are valid
      */
     public abstract boolean validImputDimensions();
 
     /**
-     * Returns a FrameSequence specifying the frames of an animation
-     * of the operation represented by the Node.
-     * 
-     * @param style the EvaluationStyle chosen
-     * @return the FrameSequence of the operation
-     */
-    public abstract FrameSequence getFrameSequence(EvaluationStyle style);
-
-    protected abstract FramePattern getOperationPattern(EvaluationStyle style);
-
-    protected abstract String frameString(FrameStringPattern pattern, int row, int column);
-
-    /**
      * Returns a new BinaryNode whose type is determined by the specified symbol
      * and whose children are ValueNodes containing the specified ArrayValues.
-     * 
-     * @param left the value of the left child 
-     * @param right the value of the right child 
+     *
+     * @param left the value of the left child
+     * @param right the value of the right child
      * @param operator the symbol specifying the operation
      * @return the new BinaryNode
      */
@@ -131,7 +108,7 @@ public abstract class BinaryNode extends Node {
         return node;
     }
 
-    protected static String dotTypeString(double[] left, double[] right, double result,
+    public static String dotTypeString(double[] left, double[] right, double result,
             String mapSymbol, String reduceSymbol) {
 
         String leftSide;
@@ -151,7 +128,7 @@ public abstract class BinaryNode extends Node {
         return leftSide + " = " + rightSide;
     }
 
-    protected static String oneToOneString(double left, double right, double result, String symbol) {
+    public static String oneToOneString(double left, double right, double result, String symbol) {
 
         String leftSide;
         String rightSide = formatDouble(result);
@@ -165,20 +142,4 @@ public abstract class BinaryNode extends Node {
         return leftSide + " = " + rightSide;
     }
 
-    protected FrameSequence getFramesElementwise(Dimensions out, FramePattern operationPattern, FrameStringPattern frameStringPattern) {
-
-        int rows = out.getM();
-        int columns = out.getN();
-        int numberOfFrames = rows * columns;
-        List<Frame> frames = new ArrayList<>();
-
-        for (int i = 0; i < numberOfFrames; i++) {
-            int row = i / columns;
-            int column = i % columns;
-            String frameString = frameString(frameStringPattern, row, column);
-            frames.add(new Frame(row, column, frameString));
-        }
-
-        return new FrameSequence(frames, operationPattern);
-    }
 }

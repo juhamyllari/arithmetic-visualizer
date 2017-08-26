@@ -1,11 +1,5 @@
 package fi.arithmeticvisualizer.gui;
 
-import fi.arithmeticvisualizer.gui.FramePattern.ArrayPattern;
-import static fi.arithmeticvisualizer.gui.FramePattern.ArrayPattern.ALL;
-import static fi.arithmeticvisualizer.gui.FramePattern.ArrayPattern.COLUMN;
-import static fi.arithmeticvisualizer.gui.FramePattern.ArrayPattern.ELEMENT;
-import static fi.arithmeticvisualizer.gui.FramePattern.ArrayPattern.ROW;
-import static fi.arithmeticvisualizer.gui.FramePattern.ArrayPattern.UPTOBYROW;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import java.util.function.BiPredicate;
 
@@ -38,34 +32,6 @@ public class BooleanMask {
      * @param row
      * @param column
      */
-    public void setByPattern(ArrayPattern pattern, int row, int column) {
-
-        switch (pattern) {
-            case ROW:
-                this.setRow(row);
-                break;
-            case COLUMN:
-                this.setColumn(column);
-                break;
-            case ELEMENT:
-                this.setElement(row, column);
-                break;
-            case ALL:
-                this.setAll();
-                break;
-            case UPTOBYROW:
-                outerLoop:
-                for (int i = 0; i < m; i++) {
-                    for (int j = 0; j < n; j++) {
-                        mask[i][j] = true;
-                        if (i == row && j == column) {
-                            break outerLoop;
-                        }
-                    }
-                }
-                break;
-        }
-    }
 
     private void setActivation(BiPredicate<Integer, Integer> predicate) {
         for (int i = 0; i < m; i++) {
@@ -108,6 +74,30 @@ public class BooleanMask {
         setActivation(predicate);
     }
 
+    public void setUpToByRow(int row, int column) {
+        outerLoop:
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                mask[i][j] = true;
+                if (i == row && j == column) {
+                    break outerLoop;
+                }
+            }
+        }
+    }
+
+    public void setUpToByColumn(int row, int column) {
+        outerLoop:
+        for (int j = 0; j < m; j++) {
+            for (int i = 0; i < n; i++) {
+                mask[i][j] = true;
+                if (i == row && i == column) {
+                    break outerLoop;
+                }
+            }
+        }
+    }
+
     /**
      * Sets the specified element to {@code true}. All other elements retain
      * their truth value.
@@ -126,7 +116,7 @@ public class BooleanMask {
         BiPredicate<Integer, Integer> predicate = (Integer i, Integer j) -> true;
         setActivation(predicate);
     }
-    
+
     /**
      * Sets all elements to {@code false}.
      */
@@ -137,7 +127,7 @@ public class BooleanMask {
 
     /**
      * Returns the boolean 2D array representing the BooleanMask.
-     * 
+     *
      * @return the mask
      */
     public boolean[][] getMask() {
@@ -146,7 +136,7 @@ public class BooleanMask {
 
     /**
      * Returns a copy of the BooleanMask.
-     * 
+     *
      * @return a copy of the BooleanMask
      */
     public BooleanMask clone() {

@@ -9,10 +9,11 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 /**
- * The Visualizer class is responsible for visualizing the evaluation of expressions.
+ * The Visualizer class is responsible for visualizing the evaluation of
+ * expressions.
  */
 public class Visualizer {
-    
+
     public static final int ANIMATIONDURATION = 5000;
 
     private final EvaluationSceneController controller;
@@ -33,44 +34,39 @@ public class Visualizer {
     }
 
     public void visualize() {
-        
+
         // EvaluationStyle selection to be implemented later.
         EvaluationStyle style = ELEMENTWISE;
-        
+
         resultGraphicArray.getShown().clearAll();
-        
         FrameSequence sequence = node.getFrameSequence(style);
-        
+
         final Animation animation = new Transition() {
             {
                 setCycleDuration(Duration.millis(ANIMATIONDURATION));
             }
 
             protected void interpolate(double frac) {
-                
+
                 final int length = sequence.getLength();
                 int frameIndex = Math.round(length * (float) frac);
-                
+
                 if (frameIndex >= length) {
                     frameIndex = length - 1;
                 }
-                
-                Frame frame = sequence.getFrame(frameIndex);
-                
-                int row = frame.getRow();
-                int column = frame.getColumn();
 
-                setMasks(frame, sequence.getPattern());
-                
+                Frame frame = sequence.getFrame(frameIndex);
+
+                setMasksByMaskSetters(frame);
                 drawAll();
 
-                subOpText.setText(frame.getFrameString());
+                subOpText.setText(frame.getSubOperationString());
             }
 
         };
 
         animation.play();
-        
+
         controller.setOptionsGridVisibility(true);
     }
 
@@ -78,20 +74,18 @@ public class Visualizer {
         leftGraphicArray.draw();
         rightGraphicArray.draw();
     }
-    
+
     private void drawAll() {
         leftGraphicArray.draw();
         rightGraphicArray.draw();
         resultGraphicArray.draw();
     }
-    
-    private void setMasks(Frame frame, FramePattern pattern) {
-        int row = frame.getRow();
-        int column = frame.getColumn();
-        leftGraphicArray.getActivation().setByPattern(pattern.leftPattern, row, column);
-        rightGraphicArray.getActivation().setByPattern(pattern.rightPattern, row, column);
-        resultGraphicArray.getActivation().setByPattern(pattern.resultPattern, row, column);
-        resultGraphicArray.getShown().setByPattern(pattern.shownPattern, row, column);
+
+    private void setMasksByMaskSetters(Frame frame) {
+        frame.getLeftActivation().apply(leftGraphicArray.getActivation());
+        frame.getRightActivation().apply(rightGraphicArray.getActivation());
+        frame.getResultActivation().apply(resultGraphicArray.getActivation());
+        frame.getResultShown().apply(resultGraphicArray.getShown());
     }
 
 }

@@ -1,10 +1,13 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.gui.FrameSequence;
+import fi.arithmeticvisualizer.gui.Element;
+import fi.arithmeticvisualizer.gui.ElementWithElement;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import fi.arithmeticvisualizer.gui.FramePattern;
-import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.FrameStringPattern.ELEMENT_BY_ELEMENT;
+import fi.arithmeticvisualizer.gui.FrameSequence;
+import fi.arithmeticvisualizer.gui.Frame;
+import java.util.ArrayList;
+import java.util.function.DoubleBinaryOperator;
 
 /**
  * A LeftScalarMultiplicationNode is a BinaryNode that performs scalar
@@ -57,34 +60,29 @@ public class LeftScalarMultiplicationNode extends BinaryNode {
     }
 
     @Override
-    protected FramePattern getOperationPattern(EvaluationStyle style) {
-        switch (style) {
-            case ELEMENTWISE:
-            default:
-                return FramePattern.LEFTSCALARMULTIPLICATIONELEMENTWISE;
-        }
-    }
-
-    @Override
     public FrameSequence getFrameSequence(EvaluationStyle style) {
         evaluate();
         switch (style) {
             case ELEMENTWISE:
             default:
-                return getFramesElementwise(outDimensions(), getOperationPattern(style), ELEMENT_BY_ELEMENT);
+                return getFramesElementwise();
         }
     }
 
-    @Override
-    protected String frameString(FrameStringPattern pattern, int row, int column) {
-        switch (pattern) {
-            case ELEMENT_BY_ELEMENT:
-            default:
-                double leftElement = leftValue.getElement(0, 0);
-                double rightElement = rightValue.getElement(row, column);
-                double result = leftElement * rightElement;
-                return oneToOneString(leftElement, rightElement, result, "*");
+    private FrameSequence getFramesElementwise() {
+        ArrayList<Frame> list = new ArrayList<>();
+        
+        for (int i = 0; i < outDimensions().getM(); i++) {
+            for (int j = 0; j < outDimensions().getN(); j++) {
+                Element leftOperand = new Element(0, 0, leftValue.getElement(0, 0));
+                Element rightOperand = new Element(i, j, rightValue.getElement(i, j));
+                DoubleBinaryOperator operator = (double left, double right) -> left * right;
+                Frame frame = new ElementWithElement(operator, "*", leftOperand, rightOperand, i, j);
+                list.add(frame);
+            }
         }
+        
+        return new FrameSequence(list);
     }
 
 }

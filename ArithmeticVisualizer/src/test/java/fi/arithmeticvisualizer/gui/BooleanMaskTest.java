@@ -1,6 +1,5 @@
 package fi.arithmeticvisualizer.gui;
 
-import static fi.arithmeticvisualizer.gui.FramePattern.ArrayPattern.*;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -35,42 +34,6 @@ public class BooleanMaskTest {
         BooleanMask bm = new BooleanMask(2, 3);
         assertEquals(2, bm.getMask().length);
         assertEquals(3, bm.getMask()[0].length);
-    }
-
-    @Test
-    public void constructionByPatternWorks() {
-        BooleanMask bm = new BooleanMask(new Dimensions(2, 2));
-        bm.setByPattern(ROW, 0, 0);
-        assertEquals(2, bm.getMask().length);
-        assertEquals(2, bm.getMask()[0].length);
-        assertEquals(true, bm.getMask()[0][0]);
-        assertEquals(true, bm.getMask()[0][1]);
-        assertEquals(false, bm.getMask()[1][0]);
-        assertEquals(false, bm.getMask()[1][1]);
-
-        bm.setByPattern(COLUMN, 0, 0);
-        assertEquals(2, bm.getMask().length);
-        assertEquals(2, bm.getMask()[0].length);
-        assertEquals(true, bm.getMask()[0][0]);
-        assertEquals(false, bm.getMask()[0][1]);
-        assertEquals(true, bm.getMask()[1][0]);
-        assertEquals(false, bm.getMask()[1][1]);
-
-        bm.setByPattern(ELEMENT, 0, 0);
-        assertEquals(2, bm.getMask().length);
-        assertEquals(2, bm.getMask()[0].length);
-        assertEquals(true, bm.getMask()[0][0]);
-        assertEquals(false, bm.getMask()[0][1]);
-        assertEquals(false, bm.getMask()[1][0]);
-        assertEquals(false, bm.getMask()[1][1]);
-
-        bm.setByPattern(ALL, 0, 0);
-        assertEquals(2, bm.getMask().length);
-        assertEquals(2, bm.getMask()[0].length);
-        assertEquals(true, bm.getMask()[0][0]);
-        assertEquals(true, bm.getMask()[0][1]);
-        assertEquals(true, bm.getMask()[1][0]);
-        assertEquals(true, bm.getMask()[1][1]);
     }
 
     @Test

@@ -5,13 +5,9 @@
  */
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import fi.arithmeticvisualizer.gui.FramePattern;
-import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle.ELEMENTWISE;
-import static fi.arithmeticvisualizer.logic.nodes.Node.formatDouble;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -93,29 +89,6 @@ public class SubtractionNodeTest {
         bn2 = new SubtractionNode(v1, v3);
         assertEquals(true, bn1.validImputDimensions());
         assertEquals(false, bn2.validImputDimensions());
-    }
-
-    @Test
-    public void getOperationPatternWorks() {
-        bn1 = new SubtractionNode(v1, v2);
-        assertEquals(FramePattern.SUBTRACTIONELEMENTWISE, bn1.getOperationPattern(ELEMENTWISE));
-    }
-
-    @Test
-    public void getFrameSequenceWorks() {
-        bn1 = new SubtractionNode(v1, v2);
-        FrameSequence sequence = bn1.getFrameSequence(ELEMENTWISE);
-        assertEquals(6, sequence.getLength());
-    }
-
-    @Test
-    public void frameStringWorks() {
-        SubtractionNode sn1 = new SubtractionNode(v1, v2);
-        sn1.evaluate();
-        String expected1 = formatDouble(1.1) + " - " + formatDouble(1.0) + " = " + formatDouble(0.1);
-        String expected2 = formatDouble(3.3) + " - (" + formatDouble(-1.0) + ") = " + formatDouble(4.3);
-        assertEquals(expected1, sn1.frameString(BinaryNode.FrameStringPattern.ELEMENT_BY_ELEMENT, 0, 0));
-        assertEquals(expected2, sn1.frameString(BinaryNode.FrameStringPattern.ELEMENT_BY_ELEMENT, 0, 2));
     }
 
 }

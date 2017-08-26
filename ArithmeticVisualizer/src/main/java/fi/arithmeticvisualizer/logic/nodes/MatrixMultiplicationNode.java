@@ -1,11 +1,16 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
+import fi.arithmeticvisualizer.gui.Column;
+import fi.arithmeticvisualizer.gui.ElementWithElement;
 import fi.arithmeticvisualizer.gui.FrameSequence;
-import fi.arithmeticvisualizer.gui.FramePattern;
+import fi.arithmeticvisualizer.gui.Row;
+import fi.arithmeticvisualizer.gui.RowDotColumn;
+import fi.arithmeticvisualizer.gui.SubOperand;
+import fi.arithmeticvisualizer.gui.Frame;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.dotTypeString;
-import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.FrameStringPattern.ROW_BY_COLUMN;
+import java.util.ArrayList;
+import java.util.function.DoubleBinaryOperator;
 
 /**
  * A MatrixMultiplicationNode is a BinaryNode that performs matrix
@@ -50,9 +55,9 @@ public class MatrixMultiplicationNode extends BinaryNode {
         return resultValue;
     }
 
-    protected FramePattern getOperationPattern(EvaluationStyle style) {
-        //  Only implemented for elementwise evaluation at this time.
-        return FramePattern.MATRIXMULTIPLICATIONELEMENTWISE;
+    @Override
+    public boolean validImputDimensions() {
+        return left.outDimensions().getN() == right.outDimensions().getM();
     }
 
     @Override
@@ -61,23 +66,23 @@ public class MatrixMultiplicationNode extends BinaryNode {
         switch (style) {
             case ELEMENTWISE:
             default:
-                return getFramesElementwise(outDimensions(), getOperationPattern(style), ROW_BY_COLUMN);
+                return getFramesElementwise();
         }
     }
 
-    @Override
-    public boolean validImputDimensions() {
-        return left.outDimensions().getN() == right.outDimensions().getM();
-    }
+    private FrameSequence getFramesElementwise() {
+        ArrayList<Frame> list = new ArrayList<>();
 
-    @Override
-    protected String frameString(FrameStringPattern pattern, int row, int column) {
-        switch (pattern) {
-            case ROW_BY_COLUMN:
-            default:
-                double result = ArrayValue.dotVectors(leftValue.getRow(row), rightValue.getColumn(column));
-                return dotTypeString(leftValue.getRow(row), rightValue.getColumn(column), result, "*", "+");
+        for (int i = 0; i < outDimensions().getM(); i++) {
+            for (int j = 0; j < outDimensions().getN(); j++) {
+                Row leftOperand = new Row(i, leftValue.getRow(i));
+                Column rightOperand = new Column(j, rightValue.getColumn(j));
+                Frame frame = new RowDotColumn(leftOperand, rightOperand, i, j);
+                list.add(frame);
+            }
         }
+
+        return new FrameSequence(list);
     }
 
 }

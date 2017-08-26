@@ -1,12 +1,8 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import fi.arithmeticvisualizer.gui.FramePattern;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
-import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle.ELEMENTWISE;
-import static fi.arithmeticvisualizer.logic.nodes.Node.formatDouble;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -76,41 +72,6 @@ public class MatrixMultiplicationNodeTest {
         assertEquals(false, (new MatrixMultiplicationNode(av1, av1)).validImputDimensions());
         assertEquals(false, (new MatrixMultiplicationNode(av1, av3)).validImputDimensions());
         assertEquals(false, (new MatrixMultiplicationNode(av3, av1)).validImputDimensions());
-    }
-    
-    @Test
-    public void getOperationPatternWorks() {
-        assertEquals(FramePattern.MATRIXMULTIPLICATIONELEMENTWISE, bn1.getOperationPattern(BinaryNode.EvaluationStyle.ELEMENTWISE));
-    }
-    
-    @Test
-    public void getFrameSequenceWorks() {
-        FrameSequence sequence = bn1.getFrameSequence(ELEMENTWISE);
-        assertEquals(4, sequence.getLength());
-    }
-
-    @Test
-    public void frameStringWorks() throws BadArrayException {
-        MatrixMultiplicationNode mmn1 = new MatrixMultiplicationNode(new ArrayValue("1 2; 3 4"), new ArrayValue("10 20; 30 -40"));
-        MatrixMultiplicationNode mmn2 = new MatrixMultiplicationNode(new ArrayValue("1 2; 3 4"), new ArrayValue("10 20; 30 40"));
-        mmn1.evaluate();
-        mmn2.evaluate();
-        
-        String expected1 = formatDouble(3.0) 
-                + " * " 
-                + formatDouble(20.0) 
-                + " + " + formatDouble(4.0) 
-                + " * (" + formatDouble(-40.0) 
-                + ") = " + formatDouble(-100.0);
-        assertEquals(expected1, mmn1.frameString(BinaryNode.FrameStringPattern.ROW_BY_COLUMN, 1, 1));
-        
-        String expected2 = formatDouble(3.0) 
-                + " * " 
-                + formatDouble(20.0) 
-                + " + " + formatDouble(4.0) 
-                + " * " + formatDouble(40.0) 
-                + " = " + formatDouble(220.0);
-        assertEquals(expected2, mmn2.frameString(BinaryNode.FrameStringPattern.ROW_BY_COLUMN, 1, 1));
     }
     
 }

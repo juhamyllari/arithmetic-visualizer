@@ -1,13 +1,8 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import fi.arithmeticvisualizer.gui.FramePattern;
-import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle.ELEMENTWISE;
-import static fi.arithmeticvisualizer.logic.nodes.Node.formatDouble;
-import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
@@ -84,21 +79,4 @@ public class LeftScalarMultiplicationNodeTest {
         assertEquals(false, new LeftScalarMultiplicationNode(av1, av1).validImputDimensions());
     }
 
-    @Test
-    public void getOperationPatternWorks() {
-        assertEquals(FramePattern.LEFTSCALARMULTIPLICATIONELEMENTWISE, bn1.getOperationPattern(ELEMENTWISE));
-    }
-
-    @Test
-    public void getFrameSequenceWorks() {
-        FrameSequence sequence = bn1.getFrameSequence(ELEMENTWISE);
-        assertEquals(6, sequence.getLength());
-    }
-
-    @Test
-    public void frameStringWorks() {
-        bn1.evaluate();
-        String expected = formatDouble(2.0) + " * " + formatDouble(3.0) + " = " + formatDouble(6.0);
-        assertEquals(expected, bn1.frameString(BinaryNode.FrameStringPattern.ELEMENT_BY_ELEMENT, 0, 2));
-    }
 }
