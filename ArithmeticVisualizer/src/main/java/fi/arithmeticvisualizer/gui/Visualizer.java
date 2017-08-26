@@ -82,10 +82,10 @@ public class Visualizer {
     }
 
     private void setMasksByMaskSetters(Frame frame) {
-        frame.getLeftActivation().apply(leftGraphicArray.getActivation());
-        frame.getRightActivation().apply(rightGraphicArray.getActivation());
-        frame.getResultActivation().apply(resultGraphicArray.getActivation());
-        frame.getResultShown().apply(resultGraphicArray.getShown());
+        frame.getLeftActivation().accept(leftGraphicArray.getActivation());
+        frame.getRightActivation().accept(rightGraphicArray.getActivation());
+        frame.getResultActivation().accept(resultGraphicArray.getActivation());
+        frame.getResultShown().accept(resultGraphicArray.getShown());
     }
 
 }

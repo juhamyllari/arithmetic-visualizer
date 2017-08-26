@@ -87,7 +87,7 @@ public class MatrixMultiplicationNodeTest {
         Frame frame2 = sequence.getFrame(2);
         BooleanMask resultActivation = new BooleanMask(2, 2);
         boolean[][] mask = resultActivation.getMask();
-        frame2.getResultActivation().apply(resultActivation);
+        frame2.getResultActivation().accept(resultActivation);
         assertEquals(4, sequence.getLength());
         assertEquals(false, mask[0][0]);
         assertEquals(false, mask[0][1]);

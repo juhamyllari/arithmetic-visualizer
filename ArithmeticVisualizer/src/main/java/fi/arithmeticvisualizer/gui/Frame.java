@@ -2,9 +2,13 @@ package fi.arithmeticvisualizer.gui;
 
 abstract public class Frame {
     
+    /**
+     * Represents a function that modifies a {@code BooleanMask} and has no
+     * return value.
+     */
     @FunctionalInterface
     public interface MaskSetter {
-        void apply(BooleanMask mask);
+        void accept(BooleanMask mask);
     }
     
     private SubOperand left;
