@@ -14,3 +14,9 @@ A single user.
 * A class diagram is provided below.
 * JavaFX Scene Controllers are omitted for clarity.
 ![Alt Class Diagram](ClassDiagram.png "Class Diagram")
+
+**Sequence Diagrams:**
+* This sequence diagram illustrates entering an operand in the entry scene.
+![Alt Sequence Diagram](SequenceDiagramEnterOperand "Sequence Diagram")
+* This sequence diagram illustrates the creation of a node in the entry scene.
+![Alt Sequence Diagram](SequenceDiagramEnterOperand "Sequence Diagram")

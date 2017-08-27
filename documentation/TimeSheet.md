@@ -24,3 +24,4 @@ Date | Hours | Description
 24.8.2017  | 6h | Cleaning up program structure
 25.8.2017  | 4h | Enabling evaluation styles; adding new test
 26.8.2017  | 8h | Refactoring Frames; updating unit tests
+27.8.2017  | 6h | Creating and adopting the RealArray interface; creating diagrams
