@@ -4,7 +4,7 @@ import fi.arithmeticvisualizer.gui.BooleanMask;
 import fi.arithmeticvisualizer.gui.Frame;
 import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
+import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle.ELEMENTWISE;
 import static fi.arithmeticvisualizer.logic.nodes.Node.formatDouble;
@@ -71,9 +71,9 @@ public class MatrixMultiplicationNodeTest {
     
     @Test
     public void validInputDimensionsWorks() throws BadArrayException {
-        ArrayValue av1 = new ArrayValue("1 2 3; 4 5 6");
-        ArrayValue av2 = new ArrayValue("1 2; 3 4; 5 6");
-        ArrayValue av3 = new ArrayValue("6");
+        DoubleArray av1 = new DoubleArray("1 2 3; 4 5 6");
+        DoubleArray av2 = new DoubleArray("1 2; 3 4; 5 6");
+        DoubleArray av3 = new DoubleArray("6");
         assertEquals(true, (new MatrixMultiplicationNode(av1, av2)).validImputDimensions());
         assertEquals(false, (new MatrixMultiplicationNode(av1, av1)).validImputDimensions());
         assertEquals(false, (new MatrixMultiplicationNode(av1, av3)).validImputDimensions());
@@ -82,7 +82,7 @@ public class MatrixMultiplicationNodeTest {
     
     @Test
     public void getFrameSequenceWorks() throws BadArrayException {
-        bn1 = new MatrixMultiplicationNode(new ArrayValue("1 2; 3 4"), new ArrayValue("10 20; -30 40"));
+        bn1 = new MatrixMultiplicationNode(new DoubleArray("1 2; 3 4"), new DoubleArray("10 20; -30 40"));
         FrameSequence sequence = bn1.getFrameSequence(ELEMENTWISE);
         Frame frame2 = sequence.getFrame(2);
         BooleanMask resultActivation = new BooleanMask(2, 2);

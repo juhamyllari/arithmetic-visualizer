@@ -1,7 +1,6 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
-import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
+import fi.arithmeticvisualizer.logic.evaluation.RealArray;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -40,7 +39,7 @@ public class ValueNodeTest {
 
     @Test
     public void valueNodeGivesArrayOfCorrectDimension() {
-        ArrayValue val = vThreeXTwo.evaluate();
+        RealArray val = vThreeXTwo.evaluate();
         assertEquals(3, val.getDimensions().getM());
         assertEquals(2, val.getDimensions().getN());
     }

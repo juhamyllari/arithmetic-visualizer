@@ -2,7 +2,7 @@ package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.gui.Frame;
 import fi.arithmeticvisualizer.gui.FrameSequence;
-import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
+import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle.ELEMENTWISE;
@@ -48,33 +48,33 @@ public class AdditionNodeTest {
     
     @Test
     public void constructionFromArrayValuesWorks() throws BadArrayException {
-        bn1 = new AdditionNode(new ArrayValue("1 2; 3 4"), new ArrayValue("1 1; 1 1"));
+        bn1 = new AdditionNode(new DoubleArray("1 2; 3 4"), new DoubleArray("1 1; 1 1"));
         assertEquals(new Dimensions(2, 2), bn1.evaluate().getDimensions());
-        assertEquals(5, bn1.evaluate().getValue()[1][1], .001);
+        assertEquals(5, bn1.evaluate().getElement(1, 1), .001);
     }
     
     @Test
     public void outDimsWorks() throws BadArrayException {
-        bn1 = new AdditionNode(new ArrayValue("1 2; 3 4"), new ArrayValue("1 1; 1 1"));
+        bn1 = new AdditionNode(new DoubleArray("1 2; 3 4"), new DoubleArray("1 1; 1 1"));
         assertEquals(new Dimensions(2, 2), bn1.outDimensions());
     }
     
     @Test
     public void getLeftWorks() throws BadArrayException {
-        bn1 = new AdditionNode(new ArrayValue("1 2; 3.14 4"), new ArrayValue("1 1; 1 1"));
+        bn1 = new AdditionNode(new DoubleArray("1 2; 3.14 4"), new DoubleArray("1 1; 1 1"));
         assertEquals(3.14, bn1.getLeft().evaluate().getElement(1, 0), .001);
     }
     
     @Test
     public void getRightWorks() throws BadArrayException {
-        bn1 = new AdditionNode(new ArrayValue("1 2; 3.14 4"), new ArrayValue("1 1; 1 5e-9"));
+        bn1 = new AdditionNode(new DoubleArray("1 2; 3.14 4"), new DoubleArray("1 1; 1 5e-9"));
         assertEquals(5e-9, bn1.getRight().evaluate().getElement(1, 1), .001);
     }
     
     @Test
     public void additionWorks() {
         bn1 = new AdditionNode(v1, v2);
-        assertEquals(2.3, bn1.evaluate().getValue()[0][2], .001);
+        assertEquals(2.3, bn1.evaluate().getElement(0, 2), .001);
     }
     
     @Test

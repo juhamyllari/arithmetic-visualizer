@@ -1,6 +1,6 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
+import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import static fi.arithmeticvisualizer.logic.nodes.Node.formatDouble;
@@ -18,7 +18,7 @@ public class BinaryNodeTest {
     static ValueNode v1;
     static ValueNode v2;
     static ValueNode v3;
-    static ArrayValue av1;
+    static DoubleArray av1;
 
     public BinaryNodeTest() {
     }
@@ -29,7 +29,7 @@ public class BinaryNodeTest {
         v1 = new ValueNode(new double[][]{{1.1, 2.2, 3.3}, {1.0, 2.0, 3.0}});
         v2 = new ValueNode(new double[][]{{1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}});
         v3 = new ValueNode(new double[][]{{2.0, 3.0}, {4.0, 5.0}, {6.0, 7.0}});
-        av1 = new ArrayValue("1 2 3; 4 5 6");
+        av1 = new DoubleArray("1 2 3; 4 5 6");
 
     }
 
@@ -68,14 +68,14 @@ public class BinaryNodeTest {
 
     @Test
     public void createBinaryNodeCreatesLeftScalarMultiplicationNodes() throws BadArrayException {
-        bn1 = BinaryNode.createBinaryNode(new ArrayValue("-3.14"), v3.evaluate(), "*");
+        bn1 = BinaryNode.createBinaryNode(new DoubleArray("-3.14"), v3.evaluate(), "*");
         assertEquals(LeftScalarMultiplicationNode.class, bn1.getClass());
         assertEquals(new Dimensions(3, 2), bn1.outDimensions());
     }
 
     @Test
     public void createBinaryNodeCreatesRightScalarMultiplicationNodes() throws BadArrayException {
-        bn1 = BinaryNode.createBinaryNode(v3.evaluate(), new ArrayValue("-3.14"), "*");
+        bn1 = BinaryNode.createBinaryNode(v3.evaluate(), new DoubleArray("-3.14"), "*");
         assertEquals(RightScalarMultiplicationNode.class, bn1.getClass());
         assertEquals(new Dimensions(3, 2), bn1.outDimensions());
     }
@@ -83,13 +83,13 @@ public class BinaryNodeTest {
     @Test
     public void subtractionWorks() {
         bn1 = new SubtractionNode(v1, v2);
-        assertEquals(1.2, bn1.evaluate().getValue()[0][1], .001);
+        assertEquals(1.2, bn1.evaluate().getElement(0, 1), .001);
     }
 
     @Test
     public void multiplicationWorks() {
         bn1 = new MatrixMultiplicationNode(v1, v3);
-        assertEquals(37.4, bn1.evaluate().getValue()[0][1], .001);
+        assertEquals(37.4, bn1.evaluate().getElement(0, 1), .001);
     }
 
     @Test

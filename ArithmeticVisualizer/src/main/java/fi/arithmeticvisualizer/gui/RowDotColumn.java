@@ -1,6 +1,6 @@
 package fi.arithmeticvisualizer.gui;
 
-import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
+import static fi.arithmeticvisualizer.logic.evaluation.RealArray.dotVectors;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 
 /**
@@ -56,6 +56,6 @@ public class RowDotColumn extends Frame {
     }
 
     private double evaluate() {
-        return ArrayValue.dotVectors(left.getRowVector(), right.getColumnVector());
+        return dotVectors(left.getRowVector(), right.getColumnVector());
     }
 }

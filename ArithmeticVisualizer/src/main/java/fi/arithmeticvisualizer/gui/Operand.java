@@ -1,7 +1,7 @@
 package fi.arithmeticvisualizer.gui;
 
 import fi.arithmeticvisualizer.gui.EntrySceneController;
-import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
+import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -14,7 +14,7 @@ import javafx.scene.layout.GridPane;
 public class Operand {
 
     private EntrySceneController controller;
-    private ArrayValue array;
+    private DoubleArray array;
     private GridPane grid;
     private TextField entryField;
     private Button transposeButton;
@@ -30,7 +30,7 @@ public class Operand {
      */
     public Operand(EntrySceneController controller, double[][] array, GridPane grid, TextField entryField, Button transposeButton) {
         this.controller = controller;
-        this.array = array == null ? null : new ArrayValue(array);
+        this.array = array == null ? null : new DoubleArray(array);
         this.grid = grid;
         this.entryField = entryField;
         this.transposeButton = transposeButton;
@@ -46,7 +46,7 @@ public class Operand {
 
     protected boolean createArray() {
         try {
-            array = new ArrayValue(entryField.getText());
+            array = new DoubleArray(entryField.getText());
             drawOperandArray();
             return true;
         } catch (BadArrayException ex) {
@@ -55,7 +55,7 @@ public class Operand {
         }
     }
 
-    protected ArrayValue getArrayValue() {
+    protected DoubleArray getArrayValue() {
         return array;
     }
     

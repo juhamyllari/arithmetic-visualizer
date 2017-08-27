@@ -2,9 +2,10 @@ package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.gui.Frame;
 import fi.arithmeticvisualizer.gui.FrameSequence;
-import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
+import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
+import fi.arithmeticvisualizer.logic.evaluation.RealArray;
 import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle.ELEMENTWISE;
 import static fi.arithmeticvisualizer.logic.nodes.Node.formatDouble;
 import org.junit.After;
@@ -19,20 +20,20 @@ public class RightScalarMultiplicationNodeTest {
     static BinaryNode bn1;
     static BinaryNode bn2;
     static BinaryNode bn3;
-    static ArrayValue av1;
-    static ArrayValue av2;
-    static ArrayValue scalarTwo;
-    static ArrayValue scalarNegativeTwo;
+    static DoubleArray av1;
+    static DoubleArray av2;
+    static DoubleArray scalarTwo;
+    static DoubleArray scalarNegativeTwo;
 
     public RightScalarMultiplicationNodeTest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws BadArrayException {
-        av1 = new ArrayValue("1 2 3; 4 5 6");
-        av2 = new ArrayValue("1 1 1; -1 -1 -1");
-        scalarTwo = new ArrayValue("2");
-        scalarNegativeTwo = new ArrayValue("-2");
+        av1 = new DoubleArray("1 2 3; 4 5 6");
+        av2 = new DoubleArray("1 1 1; -1 -1 -1");
+        scalarTwo = new DoubleArray("2");
+        scalarNegativeTwo = new DoubleArray("-2");
         bn1 = new RightScalarMultiplicationNode(av1, scalarTwo);
         bn2 = new RightScalarMultiplicationNode(av1, scalarNegativeTwo);
         bn3 = new RightScalarMultiplicationNode(av2, scalarTwo);
@@ -52,7 +53,7 @@ public class RightScalarMultiplicationNodeTest {
 
     @Test
     public void constructionFromNodesWorks() throws BadArrayException {
-        BinaryNode bn = new RightScalarMultiplicationNode(bn1, new ValueNode(new ArrayValue("-17.0")));
+        BinaryNode bn = new RightScalarMultiplicationNode(bn1, new ValueNode(new DoubleArray("-17.0")));
     }
 
     @Test
@@ -62,7 +63,7 @@ public class RightScalarMultiplicationNodeTest {
 
     @Test
     public void evaluateWorks() {
-        ArrayValue result = bn1.evaluate();
+        RealArray result = bn1.evaluate();
         assertEquals(new Dimensions(2, 3), result.getDimensions());
         assertEquals(12, result.getElement(1, 2), .001);
     }
@@ -85,7 +86,7 @@ public class RightScalarMultiplicationNodeTest {
 
     @Test
     public void getFrameSequenceWorks() throws BadArrayException {
-        bn1 = new RightScalarMultiplicationNode(new ArrayValue("1 2 -3; 4 5 6"), scalarTwo);
+        bn1 = new RightScalarMultiplicationNode(new DoubleArray("1 2 -3; 4 5 6"), scalarTwo);
         FrameSequence sequence = bn1.getFrameSequence(ELEMENTWISE);
         Frame frame0 = sequence.getFrame(0);
         Frame frame2 = sequence.getFrame(2);

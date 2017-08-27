@@ -1,16 +1,14 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.gui.Column;
-import fi.arithmeticvisualizer.gui.ElementWithElement;
 import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.gui.Row;
 import fi.arithmeticvisualizer.gui.RowDotColumn;
-import fi.arithmeticvisualizer.gui.SubOperand;
 import fi.arithmeticvisualizer.gui.Frame;
-import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
+import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
+import fi.arithmeticvisualizer.logic.evaluation.RealArray;
 import java.util.ArrayList;
-import java.util.function.DoubleBinaryOperator;
 
 /**
  * A MatrixMultiplicationNode is a BinaryNode that performs matrix
@@ -31,12 +29,12 @@ public class MatrixMultiplicationNode extends BinaryNode {
 
     /**
      * A convenience method for constructing a MatrixMultiplicationNode
-     * whose children are ValueNodes containing the provided ArrayValues.
+     * whose children are ValueNodes containing the provided RealArrays.
      *
      * @param left the value of the left child Node
      * @param right the value of the right child Node
      */
-    public MatrixMultiplicationNode(ArrayValue left, ArrayValue right) {
+    public MatrixMultiplicationNode(RealArray left, RealArray right) {
         this(new ValueNode(left), new ValueNode(right));
     }
 
@@ -59,7 +57,7 @@ public class MatrixMultiplicationNode extends BinaryNode {
     }
 
     @Override
-    public ArrayValue evaluate() {
+    public RealArray evaluate() {
         if (resultValue == null) {
             leftValue = left.evaluate();
             rightValue = right.evaluate();

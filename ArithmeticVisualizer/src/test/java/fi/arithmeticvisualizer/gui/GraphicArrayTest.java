@@ -2,7 +2,7 @@ package fi.arithmeticvisualizer.gui;
 
 import fi.arithmeticvisualizer.gui.BooleanMask;
 import fi.arithmeticvisualizer.gui.GraphicArray;
-import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
+import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -36,8 +36,8 @@ public class GraphicArrayTest {
 
         grid1 = new GridPane();
         grid2 = new GridPane();
-        array1 = new GraphicArray(grid1, new ArrayValue("1 2; 3 4"));
-        array2 = new GraphicArray(grid2, new ArrayValue("111111111.1 2; 3 4"));
+        array1 = new GraphicArray(grid1, new DoubleArray("1 2; 3 4"));
+        array2 = new GraphicArray(grid2, new DoubleArray("111111111.1 2; 3 4"));
     }
 
     @After

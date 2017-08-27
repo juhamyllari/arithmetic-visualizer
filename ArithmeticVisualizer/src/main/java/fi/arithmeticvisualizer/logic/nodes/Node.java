@@ -1,7 +1,7 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
+import fi.arithmeticvisualizer.logic.evaluation.RealArray;
 
 /**
  * A Node object represents a node in an arithmetic expression.
@@ -16,7 +16,7 @@ public abstract class Node {
      *
      * @return the value of the Node
      */
-    public abstract ArrayValue evaluate();
+    public abstract RealArray evaluate();
 
     /**
      * Returns the output dimensions of the node.

@@ -1,5 +1,6 @@
 package fi.arithmeticvisualizer.logic.evaluation;
 
+import static fi.arithmeticvisualizer.logic.evaluation.RealArray.dotVectors;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -7,27 +8,27 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class ArrayValueTest {
+public class DoubleArrayTest {
 
-    static ArrayValue av1;
-    static ArrayValue av2;
-    static ArrayValue av3;
-    static ArrayValue av4;
-    static ArrayValue av5;
-    static ArrayValue scalarThree;
+    static DoubleArray av1;
+    static DoubleArray av2;
+    static DoubleArray av3;
+    static DoubleArray av4;
+    static DoubleArray av5;
+    static DoubleArray scalarThree;
 
-    public ArrayValueTest() {
+    public DoubleArrayTest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws BadArrayException {
 
-        av1 = new ArrayValue("1 2 3; 4 5 6");
-        av2 = new ArrayValue("1 2; 3 4; 5 6");
-        av3 = new ArrayValue("1 4; 2 5; 3 6");
-        av4 = new ArrayValue("2 4 6; 8 10 12");
-        av5 = new ArrayValue("1.0 2.0 3.0; 4.0 5.0 6.0");
-        scalarThree = new ArrayValue("3");
+        av1 = new DoubleArray("1 2 3; 4 5 6");
+        av2 = new DoubleArray("1 2; 3 4; 5 6");
+        av3 = new DoubleArray("1 4; 2 5; 3 6");
+        av4 = new DoubleArray("2 4 6; 8 10 12");
+        av5 = new DoubleArray("1.0 2.0 3.0; 4.0 5.0 6.0");
+        scalarThree = new DoubleArray("3");
     }
 
     @AfterClass
@@ -44,39 +45,39 @@ public class ArrayValueTest {
 
     @Test(expected = BadArrayException.class)
     public void constructorFromStringThrowsCorrectException() throws BadArrayException {
-        new ArrayValue("1 2; 3 4 5");
+        new DoubleArray("1 2; 3 4 5");
     }
     
     @Test(expected = BadArrayException.class)
     public void noRowsCausesException() throws BadArrayException {
-        new ArrayValue("");
+        new DoubleArray("");
     }
     
     @Test(expected = BadArrayException.class)
     public void emptyRowCausesException() throws BadArrayException {
-        new ArrayValue("1;; 2");
+        new DoubleArray("1;; 2");
     }
     
     @Test(expected = BadArrayException.class)
     public void badStringCausesException() throws BadArrayException {
-        new ArrayValue("lolcats");
+        new DoubleArray("lolcats");
     }
 
     @Test
     public void constructionFromArrayWorks() {
         double[][] array = new double[][]{{1, 2, 3}, {4, 5, 6}};
-        ArrayValue av = new ArrayValue(array);
-        assertArrayEquals(array[0], av.getValue()[0], .001);
-        assertArrayEquals(array[1], av.getValue()[1], .001);
+        DoubleArray av = new DoubleArray(array);
+        assertArrayEquals(array[0], av.getRow(0), .001);
+        assertArrayEquals(array[1], av.getRow(1), .001);
     }
 
     @Test
     public void constructionFromStringWorks() throws BadArrayException {
         double[][] array = new double[][]{{1, 2, 3}, {4, 5, 6}};
         String string = "1 2 3; 4 5 6";
-        ArrayValue av = new ArrayValue(string);
-        assertArrayEquals(array[0], av.getValue()[0], .001);
-        assertArrayEquals(array[1], av.getValue()[1], .001);
+        DoubleArray av = new DoubleArray(string);
+        assertArrayEquals(array[0], av.getRow(0), .001);
+        assertArrayEquals(array[1], av.getRow(1), .001);
     }
 
     @Test
@@ -84,12 +85,12 @@ public class ArrayValueTest {
         double[] row = new double[]{1, 2, 3, 4, 5};
         double[] column = new double[]{1, 2, 3, 4, 5};
 
-        assertEquals(55, ArrayValue.dotVectors(row, column), .0001);
+        assertEquals(55, dotVectors(row, column), .0001);
     }
     
     @Test
     public void matrixMultiplyWorks() {
-        ArrayValue result = av1.multiply(av2);
+        RealArray result = av1.multiply(av2);
         assertEquals(new Dimensions(2, 2), result.getDimensions());
         assertEquals(22, result.getElement(0, 0), .0001);
         assertEquals(28, result.getElement(0, 1), .0001);
@@ -115,20 +116,19 @@ public class ArrayValueTest {
 
     @Test
     public void transposeWorks() {
-        assertArrayEquals(av3.getValue(), av1.transpose().getValue());
         assertEquals(3.0, scalarThree.transpose().getElement(0, 0), .001);
     }
 
     @Test
     public void scalarMultiplicationWorks() {
-        assertArrayEquals(av4.getValue()[0], av1.scalarMultiply(2).getValue()[0], .001);
+        assertArrayEquals(av4.getRow(0), av1.scalarMultiply(2).getRow(0), .001);
     }
 
     @Test
     public void multiplicationByScalarWorks() throws BadArrayException {
-        ArrayValue scalarTwo = new ArrayValue("2");
-        assertArrayEquals(av4.getValue()[0], av1.multiply(scalarTwo).getValue()[0], .001);
-        assertArrayEquals(av4.getValue()[0], scalarTwo.multiply(av1).getValue()[0], .001);
+        DoubleArray scalarTwo = new DoubleArray("2");
+        assertArrayEquals(av4.getRow(0), av1.multiply(scalarTwo).getRow(0), .001);
+        assertArrayEquals(av4.getRow(0), scalarTwo.multiply(av1).getRow(0), .001);
     }
 
     @Test

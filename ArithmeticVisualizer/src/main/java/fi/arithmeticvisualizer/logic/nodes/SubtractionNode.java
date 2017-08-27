@@ -4,8 +4,9 @@ import fi.arithmeticvisualizer.gui.Element;
 import fi.arithmeticvisualizer.gui.ElementWithElement;
 import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.gui.Frame;
-import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
+import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
+import fi.arithmeticvisualizer.logic.evaluation.RealArray;
 import java.util.ArrayList;
 import java.util.function.DoubleBinaryOperator;
 
@@ -27,12 +28,12 @@ public class SubtractionNode extends BinaryNode {
 
     /**
      * A convenience method for constructing a SubtractionNode whose children
-     * are ValueNodes containing the provided ArrayValues.
+     * are ValueNodes containing the provided RealArrays.
      *
      * @param left the value of the left child Node
      * @param right the value of the right child Node
      */
-    public SubtractionNode(ArrayValue left, ArrayValue right) {
+    public SubtractionNode(RealArray left, RealArray right) {
         this.left = new ValueNode(left);
         this.right = new ValueNode(right);
     }
@@ -58,7 +59,7 @@ public class SubtractionNode extends BinaryNode {
     }
 
     @Override
-    public ArrayValue evaluate() {
+    public RealArray evaluate() {
         if (resultValue == null) {
             leftValue = left.evaluate();
             rightValue = right.evaluate();

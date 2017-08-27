@@ -2,10 +2,11 @@ package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.gui.Element;
 import fi.arithmeticvisualizer.gui.ElementWithElement;
-import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
+import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.gui.Frame;
+import fi.arithmeticvisualizer.logic.evaluation.RealArray;
 import java.util.ArrayList;
 import java.util.function.DoubleBinaryOperator;
 
@@ -28,12 +29,12 @@ public class LeftScalarMultiplicationNode extends BinaryNode {
 
     /**
      * A convenience method for constructing a LeftScalarMultiplicationNode
-     * whose children are ValueNodes containing the provided ArrayValues.
+     * whose children are ValueNodes containing the provided RealArrays.
      *
      * @param left the value of the left child Node
      * @param right the value of the right child Node
      */
-    public LeftScalarMultiplicationNode(ArrayValue left, ArrayValue right) {
+    public LeftScalarMultiplicationNode(RealArray left, RealArray right) {
         this(new ValueNode(left), new ValueNode(right));
     }
 
@@ -48,7 +49,7 @@ public class LeftScalarMultiplicationNode extends BinaryNode {
     }
 
     @Override
-    public ArrayValue evaluate() {
+    public RealArray evaluate() {
         if (resultValue == null) {
             leftValue = left.evaluate();
             rightValue = right.evaluate();

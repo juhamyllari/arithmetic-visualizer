@@ -1,10 +1,8 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.gui.FrameSequence;
-import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
-import java.util.ArrayList;
-import java.util.List;
+import fi.arithmeticvisualizer.logic.evaluation.RealArray;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -41,9 +39,9 @@ public abstract class BinaryNode extends Node {
 
     protected Node left;
     protected Node right;
-    protected ArrayValue leftValue;
-    protected ArrayValue rightValue;
-    protected ArrayValue resultValue;
+    protected RealArray leftValue;
+    protected RealArray rightValue;
+    protected RealArray resultValue;
 
     @Override
     public abstract Dimensions outDimensions();
@@ -58,7 +56,7 @@ public abstract class BinaryNode extends Node {
     public abstract String getSymbol();
 
     @Override
-    public abstract ArrayValue evaluate();
+    public abstract RealArray evaluate();
 
     /**
      * Returns the left Node of the BinaryNode.
@@ -84,14 +82,14 @@ public abstract class BinaryNode extends Node {
 
     /**
      * Returns a new BinaryNode whose type is determined by the specified symbol
-     * and whose children are ValueNodes containing the specified ArrayValues.
+     * and whose children are ValueNodes containing the specified RealArrays.
      *
      * @param left the value of the left child
      * @param right the value of the right child
      * @param operator the symbol specifying the operation
      * @return the new BinaryNode
      */
-    public static BinaryNode createBinaryNode(ArrayValue left, ArrayValue right, String operator) {
+    public static BinaryNode createBinaryNode(RealArray left, RealArray right, String operator) {
 
         BinaryNode node = null;
 

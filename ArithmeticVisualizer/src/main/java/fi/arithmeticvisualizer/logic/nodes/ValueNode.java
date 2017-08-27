@@ -1,22 +1,23 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
+import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
+import fi.arithmeticvisualizer.logic.evaluation.RealArray;
 
 /**
  * ValueNodes are the leaves in expression trees. A ValueNode contains an
- * ArrayValue object. It performs no arithmetic operations.
+ DoubleArray object. It performs no arithmetic operations.
  */
 public class ValueNode extends Node {
 
-    private final ArrayValue value;
+    private final RealArray value;
 
     /**
-     * Constructs a ValueNode with the provided ArrayValue as its value.
+     * Constructs a ValueNode with the provided RealArray as its value.
      *
      * @param value the value of the Node
      */
-    public ValueNode(ArrayValue value) {
+    public ValueNode(RealArray value) {
         this.value = value;
     }
 
@@ -26,11 +27,11 @@ public class ValueNode extends Node {
      * @param array the value of the Node
      */
     public ValueNode(double[][] array) {
-        this(new ArrayValue(array));
+        this(new DoubleArray(array));
     }
 
     @Override
-    public ArrayValue evaluate() {
+    public RealArray evaluate() {
         return value;
     }
 

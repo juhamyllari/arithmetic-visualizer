@@ -1,6 +1,7 @@
 package fi.arithmeticvisualizer.gui;
 
-import fi.arithmeticvisualizer.logic.evaluation.ArrayValue;
+import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
+import fi.arithmeticvisualizer.logic.evaluation.RealArray;
 import java.util.Arrays;
 import java.util.Collections;
 import javafx.scene.layout.ColumnConstraints;
@@ -28,7 +29,7 @@ public class GraphicArray {
     public static final double ACTIVATIONRECTANGLEOPACITY = .3;
 
     private GridPane grid;
-    private ArrayValue array;
+    private RealArray array;
     private int m;
     private int n;
     private BooleanMask activation;
@@ -40,7 +41,7 @@ public class GraphicArray {
      * @param grid the GridPane on which the array is to be displayed
      * @param array the array to be displayed
      */
-    public GraphicArray(GridPane grid, ArrayValue array) {
+    public GraphicArray(GridPane grid, RealArray array) {
         this.grid = grid;
         this.array = array;
         this.m = array.getDimensions().getM();
@@ -109,8 +110,8 @@ public class GraphicArray {
 
     private int getMaxStringLength() {
 
-        int maxLength = Arrays.stream(array.getValue())
-                .flatMapToDouble(Arrays::stream)
+        int maxLength = array.getValues()
+                .stream()
                 .mapToInt((d) -> String.format(ELEMENTSTRINGFORMAT, (Double) d).length())
                 .max()
                 .getAsInt();
@@ -145,8 +146,8 @@ public class GraphicArray {
 
     /**
      * Returns a String representation of the contained array. The String
-     * representation can be used as an input when constructing a new
-     * ArrayValue.
+ representation can be used as an input when constructing a new
+ DoubleArray.
      * 
      * @return a String representation of the array
      */
