@@ -3,7 +3,7 @@ package fi.arithmeticvisualizer.logic.nodes;
 import fi.arithmeticvisualizer.gui.Column;
 import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.gui.Row;
-import fi.arithmeticvisualizer.gui.RowDotColumn;
+import fi.arithmeticvisualizer.gui.RowDotColumnFrame;
 import fi.arithmeticvisualizer.gui.Frame;
 import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
@@ -88,7 +88,7 @@ public class MatrixMultiplicationNode extends BinaryNode {
             for (int j = 0; j < outDimensions().getN(); j++) {
                 Row leftOperand = new Row(i, leftValue.getRow(i));
                 Column rightOperand = new Column(j, rightValue.getColumn(j));
-                Frame frame = new RowDotColumn(leftOperand, rightOperand, i, j);
+                Frame frame = new RowDotColumnFrame(leftOperand, rightOperand, i, j);
                 list.add(frame);
             }
         }

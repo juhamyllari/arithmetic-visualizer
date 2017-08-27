@@ -1,7 +1,7 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.gui.Element;
-import fi.arithmeticvisualizer.gui.ElementWithElement;
+import fi.arithmeticvisualizer.gui.ElementWithElementFrame;
 import fi.arithmeticvisualizer.gui.Frame;
 import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
@@ -96,7 +96,7 @@ public class RightScalarMultiplicationNode extends BinaryNode {
                 Element leftOperand = new Element(i, j, leftValue.getElement(i, j));
                 Element rightOperand = new Element(0, 0, rightValue.getElement(0, 0));
                 DoubleBinaryOperator operator = (double left, double right) -> left * right;
-                Frame frame = new ElementWithElement(operator, "*", leftOperand, rightOperand, i, j);
+                Frame frame = new ElementWithElementFrame(operator, "*", leftOperand, rightOperand, i, j);
                 frames.add(frame);
             }
         }

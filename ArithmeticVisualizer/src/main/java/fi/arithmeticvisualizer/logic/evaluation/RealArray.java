@@ -117,7 +117,7 @@ public interface RealArray {
      * @return the corresponding array
      * @throws BadArrayException if the input is invalid
      */
-    public static double[][] arrayFromString(String string) throws BadArrayException {
+    public static double[][] stringToArray(String string) throws BadArrayException {
         String[] rows = string.split("\\s*;\\s*");
         int m = rows.length;
         int n = stringToRow(rows[0]).length;

@@ -1,7 +1,7 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.gui.Element;
-import fi.arithmeticvisualizer.gui.ElementWithElement;
+import fi.arithmeticvisualizer.gui.ElementWithElementFrame;
 import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.gui.Frame;
 import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
@@ -91,7 +91,7 @@ public class SubtractionNode extends BinaryNode {
                 Element leftOperand = new Element(i, j, leftValue.getElement(i, j));
                 Element rightOperand = new Element(i, j, rightValue.getElement(i, j));
                 DoubleBinaryOperator operator = (double left, double right) -> left - right;
-                Frame frame = new ElementWithElement(operator, "-", leftOperand, rightOperand);
+                Frame frame = new ElementWithElementFrame(operator, "-", leftOperand, rightOperand);
                 list.add(frame);
             }
         }

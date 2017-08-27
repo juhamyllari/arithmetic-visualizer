@@ -34,7 +34,7 @@ public class DoubleArray implements RealArray {
      * @throws BadArrayException indicating an invalid input string
      */
     public DoubleArray(String inputString) throws BadArrayException {
-        this(RealArray.arrayFromString(inputString));
+        this(RealArray.stringToArray(inputString));
     }
 
     @Override
