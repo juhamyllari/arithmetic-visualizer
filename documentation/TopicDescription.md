@@ -17,6 +17,6 @@ A single user.
 
 **Sequence Diagrams:**
 * This sequence diagram illustrates entering an operand in the entry scene.
-![Alt Sequence Diagram](SequenceDiagramEnterOperand "Sequence Diagram")
+![Alt Sequence Diagram](SequenceDiagramEnterOperand.png "Sequence Diagram")
 * This sequence diagram illustrates the creation of a node in the entry scene.
-![Alt Sequence Diagram](SequenceDiagramEnterOperand "Sequence Diagram")
+![Alt Sequence Diagram](SequenceDiagramCreateNode.png "Sequence Diagram")
