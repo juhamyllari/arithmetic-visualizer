@@ -1,6 +1,7 @@
 package fi.arithmeticvisualizer.logic.evaluation;
 
 import static fi.arithmeticvisualizer.logic.evaluation.RealArray.dotVectors;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -79,14 +80,6 @@ public class DoubleArrayTest {
         assertArrayEquals(array[0], av.getRow(0), .001);
         assertArrayEquals(array[1], av.getRow(1), .001);
     }
-
-    @Test
-    public void dotProductWorks() {
-        double[] row = new double[]{1, 2, 3, 4, 5};
-        double[] column = new double[]{1, 2, 3, 4, 5};
-
-        assertEquals(55, dotVectors(row, column), .0001);
-    }
     
     @Test
     public void matrixMultiplyWorks() {
@@ -113,10 +106,19 @@ public class DoubleArrayTest {
         assertArrayEquals(col0, av2.getColumn(0), .001);
         assertArrayEquals(col1, av2.getColumn(1), .001);
     }
+    
+    @Test
+    public void getValuesWorks() throws BadArrayException {
+        av1 = new DoubleArray("1 2 3; 4 5 6");
+        List<Double> list = av1.getValues();
+        assertEquals(6, list.size());
+        assertEquals(6.0, list.get(5), .001);
+    }
 
     @Test
     public void transposeWorks() {
         assertEquals(3.0, scalarThree.transpose().getElement(0, 0), .001);
+        assertEquals(6.0, av1.transpose().getElement(2, 1), .001);
     }
 
     @Test
