@@ -23,3 +23,4 @@ Date | Hours | Description
 23.8.2017  | 1h | Adjustments for presentation
 24.8.2017  | 6h | Cleaning up program structure
 25.8.2017  | 4h | Enabling evaluation styles; adding new test
+26.8.2017  | 8h | Refactoring Frames; updating unit tests
