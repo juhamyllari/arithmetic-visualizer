@@ -1,7 +1,7 @@
 package fi.arithmeticvisualizer.gui.suboperands;
 
 /**
- * A Column represents a column vector as a suboperand.
+ * A Column is a SubOperand representing a column vector.
  */
 public class Column extends SubOperand {
 

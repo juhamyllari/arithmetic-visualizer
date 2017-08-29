@@ -8,7 +8,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * The main class of the Arithmetic Visualizer application.
+ * The main class of the Arithmetic Visualizer application. Loads the entry
+ * scene of the application. For the controller class of the entry scene, see
+ * the class EntrySceneController.
  */
 public class MainApp extends Application {
 

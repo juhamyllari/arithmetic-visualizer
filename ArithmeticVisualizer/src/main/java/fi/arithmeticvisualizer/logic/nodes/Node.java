@@ -7,7 +7,8 @@ import fi.arithmeticvisualizer.logic.evaluation.RealArray;
  * A Node object represents a node in an arithmetic expression.
  * Node is an abstract class; it is currently extended by ValueNode
  * and by the abstract class BinaryNode, which is in turn extended by
- * AdditionNode, SubtractionNode and MultiplicationNode.
+ * AdditionNode, SubtractionNode, LeftScalarMultiplicationNode,
+ * RightScalarMultiplicationNode and MatrixMultiplicationNode.
  */
 public abstract class Node {
 

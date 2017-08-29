@@ -4,7 +4,6 @@ import fi.arithmeticvisualizer.gui.suboperands.Element;
 import fi.arithmeticvisualizer.gui.frames.ElementWithElementFrame;
 import fi.arithmeticvisualizer.gui.frames.Frame;
 import fi.arithmeticvisualizer.gui.FrameSequence;
-import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import fi.arithmeticvisualizer.logic.evaluation.RealArray;
 import java.util.ArrayList;
