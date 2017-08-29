@@ -1,5 +1,7 @@
-package fi.arithmeticvisualizer.gui;
+package fi.arithmeticvisualizer.gui.frames;
 
+import fi.arithmeticvisualizer.gui.BooleanMask;
+import fi.arithmeticvisualizer.gui.suboperands.Element;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import java.util.function.DoubleBinaryOperator;
 

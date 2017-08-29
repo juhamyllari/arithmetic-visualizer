@@ -1,10 +1,10 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.gui.Column;
+import fi.arithmeticvisualizer.gui.suboperands.Column;
 import fi.arithmeticvisualizer.gui.FrameSequence;
-import fi.arithmeticvisualizer.gui.Row;
-import fi.arithmeticvisualizer.gui.RowDotColumnFrame;
-import fi.arithmeticvisualizer.gui.Frame;
+import fi.arithmeticvisualizer.gui.suboperands.Row;
+import fi.arithmeticvisualizer.gui.frames.RowDotColumnFrame;
+import fi.arithmeticvisualizer.gui.frames.Frame;
 import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import fi.arithmeticvisualizer.logic.evaluation.RealArray;

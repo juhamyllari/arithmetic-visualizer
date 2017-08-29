@@ -1,4 +1,4 @@
-package fi.arithmeticvisualizer.gui;
+package fi.arithmeticvisualizer.gui.suboperands;
 
 /**
  * A Column represents a column vector as a suboperand.
@@ -19,11 +19,11 @@ public class Column extends SubOperand {
         this.columnVector = columnVector;
     }
 
-    protected int getColumnIndex() {
+    public int getColumnIndex() {
         return columnIndex;
     }
 
-    protected double[] getColumnVector() {
+    public double[] getColumnVector() {
         return columnVector;
     }
 

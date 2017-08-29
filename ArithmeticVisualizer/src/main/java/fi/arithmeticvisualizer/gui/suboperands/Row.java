@@ -1,4 +1,4 @@
-package fi.arithmeticvisualizer.gui;
+package fi.arithmeticvisualizer.gui.suboperands;
 
 /**
  * A Row is a SubOperand representing a row vector.
@@ -19,11 +19,11 @@ public class Row extends SubOperand {
         this.rowVector = rowVector;
     }
 
-    protected int getRowIndex() {
+    public int getRowIndex() {
         return rowIndex;
     }
 
-    protected double[] getRowVector() {
+    public double[] getRowVector() {
         return rowVector;
     }
     

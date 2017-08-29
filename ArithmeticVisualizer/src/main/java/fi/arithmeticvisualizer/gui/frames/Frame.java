@@ -1,4 +1,7 @@
-package fi.arithmeticvisualizer.gui;
+package fi.arithmeticvisualizer.gui.frames;
+
+import fi.arithmeticvisualizer.gui.BooleanMask;
+import fi.arithmeticvisualizer.gui.suboperands.SubOperand;
 
 /**
  * A Frame represents a single frame in a visualization animation. Equivalently,

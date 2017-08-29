@@ -5,7 +5,7 @@
  */
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.gui.Frame;
+import fi.arithmeticvisualizer.gui.frames.Frame;
 import fi.arithmeticvisualizer.gui.FrameSequence;
 import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
