@@ -6,6 +6,8 @@ import fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle;
 import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle.ELEMENTWISE;
 import javafx.animation.Animation;
 import javafx.animation.Transition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -23,10 +25,12 @@ public class Visualizer {
     private final GraphicArray rightGraphicArray;
     private final GraphicArray resultGraphicArray;
     private final Text subOpText;
+    private Animation animation;
+    private boolean ended;
 
     /**
      * Constructs a Visualizer.
-     * 
+     *
      * @param controller the Scene Controller
      * @param node the Node to be visualized
      * @param left the GraphicArray representing the left operand
@@ -47,41 +51,65 @@ public class Visualizer {
     /**
      * Creates and plays an animation of the operation.
      */
-    public void visualize() {
+    private void visualize() {
+
+        resultGraphicArray.getShown().clearAll();
 
         // EvaluationStyle selection to be implemented later.
         EvaluationStyle style = ELEMENTWISE;
 
-        resultGraphicArray.getShown().clearAll();
-        FrameSequence sequence = node.getFrameSequence(style);
-
-        final Animation animation = new Transition() {
-            {
-                setCycleDuration(Duration.millis(ANIMATIONDURATION));
-            }
-
-            protected void interpolate(double frac) {
-
-                final int length = sequence.getLength();
-                int frameIndex = Math.round(length * (float) frac);
-
-                if (frameIndex >= length) {
-                    frameIndex = length - 1;
-                }
-
-                Frame frame = sequence.getFrame(frameIndex);
-
-                setMasksByMaskSetters(frame);
-                drawAll();
-
-                subOpText.setText(frame.getSubOperationString());
-            }
-
-        };
+        createAnimation(style);
 
         animation.play();
 
         controller.setOptionsGridVisibility(true);
+    }
+
+    public void pause() {
+        animation.pause();
+    }
+
+    public void play() {
+        if (animation == null) {
+            createAnimation(ELEMENTWISE);
+        }
+
+        if (ended) {
+            resultGraphicArray.getShown().clearAll();
+            ended = false;
+        }
+
+        animation.play();
+    }
+
+    private void createAnimation(EvaluationStyle style) {
+
+        FrameSequence sequence = node.getFrameSequence(style);
+
+        animation = new Transition() {
+            {
+                setCycleDuration(Duration.millis(ANIMATIONDURATION));
+            }
+
+            @Override
+            protected void interpolate(double frac) {
+
+                final int length = sequence.getLength();
+                int frameIndex = Math.round((length - 1) * (float) frac);
+
+                Frame frame = sequence.getFrame(frameIndex);
+
+                setMasks(frame);
+                drawAll();
+
+                subOpText.setText(frame.getSubOperationString());
+            }
+        };
+        
+        animation.setOnFinished((ActionEvent event) -> {
+            ended = true;
+            controller.setPaused(true);
+        });
     }
 
     /**
@@ -98,7 +126,7 @@ public class Visualizer {
         resultGraphicArray.draw();
     }
 
-    private void setMasksByMaskSetters(Frame frame) {
+    private void setMasks(Frame frame) {
         frame.getLeftActivation().accept(leftGraphicArray.getActivation());
         frame.getRightActivation().accept(rightGraphicArray.getActivation());
         frame.getResultActivation().accept(resultGraphicArray.getActivation());

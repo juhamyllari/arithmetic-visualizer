@@ -21,7 +21,7 @@ import javafx.scene.control.Button;
 import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
 
 /**
- * This is the controller class for the first (entry) scene of the application.
+ * This is the controller class for the entry scene of the application.
  * The entry scene is where expressions are entered.
  */
 public class EntrySceneController implements Initializable {

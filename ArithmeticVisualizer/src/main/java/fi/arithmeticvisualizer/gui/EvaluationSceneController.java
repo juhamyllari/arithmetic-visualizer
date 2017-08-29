@@ -25,12 +25,16 @@ public class EvaluationSceneController {
     private GraphicArray left;
     private GraphicArray right;
     private GraphicArray result;
+    private boolean paused;
 
     @FXML
     private VBox vBox;
-    
+
     @FXML
     private Button startButton;
+
+    @FXML
+    private Button pausePlayButton;
 
     @FXML
     private GridPane leftGrid;
@@ -61,6 +65,7 @@ public class EvaluationSceneController {
         this.left = new GraphicArray(leftGrid, node.getLeft().evaluate());
         this.right = new GraphicArray(rightGrid, node.getRight().evaluate());
         this.result = new GraphicArray(resultGrid, node.evaluate());
+        this.paused = true;
 
         setOptionsGridVisibility(false);
         this.symbol.setText(node.getSymbol());
@@ -69,9 +74,24 @@ public class EvaluationSceneController {
     }
 
     @FXML
-    private void startButtonPush() {
-        startButton.setText("Restart visualization");
-        visualizer.visualize();
+    private void pausePlayPush() {
+        if (paused) {
+            visualizer.play();
+            setPaused(false);
+        } else {
+            visualizer.pause();
+            setPaused(true);
+        }
+    }
+
+    protected void setPaused(boolean setToPaused) {
+        if (setToPaused) {
+            paused = true;
+            pausePlayButton.setText("Play");
+        } else {
+            paused = false;
+            pausePlayButton.setText("Pause");
+        }
     }
 
     protected void setOptionsGridVisibility(boolean visible) {
@@ -98,10 +118,10 @@ public class EvaluationSceneController {
     }
 
     private void initializeEntrySceneArrayInputs(EntrySceneController controller) {
-        
+
         String resultText = result.toInputString();
         String operandChoice = (String) operandChoiceBox.getValue();
-        
+
         switch (operandChoice) {
             case "Left operand":
                 controller.initializeTextFieldData(resultText, "");

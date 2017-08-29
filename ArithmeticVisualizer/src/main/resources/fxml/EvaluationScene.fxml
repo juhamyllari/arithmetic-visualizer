@@ -15,7 +15,8 @@
         <Insets top="25" right="25" bottom="25" left="25"/>
     </padding>
     <children>
-        <Button fx:id="startButton" text="Start visualization" onAction="#startButtonPush"  />
+        <!--<Button fx:id="startButton" text="Start visualization" onAction="#startButtonPush"  />-->
+        <Button fx:id="pausePlayButton" text="Play" onAction="#pausePlayPush"  />
         <HBox fx:id="upperRow" alignment="CENTER" styleClass="hbox" spacing="30" >
             <padding>
                 <Insets top="25" right="25" bottom="25" left="25"/>
