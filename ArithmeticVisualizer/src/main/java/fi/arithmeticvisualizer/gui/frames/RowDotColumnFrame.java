@@ -1,6 +1,5 @@
 package fi.arithmeticvisualizer.gui.frames;
 
-import fi.arithmeticvisualizer.gui.BooleanMask;
 import fi.arithmeticvisualizer.gui.suboperands.Column;
 import fi.arithmeticvisualizer.gui.suboperands.Row;
 import static fi.arithmeticvisualizer.logic.evaluation.RealArray.dotVectors;

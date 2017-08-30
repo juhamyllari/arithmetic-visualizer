@@ -1,5 +1,6 @@
 package fi.arithmeticvisualizer.gui;
 
+import fi.arithmeticvisualizer.gui.frames.BooleanMask;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import org.junit.After;
 import org.junit.AfterClass;

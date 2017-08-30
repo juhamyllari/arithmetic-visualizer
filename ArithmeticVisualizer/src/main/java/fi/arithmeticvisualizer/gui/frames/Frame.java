@@ -1,6 +1,5 @@
 package fi.arithmeticvisualizer.gui.frames;
 
-import fi.arithmeticvisualizer.gui.BooleanMask;
 import fi.arithmeticvisualizer.gui.suboperands.SubOperand;
 
 /**

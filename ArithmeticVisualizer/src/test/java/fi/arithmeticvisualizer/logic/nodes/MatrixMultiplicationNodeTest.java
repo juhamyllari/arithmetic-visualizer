@@ -1,8 +1,8 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.gui.BooleanMask;
+import fi.arithmeticvisualizer.gui.frames.BooleanMask;
 import fi.arithmeticvisualizer.gui.frames.Frame;
-import fi.arithmeticvisualizer.gui.FrameSequence;
+import fi.arithmeticvisualizer.gui.frames.FrameSequence;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.BadArrayException;
