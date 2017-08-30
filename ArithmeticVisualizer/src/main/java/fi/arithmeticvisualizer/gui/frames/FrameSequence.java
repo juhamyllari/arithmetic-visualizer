@@ -1,4 +1,4 @@
-package fi.arithmeticvisualizer.gui;
+package fi.arithmeticvisualizer.gui.frames;
 
 import fi.arithmeticvisualizer.gui.frames.Frame;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package fi.arithmeticvisualizer.gui;
+package fi.arithmeticvisualizer.gui.frames;
 
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import java.util.function.BiPredicate;
