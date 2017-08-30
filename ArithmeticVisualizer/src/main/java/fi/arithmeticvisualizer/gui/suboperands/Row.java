@@ -5,8 +5,8 @@ package fi.arithmeticvisualizer.gui.suboperands;
  */
 public class Row extends SubOperand {
 
-    private int rowIndex;
-    private double[] rowVector;
+    private final int rowIndex;
+    private final double[] rowVector;
 
     /**
      * Constructs a Row from a 1D array and its row index.

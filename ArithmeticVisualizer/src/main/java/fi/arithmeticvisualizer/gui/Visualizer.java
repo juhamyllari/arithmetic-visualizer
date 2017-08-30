@@ -1,7 +1,7 @@
 package fi.arithmeticvisualizer.gui;
 
-import fi.arithmeticvisualizer.gui.frames.FrameSequence;
-import fi.arithmeticvisualizer.gui.frames.Frame;
+import fi.arithmeticvisualizer.logic.frames.FrameSequence;
+import fi.arithmeticvisualizer.logic.frames.Frame;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle;
 import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle.ELEMENTWISE;

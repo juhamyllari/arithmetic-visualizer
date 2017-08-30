@@ -1,6 +1,6 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.gui.frames.FrameSequence;
+import fi.arithmeticvisualizer.logic.frames.FrameSequence;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import fi.arithmeticvisualizer.logic.evaluation.RealArray;
 import java.util.stream.Collectors;

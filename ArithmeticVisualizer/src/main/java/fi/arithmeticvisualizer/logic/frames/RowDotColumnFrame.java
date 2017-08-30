@@ -1,4 +1,4 @@
-package fi.arithmeticvisualizer.gui.frames;
+package fi.arithmeticvisualizer.logic.frames;
 
 import fi.arithmeticvisualizer.gui.suboperands.Column;
 import fi.arithmeticvisualizer.gui.suboperands.Row;

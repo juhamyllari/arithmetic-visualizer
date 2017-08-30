@@ -1,6 +1,6 @@
 package fi.arithmeticvisualizer.gui;
 
-import fi.arithmeticvisualizer.gui.frames.BooleanMask;
+import fi.arithmeticvisualizer.logic.frames.BooleanMask;
 import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.RealArray;
 import java.util.Arrays;

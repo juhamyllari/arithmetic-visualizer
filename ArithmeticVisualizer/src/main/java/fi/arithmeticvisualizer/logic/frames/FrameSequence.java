@@ -1,6 +1,6 @@
-package fi.arithmeticvisualizer.gui.frames;
+package fi.arithmeticvisualizer.logic.frames;
 
-import fi.arithmeticvisualizer.gui.frames.Frame;
+import fi.arithmeticvisualizer.logic.frames.Frame;
 import java.util.ArrayList;
 
 /**

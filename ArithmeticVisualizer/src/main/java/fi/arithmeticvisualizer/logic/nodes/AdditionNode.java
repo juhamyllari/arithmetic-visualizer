@@ -1,9 +1,9 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
 import fi.arithmeticvisualizer.gui.suboperands.Element;
-import fi.arithmeticvisualizer.gui.frames.ElementWithElementFrame;
-import fi.arithmeticvisualizer.gui.frames.FrameSequence;
-import fi.arithmeticvisualizer.gui.frames.Frame;
+import fi.arithmeticvisualizer.logic.frames.ElementWithElementFrame;
+import fi.arithmeticvisualizer.logic.frames.FrameSequence;
+import fi.arithmeticvisualizer.logic.frames.Frame;
 import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import fi.arithmeticvisualizer.logic.evaluation.RealArray;
