@@ -86,6 +86,7 @@ public class BooleanMask {
      * @param column the column index of the element
      */
     public void setUpToByRow(int row, int column) {
+        clearAll();
         outerLoop:
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
@@ -105,11 +106,12 @@ public class BooleanMask {
      * @param column the column index of the element
      */
     public void setUpToByColumn(int row, int column) {
+        clearAll();
         outerLoop:
         for (int j = 0; j < m; j++) {
             for (int i = 0; i < n; i++) {
                 mask[i][j] = true;
-                if (i == row && i == column) {
+                if (i == row && j == column) {
                     break outerLoop;
                 }
             }

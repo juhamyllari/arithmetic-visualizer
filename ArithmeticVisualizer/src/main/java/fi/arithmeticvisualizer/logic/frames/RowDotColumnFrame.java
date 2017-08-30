@@ -24,11 +24,11 @@ public class RowDotColumnFrame extends Frame {
      * @param rowIndex the index of the row argument
      * @param columnIndex the index of the column argument
      */
-    public RowDotColumnFrame(Row left, Column right, int rowIndex, int columnIndex) {
+    public RowDotColumnFrame(Row left, Column right) {
         this.left = left;
         this.right = right;
-        this.rowIndex = rowIndex;
-        this.columnIndex = columnIndex;
+        this.rowIndex = left.getRowIndex();
+        this.columnIndex = right.getColumnIndex();
     }
 
     @Override

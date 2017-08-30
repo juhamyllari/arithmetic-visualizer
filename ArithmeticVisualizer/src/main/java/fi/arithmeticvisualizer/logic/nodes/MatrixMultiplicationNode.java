@@ -88,7 +88,7 @@ public class MatrixMultiplicationNode extends BinaryNode {
             for (int j = 0; j < outDimensions().getN(); j++) {
                 Row leftOperand = new Row(i, leftValue.getRow(i));
                 Column rightOperand = new Column(j, rightValue.getColumn(j));
-                Frame frame = new RowDotColumnFrame(leftOperand, rightOperand, i, j);
+                Frame frame = new RowDotColumnFrame(leftOperand, rightOperand);
                 list.add(frame);
             }
         }
