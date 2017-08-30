@@ -1,5 +1,6 @@
 package fi.arithmeticvisualizer.gui;
 
+import fi.arithmeticvisualizer.gui.frames.FrameSequence;
 import fi.arithmeticvisualizer.gui.frames.Frame;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle;
@@ -17,7 +18,7 @@ import javafx.util.Duration;
  */
 public class Visualizer {
 
-    public static final int ANIMATIONDURATION = 5000;
+    public static final int FRAME_DURATION = 200;
 
     private final EvaluationSceneController controller;
     private final BinaryNode node;
@@ -49,26 +50,8 @@ public class Visualizer {
     }
 
     /**
-     * Creates and plays an animation of the operation.
+     * Starts or resumes the visualization animation.
      */
-    private void visualize() {
-
-        resultGraphicArray.getShown().clearAll();
-
-        // EvaluationStyle selection to be implemented later.
-        EvaluationStyle style = ELEMENTWISE;
-
-        createAnimation(style);
-
-        animation.play();
-
-        controller.setOptionsGridVisibility(true);
-    }
-
-    public void pause() {
-        animation.pause();
-    }
-
     public void play() {
         if (animation == null) {
             createAnimation(ELEMENTWISE);
@@ -82,20 +65,28 @@ public class Visualizer {
         animation.play();
     }
 
+    /**
+     * Pauses the visualization animation. A paused animation can be resumed
+     * by calling the play method.
+     */
+    public void pause() {
+        animation.pause();
+    }
+
     private void createAnimation(EvaluationStyle style) {
 
         FrameSequence sequence = node.getFrameSequence(style);
+        final int length = sequence.getLength();
 
         animation = new Transition() {
             {
-                setCycleDuration(Duration.millis(ANIMATIONDURATION));
+                setCycleDuration(Duration.millis(length * FRAME_DURATION));
             }
 
             @Override
             protected void interpolate(double frac) {
 
-                final int length = sequence.getLength();
-                int frameIndex = Math.round((length - 1) * (float) frac);
+                int frameIndex = (int) ((length - 1) * (float) frac);
 
                 Frame frame = sequence.getFrame(frameIndex);
 
@@ -105,10 +96,11 @@ public class Visualizer {
                 subOpText.setText(frame.getSubOperationString());
             }
         };
-        
+
         animation.setOnFinished((ActionEvent event) -> {
             ended = true;
             controller.setPaused(true);
+            controller.setOptionsGridVisibility(true);
         });
     }
 
