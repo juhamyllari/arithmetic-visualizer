@@ -1,4 +1,4 @@
-package fi.arithmeticvisualizer.gui.suboperands;
+package fi.arithmeticvisualizer.logic.suboperands;
 
 /**
  * An Element is a scalar valued SubOperand.

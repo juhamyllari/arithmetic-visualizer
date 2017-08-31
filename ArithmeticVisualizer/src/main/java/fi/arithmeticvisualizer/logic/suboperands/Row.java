@@ -1,4 +1,4 @@
-package fi.arithmeticvisualizer.gui.suboperands;
+package fi.arithmeticvisualizer.logic.suboperands;
 
 /**
  * A Row is a SubOperand representing a row vector.

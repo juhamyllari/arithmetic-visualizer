@@ -1,7 +1,7 @@
 package fi.arithmeticvisualizer.logic.frames;
 
-import fi.arithmeticvisualizer.gui.suboperands.Column;
-import fi.arithmeticvisualizer.gui.suboperands.Row;
+import fi.arithmeticvisualizer.logic.suboperands.Column;
+import fi.arithmeticvisualizer.logic.suboperands.Row;
 import static fi.arithmeticvisualizer.logic.evaluation.RealArray.dotVectors;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 

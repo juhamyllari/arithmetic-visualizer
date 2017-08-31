@@ -1,6 +1,6 @@
 package fi.arithmeticvisualizer.logic.frames;
 
-import fi.arithmeticvisualizer.gui.suboperands.Element;
+import fi.arithmeticvisualizer.logic.suboperands.Element;
 import java.util.function.DoubleBinaryOperator;
 import org.junit.After;
 import org.junit.AfterClass;

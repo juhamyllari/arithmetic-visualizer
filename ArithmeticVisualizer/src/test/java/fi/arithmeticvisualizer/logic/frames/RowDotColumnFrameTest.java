@@ -1,8 +1,8 @@
 package fi.arithmeticvisualizer.logic.frames;
 
-import fi.arithmeticvisualizer.gui.suboperands.Column;
-import fi.arithmeticvisualizer.gui.suboperands.Element;
-import fi.arithmeticvisualizer.gui.suboperands.Row;
+import fi.arithmeticvisualizer.logic.suboperands.Column;
+import fi.arithmeticvisualizer.logic.suboperands.Element;
+import fi.arithmeticvisualizer.logic.suboperands.Row;
 import fi.arithmeticvisualizer.logic.nodes.Node;
 import org.junit.After;
 import org.junit.AfterClass;

@@ -1,6 +1,6 @@
 package fi.arithmeticvisualizer.logic.nodes;
 
-import fi.arithmeticvisualizer.gui.suboperands.Element;
+import fi.arithmeticvisualizer.logic.suboperands.Element;
 import fi.arithmeticvisualizer.logic.frames.ElementWithElementFrame;
 import fi.arithmeticvisualizer.logic.frames.FrameSequence;
 import fi.arithmeticvisualizer.logic.frames.Frame;

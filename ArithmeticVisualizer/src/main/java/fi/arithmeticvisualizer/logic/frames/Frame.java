@@ -1,6 +1,6 @@
 package fi.arithmeticvisualizer.logic.frames;
 
-import fi.arithmeticvisualizer.gui.suboperands.SubOperand;
+import fi.arithmeticvisualizer.logic.suboperands.SubOperand;
 
 /**
  * A Frame represents a single frame in a visualization animation. Equivalently,
