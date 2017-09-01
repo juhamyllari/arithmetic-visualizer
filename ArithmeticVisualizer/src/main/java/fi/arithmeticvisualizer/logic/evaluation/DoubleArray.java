@@ -139,7 +139,7 @@ public class DoubleArray implements RealArray {
         for (double[] row : array) {
             String rowAsString = Arrays.stream(row)
                     .boxed()
-                    .map(d -> d.toString())
+                    .map(Object::toString)
                     .collect(Collectors.joining(" "));
             sb.append(rowAsString);
             sb.append("; ");

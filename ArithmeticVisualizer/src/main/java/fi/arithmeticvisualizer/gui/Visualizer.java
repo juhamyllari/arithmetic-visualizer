@@ -8,7 +8,6 @@ import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.EvaluationStyle.ELE
 import javafx.animation.Animation;
 import javafx.animation.Transition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 

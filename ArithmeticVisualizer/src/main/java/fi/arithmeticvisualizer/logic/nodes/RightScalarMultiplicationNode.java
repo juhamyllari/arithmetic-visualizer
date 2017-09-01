@@ -15,9 +15,6 @@ import java.util.function.DoubleBinaryOperator;
  */
 public class RightScalarMultiplicationNode extends BinaryNode {
 
-    private Node left;
-    private Node right;
-
     /**
      * Constructs a RightScalarMultiplicationNode.
      *
@@ -62,16 +59,6 @@ public class RightScalarMultiplicationNode extends BinaryNode {
     }
 
     @Override
-    public Node getLeft() {
-        return left;
-    }
-
-    @Override
-    public Node getRight() {
-        return right;
-    }
-
-    @Override
     public boolean validImputDimensions() {
         return right.isScalar();
     }
@@ -94,7 +81,7 @@ public class RightScalarMultiplicationNode extends BinaryNode {
             for (int j = 0; j < outDimensions().getN(); j++) {
                 Element leftOperand = new Element(i, j, leftValue.getElement(i, j));
                 Element rightOperand = new Element(0, 0, rightValue.getElement(0, 0));
-                DoubleBinaryOperator operator = (double left, double right) -> left * right;
+                DoubleBinaryOperator operator = (double leftNumber, double rightNumber) -> leftNumber * rightNumber;
                 Frame frame = new ElementWithElementFrame(operator, "*", leftOperand, rightOperand, i, j);
                 frames.add(frame);
             }

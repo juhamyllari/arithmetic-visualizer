@@ -145,7 +145,7 @@ public interface RealArray {
         try {
             return strings
                     .stream()
-                    .mapToDouble((s) -> Double.parseDouble(s))
+                    .mapToDouble(Double::parseDouble)
                     .toArray();
         } catch (NumberFormatException e) {
             throw new BadArrayException(e.getMessage());

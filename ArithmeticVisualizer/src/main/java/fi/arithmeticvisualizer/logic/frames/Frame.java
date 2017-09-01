@@ -1,14 +1,12 @@
 package fi.arithmeticvisualizer.logic.frames;
 
-import fi.arithmeticvisualizer.logic.suboperands.SubOperand;
-
 /**
  * A Frame represents a single frame in a visualization animation. Equivalently,
  * a Frame represents an operation on two SubOperands. The Frame determines
  * which elements of each array are active (and which elements of the resulting
  * array are displayed) in each frame of an animation.
  */
-abstract public class Frame {
+public interface Frame {
 
     /**
      * Represents a function that modifies a {@code BooleanMask} and has no
@@ -24,9 +22,6 @@ abstract public class Frame {
          */
         void accept(BooleanMask mask);
     }
-
-    private SubOperand left;
-    private SubOperand right;
 
     /**
      * Returns a function to set the activation of the left GraphicArray.

@@ -5,7 +5,6 @@ import fi.arithmeticvisualizer.logic.frames.FrameSequence;
 import fi.arithmeticvisualizer.logic.suboperands.Row;
 import fi.arithmeticvisualizer.logic.frames.RowDotColumnFrame;
 import fi.arithmeticvisualizer.logic.frames.Frame;
-import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import fi.arithmeticvisualizer.logic.evaluation.RealArray;
 import java.util.ArrayList;
@@ -36,14 +35,6 @@ public class MatrixMultiplicationNode extends BinaryNode {
      */
     public MatrixMultiplicationNode(RealArray left, RealArray right) {
         this(new ValueNode(left), new ValueNode(right));
-    }
-
-    public Node getLeft() {
-        return left;
-    }
-
-    public Node getRight() {
-        return right;
     }
 
     @Override

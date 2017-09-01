@@ -86,13 +86,12 @@ public class BooleanMask {
      * @param column the column index of the element
      */
     public void setUpToByRow(int row, int column) {
-        clearAll();
-        outerLoop:
+        boolean value = true;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                mask[i][j] = true;
+                mask[i][j] = value;
                 if (i == row && j == column) {
-                    break outerLoop;
+                    value = false;
                 }
             }
         }
@@ -106,13 +105,12 @@ public class BooleanMask {
      * @param column the column index of the element
      */
     public void setUpToByColumn(int row, int column) {
-        clearAll();
-        outerLoop:
+        boolean value = true;
         for (int j = 0; j < m; j++) {
             for (int i = 0; i < n; i++) {
-                mask[i][j] = true;
+                mask[i][j] = value;
                 if (i == row && j == column) {
-                    break outerLoop;
+                    value = false;
                 }
             }
         }
@@ -152,25 +150,6 @@ public class BooleanMask {
      */
     public boolean[][] getMask() {
         return mask;
-    }
-
-    /**
-     * Returns a copy of the BooleanMask.
-     *
-     * @return a copy of the BooleanMask
-     */
-    public BooleanMask clone() {
-        BooleanMask clone = new BooleanMask(m, n);
-
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (this.getMask()[i][j]) {
-                    clone.setAdditionalElement(i, j);
-                }
-            }
-        }
-
-        return clone;
     }
 
 }

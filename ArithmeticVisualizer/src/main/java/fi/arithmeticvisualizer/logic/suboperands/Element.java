@@ -3,11 +3,11 @@ package fi.arithmeticvisualizer.logic.suboperands;
 /**
  * An Element is a scalar valued SubOperand.
  */
-public class Element extends SubOperand {
+public class Element implements SubOperand {
     
-    private int m;
-    private int n;
-    private double value;
+    private final int m;
+    private final int n;
+    private final double value;
 
     /**
      * Constructs an Element.

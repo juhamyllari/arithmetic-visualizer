@@ -1,7 +1,6 @@
 package fi.arithmeticvisualizer.logic.frames;
 
-import fi.arithmeticvisualizer.logic.frames.Frame;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A FrameSequence contains the Frames that make up a single 
@@ -9,7 +8,7 @@ import java.util.ArrayList;
  */
 public class FrameSequence {
     
-    private final ArrayList<Frame> frames;
+    private final List<Frame> frames;
     private final int length;
 
     /**
@@ -17,7 +16,7 @@ public class FrameSequence {
      * 
      * @param frames a list of the Frames to be included
      */
-    public FrameSequence(ArrayList<Frame> frames) {
+    public FrameSequence(List<Frame> frames) {
         this.frames = frames;
         this.length = frames.size();
     }

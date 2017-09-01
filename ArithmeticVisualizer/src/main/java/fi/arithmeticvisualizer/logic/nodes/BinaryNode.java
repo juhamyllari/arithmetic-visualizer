@@ -63,14 +63,18 @@ public abstract class BinaryNode extends Node {
      *
      * @return the left Node
      */
-    public abstract Node getLeft();
+    public Node getLeft() {
+        return left;
+    }
 
     /**
      * Returns the right Node of the BinaryNode.
      *
      * @return the right Node
      */
-    public abstract Node getRight();
+    public Node getRight() {
+        return right;
+    }
 
     /**
      * Returns {@code true} if and only if the left and right Node have
@@ -108,6 +112,9 @@ public abstract class BinaryNode extends Node {
                 } else {
                     node = new MatrixMultiplicationNode(left, right);
                 }
+                break;
+            default:
+                break;
         }
 
         return node;
@@ -133,9 +140,7 @@ public abstract class BinaryNode extends Node {
 
         leftSide = IntStream.range(0, left.length)
                 .mapToObj(i -> {
-                    double leftOperand = left[i];
-                    double rightOperand = right[i];
-                    if (rightOperand >= 0.0) {
+                    if (right[i] >= 0.0) {
                         return formatDouble(left[i]) + " " + mapSymbol + " " + formatDouble(right[i]);
                     } else {
                         return formatDouble(left[i]) + " " + mapSymbol + " (" + formatDouble(right[i]) + ")";

@@ -1,9 +1,7 @@
 package fi.arithmeticvisualizer.gui;
 
 import fi.arithmeticvisualizer.logic.frames.BooleanMask;
-import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.RealArray;
-import java.util.Arrays;
 import java.util.Collections;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -49,7 +47,7 @@ public class GraphicArray {
         this.n = array.getDimensions().getN();
         this.activation = new BooleanMask(array.getDimensions());
         this.shown = new BooleanMask(array.getDimensions());
-        this.shown.setAll();;
+        this.shown.setAll();
     }
 
     /**
@@ -110,14 +108,11 @@ public class GraphicArray {
     }
 
     private int getMaxStringLength() {
-
-        int maxLength = array.getValues()
+        return array.getValues()
                 .stream()
-                .mapToInt((d) -> String.format(ELEMENTSTRINGFORMAT, (Double) d).length())
+                .mapToInt(d -> String.format(ELEMENTSTRINGFORMAT, d).length())
                 .max()
                 .getAsInt();
-
-        return maxLength;
     }
 
     /**

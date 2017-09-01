@@ -151,8 +151,8 @@ public class EntrySceneController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        leftOperand = new Operand(this, null, leftArrayGrid, leftField, transposeLeft);
-        rightOperand = new Operand(this, null, rightArrayGrid, rightField, transposeRight);
+        leftOperand = new Operand(this, null, leftArrayGrid, leftField);
+        rightOperand = new Operand(this, null, rightArrayGrid, rightField);
     }
     
     protected void initializeTextFieldData(String left, String right) {

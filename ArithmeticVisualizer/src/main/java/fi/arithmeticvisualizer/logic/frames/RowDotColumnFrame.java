@@ -9,7 +9,7 @@ import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
  * A RowDotColumnFrame is a Frame representing a dot product of a row vector and a
  column vector.
  */
-public class RowDotColumnFrame extends Frame {
+public class RowDotColumnFrame implements Frame {
 
     private final Row left;
     private final Column right;

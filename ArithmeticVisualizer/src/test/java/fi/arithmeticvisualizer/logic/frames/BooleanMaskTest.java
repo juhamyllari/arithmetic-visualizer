@@ -156,14 +156,4 @@ public class BooleanMaskTest {
         assertEquals(false, bm.getMask()[1][1]);
     }
 
-    @Test
-    public void cloneWorks() {
-        BooleanMask bm = new BooleanMask(new Dimensions(2, 2));
-        bm.setAdditionalElement(1, 1);
-        BooleanMask clone = bm.clone();
-        assertArrayEquals(bm.getMask()[0], clone.getMask()[0]);
-        assertArrayEquals(bm.getMask()[1], clone.getMask()[1]);
-        assertNotEquals(bm, clone);
-    }
-
 }

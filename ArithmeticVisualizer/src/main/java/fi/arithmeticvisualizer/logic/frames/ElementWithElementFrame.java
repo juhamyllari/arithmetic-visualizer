@@ -8,7 +8,7 @@ import java.util.function.DoubleBinaryOperator;
  * An ElementWithElementFrame is a Frame representing an operation on two scalar
  * valued operands.
  */
-public class ElementWithElementFrame extends Frame {
+public class ElementWithElementFrame implements Frame {
 
     private DoubleBinaryOperator operator;
     private String symbol;

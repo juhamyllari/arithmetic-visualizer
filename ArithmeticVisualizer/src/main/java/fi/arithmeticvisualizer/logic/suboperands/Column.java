@@ -3,7 +3,7 @@ package fi.arithmeticvisualizer.logic.suboperands;
 /**
  * A Column is a SubOperand representing a column vector.
  */
-public class Column extends SubOperand {
+public class Column implements SubOperand {
 
     private final int columnIndex;
     private final double[] columnVector;

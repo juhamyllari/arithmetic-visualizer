@@ -48,10 +48,7 @@ public class Dimensions {
         if (this.m != other.m) {
             return false;
         }
-        if (this.n != other.n) {
-            return false;
-        }
-        return true;
+        return this.n == other.n;
     }
 
     @Override

@@ -4,7 +4,6 @@ import fi.arithmeticvisualizer.logic.suboperands.Element;
 import fi.arithmeticvisualizer.logic.frames.ElementWithElementFrame;
 import fi.arithmeticvisualizer.logic.frames.FrameSequence;
 import fi.arithmeticvisualizer.logic.frames.Frame;
-import fi.arithmeticvisualizer.logic.evaluation.DoubleArray;
 import fi.arithmeticvisualizer.logic.evaluation.Dimensions;
 import fi.arithmeticvisualizer.logic.evaluation.RealArray;
 import java.util.ArrayList;
@@ -36,16 +35,6 @@ public class SubtractionNode extends BinaryNode {
     public SubtractionNode(RealArray left, RealArray right) {
         this.left = new ValueNode(left);
         this.right = new ValueNode(right);
-    }
-
-    @Override
-    public Node getLeft() {
-        return left;
-    }
-
-    @Override
-    public Node getRight() {
-        return right;
     }
 
     @Override
