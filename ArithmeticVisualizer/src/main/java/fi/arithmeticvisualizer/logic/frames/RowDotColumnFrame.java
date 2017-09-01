@@ -21,8 +21,6 @@ public class RowDotColumnFrame extends Frame {
      * 
      * @param left the left Row operand
      * @param right the right Column operand
-     * @param rowIndex the index of the row argument
-     * @param columnIndex the index of the column argument
      */
     public RowDotColumnFrame(Row left, Column right) {
         this.left = left;
