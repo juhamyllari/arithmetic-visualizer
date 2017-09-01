@@ -10,17 +10,14 @@ import javafx.stage.Stage;
 /**
  * The main class of the Arithmetic Visualizer application. Loads the entry
  * scene of the application. For the controller class of the entry scene, see
- * the class EntrySceneController.
+ * EntrySceneController.
  */
 public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/EntryScene.fxml"));
-        
         Scene scene = new Scene(root);
-        
         stage.setTitle("Arithmetic Visualizer");
         stage.setScene(scene);
         stage.show();
