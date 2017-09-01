@@ -26,3 +26,5 @@ Date | Hours | Description
 26.8.2017  | 8h | Refactoring Frames; updating unit tests
 27.8.2017  | 6h | Creating and adopting the RealArray interface; creating diagrams
 29.8.2017  | 2h | Updating Javadoc; creating play/pause functionality
+30.8.2017  | 3h | Extending testing; rearranging packages
+31.8.2017  | 1h | Adding unit tests
