@@ -1,15 +1,13 @@
 package fi.arithmeticvisualizer.gui;
 
+import fi.arithmeticvisualizer.Main;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import java.io.IOException;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -111,12 +109,8 @@ public class EvaluationSceneController {
             EntrySceneController controller = loader.<EntrySceneController>getController();
             initializeEntrySceneArrayInputs(controller);
             stage.setScene(new Scene(root));
-        } catch (Exception ex) {
-            Alert alert = new Alert(Alert.AlertType.ERROR,
-                    "Unable to load entry scene. Exiting.");
-            alert.showAndWait()
-                    .filter(response -> response == ButtonType.OK)
-                    .ifPresent(response -> Platform.exit());
+        } catch (IOException ex) {
+            Main.exitOnFailureToLoadScene("entry");
         }
     }
 

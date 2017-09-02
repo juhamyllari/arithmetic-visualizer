@@ -1,5 +1,6 @@
 package fi.arithmeticvisualizer.gui;
 
+import fi.arithmeticvisualizer.Main;
 import fi.arithmeticvisualizer.logic.nodes.BinaryNode;
 import java.io.IOException;
 import java.net.URL;
@@ -19,9 +20,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
-import javafx.application.Platform;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 
 /**
  * This is the controller class for the entry scene of the application. The
@@ -135,12 +133,8 @@ public class EntrySceneController implements Initializable {
             EvaluationSceneController controller = loader.<EvaluationSceneController>getController();
             controller.initData(node);
             stage.setScene(new Scene(root));
-        } catch (Exception ex) {
-            Alert alert = new Alert(Alert.AlertType.ERROR,
-                    "Unable to load evaluation scene. Exiting.");
-            alert.showAndWait()
-                    .filter(response -> response == ButtonType.OK)
-                    .ifPresent(response -> Platform.exit());
+        } catch (IOException ex) {
+            Main.exitOnFailureToLoadScene("evaluation");
         }
     }
 
@@ -165,4 +159,5 @@ public class EntrySceneController implements Initializable {
         leftField.setText(left);
         rightField.setText(right);
     }
+
 }

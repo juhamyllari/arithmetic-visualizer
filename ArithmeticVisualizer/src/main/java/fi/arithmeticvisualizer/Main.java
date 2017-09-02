@@ -1,10 +1,14 @@
 package fi.arithmeticvisualizer;
 
+import java.io.IOException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 /**
@@ -15,11 +19,16 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/EntryScene.fxml"));
-        Scene scene = new Scene(root);
-        stage.setTitle("Arithmetic Visualizer");
-        stage.setScene(scene);
+    public void start(Stage stage) {
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/EntryScene.fxml"));
+            Scene scene = new Scene(root);
+            stage.setTitle("Arithmetic Visualizer");
+            stage.setScene(scene);
+        } catch (IOException ex) {
+            exitOnFailureToLoadScene("entry");
+        }
         stage.show();
     }
 
@@ -33,6 +42,14 @@ public class Main extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static void exitOnFailureToLoadScene(String sceneName) {
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+                "Unable to load " +  sceneName + " scene. Exiting.");
+        alert.showAndWait()
+                .filter(response -> response == ButtonType.OK)
+                .ifPresent(response -> Platform.exit());
     }
 
 }
