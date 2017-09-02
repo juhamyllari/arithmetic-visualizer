@@ -12,7 +12,6 @@ A single user.
 
 **Class Diagram:**
 * A class diagram is provided below.
-* JavaFX Scene Controllers are omitted for clarity.
 ![Alt Class Diagram](ClassDiagram.png "Class Diagram")
 
 **Sequence Diagrams:**
