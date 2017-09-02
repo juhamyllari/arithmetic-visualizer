@@ -3,7 +3,7 @@ package fi.arithmeticvisualizer.logic.suboperands;
 /**
  * An Element is a scalar valued SubOperand.
  */
-public class Element implements SubOperand {
+public class Element {
     
     private final int m;
     private final int n;

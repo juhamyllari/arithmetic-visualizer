@@ -3,7 +3,7 @@ package fi.arithmeticvisualizer.logic.suboperands;
 /**
  * A Row is a SubOperand representing a row vector.
  */
-public class Row implements SubOperand {
+public class Row {
 
     private final int rowIndex;
     private final double[] rowVector;
