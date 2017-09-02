@@ -19,10 +19,13 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import static fi.arithmeticvisualizer.logic.nodes.BinaryNode.createBinaryNode;
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 /**
- * This is the controller class for the entry scene of the application.
- * The entry scene is where expressions are entered.
+ * This is the controller class for the entry scene of the application. The
+ * entry scene is where expressions are entered.
  */
 public class EntrySceneController implements Initializable {
 
@@ -132,11 +135,14 @@ public class EntrySceneController implements Initializable {
             EvaluationSceneController controller = loader.<EvaluationSceneController>getController();
             controller.initData(node);
             stage.setScene(new Scene(root));
-        } catch (IOException ex) {
-            setErrorMessage("Failed to load evaluation scene: " + ex.getMessage());
+        } catch (Exception ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR,
+                    "Unable to load evaluation scene. Exiting.");
+            alert.showAndWait()
+                    .filter(response -> response == ButtonType.OK)
+                    .ifPresent(response -> Platform.exit());
         }
     }
-
 
     private void transpose(Operand operand) {
         if (operand.createArray()) {
@@ -148,13 +154,13 @@ public class EntrySceneController implements Initializable {
     protected void setErrorMessage(String message) {
         errorText.setText(message);
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         leftOperand = new Operand(this, null, leftArrayGrid, leftField);
         rightOperand = new Operand(this, null, rightArrayGrid, rightField);
     }
-    
+
     protected void initializeTextFieldData(String left, String right) {
         leftField.setText(left);
         rightField.setText(right);

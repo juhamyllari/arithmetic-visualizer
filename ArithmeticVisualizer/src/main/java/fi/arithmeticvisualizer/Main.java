@@ -12,7 +12,7 @@ import javafx.stage.Stage;
  * scene of the application. For the controller class of the entry scene, see
  * EntrySceneController.
  */
-public class MainApp extends Application {
+public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {

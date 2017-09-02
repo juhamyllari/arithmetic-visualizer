@@ -111,7 +111,7 @@ public class EvaluationSceneController {
             EntrySceneController controller = loader.<EntrySceneController>getController();
             initializeEntrySceneArrayInputs(controller);
             stage.setScene(new Scene(root));
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR,
                     "Unable to load entry scene. Exiting.");
             alert.showAndWait()
