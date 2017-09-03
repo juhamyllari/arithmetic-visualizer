@@ -14,7 +14,7 @@ A single user.
 
 **Usage:**
 
-See [How to Use Arithmetic Visualizer](HowTo.md)
+See [How to Use Arithmetic Visualizer](HowTo.md).
 
 **Program Structure:**
 
