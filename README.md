@@ -4,6 +4,8 @@ A visualization tool for arithmetic expressions. Enter arithmetic expressions co
 ## Documentation
 [Topic Description](documentation/TopicDescription.md)
 
+[How to Use Arithmetic Visualizer](documentation/HowTo.md)
+
 [Time Sheet](documentation/TimeSheet.md)
 
 [PIT Report](https://htmlpreview.github.io/?https://github.com/juhamyllari/arithmetic-visualizer/blob/master/documentation/pit/index.html)
