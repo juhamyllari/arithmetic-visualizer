@@ -12,6 +12,10 @@ A single user.
 * Creating arithmetic expressions via a graphical interface.
 * Once an expression has been graphically evaluated, the user may choose to use the resulting array as an operand (or as both operands) in the next expression.
 
+**Usage:**
+
+See [How to Use Arithmetic Visualizer](HowTo.md)
+
 **Program Structure:**
 
 The application opens in the entry scene where the user is prompted to enter two arrays and choose an operation to apply to them. The entry scene is controlled by an instance of the class EntrySceneController, and each operand is managed by an Operand instance. The operands are drawn on the screen by instances of the class GraphicArray.
