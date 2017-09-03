@@ -42,25 +42,25 @@ public class RowDotColumnFrameTest {
         RowDotColumnFrame frame = new RowDotColumnFrame(left, right);
 
         BooleanMask bm = new BooleanMask(2, 2);
-        frame.getLeftActivation().accept(bm);
+        frame.getLeftActivation().set(bm);
         Assert.assertEquals(false, bm.getMask()[0][0]);
         Assert.assertEquals(false, bm.getMask()[0][1]);
         Assert.assertEquals(true, bm.getMask()[1][0]);
         Assert.assertEquals(true, bm.getMask()[1][1]);
 
-        frame.getRightActivation().accept(bm);
+        frame.getRightActivation().set(bm);
         Assert.assertEquals(false, bm.getMask()[0][0]);
         Assert.assertEquals(true, bm.getMask()[0][1]);
         Assert.assertEquals(false, bm.getMask()[1][0]);
         Assert.assertEquals(true, bm.getMask()[1][1]);
 
-        frame.getResultActivation().accept(bm);
+        frame.getResultActivation().set(bm);
         Assert.assertEquals(false, bm.getMask()[0][0]);
         Assert.assertEquals(false, bm.getMask()[0][1]);
         Assert.assertEquals(false, bm.getMask()[1][0]);
         Assert.assertEquals(true, bm.getMask()[1][1]);
 
-        frame.getResultShown().accept(bm);
+        frame.getResultShown().set(bm);
         Assert.assertEquals(true, bm.getMask()[0][0]);
         Assert.assertEquals(true, bm.getMask()[0][1]);
         Assert.assertEquals(true, bm.getMask()[1][0]);

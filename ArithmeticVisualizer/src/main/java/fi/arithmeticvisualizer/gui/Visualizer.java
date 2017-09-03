@@ -118,10 +118,10 @@ public class Visualizer {
     }
 
     private void setMasks(Frame frame) {
-        frame.getLeftActivation().accept(leftGraphicArray.getActivation());
-        frame.getRightActivation().accept(rightGraphicArray.getActivation());
-        frame.getResultActivation().accept(resultGraphicArray.getActivation());
-        frame.getResultShown().accept(resultGraphicArray.getShown());
+        frame.getLeftActivation().set(leftGraphicArray.getActivation());
+        frame.getRightActivation().set(rightGraphicArray.getActivation());
+        frame.getResultActivation().set(resultGraphicArray.getActivation());
+        frame.getResultShown().set(resultGraphicArray.getShown());
     }
 
 }

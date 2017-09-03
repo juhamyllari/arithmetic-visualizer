@@ -20,7 +20,7 @@ public interface Frame {
          * 
          * @param mask the {@code BooleanMask} to modify
          */
-        void accept(BooleanMask mask);
+        void set(BooleanMask mask);
     }
 
     /**
