@@ -147,7 +147,7 @@
 <a class="jxr_linenumber" name="L139" href="#L139">139</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">double</strong>[] row : array) {
 <a class="jxr_linenumber" name="L140" href="#L140">140</a>             String rowAsString = Arrays.stream(row)
 <a class="jxr_linenumber" name="L141" href="#L141">141</a>                     .boxed()
-<a class="jxr_linenumber" name="L142" href="#L142">142</a>                     .map(d -&gt; d.toString())
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>                     .map(Object::toString)
 <a class="jxr_linenumber" name="L143" href="#L143">143</a>                     .collect(Collectors.joining(<span class="jxr_string">" "</span>));
 <a class="jxr_linenumber" name="L144" href="#L144">144</a>             sb.append(rowAsString);
 <a class="jxr_linenumber" name="L145" href="#L145">145</a>             sb.append(<span class="jxr_string">"; "</span>);
