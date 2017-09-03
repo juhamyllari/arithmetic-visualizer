@@ -46,7 +46,7 @@ public class Main extends Application {
 
     /**
      * Alerts the user that the program will terminate due to failure to load
-     * the next scene.
+     * the next scene and exits.
      *
      * @param sceneName name of the scene which failed to load
      */
