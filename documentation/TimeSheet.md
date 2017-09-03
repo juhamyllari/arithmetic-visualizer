@@ -28,3 +28,5 @@ Date | Hours | Description
 29.8.2017  | 2h | Updating Javadoc; creating play/pause functionality
 30.8.2017  | 3h | Extending testing; rearranging packages
 31.8.2017  | 1h | Adding unit tests
+1.9.2017   | 4h | Fixing code smells detected by SonarQube
+2.9.2017   | 3h | Creating a new class diagram using yUML; adding graceful exit functionality
