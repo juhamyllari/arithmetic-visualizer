@@ -30,3 +30,4 @@ Date | Hours | Description
 31.8.2017  | 1h | Adding unit tests
 1.9.2017   | 4h | Fixing code smells detected by SonarQube
 2.9.2017   | 3h | Creating a new class diagram using yUML; adding graceful exit functionality
+3.9.2017   | 4h | Preparing for first release
